@@ -63,10 +63,8 @@ public class App {
                     AppService.displayArtistMenu();
                     int subMenuSelection = promptForMenuSelection("Please choose an option: ");
                     if (subMenuSelection == 1) {
-                        // menu option id? //
                         AppService.displayAllArtists();
                     } if (subMenuSelection == 2) {
-                        // searchById //
                         AppService.searchArtistsById();
                     } else if (subMenuSelection == 3) {
                         AppService.searchArtistsByName();
