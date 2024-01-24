@@ -4,81 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d2cb75a2-b734-46bb-9d60-ca65748ea540" name="Changes" comment="commited Wed Jan 24th 2024 6:13pm">
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/jarRepositories.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/HELP.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/musicDB.sql" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mvnw" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mvnw.cmd" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/music2/App.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/music2/AppService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/music2/Dataset.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/music2/dao/Album/AlbumDao.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/music2/dao/Album/JdbcAlbumDao.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/music2/dao/Artist/ArtistDao.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/music2/dao/Artist/JdbcArtistDao.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/music2/dao/Customer/CustomerDao.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/music2/dao/Customer/JdbcCustomerDao.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/music2/dao/Label/JdbcLabelDao.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/music2/dao/Label/LabelDao.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/music2/dao/LineItem/JdbcLineItemDao.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/music2/dao/LineItem/LineItemDao.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/music2/dao/Sale/JdbcSaleDao.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/music2/dao/Sale/SaleDao.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/music2/exception/DaoException.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/music2/model/Album.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/music2/model/Artist.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/music2/model/Customer.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/music2/model/Label.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/music2/model/LineItem.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/music2/model/Sale.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/music2/util/ApplicationController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/music2/util/BasicConsole.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/music2/util/MusicView.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/music2/util/SystemInOutConsole.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/org/example/dao/BaseDaoTests.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/org/example/dao/JdbcCustomerDaoTests.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/org/example/dao/TestingDatabaseConfig.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/resources/musicDB_testing.sql" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/application.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/example/music2/App.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/example/music2/AppService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/example/music2/Dataset.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/example/music2/dao/Album/AlbumDao.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/example/music2/dao/Album/JdbcAlbumDao.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/example/music2/dao/Artist/ArtistDao.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/example/music2/dao/Artist/JdbcArtistDao.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/example/music2/dao/Customer/CustomerDao.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/example/music2/dao/Customer/JdbcCustomerDao.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/example/music2/dao/Label/JdbcLabelDao.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/example/music2/dao/Label/LabelDao.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/example/music2/dao/LineItem/JdbcLineItemDao.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/example/music2/dao/LineItem/LineItemDao.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/example/music2/dao/Sale/JdbcSaleDao.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/example/music2/dao/Sale/SaleDao.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/example/music2/exception/DaoException.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/example/music2/model/Album.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/example/music2/model/Artist.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/example/music2/model/Customer.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/example/music2/model/Label.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/example/music2/model/LineItem.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/example/music2/model/Sale.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/example/music2/util/ApplicationController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/example/music2/util/BasicConsole.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/example/music2/util/MusicView.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/example/music2/util/SystemInOutConsole.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/musicDB_testing.sql" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/org/example/dao/BaseDaoTests.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/org/example/dao/JdbcCustomerDaoTests.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/org/example/dao/TestingDatabaseConfig.class" beforeDir="false" />
+    <list default="true" id="6622f93c-ff98-4bed-af03-d982de735ab3" name="Changes" comment="commit new titled">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -91,10 +18,10 @@
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 2
-}]]></component>
-  <component name="ProjectId" id="2bQCU0k8rPG6bVYUEmiQpk6TxIr" />
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 3
+}</component>
+  <component name="ProjectId" id="2bQD1w6VB6A4SgSuK9kMi2MTZBn" />
   <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="2" id="Add" />
   </component>
@@ -102,24 +29,46 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "git-widget-placeholder": "main",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "/Users/jacknichols/projects/music2",
-    "nodejs_package_manager_path": "npm",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;Application.App.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/jacknichols/projects/music-application&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
-  <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$" />
-    </key>
+}</component>
+  <component name="RunManager">
+    <configuration name="All in music" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="music" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="TEST_OBJECT" value="package" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="JetRunConfigurationType">
+      <module name="music-application" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
+      <module name="music-application" />
+      <option name="filePath" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JUnit.All in music" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SharedIndexes">
     <attachedChunks>
@@ -132,20 +81,22 @@
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="d2cb75a2-b734-46bb-9d60-ca65748ea540" name="Changes" comment="" />
-      <created>1706137927194</created>
+      <changelist id="6622f93c-ff98-4bed-af03-d982de735ab3" name="Changes" comment="" />
+      <created>1706138197753</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1706137927194</updated>
-      <workItem from="1706137928236" duration="272000" />
+      <updated>1706138197753</updated>
+      <workItem from="1706138198832" duration="76000" />
+      <workItem from="1706138284131" duration="52000" />
+      <workItem from="1706138361849" duration="6000" />
     </task>
-    <task id="LOCAL-00001" summary="commited Wed Jan 24th 2024 6:13pm">
+    <task id="LOCAL-00001" summary="commit new titled">
       <option name="closed" value="true" />
-      <created>1706138018256</created>
+      <created>1706138265494</created>
       <option name="number" value="00001" />
       <option name="presentableId" value="LOCAL-00001" />
       <option name="project" value="LOCAL" />
-      <updated>1706138018256</updated>
+      <updated>1706138265494</updated>
     </task>
     <option name="localTasksCounter" value="2" />
     <servers />
@@ -155,7 +106,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="commited Wed Jan 24th 2024 6:13pm" />
-    <option name="LAST_COMMIT_MESSAGE" value="commited Wed Jan 24th 2024 6:13pm" />
+    <MESSAGE value="commit new titled" />
+    <option name="LAST_COMMIT_MESSAGE" value="commit new titled" />
   </component>
 </project>
