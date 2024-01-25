@@ -21,7 +21,6 @@ public class AppService {
     private static final Scanner keyboard = new Scanner(System.in);
 
     // Album menu stuff //
-
     static void displayAlbumMenu(){
         System.out.println();
         System.out.println("1: Display All Albums");
@@ -33,7 +32,8 @@ public class AppService {
         System.out.println("7: Search Albums by Price");
         System.out.println("9: Return to main Menu");
     }
-    public static void displayAllAlbums() {
+    // the "display" for the albums //
+    public static void searchAllAlbums() {
         AlbumDao albumDao = new JdbcAlbumDao(dataSource());
         List<Album> albums = albumDao.getAlbums();
         for (Album album : albums) {
@@ -41,7 +41,7 @@ public class AppService {
         }
     }
 
-    public static void displayAlbumById(int albumId){
+    public static void searchAlbumById(int albumId){
         AlbumDao albumDao = new JdbcAlbumDao(dataSource());
         Album album = albumDao.getAlbumById(albumId);
         if (album != null && album.getAlbumId() != 0) {
@@ -50,12 +50,12 @@ public class AppService {
             System.out.println("No album found for the specified ID");
         }
     }
-    public static void searchAlbumsByAlbumId(){
+    public static void displayAlbumsByAlbumId(){
         AppService appService = new AppService();
         int albumId = Integer.parseInt(appService.promptForId());
-        displayAlbumById(albumId);
+        searchAlbumById(albumId);
     }
-    public static void displayAlbumsByTitle(String stringSearch) {
+    public static void searchAlbumsByTitle(String stringSearch) {
         AlbumDao albumDao = new JdbcAlbumDao(dataSource());
         List<Album> albums = albumDao.getAlbums();
         if (!albums.isEmpty()) {
@@ -68,13 +68,13 @@ public class AppService {
             System.out.println("No albums found");
         }
     }
-    public static void searchAlbumsByTitle() {
+    public static void displayAlbumsByTitle() {
         AppService appService = new AppService();
         String stringSearch = appService.promptForTitleString();
-        displayAlbumsByTitle(stringSearch);
+        searchAlbumsByTitle(stringSearch);
     }
 
-    public static void displayAlbumsByArtistId(int artistId){
+    public static void searchAlbumsByArtistId(int artistId){
         AlbumDao albumDao = new JdbcAlbumDao(dataSource());
         List<Album> albums = albumDao.getAlbumByArtistId(artistId); // Correct method name
         if (!albums.isEmpty()) {
@@ -85,13 +85,13 @@ public class AppService {
             System.out.println("No albums found for the specified artist ID");
         }
     }
-    public static void searchAlbumsByArtistId(){
+    public static void displayAlbumsByArtistId(){
         AppService appService = new AppService();
         int artistId = Integer.parseInt(appService.promptForId());
-        displayAlbumsByArtistId(artistId);
+        searchAlbumsByArtistId(artistId);
     }
 
-    public static void displayAlbumsByLabelId(int labelId){
+    public static void searchAlbumsByLabelId(int labelId){
         AlbumDao albumDao = new JdbcAlbumDao(dataSource());
         List<Album> albums = albumDao.getAlbumsByLabelId(labelId);
         if (!albums.isEmpty()) {
@@ -102,12 +102,12 @@ public class AppService {
             System.out.println("No albums found for the specified label ID");
         }
     }
-    public static void searchAlbumsByLabelId(){
+    public static void displayAlbumsByLabelId(){
         AppService appService = new AppService();
-        displayAlbumsByLabelId(Integer.parseInt(appService.promptForId()));
+        searchAlbumsByLabelId(Integer.parseInt(appService.promptForId()));
     }
 
-    public static void displayAlbumsByYearReleased(LocalDate yearReleased){
+    public static void searchAlbumsByYearReleased(LocalDate yearReleased){
         AlbumDao albumDao = new JdbcAlbumDao(dataSource());
         List<Album> albums = albumDao.getAlbumsByDateReleased(yearReleased);
         if (!albums.isEmpty()) {
@@ -119,13 +119,13 @@ public class AppService {
             System.out.println("No albums found in this year");
         }
     }
-    public static void searchAlbumsByYear(){
+    public static void displayAlbumsByYear(){
         AppService appService = new AppService();
         int year = Integer.parseInt(appService.promptForYear());
-        displayAlbumsByYearReleased(LocalDate.of(year, 1, 1));
+        searchAlbumsByYearReleased(LocalDate.of(year, 1, 1));
     }
 
-    public static void displayAlbumsByPrice(BigDecimal price){
+    public static void searchAlbumsByPrice(BigDecimal price){
         AlbumDao albumDao = new JdbcAlbumDao(dataSource());
         List<Album> albums = albumDao.getAlbumsByPrice(price);
         if (!albums.isEmpty()) {
@@ -136,10 +136,10 @@ public class AppService {
             System.out.println("No albums found in this price");
         }
     }
-    public static void searchAlbumsByPrice(){
+    public static void displayAlbumsByPrice(){
         AppService appService = new AppService();
         BigDecimal price = new BigDecimal(appService.promptForPrice());
-        displayAlbumsByPrice(price);
+        searchAlbumsByPrice(price);
     }
 
     static void displayArtistMenu(){
@@ -158,7 +158,7 @@ public class AppService {
             System.out.println(artist + "\n");
         }
     }
-    public static void displayArtistsByName(String stringSearch){
+    public static void searchArtistsByName(String stringSearch){
         ArtistDao artistDao = new JdbcArtistDao(dataSource());
         List<Artist> artists = artistDao.getArtists();
         if (!artists.isEmpty()) {
@@ -171,12 +171,12 @@ public class AppService {
             System.out.println("No artists found");
         }
     }
-    public static void searchArtistsByName(){
+    public static void displayArtistsByName(){
         AppService appService = new AppService();
         String stringSearch = appService.promptForNameString();
-        displayArtistsByName(stringSearch);
+        searchArtistsByName(stringSearch);
     }
-    public static void displayArtistsById(int artistId){
+    public static void searchArtistsById(int artistId){
         ArtistDao artistDao = new JdbcArtistDao(dataSource());
         Artist artist = artistDao.getArtistById(artistId);
         if (artist != null && artist.getArtistId()!= 0) {
@@ -186,10 +186,10 @@ public class AppService {
         }
     }
 
-    public static void searchArtistsById(){
+    public static void displayArtistsById(){
         AppService appService = new AppService();
         int artistId = Integer.parseInt(appService.promptForId());
-        displayArtistsById(artistId);
+        searchArtistsById(artistId);
     }
     private static void promptForReturn() {
         System.out.println("Press RETURN to continue.");

@@ -37,46 +37,64 @@ public class App {
         while (true) {
             // Main menu loop
             printMainMenu();
-            int mainMenuSelection = promptForMenuSelection("Please choose an option: ");
+            int mainMenuSelection = promptForMenuSelection();
+            // Album menu options //
             if (mainMenuSelection == 1) {
                 while (true) {
+                    // Display the album menu //
                     AppService.displayAlbumMenu();
-                    int subMenuSelection = promptForMenuSelection("Please choose an option: ");
+                    int subMenuSelection = promptForMenuSelection();
                     if (subMenuSelection == 1) {
-                        AppService.displayAllAlbums();
+                        // Display all albums //
+                        AppService.searchAllAlbums();
                     } else if (subMenuSelection == 2) {
-                        AppService.searchAlbumsByAlbumId();
+                        // Search albums by the album id //
+                        AppService.displayAlbumsByAlbumId();
                     } else if (subMenuSelection == 3) {
-                        AppService.searchAlbumsByTitle();
+                        // Search albums by the title //
+                        AppService.displayAlbumsByTitle();
                     } else if (subMenuSelection == 4) {
-                        AppService.searchAlbumsByArtistId();
+                        // Search albums by the artist id //
+                        AppService.displayAlbumsByArtistId();
                     } else if (subMenuSelection == 5) {
-                        AppService.searchAlbumsByLabelId();
+                        // Search albums by the label id //
+                        AppService.displayAlbumsByLabelId();
                     } else if (subMenuSelection == 6) {
-                        AppService.searchAlbumsByYear();
+                        // Search albums by year released //
+                        AppService.displayAlbumsByYear();
                     } else if (subMenuSelection == 7) {
-                        AppService.searchAlbumsByPrice();
+                        // search albums by price //
+                        AppService.displayAlbumsByPrice();
                     } else if (subMenuSelection == 9) {
                         break;
                     }
                 }
+                // Artist Menu options //
             } else if (mainMenuSelection == 2) {
                 while (true) {
+                    // display the Artist menu //
                     AppService.displayArtistMenu();
-                    int subMenuSelection = promptForMenuSelection("Please choose an option: ");
+                    int subMenuSelection = promptForMenuSelection();
                     if (subMenuSelection == 1) {
+                        // Display all Artists //
                         AppService.displayAllArtists();
                     } if (subMenuSelection == 2) {
-                        AppService.searchArtistsById();
+                        // Search artists by the Artist id //
+                        AppService.displayArtistsById();
                     } else if (subMenuSelection == 3) {
-                        AppService.searchArtistsByName();
-                    } else {
+                        // Search artists by the Artists name //
+                        AppService.displayArtistsByName();
+                    } else if(subMenuSelection == 4){
+                        // search by date of birth //
+                    } else if (subMenuSelection == 5) {
+                        // search by date of death ?? //
+                    } else if (subMenuSelection == 6) {
                         break;
                     }
                 }
             } else if (mainMenuSelection == 3) {
                 while (true) {
-                    int subMenuSelection = promptForMenuSelection("Please choose an option: ");
+                    int subMenuSelection = promptForMenuSelection();
                     if (subMenuSelection == 1) {
                         // menu option 1
                     } else {
@@ -84,14 +102,14 @@ public class App {
                     }
                 }
             } else if (mainMenuSelection == 4) {
-                int subMenuSelection = promptForMenuSelection("Please choose an option: ");
+                int subMenuSelection = promptForMenuSelection();
                 if (subMenuSelection == 1) {
                     // menu option 1
                 } else {
                     break;
                 }
             } else if (mainMenuSelection == 5) {
-                int subMenuSelection = promptForMenuSelection("Please choose an option: ");
+                int subMenuSelection = promptForMenuSelection();
                 if (subMenuSelection == 1) {
                     // menu option 1
                 } else {
@@ -103,8 +121,8 @@ public class App {
             }
         }
     }
-    private int promptForMenuSelection(String prompt) {
-        System.out.print(prompt);
+    private int promptForMenuSelection() {
+        System.out.print("Please choose an option: ");
         int menuSelection;
         try {
             menuSelection = Integer.parseInt(keyboard.nextLine());
