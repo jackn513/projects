@@ -11,12 +11,7 @@ import java.util.List;
 import java.util.Scanner;
 
 public class App {
-
     private final Scanner keyboard = new Scanner(System.in);
-
-    private List<Album> albums = new ArrayList<>();
-
-
     public static void main(String[] args) {
         App app = new App();
         app.run();
@@ -100,32 +95,34 @@ public class App {
                 AppService.displayAllArtists();
             } else if (artistMenuSelection == 2) {
                 handleSubArtistMenu();
-            } else {
+            } else if (artistMenuSelection == 3) {
                 break;
             }
         }
     }
 
     private void handleSubArtistMenu() {
-        while (true) {
-            AppService.displaySubArtistMenu();
-            int subArtistMenuSelection = promptForMenuSelection();
+            while (true) {
+                AppService.displaySubArtistMenu();
+                int subArtistMenuSelection = promptForMenuSelection();
 
-            switch (subArtistMenuSelection) {
-                case 1:
-                    AppService.displayArtistsById();
-                    break;
-                case 2:
-                    AppService.displayArtistsByName();
-                    break;
-                case 3:
-                    /* handle date of birth */
-                    break;
-                case 4:
-                    /* handle date of death */
-                    break;
+                switch (subArtistMenuSelection) {
+                    case 1:
+                        AppService.displayArtistsById();
+                        break;
+                    case 2:
+                        AppService.displayArtistsByName();
+                        break;
+                    case 3:
+                        /* handle date of birth */
+                        break;
+                    case 4:
+                        /* handle date of death */
+                        break;
+                    case 5:
+                        return;
+                }
             }
-        }
     }
     private int promptForMenuSelection() {
         System.out.print("Please choose an option: ");
