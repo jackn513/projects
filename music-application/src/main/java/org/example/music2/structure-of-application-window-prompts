@@ -8,15 +8,9 @@
                 5. Search by Date Released
                 6. Search By Price
                 7. Return to Main Menu
-        3. add Album
-                Enter title: ____
-                Enter Artist id: ____
-                Enter Label id: ____
-                Enter Date Release (YYYY-MM-DD): ____
-                Enter Length (MM): ____
-                Enter Price (NN.NN): ____
-        4. delete Album
+        3. delete Album
                 Enter id: ____
+        4. Return to Main Menu
 
 2. Display Artist Menu
         1. Display all Artists

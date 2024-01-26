@@ -32,6 +32,7 @@ public class AppService {
         System.out.println();
     }
     static void displaySubAlbumMenu(){
+        System.out.println();
         System.out.println("1: Search By Album id");
         System.out.println("2: Search By Title");
         System.out.println("3: Search By Artist id");
@@ -152,13 +153,20 @@ public class AppService {
         searchAlbumsByPrice(price);
     }
 
-    static void displayArtistMenu(){
+    public static void displayArtistMenu(){
         System.out.println("1: Display All Artists");
-        System.out.println("2: Search Artist By Artist id ");
-        System.out.println("3: Search Artist By Name");
-        System.out.println("4: Search Album By Date of Birth");
-        System.out.println("5: Search By Date of Death");
-        System.out.println("6: Exit");
+        System.out.println("2: Search Artist");
+        System.out.println("3: return to Main Menu");
+        System.out.println();
+    }
+
+    public static void displaySubArtistMenu() {
+        System.out.println();
+        System.out.println("1: Search By id");
+        System.out.println("2: Search By Name");
+        System.out.println("3: Search By Date of Birth");
+        System.out.println("4: Search by Date of Death");
+        System.out.println();
     }
 
     public static void displayAllArtists(){

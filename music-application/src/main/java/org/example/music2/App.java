@@ -35,44 +35,95 @@ public class App {
 
     private void run() {
         while (true) {
-            // Main menu loop
             printMainMenu();
             int mainMenuSelection = promptForMenuSelection();
-            // Album menu options //
             if (mainMenuSelection == 1) {
-                while (true) {
-                    // Display the album menu //
-                    AppService.displayMainAlbumMenu();
-                    int subMenuSelection = promptForMenuSelection();
+                handleAlbumMenu();
+            } else if (mainMenuSelection == 2) {
+                handleArtistMenu();
+            } else if (mainMenuSelection == 3) {
+                // handleCustomerMenu();
+            }
+        }
+    }
 
-                    // Album Menu options
-                    if (subMenuSelection == 1) {
-                        // Display all albums //
-                        AppService.searchAllAlbums();
-                    } else if (subMenuSelection == 2) {
-                        while (true) {
-                            AppService.displaySubAlbumMenu();
-                            int subAlbumMenuSelection = promptForMenuSelection();
-                            if (subAlbumMenuSelection == 1) {
-                                AppService.displayAlbumsByAlbumId();
-                            } else if (subAlbumMenuSelection == 2) {
-                                AppService.displayAlbumsByTitle();
-                            } else if (subAlbumMenuSelection == 3) {
-                                AppService.displayAlbumsByArtistId();
-                            } else if (subAlbumMenuSelection == 4) {
-                                AppService.displayAlbumsByLabelId();
-                            } else if (subAlbumMenuSelection == 5) {
-                                AppService.displayAlbumsByYear();
-                            } else if (subAlbumMenuSelection == 6) {
-                                AppService.displayAlbumsByPrice();
-                            } else if (subAlbumMenuSelection == 7) {
-                                break;
-                            }
-                        }
-                    } else if (subMenuSelection == 5) {
-                        break;
-                    }
-                }
+    private void handleAlbumMenu() {
+        while (true) {
+            AppService.displayMainAlbumMenu();
+            int subMenuSelection = promptForMenuSelection();
+            if (subMenuSelection == 1) {
+                AppService.searchAllAlbums();
+            } else if (subMenuSelection == 2) {
+                handleSubAlbumMenu();
+            } else if (subMenuSelection == 4) {
+                break;
+            }
+        }
+    }
+
+    private void handleSubAlbumMenu() {
+        while (true) {
+            AppService.displaySubAlbumMenu();
+            int subAlbumMenuSelection = promptForMenuSelection();
+
+            switch (subAlbumMenuSelection) {
+                case 1:
+                    AppService.displayAlbumsByAlbumId();
+                    break;
+                case 2:
+                    AppService.displayAlbumsByTitle();
+                    break;
+                case 3:
+                    AppService.displayAlbumsByArtistId();
+                    break;
+                case 4:
+                    AppService.displayAlbumsByLabelId();
+                    break;
+                case 5:
+                    AppService.displayAlbumsByYear();
+                    break;
+                case 6:
+                    AppService.displayAlbumsByPrice();
+                    break;
+                case 7:
+                    return;
+            }
+        }
+    }
+
+    private void handleArtistMenu() {
+        while (true) {
+            AppService.displayArtistMenu();
+            int artistMenuSelection = promptForMenuSelection();
+
+            if (artistMenuSelection == 1) {
+                AppService.displayAllArtists();
+            } else if (artistMenuSelection == 2) {
+                handleSubArtistMenu();
+            } else {
+                break;
+            }
+        }
+    }
+
+    private void handleSubArtistMenu() {
+        while (true) {
+            AppService.displaySubArtistMenu();
+            int subArtistMenuSelection = promptForMenuSelection();
+
+            switch (subArtistMenuSelection) {
+                case 1:
+                    AppService.displayArtistsById();
+                    break;
+                case 2:
+                    AppService.displayArtistsByName();
+                    break;
+                case 3:
+                    /* handle date of birth */
+                    break;
+                case 4:
+                    /* handle date of death */
+                    break;
             }
         }
     }
