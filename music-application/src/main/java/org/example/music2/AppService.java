@@ -25,6 +25,10 @@ public class AppService {
         System.out.println();
         System.out.println("1: Display All Albums");
         System.out.println("2: Search Albums");
+        System.out.println("3: Add Album");
+        System.out.println("4: Delete Album");
+        System.out.println("5: Return to Main Menu");
+        System.out.println();
 //        System.out.println("3: Search Albums By Title");
 //        System.out.println("4: Search Albums By Artist id");
 //        System.out.println("5: Search Albums By Label id");
@@ -34,7 +38,15 @@ public class AppService {
         System.out.println();
     }
     static void displaySubAlbumMenu(){
-        System.out.println("menu album tester");
+        System.out.println("1: Search By Album id");
+        System.out.println("2: Search By Title");
+        System.out.println("3: Search By Artist id");
+        System.out.println("4: Search Albums By Label id");
+        System.out.println("5: Search Albums By Date Released");
+        System.out.println("6: Search Albums by Price");
+        System.out.println("7: Return to main Menu");
+        System.out.println();
+
     }
     // the "display" for the albums //
     public static void searchAllAlbums() {
