@@ -21,16 +21,20 @@ public class AppService {
     private static final Scanner keyboard = new Scanner(System.in);
 
     // Album menu stuff //
-    static void displayAlbumMenu(){
+    static void displayMainAlbumMenu(){
         System.out.println();
         System.out.println("1: Display All Albums");
-        System.out.println("2: Search Albums By id ");
-        System.out.println("3: Search Albums By Title");
-        System.out.println("4: Search Albums By Artist id");
-        System.out.println("5: Search Albums By Label id");
-        System.out.println("6: Search Albums By Date Released");
-        System.out.println("7: Search Albums by Price");
-        System.out.println("9: Return to main Menu");
+        System.out.println("2: Search Albums");
+//        System.out.println("3: Search Albums By Title");
+//        System.out.println("4: Search Albums By Artist id");
+//        System.out.println("5: Search Albums By Label id");
+//        System.out.println("6: Search Albums By Date Released");
+//        System.out.println("7: Search Albums by Price");
+//        System.out.println("9: Return to main Menu");
+        System.out.println();
+    }
+    static void displaySubAlbumMenu(){
+        System.out.println("menu album tester");
     }
     // the "display" for the albums //
     public static void searchAllAlbums() {

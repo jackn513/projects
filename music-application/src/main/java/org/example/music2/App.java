@@ -42,31 +42,40 @@ public class App {
             if (mainMenuSelection == 1) {
                 while (true) {
                     // Display the album menu //
-                    AppService.displayAlbumMenu();
+                    AppService.displayMainAlbumMenu();
                     int subMenuSelection = promptForMenuSelection();
                     if (subMenuSelection == 1) {
                         // Display all albums //
                         AppService.searchAllAlbums();
                     } else if (subMenuSelection == 2) {
                         // Search albums by the album id //
-                        AppService.displayAlbumsByAlbumId();
-                    } else if (subMenuSelection == 3) {
-                        // Search albums by the title //
-                        AppService.displayAlbumsByTitle();
-                    } else if (subMenuSelection == 4) {
-                        // Search albums by the artist id //
-                        AppService.displayAlbumsByArtistId();
-                    } else if (subMenuSelection == 5) {
-                        // Search albums by the label id //
-                        AppService.displayAlbumsByLabelId();
-                    } else if (subMenuSelection == 6) {
-                        // Search albums by year released //
-                        AppService.displayAlbumsByYear();
-                    } else if (subMenuSelection == 7) {
-                        // search albums by price //
-                        AppService.displayAlbumsByPrice();
-                    } else if (subMenuSelection == 9) {
-                        break;
+                        while (true) {
+                            AppService.displaySubAlbumMenu();
+                            int subAlbumMenuSelection = promptForMenuSelection();
+                            if (subAlbumMenuSelection == 1) {
+                                AppService.searchAllAlbums();
+                            } else if (subMenuSelection == 2) {
+
+                            }
+                        }
+//                        AppService.displayAlbumsByAlbumId();
+//                    } else if (subMenuSelection == 3) {
+//                        // Search albums by the title //
+//                        AppService.displayAlbumsByTitle();
+//                    } else if (subMenuSelection == 4) {
+//                        // Search albums by the artist id //
+//                        AppService.displayAlbumsByArtistId();
+//                    } else if (subMenuSelection == 5) {
+//                        // Search albums by the label id //
+//                        AppService.displayAlbumsByLabelId();
+//                    } else if (subMenuSelection == 6) {
+//                        // Search albums by year released //
+//                        AppService.displayAlbumsByYear();
+//                    } else if (subMenuSelection == 7) {
+//                        // search albums by price //
+//                        AppService.displayAlbumsByPrice();
+//                    } else if (subMenuSelection == 9) {
+//                        break;
                     }
                 }
                 // Artist Menu options //
