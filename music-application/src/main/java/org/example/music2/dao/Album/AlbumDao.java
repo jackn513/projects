@@ -14,7 +14,6 @@ public interface AlbumDao {
     public List<Album> getAlbumsByLabelId(int labelId);
     List<Album> getAlbumsByDateReleased(LocalDate yearReleased);
     List<Album> getAlbumsByPrice(BigDecimal price);
-    Album createAlbum(Album newAlbum);
     Album updatedAlbum(Album updatedAlbum);
     int deleteAlbumById(int AlbumId);
 }

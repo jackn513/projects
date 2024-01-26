@@ -11,7 +11,9 @@ import org.springframework.stereotype.Component;
 
 import javax.sql.DataSource;
 import java.math.BigDecimal;
+import java.sql.SQLOutput;
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.Scanner;
 
@@ -25,16 +27,8 @@ public class AppService {
         System.out.println();
         System.out.println("1: Display All Albums");
         System.out.println("2: Search Albums");
-        System.out.println("3: Add Album");
-        System.out.println("4: Delete Album");
-        System.out.println("5: Return to Main Menu");
-        System.out.println();
-//        System.out.println("3: Search Albums By Title");
-//        System.out.println("4: Search Albums By Artist id");
-//        System.out.println("5: Search Albums By Label id");
-//        System.out.println("6: Search Albums By Date Released");
-//        System.out.println("7: Search Albums by Price");
-//        System.out.println("9: Return to main Menu");
+        System.out.println("3: Delete Album");
+        System.out.println("4: Return to Main Menu");
         System.out.println();
     }
     static void displaySubAlbumMenu(){

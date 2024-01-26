@@ -2,6 +2,7 @@ package org.example.music2.dao.Album;
 
 import org.example.music2.exception.DaoException;
 import org.example.music2.model.Album;
+import org.springframework.dao.DataAccessException;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.jdbc.CannotGetJdbcConnectionException;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -140,10 +141,6 @@ public class JdbcAlbumDao implements AlbumDao {
     }
 
 
-    @Override
-    public Album createAlbum(Album newAlbum) {
-        return null;
-    }
 
 
 
