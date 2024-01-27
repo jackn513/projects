@@ -11,9 +11,7 @@ import org.springframework.stereotype.Component;
 
 import javax.sql.DataSource;
 import java.math.BigDecimal;
-import java.sql.SQLOutput;
 import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.Scanner;
 
@@ -202,6 +200,26 @@ public class AppService {
         } else {
             System.out.println("No album found for the specified ID");
         }
+    }
+
+    public static void displayArtistsByDateOfBirth(){
+        AppService appService = new AppService();
+        int startYear = Integer.parseInt(appService.promptForYear());
+        int endYear = Integer.parseInt(appService.promptForYear());
+        searchArtistsByDateOfBirth(LocalDate.of(startYear, 1, 1), LocalDate.of(endYear, 1, 1));
+    }
+
+    public static void searchArtistsByDateOfBirth(LocalDate startDate, LocalDate endDate){
+        ArtistDao artistDao = new JdbcArtistDao(dataSource());
+        List<Artist> artists = artistDao.getArtistsByDateOfBirth(startDate, endDate);
+        if (!artists.isEmpty()) {
+            for (Artist artist: artists) {
+                System.out.println(artist + "\n");
+            }
+        } else {
+            System.out.println("No artists born this year");
+        }
+
     }
 
     public static void displayArtistsById(){

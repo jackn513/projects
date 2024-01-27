@@ -114,7 +114,7 @@ public class App {
                         AppService.displayArtistsByName();
                         break;
                     case 3:
-                        /* handle date of birth */
+                        AppService.displayArtistsByDateOfBirth();
                         break;
                     case 4:
                         /* handle date of death */
