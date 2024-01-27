@@ -15,7 +15,6 @@ import java.time.LocalDate;
 import java.util.List;
 import java.util.Scanner;
 
-@Component
 public class AppService {
 
     private static final Scanner keyboard = new Scanner(System.in);
