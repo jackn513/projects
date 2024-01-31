@@ -1,0 +1,45 @@
+body{
+    display: flex;
+    flex-direction: column;
+    background-color: rgb(223, 242, 239);
+
+}
+
+body > h1{
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif
+}
+
+body > h1> input{
+    display: inline-block;
+    border-radius: 5px;
+    border-style: hidden;
+    
+}
+
+body > h3{
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-style: italic;
+}
+
+body > input {
+    width: 20%;
+
+}
+
+body > div {
+    margin-top: 10px;    
+    margin-bottom: 10px; 
+}
+
+body > div > a{
+    display: block;
+    text-decoration: none;
+    font-size: large;
+    margin-right: auto;
+    margin-bottom: 20px; 
+
+}
+
+body > div > a:hover {
+    text-decoration: underline; 
+}

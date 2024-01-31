@@ -32,34 +32,54 @@ public class AppService {
         System.out.println("7: Search Albums by Price");
         System.out.println("9: Return to main Menu");
     }
-    // the "display" for the albums //
+    // the "display" and search for the albums //
     public static void searchAllAlbums() {
+        // calls to the jdbcAlbum Dao that connects to the datasource
         AlbumDao albumDao = new JdbcAlbumDao(dataSource());
+        // creates a list of albums with the .getAlbums() method //
         List<Album> albums = albumDao.getAlbums();
+
+        // loops through the list and prints the albums followed by a line break //
         for (Album album : albums) {
             System.out.println(album + "\n");
         }
     }
-
+        // method for searching database by album id //
     public static void searchAlbumById(int albumId){
+        // calls to the jdbcAlbum Dao that connects to the datasource //
         AlbumDao albumDao = new JdbcAlbumDao(dataSource());
+        // creates a single album (bc the id is unique to the album) //
         Album album = albumDao.getAlbumById(albumId);
+
+        // checks if the album isn't null and the id isn't zero and prints the album with a line break //
         if (album != null && album.getAlbumId() != 0) {
             System.out.println(album + "\n");
+
+            // if the album is not found, this message is printed //
         } else {
             System.out.println("No album found for the specified ID");
         }
     }
+
+    // the "display" and search for the albums by the album id //
     public static void displayAlbumsByAlbumId(){
         AppService appService = new AppService();
         int albumId = Integer.parseInt(appService.promptForId());
         searchAlbumById(albumId);
     }
+
+    // method for searching database by album title //
     public static void searchAlbumsByTitle(String stringSearch) {
+        // calls to the jdbcAlbum Dao that connects to the datasource //
         AlbumDao albumDao = new JdbcAlbumDao(dataSource());
+        // creates an empty list of albums //
         List<Album> albums = albumDao.getAlbums();
+
+        // checks to see if the list is empty //
         if (!albums.isEmpty()) {
+            // again, a loop //
             for (Album album : albums) {
+                // if the string search (what the user puts in //
                 if (album.getAlbumTitle().toLowerCase().contains(stringSearch.toLowerCase())) {
                     System.out.println(album);
                 }
