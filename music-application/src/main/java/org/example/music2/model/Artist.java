@@ -53,7 +53,8 @@ public class Artist {
 
 
     public String toString() {
-        return "\n" + "Artist id: " + getArtistId() +
+        return
+                "Artist id: " + getArtistId() +
                 "\n" + "Artist Name: " + getArtistName() +
                 "\n" + "Date of Birth: " + getDateOfBirth() +
                 "\n" + "Date of Death: " + getDateOfDeath() +

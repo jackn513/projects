@@ -33,6 +33,7 @@ public class Album {
     }
 
 
+
     public int getAlbumId() {
         return albumId;
     }
@@ -108,7 +109,6 @@ public class Album {
     @Override
     public String toString() {
         return
-                "\n" +
                 "Album id: " + getAlbumId() + "\n" +
                 "Album Title: " + "'" + getAlbumTitle() + "'"  + "\n" +
                 "Artist id: " + getArtistId() + "\n" +

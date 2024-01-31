@@ -15,22 +15,30 @@ import java.time.LocalDate;
 import java.util.List;
 import java.util.Scanner;
 
-@Component
 public class AppService {
 
     private static final Scanner keyboard = new Scanner(System.in);
 
     // Album menu stuff //
-    static void displayAlbumMenu(){
+    static void displayMainAlbumMenu(){
         System.out.println();
         System.out.println("1: Display All Albums");
-        System.out.println("2: Search Albums By id ");
-        System.out.println("3: Search Albums By Title");
-        System.out.println("4: Search Albums By Artist id");
-        System.out.println("5: Search Albums By Label id");
-        System.out.println("6: Search Albums By Date Released");
-        System.out.println("7: Search Albums by Price");
-        System.out.println("9: Return to main Menu");
+        System.out.println("2: Search Albums");
+        System.out.println("3: Delete Album");
+        System.out.println("4: Return to Main Menu");
+        System.out.println();
+    }
+    static void displaySubAlbumMenu(){
+        System.out.println();
+        System.out.println("1: Search By Album id");
+        System.out.println("2: Search By Title");
+        System.out.println("3: Search By Artist id");
+        System.out.println("4: Search Albums By Label id");
+        System.out.println("5: Search Albums By Date Released");
+        System.out.println("6: Search Albums by Price");
+        System.out.println("7: Return to main Menu");
+        System.out.println();
+
     }
     // the "display" and search for the albums //
     public static void searchAllAlbums() {
@@ -162,13 +170,20 @@ public class AppService {
         searchAlbumsByPrice(price);
     }
 
-    static void displayArtistMenu(){
+    public static void displayArtistMenu(){
         System.out.println("1: Display All Artists");
-        System.out.println("2: Search Artist By Artist id ");
-        System.out.println("3: Search Artist By Name");
-        System.out.println("4: Search Album By Date of Birth");
-        System.out.println("5: Search By Date of Death");
-        System.out.println("6: Exit");
+        System.out.println("2: Search Artist");
+        System.out.println("3: return to Main Menu");
+        System.out.println();
+    }
+
+    public static void displaySubArtistMenu() {
+        System.out.println();
+        System.out.println("1: Search By id");
+        System.out.println("2: Search By Name");
+        System.out.println("3: Search By Date of Birth");
+        System.out.println("4: Search by Date of Death");
+        System.out.println();
     }
 
     public static void displayAllArtists(){
@@ -204,6 +219,26 @@ public class AppService {
         } else {
             System.out.println("No album found for the specified ID");
         }
+    }
+
+    public static void displayArtistsByDateOfBirth(){
+        AppService appService = new AppService();
+        int startYear = Integer.parseInt(appService.promptForYear());
+        int endYear = Integer.parseInt(appService.promptForYear());
+        searchArtistsByDateOfBirth(LocalDate.of(startYear, 1, 1), LocalDate.of(endYear, 1, 1));
+    }
+
+    public static void searchArtistsByDateOfBirth(LocalDate startDate, LocalDate endDate){
+        ArtistDao artistDao = new JdbcArtistDao(dataSource());
+        List<Artist> artists = artistDao.getArtistsByDateOfBirth(startDate, endDate);
+        if (!artists.isEmpty()) {
+            for (Artist artist: artists) {
+                System.out.println(artist + "\n");
+            }
+        } else {
+            System.out.println("No artists born this year");
+        }
+
     }
 
     public static void displayArtistsById(){

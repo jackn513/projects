@@ -8,6 +8,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
 
 import javax.sql.DataSource;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -32,6 +33,24 @@ public class JdbcArtistDao implements ArtistDao {
             throw new DaoException("Data integrity violation", e);
         }
         return artist;
+    }
+
+    @Override
+    public List<Artist> getArtistsByDateOfBirth(LocalDate startDate, LocalDate endDate) {
+        List <Artist> artists = new ArrayList<>();
+        String sql =
+                "SELECT * FROM artist_info WHERE EXTRACT(YEAR FROM date_of_birth) BETWEEN ? AND ?;";
+        try {
+            SqlRowSet results = jdbcTemplate.queryForRowSet(sql, startDate.getYear(), endDate.getYear());
+            while (results.next()) {
+                artists.add(mapRowToArtist(results));
+            }
+        } catch (CannotGetJdbcConnectionException e) {
+            throw new DaoException("Unable to connect to server or database", e);
+        } catch (DataIntegrityViolationException e) {
+            throw new DaoException("Data integrity violation", e);
+        }
+        return artists;
     }
 
     @Override

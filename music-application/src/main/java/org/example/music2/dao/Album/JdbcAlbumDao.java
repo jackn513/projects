@@ -2,6 +2,7 @@ package org.example.music2.dao.Album;
 
 import org.example.music2.exception.DaoException;
 import org.example.music2.model.Album;
+import org.springframework.dao.DataAccessException;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.jdbc.CannotGetJdbcConnectionException;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -139,22 +140,22 @@ public class JdbcAlbumDao implements AlbumDao {
         return albums;
     }
 
-
     @Override
-    public Album createAlbum(Album newAlbum) {
-        return null;
-    }
-
-
-
-    @Override
-    public Album updatedAlbum(Album updatedAlbum) {
-        return null;
-    }
-
-    @Override
-    public int deleteAlbumById(int AlbumId) {
-        return 0;
+    public int deleteAlbumById(int albumId) {
+        int rowsAffected;
+        String sqlLineItem = "DELETE FROM line_item WHERE album_id = ?";
+        String sqlSale = "DELETE FROM sale WHERE album_id = ?";
+        String sqlAlbum = "DELETE FROM album WHERE album_id =?";
+        try {
+            jdbcTemplate.update(sqlLineItem, albumId);
+            jdbcTemplate.update(sqlSale, albumId);
+            rowsAffected = jdbcTemplate.update(sqlAlbum, albumId);
+        } catch (CannotGetJdbcConnectionException e) {
+            throw new DaoException("Unable to connect to server or database", e);
+        } catch (DataIntegrityViolationException e) {
+            throw new DaoException("Data integrity violation", e);
+        }
+        return rowsAffected;
     }
 
     private Album mapRowToAlbum(SqlRowSet rowSet){
