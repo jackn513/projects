@@ -5,18 +5,29 @@ body {
 }
 
 body > h1 {
+    display: flex;
+    align-items: center; /* Center vertically */
     font-family: Arial, Helvetica, sans-serif;
     color: rgb(8, 153, 190);
     padding-bottom: 5px;
-    border-bottom: 1px solid;
     padding-left: 15px;
     margin-bottom: 0;
 }
 
 body > h1 > input {
     display: inline-block;
-    border-radius: 5px;
-    border-style: hidden;
+    border-style: none;
+    padding: 10px;
+    margin-left: 5px;
+    /* margin-bottom: 10px; */
+    background-color: rgb(228, 228, 228);
+    line-height: 20px;
+    height: 10px;
+    width: 200px;
+}
+
+body> h1> input::placeholder {
+    vertical-align: middle;
 }
 
 body > h3 {
@@ -34,13 +45,12 @@ body > li{
 
 body > li > a {
     display: inline-block;
-    text-decoration: none;
-    font-size: large;
-    margin-bottom: 20px;
-    margin-top: 0;
-    padding-bottom: 20px;
+    text-decoration: none; 
+    border-right: 1px solid rgb(8, 153, 190);
+    line-height: 1px;
+    /* padding-bottom: 20px; */
     padding-top: 0;
-    padding-right: 2%;
+    padding-right: 15px;
     padding-left: 15px;
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
     color: rgb(8, 153, 190);
@@ -50,3 +60,23 @@ body > li > a {
 body > li > a:hover {
     text-decoration: underline;
 }
+body > li > a:nth-child(5) {
+   float:right;
+   border-right: none;
+   font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+body > li > a:nth-child(5):hover{
+    text-decoration: underline;
+}
+body > li > a:nth-child(6) {
+    float:right;
+    border-right: 1 px solid rgb(8, 153, 190);
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+ }
+ 
+ body > li > a:nth-child(6):hover{
+     text-decoration: underline;
+ }
+
+
