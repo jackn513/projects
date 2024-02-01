@@ -38,7 +38,7 @@ body > header > li > a{
     float: right;
     color: rgb(8, 153, 190);
     text-decoration: none;
-    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-family: Arial, Helvetica, sans-serif;
     display: inline-block;
     padding: 9px;
 }
@@ -69,7 +69,7 @@ body > li > a {
     padding-top: 0;
     padding-right: 15px;
     padding-left: 14px;
-    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-family: Arial, Helvetica, sans-serif;
     color: rgb(8, 153, 190);
 }
 
@@ -89,12 +89,37 @@ header h1{
 body > li > a:nth-child(5) {
    float:right;
    border-right: none;
-   font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+   font-family: Arial, Helvetica, sans-serif;
 }
 
 body > li > a:nth-child(5):hover{
     text-decoration: underline;
 }
 
+body > section> img{
+    padding-top: 20px;
+    padding-left: 15px;
+   width: 60%;
+   height: auto;
+}
+body > section h1 {
+    position: absolute;
+    top: 65%;
+    padding-left: 30px;
+    /* left: 50%; */
+    /* transform: translate(-115%, 400%); */
+    padding-top: 20px;
+    font-family: Arial, Helvetica, sans-serif;
+    color: white; /* Example: Set the text color to white */
+}
 
-
+body section h3{
+    position: absolute;
+    top: 69%;
+    padding-left: 30px;
+    /* left: 50%; */
+    /* transform: translate(-115%, 400%); */
+    padding-top: 20px;
+    font-family: Arial, Helvetica, sans-serif;
+    color: white; /* Example: Set the text color to white */
+}
