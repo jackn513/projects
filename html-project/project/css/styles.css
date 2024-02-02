@@ -1,8 +1,7 @@
 body {
-    display: flex;
-    flex-direction: column;
     background-color: rgb(223, 242, 239);
-    margin-top: 0;
+    width: 100%;
+    height: 100%;
 }
 
 body > header{
@@ -11,10 +10,10 @@ body > header{
 }
 
 body > header> h1 {
-    display: flex;
-    align-items: center; /* Center vertically */
+    /* display: fixed; */
     font-family: Arial, Helvetica, sans-serif;
     color: rgb(8, 153, 190);
+    padding-bottom: 0;
 
 }
 
@@ -30,18 +29,22 @@ body > header > h1 > input {
 }
 body > header > li {
    list-style: none;
+   margin-right: 10px;
 }
 
 body > header > li > a{
-    float: right;
     color: rgb(8, 153, 190);
     text-decoration: none;
     font-family: Arial, Helvetica, sans-serif;
     display: inline-block;
     padding: 9px;
+    padding-top: 0;
+    padding-bottom: 0;
 }
+
 body > header > li > a:hover {
-    text-decoration: underline;
+    text-decoration: dashed;
+    border-bottom: 1px solid;
 }
 
 body> header> h1> input::placeholder {
@@ -52,10 +55,26 @@ body > h3 {
     font-family: Arial, Helvetica, sans-serif;
     font-style: italic;
 }
-
-
-body > li{
+body > ul {
+    margin: 0;
+    padding-left: 8px;
     list-style: none;
+}
+
+body > ul > li > a {
+    color: rgb(8, 153, 190);
+    text-decoration: none;
+    font-family: Arial, Helvetica, sans-serif;
+    display: inline-block;
+    /* border-right: 1px solid; */
+    padding-left: 10px;
+    padding-right: 10px; 
+
+}
+
+body > ul > li > a:hover {
+    text-decoration: underline;
+    border-bottom: 1px solid;
 }
 
 body > li > a {
@@ -64,17 +83,15 @@ body > li > a {
     border-right: 1px solid rgb(8, 153, 190);
     line-height: 1px;
     /* padding-bottom: 20px; */
-    padding-top: 0;
-    padding-right: 15px;
-    padding-left: 15px;
+    /* padding-top: 0; */
+    margin-left: 10px;
+    padding-right: 20px;
+    padding-left: 8px;
     font-family: Arial, Helvetica, sans-serif;
     color: rgb(8, 153, 190);
 }
 
 
-body > li > a:hover {
-    text-decoration: underline;
-}
 header h1{
     display: flex;
     align-items: center; /* Center vertically */
@@ -115,7 +132,7 @@ body section h3{
 body section button{
     position: absolute;
     top: 77%; 
-    right: 90%;
+    right: 89.4%;
     font-family: Arial, Helvetica, sans-serif;
     background-color: transparent;
     border: none;
@@ -130,9 +147,10 @@ body section button:hover{
     border-radius: 5px;
 }
 body > footer {
-    margin-right: none;
-    margin-left: none;
+    position: absolute;
     width: 100%;
+    left: 0;
+    right: 0;
     background-color: rgba(8, 154, 190, 0.348);
 }
 
@@ -144,11 +162,24 @@ body footer p {
     font-size: small;
 }
 
+body footer p:nth-child(1) {
+    padding-top: 10px;
+}
+
+body footer p:nth-child(5) {
+    padding-bottom: 10px;
+}
+
 body footer p:hover{
     text-decoration: underline;
 }
 
 footer section li {
+    list-style:none;
+
+}
+
+body footer section li p{
     list-style:none;
     font-family: Arial, Helvetica, sans-serif;
     color: rgb(45, 43, 43)
