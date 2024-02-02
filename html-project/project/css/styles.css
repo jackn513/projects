@@ -43,7 +43,7 @@ body > header > li > a{
 }
 
 body > header > li > a:hover {
-    text-decoration: dashed;
+    /* text-decoration: dashed; */
     border-bottom: 1px solid;
 }
 
@@ -73,8 +73,8 @@ body > ul > li > a {
 }
 
 body > ul > li > a:hover {
-    text-decoration: underline;
-    border-bottom: 1px solid;
+    /* text-decoration: underline; */
+    border-bottom: 3px solid;
 }
 
 body > li > a {
@@ -102,85 +102,68 @@ header h1{
     margin-bottom: 0;
 }
 
-body > section> img{
-    padding-top: 20px;
-    padding-left: 15px;
-   width: 60%;
-   height: auto;
-}
-body > section h1 {
-    position: absolute;
-    top: 65%;
-    padding-left: 30px;
-    /* left: 50%; */
-    /* transform: translate(-115%, 400%); */
-    padding-top: 20px;
-    font-family: Arial, Helvetica, sans-serif;
-    color: white; /* Example: Set the text color to white */
+section {
+    position: relative;
 }
 
-body section h3{
-    position: absolute;
-    top: 69%;
-    padding-left: 30px;
-    /* left: 50%; */
-    /* transform: translate(-115%, 400%); */
-    padding-top: 20px;
-    font-family: Arial, Helvetica, sans-serif;
-    color: white; /* Example: Set the text color to white */
+section img {
+    width: 60%;
+    height: auto;
+    left: 0;
 }
-body section button{
+
+section h1, h3, button {
     position: absolute;
-    top: 77%; 
-    right: 89.4%;
     font-family: Arial, Helvetica, sans-serif;
-    background-color: transparent;
+    text-transform: lowercase;
+    top: 50%; /* Position at the vertical center of the section */
+    left: 1%; /* Position at the horizontal center of the section */
+    /* transform: translate(-50%, -50%); Center the elements precisely */
+    color: white; /* Set text color to white or any color that suits your design */
+    /* text-align: center; Center-align the text */
+}
+
+section h1 {
+    font-size: 2em; /* Adjust font size as needed */
+    top: 75%; /* Position at the vertical center of the section */
+    left: 1%;
+}
+
+section h3 {
+    font-size: 1.5em; /* Adjust font size as needed */
+    top: 81%;
+}
+
+section button {
+    padding: 10px 20px; /* Adjust padding as needed */
+    /* font-size: 1.2em; */
+    background-color: #3498db; /* Set button background color */
     border: none;
-    border-radius: 3px;
-    color: white;
-    font-size: medium;
-}
-
-body section button:hover{
-    background-color: transparent;
-    border: 1px solid;
-    border-radius: 5px;
+    top: 90%;
+    color: white; /* Set button text color */
+    cursor: pointer;
 }
 body > footer {
+    border-top: 1px solid;
     position: absolute;
     width: 100%;
+    bottom: 0;
     left: 0;
     right: 0;
     background-color: rgba(8, 154, 190, 0.348);
 }
 
-body footer p {
+
+body footer section li {
+    list-style:none;
     padding-left: 15px;
-    text-decoration: none;
-    font-family: Arial, Helvetica, sans-serif;
-    text-transform: lowercase;
-    font-size: small;
+
 }
 
-body footer p:nth-child(1) {
-    padding-top: 10px;
-}
-
-body footer p:nth-child(5) {
-    padding-bottom: 10px;
-}
-
-body footer p:hover{
-    text-decoration: underline;
-}
-
-footer section li {
+body footer section li a{
     list-style:none;
-
-}
-
-body footer section li p{
-    list-style:none;
+    display: inline-block;
+    padding-left: 5px;
     font-family: Arial, Helvetica, sans-serif;
     color: rgb(45, 43, 43)
 }
