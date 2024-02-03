@@ -1,60 +1,57 @@
 body {
+
     background-color: rgb(223, 242, 239);
     width: 100%;
     height: 100%;
+    margin: 0; /* Remove default margin */
 }
 
-body > header{
+body > header {
     display: flex;
     justify-content: space-between;
+    align-items: center;
+    padding: 10px; /* Add padding for better spacing */
 }
 
-body > header> h1 {
-    /* display: fixed; */
+body > header > h1 {
+    display: inline-block;
     font-family: Arial, Helvetica, sans-serif;
     color: rgb(8, 153, 190);
     padding-bottom: 0;
-
+    margin: 0; /* Remove default margin */
 }
 
-body > header > h1 > input {
-    /* display: inline-block; */
-    border-style: none;
-    padding: 10px;
-    margin-left: 5px;
-    background-color: rgb(212, 219, 213);
-    line-height: 20px;
-    height: 10px;
-    width: 229px;
+body > ul> li {
+    margin-left: 10px;
 }
-body > header > li {
-   list-style: none;
-   margin-right: 10px;
+body > ul > li > a:nth-child(4) {
+    float: right;
+    margin-right: 10px;
 }
-
-body > header > li > a{
+body > ul > li > a:nth-child(5) {
+    float: right;
+   
+}
+body > ul> li > a {
     color: rgb(8, 153, 190);
     text-decoration: none;
     font-family: Arial, Helvetica, sans-serif;
     display: inline-block;
-    padding: 9px;
     padding-top: 0;
     padding-bottom: 0;
+    border-bottom: 3px solid transparent;
 }
 
-body > header > li > a:hover {
-    /* text-decoration: dashed; */
-    border-bottom: 1px solid;
-}
 
-body> header> h1> input::placeholder {
-    vertical-align: middle;
+body > ul > li > a:hover {
+    border-bottom: 3px solid;
 }
 
 body > h3 {
     font-family: Arial, Helvetica, sans-serif;
     font-style: italic;
 }
+
 body > ul {
     margin: 0;
     padding-left: 8px;
@@ -66,24 +63,19 @@ body > ul > li > a {
     text-decoration: none;
     font-family: Arial, Helvetica, sans-serif;
     display: inline-block;
-    /* border-right: 1px solid; */
     padding-left: 10px;
-    padding-right: 10px; 
-
+    padding-right: 10px;
+    border-bottom: 3px solid transparent;
 }
 
 body > ul > li > a:hover {
-    /* text-decoration: underline; */
     border-bottom: 3px solid;
 }
 
 body > li > a {
     display: inline-block;
-    text-decoration: none; 
+    text-decoration: none;
     border-right: 1px solid rgb(8, 153, 190);
-    line-height: 1px;
-    /* padding-bottom: 20px; */
-    /* padding-top: 0; */
     margin-left: 10px;
     padding-right: 20px;
     padding-left: 8px;
@@ -91,10 +83,10 @@ body > li > a {
     color: rgb(8, 153, 190);
 }
 
-
-header h1{
+header h1 {
     display: flex;
-    align-items: center; /* Center vertically */
+    align-items: center;
+    /* Center vertically */
     font-family: Arial, Helvetica, sans-serif;
     color: rgb(8, 153, 190);
     padding-bottom: 5px;
@@ -102,47 +94,51 @@ header h1{
     margin-bottom: 0;
 }
 
-section {
-    position: relative;
-}
+/* section { position: relative; } */
+
+
 
 section img {
     width: 60%;
     height: auto;
-    left: 0;
 }
 
-section h1, h3, button {
-    position: absolute;
+h1 {
     font-family: Arial, Helvetica, sans-serif;
+    color: white;
     text-transform: lowercase;
-    top: 50%; /* Position at the vertical center of the section */
-    left: 1%; /* Position at the horizontal center of the section */
-    /* transform: translate(-50%, -50%); Center the elements precisely */
-    color: white; /* Set text color to white or any color that suits your design */
-    /* text-align: center; Center-align the text */
+    margin-left: 20px; /* Adjust margin as needed */
+}
+h3 {
+    font-family: Arial, Helvetica, sans-serif;
+    color: white;
+    text-transform: lowercase;
+    font-style: normal;
+    margin-left: 20px; /* Adjust margin as needed */
 }
 
-section h1 {
-    font-size: 2em; /* Adjust font size as needed */
-    top: 75%; /* Position at the vertical center of the section */
-    left: 1%;
-}
-
-section h3 {
-    font-size: 1.5em; /* Adjust font size as needed */
-    top: 81%;
-}
-
-section button {
-    padding: 10px 20px; /* Adjust padding as needed */
-    /* font-size: 1.2em; */
-    background-color: #3498db; /* Set button background color */
+button {
+    padding: 10px;
+    margin-left: 19px;
+    background-color: #3498db;
     border: none;
-    top: 90%;
-    color: white; /* Set button text color */
+    top: 0%;
+    color: white;
     cursor: pointer;
 }
+
+body > aside {
+    color: #052031;
+    left: 50%;
+    position: absolute;
+    left: 61%;
+    top: 11%;
+}
+
+body > aside > h4 {
+    text-transform: lowercase;
+}
+
 body > footer {
     border-top: 1px solid;
     position: absolute;
@@ -151,19 +147,19 @@ body > footer {
     left: 0;
     right: 0;
     background-color: rgba(8, 154, 190, 0.348);
+    padding: 10px; /* Add padding for better spacing */
 }
-
 
 body footer section li {
-    list-style:none;
-    padding-left: 15px;
-
+    list-style: none;
+    
 }
 
-body footer section li a{
-    list-style:none;
+body footer section li a {
+    list-style: none;
     display: inline-block;
     padding-left: 5px;
     font-family: Arial, Helvetica, sans-serif;
-    color: rgb(45, 43, 43)
+    color: rgb(45, 43, 43);
+
 }
