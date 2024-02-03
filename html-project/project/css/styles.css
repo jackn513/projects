@@ -8,7 +8,6 @@ body {
 
 body > header {
     display: flex;
-    justify-content: space-between;
     align-items: center;
     padding: 10px; /* Add padding for better spacing */
 }
@@ -21,18 +20,31 @@ body > header > h1 {
     margin: 0; /* Remove default margin */
 }
 
-body > ul> li {
+body header input {
+    margin-top: 4.5px;
+    width: 220px;
+    height: 20px;
+    margin-left: 10px;
+    padding-top: 4px;
+    padding-bottom: 4px;
+    padding-left: 10px;
+    background-color: #d7dbddcd;
+    border: none;
+    /* border-radius: 5px; */
+}
+
+body > nav > a{
     margin-left: 10px;
 }
-body > ul > li > a:nth-child(4) {
+body > nav > a:nth-child(4) {
     float: right;
     margin-right: 10px;
 }
-body > ul > li > a:nth-child(5) {
+body > nav > a:nth-child(5) {
     float: right;
    
 }
-body > ul> li > a {
+body > nav > a {
     color: rgb(8, 153, 190);
     text-decoration: none;
     font-family: Arial, Helvetica, sans-serif;
@@ -43,7 +55,7 @@ body > ul> li > a {
 }
 
 
-body > ul > li > a:hover {
+body > nav > a:hover {
     border-bottom: 3px solid;
 }
 
@@ -52,13 +64,13 @@ body > h3 {
     font-style: italic;
 }
 
-body > ul {
+body > nav {
     margin: 0;
     padding-left: 8px;
     list-style: none;
 }
 
-body > ul > li > a {
+body > nav > a {
     color: rgb(8, 153, 190);
     text-decoration: none;
     font-family: Arial, Helvetica, sans-serif;
@@ -68,20 +80,10 @@ body > ul > li > a {
     border-bottom: 3px solid transparent;
 }
 
-body > ul > li > a:hover {
+body > nav > a:hover {
     border-bottom: 3px solid;
 }
 
-body > li > a {
-    display: inline-block;
-    text-decoration: none;
-    border-right: 1px solid rgb(8, 153, 190);
-    margin-left: 10px;
-    padding-right: 20px;
-    padding-left: 8px;
-    font-family: Arial, Helvetica, sans-serif;
-    color: rgb(8, 153, 190);
-}
 
 header h1 {
     display: flex;
@@ -99,25 +101,13 @@ header h1 {
 
 
 section img {
+    display: flex;
     width: 60%;
     height: auto;
 }
 
-h1 {
-    font-family: Arial, Helvetica, sans-serif;
-    color: white;
-    text-transform: lowercase;
-    margin-left: 20px; /* Adjust margin as needed */
-}
-h3 {
-    font-family: Arial, Helvetica, sans-serif;
-    color: white;
-    text-transform: lowercase;
-    font-style: normal;
-    margin-left: 20px; /* Adjust margin as needed */
-}
 
-button {
+/* button {
     padding: 10px;
     margin-left: 19px;
     background-color: #3498db;
@@ -125,19 +115,9 @@ button {
     top: 0%;
     color: white;
     cursor: pointer;
-}
+} */
 
-body > aside {
-    color: #052031;
-    left: 50%;
-    position: absolute;
-    left: 61%;
-    top: 11%;
-}
 
-body > aside > h4 {
-    text-transform: lowercase;
-}
 
 body > footer {
     border-top: 1px solid;
@@ -150,16 +130,23 @@ body > footer {
     padding: 10px; /* Add padding for better spacing */
 }
 
-body footer section li {
+body footer nav a {
     list-style: none;
+    padding-right: 10px;
     
 }
 
-body footer section li a {
+body footer nav a {
     list-style: none;
     display: inline-block;
+    text-decoration: none;
     padding-left: 5px;
     font-family: Arial, Helvetica, sans-serif;
     color: rgb(45, 43, 43);
+    border-bottom: solid transparent;
 
+}
+
+body footer nav a:hover{
+    border-bottom: 1px solid;
 }
