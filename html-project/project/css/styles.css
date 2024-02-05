@@ -33,7 +33,7 @@ body > nav {
 
 
 
-body > nav > li > a {
+body > nav > #header-links > a {
     margin-right: 15px;
     display: inline-block;
     color: rgb(8, 153, 190);
@@ -42,23 +42,27 @@ body > nav > li > a {
     font-family: Arial, Helvetica, sans-serif;
 }
 
-body > nav > li > a:hover {
+body > nav > #header-links > a:hover {
     border-bottom: 3px solid;
     color: rgb(8, 153, 190);
 }
 
-body > section{ 
+body > section { 
     display: flex;
     /* justify-content: center; */
-    align-items: center;
-    gap: 25px;
+    align-items: start;
+    gap: 5px;
 }
 
-body > section > img {
+body > section > #band-image {
     max-width: 60%; /* Make images responsive */
     height: auto;
 }
+body > section > #bjork-image{
+    max-width: 20%;
+    height: auto;
 
+}
 
 /* body > footer{ 
         display: flex;
@@ -77,7 +81,7 @@ body > footer > nav {
 
 }
 
-body > footer > nav > li > a {
+body > footer > nav > #footer-links > a {
     display: inline-block;
     margin-right: 15px;
     font-family: Arial, Helvetica, sans-serif;
@@ -86,6 +90,6 @@ body > footer > nav > li > a {
     border-bottom: 1px transparent;
 }
 
-body > footer > nav > li > a:hover{
+body > footer > nav > #footer-links > a:hover{
     border-bottom: 1px solid;
 }
