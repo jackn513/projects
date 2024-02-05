@@ -89,7 +89,3 @@ body > footer > nav > li > a {
 body > footer > nav > li > a:hover{
     border-bottom: 1px solid;
 }
-
-body footer nav a:hover{
-    border-bottom: 1px solid;
-}
