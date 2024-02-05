@@ -1,165 +1,91 @@
 body {
-
     background-color: rgb(223, 242, 239);
-    width: 100%;
-    height: 100%;
-    margin: 0; /* Remove default margin */
+    margin: 0;
 }
 
 body > header {
-    display: flex;
-    justify-content: space-between;
+    font-family: Arial, Helvetica, sans-serif;
+    display: grid;
+    grid-template-columns: auto 1fr;
     align-items: center;
-    padding: 10px; /* Add padding for better spacing */
-}
-
-body > header > h1 {
-    display: inline-block;
-    font-family: Arial, Helvetica, sans-serif;
+    gap: 10px;
     color: rgb(8, 153, 190);
-    padding-bottom: 0;
-    margin: 0; /* Remove default margin */
-}
-
-body > ul> li {
-    margin-left: 10px;
-}
-body > ul > li > a:nth-child(4) {
-    float: right;
-    margin-right: 10px;
-}
-body > ul > li > a:nth-child(5) {
-    float: right;
-   
-}
-body > ul> li > a {
-    color: rgb(8, 153, 190);
-    text-decoration: none;
-    font-family: Arial, Helvetica, sans-serif;
-    display: inline-block;
-    padding-top: 0;
-    padding-bottom: 0;
-    border-bottom: 3px solid transparent;
-}
-
-
-body > ul > li > a:hover {
-    border-bottom: 3px solid;
-}
-
-body > h3 {
-    font-family: Arial, Helvetica, sans-serif;
-    font-style: italic;
-}
-
-body > ul {
-    margin: 0;
-    padding-left: 8px;
-    list-style: none;
-}
-
-body > ul > li > a {
-    color: rgb(8, 153, 190);
-    text-decoration: none;
-    font-family: Arial, Helvetica, sans-serif;
-    display: inline-block;
-    padding-left: 10px;
-    padding-right: 10px;
-    border-bottom: 3px solid transparent;
-}
-
-body > ul > li > a:hover {
-    border-bottom: 3px solid;
-}
-
-body > li > a {
-    display: inline-block;
-    text-decoration: none;
-    border-right: 1px solid rgb(8, 153, 190);
-    margin-left: 10px;
-    padding-right: 20px;
-    padding-left: 8px;
-    font-family: Arial, Helvetica, sans-serif;
-    color: rgb(8, 153, 190);
-}
-
-header h1 {
-    display: flex;
-    align-items: center;
-    /* Center vertically */
-    font-family: Arial, Helvetica, sans-serif;
-    color: rgb(8, 153, 190);
-    padding-bottom: 5px;
     padding-left: 15px;
-    margin-bottom: 0;
+    padding-bottom: 0;
+    margin-bottom: 10px; /* Adjust margin as needed */
+
+    @media (max-width: 768px) {
+        grid-template-columns: 1fr; /* Adjust for smaller screens */
+        text-align: center;
+    }
 }
 
-/* section { position: relative; } */
+body > header > input {
+    width: 200px;
+    padding: 5px;
+}
+
+body > nav {
+    list-style: none;
+    display: flex;
+    padding-left: 20px;
+}
 
 
 
-section img {
-    width: 60%;
+body > nav > li > a {
+    margin-right: 15px;
+    display: inline-block;
+    color: rgb(8, 153, 190);
+    text-decoration: none;
+    border-bottom: 3px solid transparent;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body > nav > li > a:hover {
+    border-bottom: 3px solid;
+    color: rgb(8, 153, 190);
+}
+
+body > section{ 
+    display: flex;
+    /* justify-content: center; */
+    align-items: center;
+    gap: 25px;
+}
+
+body > section > img {
+    max-width: 60%; /* Make images responsive */
     height: auto;
 }
 
-h1 {
-    font-family: Arial, Helvetica, sans-serif;
-    color: white;
-    text-transform: lowercase;
-    margin-left: 20px; /* Adjust margin as needed */
-}
-h3 {
-    font-family: Arial, Helvetica, sans-serif;
-    color: white;
-    text-transform: lowercase;
-    font-style: normal;
-    margin-left: 20px; /* Adjust margin as needed */
-}
 
-button {
-    padding: 10px;
-    margin-left: 19px;
-    background-color: #3498db;
-    border: none;
-    top: 0%;
-    color: white;
-    cursor: pointer;
-}
+/* body > footer{ 
+        display: flex;
+        width: 100%;
+        align-content: end;
+} */
 
-body > aside {
-    color: #052031;
-    left: 50%;
-    position: absolute;
-    left: 61%;
-    top: 11%;
-}
-
-body > aside > h4 {
-    text-transform: lowercase;
-}
-
-body > footer {
-    border-top: 1px solid;
-    position: absolute;
-    width: 100%;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    background-color: rgba(8, 154, 190, 0.348);
-    padding: 10px; /* Add padding for better spacing */
-}
-
-body footer section li {
-    list-style: none;
+body > footer > nav {
     
+    list-style: none;
+    border-top: 1px solid;
+    background-color: rgba(8, 154, 190, 0.348);
+    padding: 10px;
+    /* display: flex;
+    align-items: end; */
+
 }
 
-body footer section li a {
-    list-style: none;
+body > footer > nav > li > a {
     display: inline-block;
-    padding-left: 5px;
+    margin-right: 15px;
     font-family: Arial, Helvetica, sans-serif;
     color: rgb(45, 43, 43);
+    text-decoration: none;
+    border-bottom: 1px transparent;
+}
 
+body > footer > nav > li > a:hover{
+    border-bottom: 1px solid;
 }
