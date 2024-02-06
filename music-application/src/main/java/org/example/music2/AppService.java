@@ -5,6 +5,7 @@ import org.example.music2.dao.Album.AlbumDao;
 import org.example.music2.dao.Album.JdbcAlbumDao;
 import org.example.music2.dao.Artist.ArtistDao;
 import org.example.music2.dao.Artist.JdbcArtistDao;
+import org.example.music2.exception.DaoException;
 import org.example.music2.model.Album;
 import org.example.music2.model.Artist;
 import org.springframework.stereotype.Component;
@@ -19,16 +20,24 @@ public class AppService {
 
     private static final Scanner keyboard = new Scanner(System.in);
 
-    // Album menu stuff //
+
+    // Album menu options and methods  //
     static void displayMainAlbumMenu(){
+
+        // empty SOUT's at the beginning added for padding on
+        // top and bottom for better visual appeal //
+
         System.out.println();
         System.out.println("1: Display All Albums");
         System.out.println("2: Search Albums");
-        System.out.println("3: Delete Album");
-        System.out.println("4: Return to Main Menu");
+        System.out.println("3: Delete an Album");
         System.out.println();
     }
     static void displaySubAlbumMenu(){
+
+        // empty SOUT's at the beginning added for padding on
+        // top and bottom for better visual appeal //
+
         System.out.println();
         System.out.println("1: Search By Album id");
         System.out.println("2: Search By Title");
@@ -38,8 +47,9 @@ public class AppService {
         System.out.println("6: Search Albums by Price");
         System.out.println("7: Return to main Menu");
         System.out.println();
-
     }
+
+
     // the "display" and search for the albums //
     public static void searchAllAlbums() {
         // calls to the jdbcAlbum Dao that connects to the datasource
@@ -52,6 +62,7 @@ public class AppService {
             System.out.println(album + "\n");
         }
     }
+
         // method for searching database by album id //
     public static void searchAlbumById(int albumId){
         // calls to the jdbcAlbum Dao that connects to the datasource //
@@ -71,8 +82,11 @@ public class AppService {
 
     // the "display" and search for the albums by the album id //
     public static void displayAlbumsByAlbumId(){
+        // calls upon the App Service //
         AppService appService = new AppService();
+        // takes the users id and parses it //
         int albumId = Integer.parseInt(appService.promptForId());
+        //uses that id and applies it to the searchById method //
         searchAlbumById(albumId);
     }
 
@@ -170,6 +184,28 @@ public class AppService {
         searchAlbumsByPrice(price);
     }
 
+    public static void deleteAlbum(int albumId) {
+        AlbumDao albumDao = new JdbcAlbumDao(dataSource());
+        Album albumIdToDelete = albumDao.getAlbumById(albumId);
+        int rowsAffected = albumDao.deleteAlbumById(albumIdToDelete.getAlbumId());
+
+        if (rowsAffected > 0) {
+            System.out.println("Album " + albumIdToDelete.getAlbumTitle() + " deleted successfully!");
+        } else {
+            System.out.println("Album with ID " + albumIdToDelete + " not found.");
+        }
+    }
+
+    public static void displayDeleteAlbumById(){
+        AppService appService = new AppService();
+
+        searchAllAlbums();
+        int deleteById = Integer.parseInt(appService.promptForId());
+        deleteAlbum(deleteById);
+    }
+
+
+    // Artist Menu options and methods //
     public static void displayArtistMenu(){
         System.out.println("1: Display All Artists");
         System.out.println("2: Search Artist");
@@ -225,7 +261,8 @@ public class AppService {
         AppService appService = new AppService();
         int startYear = Integer.parseInt(appService.promptForYear());
         int endYear = Integer.parseInt(appService.promptForYear());
-        searchArtistsByDateOfBirth(LocalDate.of(startYear, 1, 1), LocalDate.of(endYear, 1, 1));
+        searchArtistsByDateOfBirth(LocalDate.of(startYear, 1, 1),
+                LocalDate.of(endYear, 1, 1));
     }
 
     public static void searchArtistsByDateOfBirth(LocalDate startDate, LocalDate endDate){
@@ -246,6 +283,8 @@ public class AppService {
         int artistId = Integer.parseInt(appService.promptForId());
         searchArtistsById(artistId);
     }
+
+    // prompts for //
     private static void promptForReturn() {
         System.out.println("Press RETURN to continue.");
         keyboard.nextLine();

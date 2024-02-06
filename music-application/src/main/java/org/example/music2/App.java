@@ -50,7 +50,9 @@ public class App {
                 AppService.searchAllAlbums();
             } else if (subMenuSelection == 2) {
                 handleSubAlbumMenu();
-            } else if (subMenuSelection == 4) {
+            } else if (subMenuSelection == 3) {
+                handleDeleteAlbumMenu();
+            } else {
                 break;
             }
         }
@@ -84,6 +86,10 @@ public class App {
                     return;
             }
         }
+    }
+
+    private void handleDeleteAlbumMenu(){
+        AppService.displayDeleteAlbumById();
     }
 
     private void handleArtistMenu() {

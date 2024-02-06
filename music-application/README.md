@@ -21,6 +21,16 @@ updating, creating, and deleting data stored within the musicDB database. Subseq
 components house methods enabling users to perform analogous operations of pulling, updating, creating, and deleting 
 data within the musicDB database.
 
+### For example: 
+
+#### `JdbcAlbumDao`
+* the `JdbcAlbumDao` method _deleteAlbumById(int albumId)_ searches through the database for the _album_id_
+then deletes it from its respective tables (line_item and sale).
+
+#### `JdbcCustomerDao`
+* the `JdbcCustomerDao` method _getCustomers()_ goes directly to the customer table, while using the `Customer` to then
+"print" out a string of the customers info (their id, name, etc.).
+
 
 ## `Application`
 
