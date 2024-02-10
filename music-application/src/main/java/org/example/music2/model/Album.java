@@ -1,8 +1,13 @@
 package org.example.music2.model;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import org.springframework.data.relational.core.mapping.Table;
+
 import java.math.BigDecimal;
 import java.time.LocalDate;
-
+@Entity
+@Table(name = "album")
 public class Album {
 
     private int albumId;
@@ -14,6 +19,8 @@ public class Album {
     private LocalDate dateReleased;
     private int lengthInMin;
     private BigDecimal price;
+    @Id
+    private Long id;
 
     public Album(int albumId, String albumTitle, int artistId, String artistName,
                  int labelId, String labelName, LocalDate dateReleased, int lengthInMin, BigDecimal price) {
@@ -121,4 +128,5 @@ public class Album {
                 "-------------------------------------------------------"
         ;
     }
+
 }

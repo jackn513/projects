@@ -1,11 +1,14 @@
 package org.example.music2.dao.Album;
 
 import org.example.music2.model.Album;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Repository;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.List;
-
+@Repository
 public interface AlbumDao {
 
     Album getAlbumById(int albumId);

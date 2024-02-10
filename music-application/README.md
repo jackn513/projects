@@ -34,10 +34,12 @@ then deletes it from its respective tables (line_item and sale).
 
 ## `Application`
 
-The Application holds collection of Menu options, prompts and functions. It ties together everything from the database to the `Dao` methods. 
-The `structure-of-application-window-prompts` holds the layout of every menu. This is the reference for the Applications ease of use.
-The user can have the items and their respective information displayed for them or they can filter their searches to particular details that pertain
-to each "Item" in the database, such as: Id's, titles, or even names.
+### NEW AND IMPROVED!!!
 
-### !! Feel free to download and play with the application. Be aware that it is necessary to utilize the `musicDB.sql` to create the database on your system 
-### in order to witness the fun that is this application !!
+The application has achieved seamless integration with both a database and an API. Utilizing dedicated controllers such as: 
+AlbumController and ArtistController (with additional controllers in the pipeline), the application adeptly manages the exchange of requests.
+
+Users can now effortlessly establish connections to the database, enabling them to access comprehensive information about their preferred artists. 
+Moreover, the application empowers users to augment their personal library by adding selected artists, enhancing the overall user experience.
+
+

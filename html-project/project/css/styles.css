@@ -3,7 +3,7 @@ body {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
     grid-template-areas: 
-    "header header input signup"
+    "header input . signup"
     "link link link link"
     "image  image aside aside"
     "footer footer footer footer";
