@@ -63,6 +63,29 @@ public class JdbcAlbumDao implements AlbumDao {
         return albums;
     }
 
+    @Override
+    public List<Album> getAlbumByTitle(String title, Boolean useWildCard) {
+        List <Album> albums = new ArrayList<>();
+        if (useWildCard) {
+            title = "%" + title + "%";
+        }
+        String sql = "SELECT * FROM album " +
+                "JOIN public.artist_info ON album.artist_id = artist_info.artist_id " +
+                "JOIN label ON album.label_id = label.label_id  " +
+                "WHERE album.album_title ILIKE ?";
+        try {
+            SqlRowSet results = jdbcTemplate.queryForRowSet(sql, title);
+            while (results.next()) {
+                albums.add(mapRowToAlbum(results));
+            }
+        } catch (CannotGetJdbcConnectionException e) {
+            throw new DaoException("Unable to connect to server or database", e);
+        } catch (DataIntegrityViolationException e) {
+            throw new DaoException("Data integrity violation", e);
+        }
+        return albums;
+    }
+
 
     @Override
     public List<Album> getAlbumsByLabelId(int labelId) {
