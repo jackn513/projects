@@ -21,7 +21,7 @@ public class ArtistController {
     }
 
     @RequestMapping(method =RequestMethod.GET)
-    public List<Artist> getArtists(Principal principal){
+    public List<Artist> getArtists(){
         return artistDao.getArtists();
     }
 

@@ -31,12 +31,12 @@ public class AlbumController {
     }
 
     @RequestMapping(method = RequestMethod.GET)
-    public List<Album> getAlbums(){
+    public List<Album> getAlbums() {
         return albumDao.getAlbums();
     }
 
     @RequestMapping(path = "/{id}", method = RequestMethod.GET)
-    public Album getById(@PathVariable int id){
+    public Album getById(@PathVariable int id) {
         Album album = albumDao.getAlbumById(id);
         if (album == null) {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Album Not Found");
@@ -56,7 +56,7 @@ public class AlbumController {
     }
 
     @RequestMapping(path = "/artistId/{artistId}", method = RequestMethod.GET)
-    public List<Album> getByArtistId(@PathVariable int artistId){
+    public List<Album> getByArtistId(@PathVariable int artistId) {
         List<Album> albums = albumDao.getAlbumByArtistId(artistId);
         if (albums.isEmpty()) {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "No Albums Found with the given title");
@@ -65,5 +65,13 @@ public class AlbumController {
         }
     }
 
-
+    @RequestMapping(path = "/labelId/{labelId}", method = RequestMethod.GET)
+    public List<Album> getByLabelId(@PathVariable int labelId){
+        List<Album> albums = albumDao.getAlbumsByLabelId(labelId);
+        if (albums.isEmpty()) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "No Albums Found with the given title");
+        } else {
+            return albums;
+        }
+    }
 }
