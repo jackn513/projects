@@ -1,7 +1,9 @@
 package org.example.music2.model;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import jdk.jfr.Name;
 import org.springframework.data.relational.core.mapping.Table;
 
 import java.math.BigDecimal;
@@ -9,13 +11,19 @@ import java.time.LocalDate;
 
 public class Album {
     @Id
+    @JsonProperty("Album Id")
     private int albumId;
+    @JsonProperty("Album Title")
     private String albumTitle;
+    @JsonProperty("Artist Name")
     private String artistName;
-
+    @JsonProperty("Label Name")
     private String labelName;
+    @JsonProperty("Date Released")
     private LocalDate dateReleased;
+    @JsonProperty("Length")
     private int lengthInMin;
+    @JsonProperty("Price")
     private BigDecimal price;
 
     public Album(int albumId, String albumTitle, String artistName, String labelName, LocalDate dateReleased,
@@ -88,18 +96,5 @@ public class Album {
         this.price = price;
     }
 
-    @Override
-    public String toString() {
-        return
-                "Album id: " + getAlbumId() + "\n" +
-                "Album Title: " + "'" + getAlbumTitle() + "'"  + "\n" +
-                "Artist Name: " + getArtistName() + "\n" +
-                "Label Name: " + getLabelName() + "\n" +
-                "Date Released: " + getDateReleased() +"\n" +
-                "Length: " + getLengthInMin() + " min " + "\n" +
-                "Price: " + getPrice() + "\n" +
-                "-------------------------------------------------------"
-        ;
-    }
 
 }

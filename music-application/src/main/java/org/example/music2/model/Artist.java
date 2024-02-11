@@ -1,12 +1,19 @@
 package org.example.music2.model;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+import jakarta.persistence.Id;
+
 import java.time.LocalDate;
 
 public class Artist {
-
+    @Id
+    @JsonProperty("Artist Id")
     private int artistId;
+    @JsonProperty("Artist Name")
     private String artistName;
+    @JsonProperty("Date of Birth")
     private LocalDate dateOfBirth;
+    @JsonProperty("Date of Death")
     private LocalDate dateOfDeath;
 
     public Artist(int artistId, String artistName, LocalDate dateOfBirth, LocalDate dateOfDeath) {

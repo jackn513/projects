@@ -1,15 +1,25 @@
 package org.example.music2.model;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+import jakarta.persistence.Id;
+
 import java.time.LocalDate;
 
 public class Sale {
-
+    @Id
+    @JsonProperty("Sale Id")
     private int saleId;
+    @JsonProperty("Customer Id")
     private int customerId;
+    @JsonProperty("Customer Name")
     private String customerName;
+    @JsonProperty("Album Id")
     private int albumId;
+    @JsonProperty("Album Name")
     private String albumName;
+    @JsonProperty("Sold")
     private Boolean isSold;
+    @JsonProperty("Sale Date")
     private LocalDate saleDate;
 
     public Sale(int saleId, int customerId, String customerName, int albumId, String albumName, Boolean isSold, LocalDate saleDate) {

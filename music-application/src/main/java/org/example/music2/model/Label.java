@@ -1,11 +1,17 @@
 package org.example.music2.model;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+import jakarta.persistence.Id;
+
 import java.time.LocalDate;
 
 public class Label {
-
+    @Id
+    @JsonProperty("Label Id")
     private int labelId;
+    @JsonProperty("Label Name")
     private String labelName;
+    @JsonProperty("Date Established")
     private LocalDate dateEstablished;
 
     public Label(int labelId, String labelName, LocalDate dateEstablished) {
