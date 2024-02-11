@@ -4,10 +4,7 @@ import org.example.music2.dao.Artist.ArtistDao;
 import org.example.music2.dao.Artist.JdbcArtistDao;
 import org.example.music2.model.Artist;
 import org.springframework.http.HttpStatus;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
 import javax.sql.DataSource;
@@ -36,5 +33,10 @@ public class ArtistController {
         } else {
             return artist;
         }
+    }
+
+    @RequestMapping(method = RequestMethod.POST)
+    Artist createArtist(@RequestBody Artist artist){
+        return artistDao.createArtist(artist);
     }
 }

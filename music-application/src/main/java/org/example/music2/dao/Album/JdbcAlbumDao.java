@@ -185,9 +185,7 @@ public class JdbcAlbumDao implements AlbumDao {
         Album album = new Album();
         album.setAlbumId(rowSet.getInt("album_id"));
         album.setAlbumTitle(rowSet.getString("album_title"));
-        album.setArtistId(rowSet.getInt("artist_id"));
         album.setArtistName(rowSet.getString("artist_name"));
-        album.setLabelId(rowSet.getInt("label_id"));
         album.setLabelName(rowSet.getString("label_name"));
         album.setDateReleased(rowSet.getDate("date_released").toLocalDate());
         album.setLengthInMin(rowSet.getInt("length_in_minutes"));

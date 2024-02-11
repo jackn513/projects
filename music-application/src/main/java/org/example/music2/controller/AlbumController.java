@@ -17,8 +17,8 @@ public class AlbumController {
     private final AlbumDao albumDao;
 
 //            System.out.println();
-//        System.out.println("1: Search By Album id");
-//        System.out.println("2: Search By Title");
+//        System.out.println("1: Search By Album id"); X
+//        System.out.println("2: Search By Title"); X
 //        System.out.println("3: Search By Artist id");
 //        System.out.println("4: Search Albums By Label id");
 //        System.out.println("5: Search Albums By Date Released");
@@ -54,4 +54,16 @@ public class AlbumController {
             return albums;
         }
     }
+
+    @RequestMapping(path = "/artistId/{artistId}", method = RequestMethod.GET)
+    public List<Album> getByArtistId(@PathVariable int artistId){
+        List<Album> albums = albumDao.getAlbumByArtistId(artistId);
+        if (albums.isEmpty()) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "No Albums Found with the given title");
+        } else {
+            return albums;
+        }
+    }
+
+
 }

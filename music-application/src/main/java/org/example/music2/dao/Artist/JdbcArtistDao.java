@@ -75,7 +75,18 @@ public class JdbcArtistDao implements ArtistDao {
 
     @Override
     public Artist createArtist(Artist newArtist) {
-        return null;
+        int artistId;
+        String sql = "INSERT INTO artist_info (name, date_of_birth, date_of_death) " +
+                "VALUES (?, ?, ?) RETURNING arist_id;";
+        try{
+            artistId = jdbcTemplate.queryForObject(sql, Integer.class, newArtist.getArtistName(),
+                    newArtist.getDateOfBirth(), newArtist.getDateOfDeath());
+        } catch (CannotGetJdbcConnectionException e) {
+            throw new DaoException("Unable to connect to server or database", e);
+        } catch (DataIntegrityViolationException e) {
+            throw new DaoException("Data integrity violation", e);
+        }
+        return getArtistById(artistId);
     }
 
     @Override
