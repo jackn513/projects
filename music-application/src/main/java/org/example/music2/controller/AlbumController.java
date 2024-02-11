@@ -46,11 +46,8 @@ public class AlbumController {
     }
 
     @RequestMapping(path = "/search", method = RequestMethod.GET)
-    public List<Album> getByTitle(@RequestParam String title, Boolean useWildCard) {
-        if (useWildCard == null) {
-            useWildCard = false;
-        }
-        List<Album> albums = albumDao.getAlbumByTitle(title, useWildCard);
+    public List<Album> getByTitle(@RequestParam String title) {
+        List<Album> albums = albumDao.getAlbumByTitle(title);
         if (albums.isEmpty()) {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "No Albums Found with the given title");
         } else {

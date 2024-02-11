@@ -64,17 +64,15 @@ public class JdbcAlbumDao implements AlbumDao {
     }
 
     @Override
-    public List<Album> getAlbumByTitle(String title, Boolean useWildCard) {
+    public List<Album> getAlbumByTitle(String title) {
         List <Album> albums = new ArrayList<>();
-        if (useWildCard) {
-            title = "%" + title + "%";
-        }
         String sql = "SELECT * FROM album " +
                 "JOIN public.artist_info ON album.artist_id = artist_info.artist_id " +
                 "JOIN label ON album.label_id = label.label_id  " +
-                "WHERE album.album_title ILIKE ?";
+                "WHERE album.album_title ILIKE ?;";
+        title = "%" + title + "%";
         try {
-            SqlRowSet results = jdbcTemplate.queryForRowSet(sql, title);
+            SqlRowSet results = jdbcTemplate.queryForRowSet(sql, title.toLowerCase());
             while (results.next()) {
                 albums.add(mapRowToAlbum(results));
             }

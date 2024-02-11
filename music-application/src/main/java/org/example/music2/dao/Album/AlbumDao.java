@@ -14,7 +14,7 @@ public interface AlbumDao {
     Album getAlbumById(int albumId);
     List<Album> getAlbums();
     public List<Album> getAlbumByArtistId(int artistId);
-    public List<Album> getAlbumByTitle(String title, Boolean useWildCard);
+    public List<Album> getAlbumByTitle(String title);
     public List<Album> getAlbumsByLabelId(int labelId);
     List<Album> getAlbumsByDateReleased(LocalDate yearReleased);
     List<Album> getAlbumsByPrice(BigDecimal price);
