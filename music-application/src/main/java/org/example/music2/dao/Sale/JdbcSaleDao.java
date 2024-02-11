@@ -76,12 +76,6 @@ public class JdbcSaleDao implements SaleDao {
     }
 
     private Sale mapRowToSale(SqlRowSet rowSet){
-
-//        private int saleId;
-//        private int customerId;
-//        private int albumId;
-//        private Boolean isSold;
-//        private LocalDate saleDate;
         Sale sale = new Sale();
         sale.setSaleId(rowSet.getInt("sale_id"));
         sale.setCustomerId(rowSet.getInt("customer_id"));
