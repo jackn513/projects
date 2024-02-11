@@ -30,7 +30,7 @@ public class JdbcSaleDao implements SaleDao {
         try {
             SqlRowSet results = jdbcTemplate.queryForRowSet(sql);
             while (results.next()) {
-                sales.add(mapRowToSale(results));
+                sales.add(mapRowToSale2(results));
             }
         } catch (CannotGetJdbcConnectionException e) {
             throw new DaoException("Unable to connect to server or database", e);
@@ -62,7 +62,24 @@ public class JdbcSaleDao implements SaleDao {
 
     @Override
     public Sale createSale(Sale newSale) {
-        return null;
+
+//        sale_id serial,
+//        customer_id int NOT NULL,
+//                album_id int NOT NULL,
+//                is_sold boolean NOT NULL,
+//                sale_date date,
+        int saleId;
+        String sql = "INSERT INTO sale (customer_id, album_id, is_sold, sale_date) " +
+                "values (?, ?, ?, ?) RETURNING sale_id;";
+        try {
+            saleId = jdbcTemplate.queryForObject(sql, int.class, newSale.getCustomerId(),
+                    newSale.getAlbumId(), newSale.getSold(), newSale.getSaleDate());
+        } catch (CannotGetJdbcConnectionException e) {
+            throw new DaoException("Unable to connect to server or database", e);
+        } catch (DataIntegrityViolationException e) {
+            throw new DaoException("Data integrity violation", e);
+        }
+        return getSaleById(saleId);
     }
 
     @Override
@@ -75,7 +92,16 @@ public class JdbcSaleDao implements SaleDao {
         return 0;
     }
 
-    private Sale mapRowToSale(SqlRowSet rowSet){
+//    private Sale mapRowToSale(SqlRowSet rowSet){
+//        Sale sale = new Sale();
+//        sale.setSaleId(rowSet.getInt("sale_id"));
+//        sale.setCustomerId(rowSet.getInt("customer_id"));
+//        sale.setAlbumId(rowSet.getInt("album_id"));
+//        sale.setSold(rowSet.getBoolean("is_sold"));
+//        sale.setSaleDate(rowSet.getDate("sale_date").toLocalDate());
+//        return sale;
+//    }
+    private Sale mapRowToSale2(SqlRowSet rowSet){
         Sale sale = new Sale();
         sale.setSaleId(rowSet.getInt("sale_id"));
         sale.setCustomerId(rowSet.getInt("customer_id"));
