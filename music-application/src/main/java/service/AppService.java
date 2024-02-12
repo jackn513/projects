@@ -1,4 +1,4 @@
-package org.example.music2;
+package service;
 
 import org.apache.commons.dbcp2.BasicDataSource;
 import org.example.music2.dao.Album.AlbumDao;

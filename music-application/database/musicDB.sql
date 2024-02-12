@@ -35,7 +35,7 @@ CREATE TABLE album
     album_id serial,
     album_title varchar(150) NOT NULL,
     artist_id INT NOT NULL,
-    label_id int  NOT NULL,
+    label_id int NOT NULL,
     date_released date NOT NULL,
     length_in_minutes integer NOT NULL,
     price decimal(10, 2) NOT NULL,
@@ -236,5 +236,7 @@ INSERT INTO sale (customer_id, album_id, is_sold, sale_date) VALUES
 
 END TRANSACTION;
 COMMIT;
+
+select * from artist_info
 
 

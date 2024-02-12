@@ -48,9 +48,13 @@ public class Album {
         return albumTitle;
     }
 
+
+
     public String getArtistName() {
         return artistName;
     }
+
+
 
     public String getLabelName() {
         return labelName;
@@ -76,9 +80,13 @@ public class Album {
         this.albumTitle = albumTitle;
     }
 
+
+
     public void setArtistName(String artistName) {
         this.artistName = artistName;
     }
+
+
 
     public void setLabelName(String labelName) {
         this.labelName = labelName;
