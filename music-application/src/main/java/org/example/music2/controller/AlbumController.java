@@ -7,7 +7,9 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
+import java.math.BigDecimal;
 import java.security.Principal;
+import java.time.LocalDate;
 import java.util.List;
 
 @RestController
@@ -15,16 +17,6 @@ import java.util.List;
 public class AlbumController {
 
     private final AlbumDao albumDao;
-
-//            System.out.println();
-//        System.out.println("1: Search By Album id"); X
-//        System.out.println("2: Search By Title"); X
-//        System.out.println("3: Search By Artist id");
-//        System.out.println("4: Search Albums By Label id");
-//        System.out.println("5: Search Albums By Date Released");
-//        System.out.println("6: Search Albums by Price");
-//        System.out.println("7: Return to main Menu");
-//        System.out.println();
 
     public AlbumController(AlbumDao albumDao) {
         this.albumDao = albumDao;
@@ -47,31 +39,50 @@ public class AlbumController {
 
     @RequestMapping(path = "/search", method = RequestMethod.GET)
     public List<Album> getByTitle(@RequestParam String title) {
-        List<Album> albums = albumDao.getAlbumByTitle(title);
-        if (albums.isEmpty()) {
+        List<Album> albumsByTitle = albumDao.getAlbumByTitle(title);
+        if (albumsByTitle.isEmpty()) {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "No Albums Found with the given title");
         } else {
-            return albums;
+            return albumsByTitle;
         }
     }
 
     @RequestMapping(path = "/artistId/{artistId}", method = RequestMethod.GET)
     public List<Album> getByArtistId(@PathVariable int artistId) {
-        List<Album> albums = albumDao.getAlbumByArtistId(artistId);
-        if (albums.isEmpty()) {
+        List<Album> albumsByArtist = albumDao.getAlbumByArtistId(artistId);
+        if (albumsByArtist.isEmpty()) {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "No Albums Found with the given title");
         } else {
-            return albums;
+            return albumsByArtist;
         }
     }
 
     @RequestMapping(path = "/labelId/{labelId}", method = RequestMethod.GET)
     public List<Album> getByLabelId(@PathVariable int labelId){
-        List<Album> albums = albumDao.getAlbumsByLabelId(labelId);
-        if (albums.isEmpty()) {
+        List<Album> albumsByLabel = albumDao.getAlbumsByLabelId(labelId);
+        if (albumsByLabel.isEmpty()) {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "No Albums Found with the given title");
         } else {
-            return albums;
+            return albumsByLabel;
+        }
+    }
+
+    @RequestMapping(path = "/dateReleased/{year}", method = RequestMethod.GET)
+    public List<Album> albumsByYear(@PathVariable LocalDate year){
+        List<Album> albumsByYear = albumDao.getAlbumsByDateReleased(year);
+        if (albumsByYear.isEmpty()) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "No Albums Found with the given title");
+        } else {
+            return albumsByYear;
+        }
+    }
+    @RequestMapping(path = "/price/{price}", method = RequestMethod.GET)
+    public List<Album> albumsByPrice(@PathVariable BigDecimal price){
+        List<Album> albumsByPrice = albumDao.getAlbumsByPrice(price);
+        if (albumsByPrice.isEmpty()){
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "No Albums Found with the given title");
+        } else {
+            return albumsByPrice;
         }
     }
 }

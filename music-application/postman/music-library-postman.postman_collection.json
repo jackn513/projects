@@ -10,7 +10,7 @@
 			"name": "Artists",
 			"item": [
 				{
-					"name": "getArtists",
+					"name": "Artists",
 					"event": [
 						{
 							"listen": "test",
@@ -72,7 +72,7 @@
 					"response": []
 				},
 				{
-					"name": "GetArtistsById",
+					"name": "Artists By id",
 					"request": {
 						"method": "GET",
 						"header": [],
@@ -92,10 +92,30 @@
 					"response": []
 				},
 				{
-					"name": "NewArtist",
+					"name": "Make a New Artist",
 					"request": {
 						"method": "POST",
-						"header": []
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n        \"artistName\": \"\",\n        \"dateOfBirth\": \"\",\n        \"dateOfDeath\": \n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/artist_info",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"artist_info"
+							]
+						}
 					},
 					"response": []
 				}
@@ -105,7 +125,7 @@
 			"name": "Album",
 			"item": [
 				{
-					"name": "GetAlbums",
+					"name": "Albums",
 					"request": {
 						"method": "GET",
 						"header": [],
@@ -124,7 +144,7 @@
 					"response": []
 				},
 				{
-					"name": "getByAlbumById",
+					"name": "Album By id",
 					"request": {
 						"method": "GET",
 						"header": [],
@@ -144,7 +164,7 @@
 					"response": []
 				},
 				{
-					"name": "AlbumByTitle",
+					"name": "Album By Title",
 					"request": {
 						"method": "GET",
 						"header": [],
@@ -170,37 +190,38 @@
 					"response": []
 				},
 				{
-					"name": "ByLabelId",
+					"name": "Album By Label id",
 					"request": {
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8080/labelId/6",
+							"raw": "http://localhost:3000/album/labelId/",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
-							"port": "8080",
+							"port": "3000",
 							"path": [
+								"album",
 								"labelId",
-								"6"
+								""
 							]
 						}
 					},
 					"response": []
 				},
 				{
-					"name": "ByArtistId",
+					"name": "Album By Artist id",
 					"request": {
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8080/album/artistId/",
+							"raw": "http://localhost:3000/album/artistId/",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
-							"port": "8080",
+							"port": "3000",
 							"path": [
 								"album",
 								"artistId",
@@ -216,6 +237,48 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "Album By Year",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/album/dateReleased/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"album",
+								"dateReleased",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Album By Price",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/album/price/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"album",
+								"price",
+								""
+							]
+						}
+					},
+					"response": []
 				}
 			]
 		},
@@ -223,10 +286,38 @@
 			"name": "Sales",
 			"item": [
 				{
-					"name": "getSales",
+					"name": "Sales",
 					"request": {
 						"method": "GET",
 						"header": []
+					},
+					"response": []
+				},
+				{
+					"name": "Make a Sale",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n        \"Customer Id\": ,\n        \"Album Id\": ,\n        \"Sold\": true,\n        \"Sale Date\": \"\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/sale",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"sale"
+							]
+						}
 					},
 					"response": []
 				}
