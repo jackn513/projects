@@ -85,5 +85,10 @@ public class AlbumController {
             return albumsByPrice;
         }
     }
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    @RequestMapping(path = "artistId/{id}", method = RequestMethod.DELETE)
+    public void deleteAlbum(@PathVariable int id){
+        albumDao.deleteAlbumById(id);
+    }
 
 }

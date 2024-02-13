@@ -1,14 +1,12 @@
 package org.example.music2.controller;
 
 import org.example.music2.dao.Artist.ArtistDao;
-import org.example.music2.dao.Artist.JdbcArtistDao;
 import org.example.music2.model.Artist;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
-import javax.sql.DataSource;
-import java.security.Principal;
+;
 import java.util.List;
 
 @RestController
@@ -26,7 +24,7 @@ public class ArtistController {
     }
 
     @RequestMapping(path = "/{id}", method = RequestMethod.GET)
-    public Artist getByid(@PathVariable int id){
+    public Artist getById(@PathVariable int id){
         Artist artist = artistDao.getArtistById(id);
         if(artist == null) {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Artist Not Found");
