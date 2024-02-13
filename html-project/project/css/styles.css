@@ -48,6 +48,7 @@ body header ul li a {
 }
 #findStuff{
     padding-bottom: 20px;
+    grid-area: find;
 }
 
 #findStuff ul {
@@ -149,7 +150,7 @@ body header ul a:hover{
     border-bottom: 1px solid black;
 }
 
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 600px){
     body {
         font-family: Arial, Helvetica, sans-serif;
         display: grid;
@@ -157,13 +158,13 @@ body header ul a:hover{
         grid-template-areas: 
         "header"
         "find"
-        "imageAndAside"
+        "body"
         "footer";
+        gap: 20px;
     }
+
     body header{
         grid-area: header;
-        align-items: center;
-        color: rgb(8, 153, 190);
         display: grid;
         grid-template-columns: 1fr;
         grid-template-areas: 
@@ -172,17 +173,42 @@ body header ul a:hover{
         "signup";
     
     }
+    body header h1 {
+        /* border: 2px solid violet; */
+        justify-content: start;
+    }
+    body header input{
+        justify-self: start;
+        width: 100%;
+    }
+
+    body header ul {
+        display: grid;
+        grid-area: header;
+        justify-items: end;
+        padding-left: 5px; 
+        /* margin: 0;  */
+    }
+    #findStuff{
+        display: grid;
+        justify-content: space-evenly;
+    
+    }
+
     #imageAndAside {
-        grid-area: imageAndAside;
+        grid-area: body;
         display: grid;
         grid-template-columns: 1fr;
         grid-template-areas: 
         "image"
-        "aside"
         "aside";
-        align-items: center;
-        padding-bottom: 20px;
-        gap: 10px;
     }
 
+    #imageAndAside img{
+        width: 100%;
+    }
+
+    #footer{
+        width: 100%;
+    }
 }
