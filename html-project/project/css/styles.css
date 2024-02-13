@@ -148,3 +148,41 @@ body header ul a:hover{
 #footer ul li a:hover{
     border-bottom: 1px solid black;
 }
+
+@media only screen and (max-width: 600px) {
+    body {
+        font-family: Arial, Helvetica, sans-serif;
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-areas: 
+        "header"
+        "find"
+        "imageAndAside"
+        "footer";
+    }
+    body header{
+        grid-area: header;
+        align-items: center;
+        color: rgb(8, 153, 190);
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-areas: 
+        "header"
+        "input"
+        "signup";
+    
+    }
+    #imageAndAside {
+        grid-area: imageAndAside;
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-areas: 
+        "image"
+        "aside"
+        "aside";
+        align-items: center;
+        padding-bottom: 20px;
+        gap: 10px;
+    }
+
+}
