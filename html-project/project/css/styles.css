@@ -18,12 +18,14 @@ body header{
     display: grid;
     grid-template-columns: 200px 1fr 1fr;
     grid-template-areas: "header input signup";
+    width: 100%;
 
 }
 
 body header h1 {
     /* border: 2px solid violet; */
     text-transform: lowercase;
+    color: black;
     display: grid;
     margin-left: 10px;
     font-family: Arial, Helvetica, sans-serif;
@@ -36,17 +38,34 @@ body header input {
     height: 30px;
     width: 250px;
     border: 0;
-    background-color: rgba(196, 195, 195, 0.373);
+    background-color: rgba(255, 255, 255, 0.728);
 
 }
 
-body header ul li a {
-    
+body header ul {
+    /* border: 2px solid red; */
+    margin-right: 10px;
+    font-size: medium;
     font-family: Arial, Helvetica, sans-serif;
-    color: rgb(8, 153, 190);
+    justify-items: end;
+    align-items: center;
+    display: grid;
+    list-style: none;
+    grid-area: signup;
+    border-bottom: 3px solid transparent;
+}
+body header ul a{
+    font-family: Arial, Helvetica, sans-serif;
+    color: black;
     text-decoration: none;
     text-transform: lowercase;
-    padding-right: 10px;
+    margin-right: 10px;
+    font-size: medium;
+    text-transform: lowercase;
+}
+body header ul a:hover{
+    border-bottom: 1px solid BLACK;
+    padding-bottom: 20px;
 }
 #findStuff{
     margin-left: 10px;
@@ -78,26 +97,6 @@ body header ul li a {
     border-bottom: 1px solid rgb(8, 153, 190); ;
 }
 
-body header ul {
-    /* border: 2px solid red; */
-    margin-right: 10px;
-    font-size: medium;
-    font-family: Arial, Helvetica, sans-serif;
-    justify-items: end;
-    align-items: center;
-    display: grid;
-    list-style: none;
-    grid-area: signup;
-    border-bottom: 3px solid transparent;
-}
-body header ul a{
-    font-size: medium;
-    text-transform: lowercase;
-}
-body header ul a:hover{
-    border-bottom: 1px solid rgb(8, 153, 190);
-    padding-bottom: 20px;
-}
 
 
 #imageAndAside {
@@ -165,6 +164,7 @@ body header ul a:hover{
         "find"
         "body"
         "footer";
+
         /* gap: 20px; */
     }
 
@@ -176,6 +176,8 @@ body header ul a:hover{
         "header"
         "input"
         "signup";
+
+        
     
     }
     body header h1{

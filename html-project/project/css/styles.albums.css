@@ -1,45 +1,50 @@
 body {
-    font-family: Arial, Helvetica, sans-serif;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     grid-template-areas: 
-    "header search ."
+    "header header header"
     "button button button"
     "body body body"
     "footer footer footer";
     margin: 0;
 }
+
 body header{
-    padding-bottom: 10px;
-}
-body header h1{
-    text-transform: lowercase;
-    display: grid;
     grid-area: header;
+    align-items: center;
     color: rgb(8, 153, 190);
+    display: grid;
+    grid-template-columns: 200px 1fr 1fr;
+    grid-template-areas: "header input signup";
+    
+    width: 100%;
+
+}
+
+body header h1 {
+    /* border: 2px solid violet; */
+    text-transform: lowercase;
+    color: black;
+    display: grid;
     margin-left: 10px;
     font-family: Arial, Helvetica, sans-serif;
 }
+
 body header input {
-    margin-left: 10px;
+    /* border: 2px solid blue; */
     display: grid;
-    grid-area: search;
+    grid-area: input;
     height: 30px;
     width: 250px;
     border: 0;
-    background-color: rgba(196, 195, 195, 0.373);
+    background-color: rgba(255, 255, 255, 0.728);
+
 }
 
 #buttons{
-    display: grid;
     grid-area: button;
-    margin-left: 10px;
-    
 }
-#buttons #genres{
-    width: 80px;
-    height: 30px;
-    border-radius: 35px;
-    background-color: rgba(8, 154, 190, 0.408);
-    border: 0;
+
+#quote{
+    grid-area: body;
 }
