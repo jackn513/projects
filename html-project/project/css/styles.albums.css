@@ -1,0 +1,45 @@
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-areas: 
+    "header search ."
+    "button button button"
+    "body body body"
+    "footer footer footer";
+    margin: 0;
+}
+body header{
+    padding-bottom: 10px;
+}
+body header h1{
+    text-transform: lowercase;
+    display: grid;
+    grid-area: header;
+    color: rgb(8, 153, 190);
+    margin-left: 10px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+body header input {
+    margin-left: 10px;
+    display: grid;
+    grid-area: search;
+    height: 30px;
+    width: 250px;
+    border: 0;
+    background-color: rgba(196, 195, 195, 0.373);
+}
+
+#buttons{
+    display: grid;
+    grid-area: button;
+    margin-left: 10px;
+    
+}
+#buttons #genres{
+    width: 80px;
+    height: 30px;
+    border-radius: 35px;
+    background-color: rgba(8, 154, 190, 0.408);
+    border: 0;
+}
