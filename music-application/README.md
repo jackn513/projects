@@ -1,9 +1,12 @@
 # Music Library and Shopping Application
 
 Introducing a sophisticated Music Library and Shopping Application designed to seamlessly engage with a comprehensive 
-database. This database encompasses intricate details about albums, musicians, labels, customers, and the nuanced 
-aspects of their orders. By doing so, the application offers a holistic perspective into the dynamic realms of both 
-music and sales.
+database. The `Music Store Application`, initially a console-based music database management system, 
+now integrates connectivity with external APIs to expand its functionality. 
+Designed to interact seamlessly with a PostgreSQL database named `musicDB`, 
+the application offers a user-friendly interface for managing albums, artists, and related information. 
+The existing implementation utilizes the JDBC (Java Database Connectivity) API to establish a secure connection to the database, 
+coupled with Apache Commons DBCP2 for efficient connection pooling.
 
 ## Database Design
 
