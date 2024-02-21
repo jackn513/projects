@@ -4,7 +4,7 @@ body {
     grid-template-areas: 
     "header header header"
     "button button button"
-    "image image body"
+    "data data body"
     "footer footer footer";
     margin: 0;
     background-color: rgb(215, 223, 232);
