@@ -21,7 +21,7 @@
       </section>
       <section id="imageAndAside">
         <!-- <img src="img/band-img.jpg" alt="signer"> -->
-        <img id="img" v-bind:src="getImageSrc" alt="signer" />
+        <img :src="image" />
         <aside>
           <blockquote>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</blockquote>
           <blockquote>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</blockquote>
@@ -49,12 +49,13 @@
   <script>
   export default {
     data() {
-      return {}
+      return {
+        image: '../assets/band.jpg'
+        
+      }
     },
     computed: {
       getImageSrc() {
-        const imgUrl = `../assets/band-img.jpg`
-        return new URL(imgUrl, import.meta.url);
       }
     }
   }
@@ -70,8 +71,10 @@ body {
     "header header header"
     "find find find"
     "body body body"
+    "body body body"
     "footer footer footer";
     margin: 0;
+    width: 100%;
 }
 
 body header{

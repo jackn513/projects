@@ -8,7 +8,8 @@ body {
     "find find find"
     "body body body"
     "footer footer footer";
-    margin: 0;
+   
+    width: 100%;
 }
 
 body header{
