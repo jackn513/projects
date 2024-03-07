@@ -15,7 +15,7 @@
           <li>
             <a href="albums.html">Albums</a>
             <a href="#">Artists</a>
-            <a href="#">Labels</a>
+            <a @mouseover="changeColor" @mouseleave="revertColor" href="#">Genres</a>
           </li>
         </ul>
       </section>
@@ -24,7 +24,7 @@
         <img :src="image" />
         <aside>
           <blockquote>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</blockquote>
-          <blockquote>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</blockquote>
+         
         </aside>
         <blockquote id="textUnder">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Molestie nunc non blandit massa enim nec dui nunc. Malesuada fames ac turpis egestas integer eget aliquet. Dolor sit amet consectetur adipiscing elit ut aliquam purus sit. Nunc pulvinar sapien et ligula ullamcorper malesuada proin libero nunc. Et molestie ac feugiat sed lectus vestibulum. Id interdum velit laoreet id donec ultrices tincidunt arcu non. Posuere morbi leo urna molestie at elementum eu. Faucibus et molestie ac feugiat. Et pharetra pharetra massa massa ultricies mi quis hendrerit dolor.
@@ -50,8 +50,21 @@
   export default {
     data() {
       return {
-        image: '../assets/band.jpg'
+        image: './assets/band.jpg'
         
+      }
+    },
+    methods:{
+      changeColor(event) {
+        if (event.target.style.color = 'rgb(8, 153, 190)'){
+            event.target.style.color = 'red';
+        } else {
+            event.target.style.color = 'rgb(8, 153, 190)';
+        }
+      },
+      
+      revertColor(event){
+        event.target.style.color = 'rgb(8, 153, 190)'
       }
     },
     computed: {
@@ -181,6 +194,9 @@ body header ul a:hover{
     display: grid;
     grid-area: image;
     margin-left: 10px;
+    border: 1px solid;
+    width: 400px;
+    height: 200px;
 }
 
 
@@ -192,7 +208,7 @@ body header ul a:hover{
 
 }
 
-#imageAndAside #textUnder{
+#textUnder{
     display: grid;
     grid-area: quote;
     justify-content: center;

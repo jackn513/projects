@@ -5,7 +5,7 @@
 </template>
 
 <script setup>
-import MainStuff from './components/icons/Main.vue'
+import MainStuff from './components/Main.vue'
 </script>
 
 <style scoped>

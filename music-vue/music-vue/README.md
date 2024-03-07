@@ -1,29 +1,12 @@
-# music-vue
+# digital noise online
 
-This template should help get you started developing with Vue 3 in Vite.
 
-## Recommended IDE Setup
+digital noise online is the continuation of the Music Application project (Java) that's designed to
+interact with a PostgreSQL database (musicDB) and provides a user-friendly interface for managing albums, artists, and related information. 
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
+Now as a website, the goal of this project is to implement the same practices that the Music Application achieved. 
 
-## Customize configuration
 
-See [Vite Configuration Reference](https://vitejs.dev/config/).
+## HTML 
 
-## Project Setup
-
-```sh
-npm install
-```
-
-### Compile and Hot-Reload for Development
-
-```sh
-npm run dev
-```
-
-### Compile and Minify for Production
-
-```sh
-npm run build
-```
+The `Main.vue` file provides the basic content of the site. From the text, the image, and the buttons. It's structure isn't entirely too complicated and is designed with the best semantic practices as possible.
