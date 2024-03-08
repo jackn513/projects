@@ -16,18 +16,21 @@
             <a href="albums.html">Albums</a>
             <a href="#">Artists</a>
             <a @mouseover="changeColor" @mouseleave="revertColor" href="#">Genres</a>
+            <img :src="svg" class="fa-regular fa-heart" alt="Heart Icon" />
           </li>
         </ul>
       </section>
       <section id="imageAndAside">
         <!-- <img src="img/band-img.jpg" alt="signer"> -->
         <img :src="image" />
-        <aside>
-          <blockquote>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</blockquote>
-         
+        <aside id="aside">
+          <blockquote class ="sidequote">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</blockquote>
         </aside>
         <blockquote id="textUnder">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Molestie nunc non blandit massa enim nec dui nunc. Malesuada fames ac turpis egestas integer eget aliquet. Dolor sit amet consectetur adipiscing elit ut aliquam purus sit. Nunc pulvinar sapien et ligula ullamcorper malesuada proin libero nunc. Et molestie ac feugiat sed lectus vestibulum. Id interdum velit laoreet id donec ultrices tincidunt arcu non. Posuere morbi leo urna molestie at elementum eu. Faucibus et molestie ac feugiat. Et pharetra pharetra massa massa ultricies mi quis hendrerit dolor.
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Molestie nunc non blandit massa 
+          enim nec dui nunc. Malesuada fames ac turpis egestas integer eget aliquet. Dolor sit amet consectetur adipiscing elit ut aliquam purus sit. Nunc pulvinar sapien 
+          et ligula ullamcorper malesuada proin libero nunc. Et molestie ac feugiat sed lectus vestibulum. Id interdum velit laoreet id donec ultrices tincidunt arcu non. 
+          Posuere morbi leo urna molestie at elementum eu. Faucibus et molestie ac feugiat. Et pharetra pharetra massa massa ultricies mi quis hendrerit dolor.
         </blockquote>
       </section>
       <footer id="footer">
@@ -50,14 +53,15 @@
   export default {
     data() {
       return {
-        image: './assets/band.jpg'
+        image: './assets/band.jpg',
+        svg: './assets/heart.svg'
         
       }
     },
     methods:{
       changeColor(event) {
         if (event.target.style.color = 'rgb(8, 153, 190)'){
-            event.target.style.color = 'red';
+            event.target.style.color = 'rgb(0, 112, 140)';
         } else {
             event.target.style.color = 'rgb(8, 153, 190)';
         }
@@ -67,10 +71,7 @@
         event.target.style.color = 'rgb(8, 153, 190)'
       }
     },
-    computed: {
-      getImageSrc() {
-      }
-    }
+
   }
   </script>
   
@@ -79,15 +80,17 @@
 body {
     font-family: Arial, Helvetica, sans-serif;
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: repeat(3, 1fr);
     grid-template-areas: 
     "header header header"
     "find find find"
     "body body body"
     "body body body"
     "footer footer footer";
-    margin: 0;
-    width: 100%;
+    width: 100vw;
+    height: 100vh;
+   /* margin:0;
+   border: 2px solid; */
 }
 
 body header{
@@ -97,7 +100,7 @@ body header{
     display: grid;
     grid-template-columns: 200px 1fr 1fr;
     grid-template-areas: "header input signup";
-    width: 100%;
+  
 
 }
 
@@ -168,12 +171,13 @@ body header ul a:hover{
     text-transform: lowercase;
     color: rgb(8, 153, 190);
     border-bottom: 3px solid transparent;
+
     padding-bottom: 20px;
     margin-right: 15px;
 }
 
 #findStuff ul li a:hover{
-    border-bottom: 1px solid rgb(8, 153, 190); ;
+    border-bottom: 3px solid rgb(8, 153, 190); ;
 }
 
 
@@ -184,7 +188,7 @@ body header ul a:hover{
     grid-template-columns: 1fr 1fr 1fr;
     grid-template-areas: 
     "image aside aside"
-    "quote aside aside";
+    "quote . .";
     align-items: center;
     padding-bottom: 20px;
     gap: 10px;
@@ -195,25 +199,27 @@ body header ul a:hover{
     grid-area: image;
     margin-left: 10px;
     border: 1px solid;
-    width: 400px;
-    height: 200px;
+    width: 700px;
+    height: 400px;
+}
+
+#aside{
+  grid-area: aside;
 }
 
 
-#imageAndAside aside{
-    grid-area: aside;
-    color: rgb(8, 153, 190);
-    text-transform: lowercase;
-    align-self: start;
-
+.sidequote{
+  color: rgb(8, 153, 190);
+  text-transform: lowercase;
+  align-self: center;
 }
 
 #textUnder{
-    display: grid;
-    grid-area: quote;
-    justify-content: center;
-    text-transform: lowercase;
-    color: rgb(8, 153, 190);
+  display: grid;
+  grid-area: quote;
+  justify-content: center;
+  text-transform: lowercase;
+  color: rgb(8, 153, 190);
 }
 
 #footer{

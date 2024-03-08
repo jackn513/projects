@@ -9,7 +9,6 @@ import MainStuff from './components/Main.vue'
 </script>
 
 <style scoped>
-/* Your scoped styles here */
 
 
 </style>
