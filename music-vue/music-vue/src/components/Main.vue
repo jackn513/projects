@@ -16,7 +16,7 @@
             <a href="albums.html">Albums</a>
             <a href="#">Artists</a>
             <a @mouseover="changeColor" @mouseleave="revertColor" href="#">Genres</a>
-            <img :src="heart" id="heart" class="fa-regular fa-heart" alt="Heart Icon" />
+            <!-- <img :src="heart" id="heart" class="fa-regular fa-heart" alt="Heart Icon" /> -->
           </li>
         </ul>
       </section>
@@ -183,9 +183,11 @@ body header ul a:hover{
     border-bottom: 3px solid rgb(8, 153, 190); ;
 }
 
-#heart{
+#heart {
   width: 19px;
   align-self: center;
+  
+  
 }
 
 
