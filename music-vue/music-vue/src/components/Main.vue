@@ -16,7 +16,7 @@
             <a href="albums.html">Albums</a>
             <a href="#">Artists</a>
             <a @mouseover="changeColor" @mouseleave="revertColor" href="#">Genres</a>
-            <img :src="svg" class="fa-regular fa-heart" alt="Heart Icon" />
+            <img :src="heart" id="heart" class="fa-regular fa-heart" alt="Heart Icon" />
           </li>
         </ul>
       </section>
@@ -50,11 +50,14 @@
   </template>
   
   <script>
+  import bandImage from '@/assets/band.jpg';
+  import heartSvg from '@/assets/heart.svg';
   export default {
+
     data() {
       return {
-        image: './assets/band.jpg',
-        svg: './assets/heart.svg'
+        image: bandImage,
+        heart: heartSvg
         
       }
     },
@@ -180,6 +183,11 @@ body header ul a:hover{
     border-bottom: 3px solid rgb(8, 153, 190); ;
 }
 
+#heart{
+  width: 19px;
+  align-self: center;
+}
+
 
 
 #imageAndAside {
@@ -199,8 +207,7 @@ body header ul a:hover{
     grid-area: image;
     margin-left: 10px;
     border: 1px solid;
-    width: 700px;
-    height: 400px;
+    
 }
 
 #aside{
