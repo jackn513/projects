@@ -106,24 +106,29 @@ body header ul a:hover{
     grid-template-columns: 1fr 1fr 1fr;
     grid-template-areas: 
     "image aside aside"
-    "quote aside aside";
+    "quote . . ";
     align-items: center;
     padding-bottom: 20px;
     gap: 10px;
+   
 }
 
 #imageAndAside img{
     display: grid;
     grid-area: image;
     margin-left: 10px;
+
 }
 
 
-#imageAndAside aside{
+#imageAndAside aside {
     grid-area: aside;
     color: rgb(8, 153, 190);
     text-transform: lowercase;
-    align-self: start;
+    align-self: center;
+    color: black;
+
+
 
 }
 
@@ -223,8 +228,8 @@ body header ul a:hover{
         grid-template-columns: 1fr;
         grid-template-areas: 
         "image"
-        "quote"
-        "aside";
+        "aside"
+        "quote";
     }
 
     #imageAndAside img{
