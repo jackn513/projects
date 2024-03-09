@@ -8,8 +8,13 @@ body {
     "find find find"
     "body body body"
     "footer footer footer";
+<<<<<<< HEAD
     margin: 0;
     background-color: rgb(215, 223, 232);
+=======
+   
+    width: 100%;
+>>>>>>> 9b486808e355c110bf1447238d60beac1a7f236d
 }
 
 body header{
