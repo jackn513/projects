@@ -1,13 +1,13 @@
 <template>
   <div>
-    <main-vue/>
+    <MainVue/>
   </div>
 </template>
 
 <script>
 import MainVue from "../components/Main.vue"
 
-export default{
+export default {
   components: {
     MainVue
   }

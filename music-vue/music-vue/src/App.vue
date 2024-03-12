@@ -1,15 +1,19 @@
-<template id="App">
+<template>
   <div>
-    <router-view></router-view>
+    <MainVue/>
   </div>
 </template>
 
 <script>
+import MainVue from "../components/Main.vue"
 
-
+export default {
+  components: {
+    MainVue
+  }
+}
 </script>
 
 <style>
-
-
+/* Global styles go here */
 </style>
