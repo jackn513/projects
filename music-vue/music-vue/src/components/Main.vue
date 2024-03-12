@@ -137,7 +137,8 @@ body {
     "footer footer footer";
     width: 100vw;
     height: 100vh;
-    margin: 0px;
+    margin: 0 !important;;
+    padding: 0 !important;
 }
 
 body header{
@@ -198,7 +199,7 @@ body header ul a:hover{
 }
 #findStuff{
     margin-left: 10px;
-  
+  padding-bottom: 20px;
     grid-area: find;
 }
 
@@ -219,6 +220,7 @@ body header ul a:hover{
     color: rgb(8, 153, 190);
     border-bottom: 1px solid transparent;
     margin-bottom: 20px;
+    padding-bottom: 20px;
 
     
     margin-right: 15px;
@@ -345,6 +347,7 @@ body header ul a:hover{
   padding-right: 8px;
   
 }
+
 #month{
   grid-area: month;
   padding-left: 15px;
