@@ -1,15 +1,14 @@
-<template id="App">
+<template>
   <div>
-    <MainStuff />
+    <router-view></router-view>
   </div>
 </template>
 
-<script setup>
-import MainStuff from './components/Main.vue'
+<script>
+
 
 </script>
 
-<style scoped>
-
-
+<style>
+/* Global styles go here */
 </style>
