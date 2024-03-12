@@ -9,55 +9,57 @@
           <a href="#">Login</a>
         </li>
       </ul>
+      <section id="findStuff">
+        <ul>
+          <li>
+            <router-link v-bind:to="{name: 'albums'}">Albums</router-link>
+            <a href="#">Artists</a>
+            <a  href="#">Genres</a>
+          </li>
+        </ul>
+      </section>
     </header>
-    <section id="findStuff">
-      <ul>
-        <li>
-          <router-link v-bind:to="{name: 'albums'}">Albums</router-link>
-          <a href="#">Artists</a>
-          <a  href="#">Genres</a>
-        </li>
-      </ul>
-    </section>
-    <section id="imageAndAside">
-      <!-- <img src="img/band-img.jpg" alt="signer"> -->
-      <img :src="image" />
-      <aside id="aside">
-        <blockquote class ="sidequote">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</blockquote>
-      </aside>
-      <blockquote id="textUnder">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Molestie nunc non blandit massa 
-        enim nec dui nunc. Malesuada fames ac turpis egestas integer eget aliquet. Dolor sit amet consectetur adipiscing elit ut aliquam purus sit. Nunc pulvinar sapien 
-        et ligula ullamcorper malesuada proin libero nunc. Et molestie ac feugiat sed lectus vestibulum. Id interdum velit laoreet id donec ultrices tincidunt arcu non. 
-        Posuere morbi leo urna molestie at elementum eu. Faucibus et molestie ac feugiat. Et pharetra pharetra massa massa ultricies mi quis hendrerit dolor.
-      </blockquote>
-    </section>
-    <!-- stuff for albums  -->
-
-    <h4 id="check-these">Check out these artists!</h4>
-    <section id="albums">
-    <div id="album-cards"> 
-      <article v-for="(album, index) in albums" :key="index"  :album-id="album.id" class="album-card">
-        <div class="artist-name">{{ album.artist }}</div>
-        <div class="title">{{ album.title }}</div>
-        <div class="price">{{album.price}}</div>
-        <img :src="albumImage" id="albumImage">
-        <img :src="heart" id="heart">
-      </article>
-    </div> <!-- Move this closing div outside of the album section -->
-    <h4 id="month">Articles this month!</h4>
-    </section>
-    <section id="articles">
-    <div id="article-cards">
-      <article v-for="(article, index) in articles" :key="index" class="article-card" :article-id="article.id">
-        <!-- <img :src="productImage" id="article-image"> -->
-        <div class="article-title">{{article.title}}</div>
-        <div class="article-author">written by: {{article.author}}</div>
-        <div class="article-about">{{article.about}}</div>
-        
-      </article>
+    <div class='contents'>
+      <section id="imageAndAside">
+        <!-- <img src="img/band-img.jpg" alt="signer"> -->
+        <img :src="image" />
+        <aside id="aside">
+          <blockquote class ="sidequote">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</blockquote>
+        </aside>
+        <blockquote id="textUnder">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Molestie nunc non blandit massa 
+          enim nec dui nunc. Malesuada fames ac turpis egestas integer eget aliquet. Dolor sit amet consectetur adipiscing elit ut aliquam purus sit. Nunc pulvinar sapien 
+          et ligula ullamcorper malesuada proin libero nunc. Et molestie ac feugiat sed lectus vestibulum. Id interdum velit laoreet id donec ultrices tincidunt arcu non. 
+          Posuere morbi leo urna molestie at elementum eu. Faucibus et molestie ac feugiat. Et pharetra pharetra massa massa ultricies mi quis hendrerit dolor.
+        </blockquote>
+      </section>
+      <!-- stuff for albums  -->
+  
+      <h4 id="check-these">Check out these artists!</h4>
+      <section id="albums">
+      <div id="album-cards"> 
+        <article v-for="(album, index) in albums" :key="index"  :album-id="album.id" class="album-card">
+          <div class="artist-name">{{ album.artist }}</div>
+          <div class="title">{{ album.title }}</div>
+          <div class="price">{{album.price}}</div>
+          <img :src="albumImage" id="albumImage">
+          <img :src="heart" id="heart">
+        </article>
+      </div> <!-- Move this closing div outside of the album section -->
+      <h4 id="month">Articles this month!</h4>
+      </section>
+      <section id="articles">
+      <div id="article-cards">
+        <article v-for="(article, index) in articles" :key="index" class="article-card" :article-id="article.id">
+          <!-- <img :src="productImage" id="article-image"> -->
+          <div class="article-title">{{article.title}}</div>
+          <div class="article-author">written by: {{article.author}}</div>
+          <div class="article-about">{{article.about}}</div>
+          
+        </article>
+      </div>
+      </section>
     </div>
-    </section>
     <footer id="footer">
       <ul>
         <li>
@@ -129,13 +131,7 @@ body {
   grid-template-columns: repeat(3, 1fr);
   grid-template-areas: 
   "header header header"
-  "find find find"
   "body body body"
-  "check check check "
-  "albums albums albums"
-  "month month month"
-  "articles articles articles"
-  ". . ."
   "footer footer footer";
   width: 100vw;
   height: 100vh;
@@ -148,7 +144,8 @@ body header{
   color: rgb(8, 153, 190);
   display: grid;
   grid-template-columns: 200px 1fr 1fr;
-  grid-template-areas: "header input signup";
+  grid-template-areas: "header input signup"
+  "find find find";
 
 
 }
@@ -231,11 +228,13 @@ body header ul a:hover{
 }
 
 
-
-
-
-#imageAndAside {
+.contents{
   grid-area: body;
+}
+
+
+ #imageAndAside {
+
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   grid-template-areas: 
@@ -283,17 +282,14 @@ padding-left: 15px;
 text-transform: lowercase;
 color: rgb(8, 153, 190);
 }
-#albums {
-grid-area: albums;
 
-}
 
 #album-cards{
 display: flex;
 flex-wrap: wrap;
 }
 .album-card{
-grid-area: albums;
+
 display: grid;
 grid-template-columns: 30px 1fr 30px;
 grid-template-areas: 
