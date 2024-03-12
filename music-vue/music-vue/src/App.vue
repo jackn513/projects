@@ -1,15 +1,15 @@
 <template id="App">
   <div>
-    <MainStuff />
+    <router-view></router-view>
   </div>
 </template>
 
-<script setup>
-import MainStuff from './components/Main.vue'
+<script>
+
 
 </script>
 
-<style scoped>
+<style>
 
 
 </style>
