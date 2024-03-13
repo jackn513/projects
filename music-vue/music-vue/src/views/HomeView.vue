@@ -15,6 +15,7 @@
             <router-link v-bind:to="{name: 'albums'}">Albums</router-link>
             <a href="#">Artists</a>
             <a  href="#">Genres</a>
+            
           </li>
         </ul>
       </section>
@@ -35,13 +36,14 @@
       </section>
       <!-- stuff for albums  -->
   
-      <h4 id="check-these">Check out these artists!</h4>
+      <h4 id="check-these">Check out our favorites this month!</h4>
       <section id="albums">
       <div id="album-cards"> 
-        <article v-for="(album, index) in albums" :key="index"  :album-id="album.id" class="album-card">
-          <div class="artist-name">{{ album.artist }}</div>
-          <div class="title">{{ album.title }}</div>
-          <div class="price">{{album.price}}</div>
+        <article v-for="(fave, index) in faves" :key="index"  :fave-id="fave.id" class="album-card">
+          <div class="artist-name">{{ fave.artist }}</div>
+          <div class="title">{{ fave.title }}</div>
+          
+          <div class="price">{{fave.price}}</div>
           <img :src="albumImage" id="albumImage">
           <img :src="heart" id="heart">
         </article>
@@ -80,7 +82,7 @@
 import bandImage from '@/assets/band.jpg';
 import heartSvg from '@/assets/heart.svg';
 import albumImage from '@/assets/product.jpg';
-import albums from '../assets/Albums.js';
+import faves from '../assets/Faves.js';
 import articles from '../assets/Articles.js';
 
 
@@ -90,7 +92,7 @@ export default {
     return {
       image: bandImage,
       heart: heartSvg,
-      albums: albums.getAlbumData(),
+      faves: faves.getFaveData(),
       articles: articles.getArticleData(),
       albumImage: albumImage,
       

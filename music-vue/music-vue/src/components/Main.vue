@@ -78,7 +78,7 @@
   import bandImage from '@/assets/band.jpg';
   import heartSvg from '@/assets/heart.svg';
   import albumImage from '@/assets/product.jpg';
-  import albums from '../assets/Albums.js';
+  import albums from '../assets/Faves.js';
   import articles from '../assets/Articles.js';
   
 
