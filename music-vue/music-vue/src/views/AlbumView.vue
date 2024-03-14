@@ -14,24 +14,43 @@
           <li>
             <router-link v-bind:to="{name: 'albums'}" class="router-link-albums">Albums</router-link>
             <a href="#">Artists</a>
-            <a href="#">Genres</a>
+            
           </li>
         </ul>
       </section>
     </header>
     <div class='contents'>
       <div id="album-cards"> 
-        <router-link v-for="(album, index) in albums" :to="'/'" :key="index" class="router-link-album-cards" >
-            <article class="album-card">
-                <div class="title"><a>{{ album.title }}</a></div>
+        <section v-for="(album, index) in albums" :key="index" class="router-link-album-cards" @click="showAbout(album)">
+          <article class="album-card">
+              <div class="title"><a>{{ album.title }}</a></div>
+              <div class="artist-name">{{ album.artistName }}</div>
+              <div class="price">{{ priceFormat(album.price) }}</div>
+              <img :src="album.image" id="albumImage">
+          </article>
+          <div v-show="album.showAbout" class="AboutAlbum">
+            <ul>
+              <li v-for="(track, index) in album.trackList" :key="index">{{ track }}</li>
+            </ul>
+          </div>
+
+          
+        </section> 
+        <div id="album-about">
+          <div class="about-cards">
+            <section v-for="(track, index) in albums.trackList" :key="index" class="router-link-album-cards" @click="showAbout(album)">
+              <article v-show="album.showAbout" class="AboutAlbum">
+                <div class="title">{{album.title}}</div>
                 <div class="artist-name">{{ album.artistName }}</div>
-                <!-- <div class="title">{{ album.label }}</div> -->
-                <div class="price">{{ album.price }}</div>
+                <div class="price">{{ priceFormat(album.price) }}</div>
                 <img :src="album.image" id="albumImage">
-                <!-- <img :src="heart" id="heart"> -->
-            </article>
-        </router-link>                                                                                                                                                                                                                     
+              </article>
+            </section>
+          </div>
+        </div>     
+        
     </div> 
+
       
     </div>
     <footer id="footer">
@@ -67,33 +86,35 @@ export default {
       albums: albums.getAlbumData(),
       articles: articles.getArticleData(),
       albumImage: albumImage,
-      isRed: false
+      // showAbout: false
     }
   },
   methods:{
-  
-    changeColor() {
-      // Change the color to a random color
-      const randomColor = '#' + Math.floor(Math.random()*16777215).toString(16);
-      this.svgColor = randomColor;
+    showAbout(album){
+      album.showAbout = !album.showAbout;
     },
-    revertColor(event){
-      event.target.src = this.heart;
+
+    getTrackList(album){
+
+      const selectedAlbum = this.albums.find(item => item.id === album.id);
+
+      if (selectedAlbum){
+        return selectedAlbum.trackList;
+      }
     },
-    priceFormat(){
-      return new Intl.NumberFormat(`en-US`, {
-        currency: `USD`,
-        style: "currency"
-      }).format(albums.price);
-    },
+
+    priceFormat(price) {
+  return new Intl.NumberFormat(`en-US`, {
+    currency: `USD`,
+    style: "currency"
+  }).format(price);
+},
   }
 }
 </script>
 
 <style scoped>
-.router-link a {
-  text-decoration: none;
-}
+
 .router-link-exact-active {
   text-decoration: none;
 }
@@ -223,8 +244,8 @@ body header ul a:hover {
   grid-template-columns: 30px 1fr 30px;
   grid-template-areas: 
   
-  "image image image image"
-  "image image image image"
+  "image image image image "
+  "image image image image "
   "artist artist price price"
   "title title title title"
   "title title title title"
@@ -236,6 +257,10 @@ body header ul a:hover {
   margin-right: 50px;
   margin-bottom: 20px;
   
+}
+.router-link-album-cards{
+  text-decoration: none;
+  color: black;
 }
 
 .album-card:hover {
@@ -252,6 +277,7 @@ body header ul a:hover {
   grid-area: artist;
   font-size: small;
   padding-left: 11px;
+  align-self: center;
 }
 
 .title {
@@ -260,6 +286,7 @@ body header ul a:hover {
   color: rgb(54, 51, 51);
   padding-left: 11px;
   text-decoration: none;
+  align-self: center;
 }
 
 .price {
@@ -275,6 +302,7 @@ body header ul a:hover {
   padding-right: 8px;
   
 }
+
 
 #footer {
   display: grid;

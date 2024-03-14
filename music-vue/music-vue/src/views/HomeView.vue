@@ -14,7 +14,7 @@
           <li>
             <router-link v-bind:to="{name: 'albums'}">Albums</router-link>
             <a href="#">Artists</a>
-            <a  href="#">Genres</a>
+          
             
           </li>
         </ul>
@@ -313,7 +313,7 @@ margin-bottom: 20px;
 }
 .album-card:hover{
 
-background-color: rgba(8, 154, 190, 0.408);
+  background-color: rgba(163, 167, 169, 0.408);
 }
 
 #albumImage{
