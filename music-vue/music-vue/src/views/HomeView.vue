@@ -93,6 +93,7 @@ export default {
       image: bandImage,
       heart: heartSvg,
       faves: faves.getFaveData(),
+  
       articles: articles.getArticleData(),
       albumImage: albumImage,
       
@@ -133,6 +134,7 @@ body {
   grid-template-columns: repeat(3, 1fr);
   grid-template-areas: 
   "header header header"
+  
   "body body body"
   "footer footer footer";
   width: 100vw;
@@ -197,10 +199,11 @@ body header ul a{
 body header ul a:hover{
   border-bottom: 1px solid BLACK;
 }
+
 #findStuff{
   margin-left: 10px;
-
   grid-area: find;
+  margin-bottom: 5px;
 }
 
 #findStuff ul {
@@ -210,6 +213,7 @@ body header ul a:hover{
   align-items: center;
   list-style: none;
   padding-left: 5px; 
+ 
 }
 
 #findStuff ul li a {
@@ -219,10 +223,9 @@ body header ul a:hover{
   text-transform: lowercase;
   color: rgb(8, 153, 190);
   border-bottom: 1px solid transparent;
-  margin-bottom: 20px;
-
-  
   margin-right: 15px;
+  padding-bottom: 20px;
+  
 }
 
 #findStuff ul li a:hover{
