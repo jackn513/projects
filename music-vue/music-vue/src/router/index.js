@@ -2,7 +2,7 @@ import { createRouter as _createRouter, createWebHistory } from 'vue-router';
 
 import HomeView from '../views/HomeView.vue';
 import AlbumView from '../views/AlbumView.vue'
-// import AlbumCardView from '../views/AlbumCardView.vue'
+import AlbumCardView from '../views/AlbumCardView.vue'
 
 const routes = [
   {
@@ -13,8 +13,16 @@ const routes = [
   {
     path: '/albums',
     name: 'albums',
-    component: AlbumView
+    component: AlbumView,
+    children: [
+      {
+      path: 'card',
+      name: 'card',
+      component: AlbumCardView
+    }
+    ]
   }, 
+
  
   
 ];

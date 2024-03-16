@@ -1,87 +1,81 @@
 <template id="Main">
-  <body>
-    <header>
-      <router-link v-bind:to="{name: 'home'}" class="router-link-home"><h1>digitalNoise</h1></router-link>
-      <input name="search" placeholder=" search products: " />
-      <ul>
-        <li>
-          <a href="#">Sign Up</a>
-          <a href="#">Login</a>
-        </li>
-      </ul>
-      <section id="findStuff">
+    <body>
+      <header>
+        <router-link v-bind:to="{name: 'home'}" class="router-link-home"><h1>digitalNoise</h1></router-link>
+        <input name="search" placeholder=" search products: " />
+        
+  
         <ul>
           <li>
-            <router-link v-bind:to="{name: 'albums'}" class="router-link-albums">Albums</router-link>
-            <a href="#">Artists</a>
+            <a href="#">Sign Up</a>
+            <a href="#">Login</a>
             
           </li>
         </ul>
-      </section>
-    </header>
-    <div class='contents'>
-      <div id="album-cards"> 
-        <section v-for="(album, index) in albums" :key="index" class="router-link-album-cards" @click="showAbout(album)">
-          <article class="album-card">
+        <section id="findStuff">
+          <ul>
+            <li>
+              <router-link v-bind:to="{name: 'albums'}" class="router-link-albums">Albums</router-link>
+              <a href="#">Artists</a>
+              <a href="#">cart</a>
+             
+            </li>
+          </ul>
+        </section>
+      </header>
+      <div class='contents'>
+        <div id="album-cards"> 
+          <section v-for="(album, index) in albums" :key="index" class="router-link-album-cards">
+            <article class="album-card" @click="showAbout(album)">
               <div class="title"><a>{{ album.title }}</a></div>
               <div class="artist-name">{{ album.artistName }}</div>
               <div class="price">{{ priceFormat(album.price) }}</div>
               <img :src="album.image" id="albumImage">
-          </article>
-          <div v-show="album.showAbout" class="AboutAlbum">
-            <ul>
-              <li v-for="(track, index) in album.trackList" :key="index">{{ track }}</li>
-            </ul>
-          </div>
-
-          
-        </section> 
-        <div id="album-about">
-          <div class="about-cards">
-            <section v-for="(track, index) in albums.trackList" :key="index" class="router-link-album-cards" @click="showAbout(album)">
-              <article v-show="album.showAbout" class="AboutAlbum">
-                <div class="title">{{album.title}}</div>
-                <div class="artist-name">{{ album.artistName }}</div>
-                <div class="price">{{ priceFormat(album.price) }}</div>
-                <img :src="album.image" id="albumImage">
-              </article>
-            </section>
-          </div>
-        </div>     
-        
-    </div> 
-
+            </article>
+          </section>
+        </div> 
+      </div>
       
-    </div>
-    <footer id="footer">
-      <ul>
-        <li>
-          <a href="example"><h5>about us</h5></a>
-          <a href="example"><h5>contact us</h5></a>
-          <a href="example"><h5>privacy</h5></a>
-          <a href="example"><h5>accessibility</h5></a>
-          <a href="example"><h5>other products</h5></a>
-          <a href="example"><h5>make yourself useful</h5></a>
-          <a href="example"><h5>newsletter</h5></a>
-        </li>
-      </ul>
-    </footer>
-  </body>
+      
+      <div class="info">
+        <router-view><cart></cart></router-view>
+        <card-vue/>
+      </div>
+      <footer id="footer">
+        <ul>
+          <li>
+            <a href="example"><h5>about us</h5></a>
+            <a href="example"><h5>contact us</h5></a>
+            <a href="example"><h5>privacy</h5></a>
+            <a href="example"><h5>accessibility</h5></a>
+            <a href="example"><h5>other products</h5></a>
+            <a href="example"><h5>make yourself useful</h5></a>
+            <a href="example"><h5>newsletter</h5></a>
+          </li>
+        </ul>
+      </footer>
+    </body>
 </template>
 
 <script>
 import bandImage from '@/assets/band.jpg';
 import heartSvg from '@/assets/heart.svg';
+import cartSvg from '@/assets/cart.svg';
 import albumImage from '@/assets/product.jpg';
 import albums from '../assets/Albums.js';
 import articles from '../assets/Articles.js';
+import cardVue from '../components/AlbumCard.vue'
 
 
 export default {
+  components: {
+    cardVue
+  },
   data() {
     return {
       image: bandImage,
       heart: heartSvg,
+      cart: cartSvg,
       svgColor: 'red',
       albums: albums.getAlbumData(),
       articles: articles.getArticleData(),
@@ -90,8 +84,19 @@ export default {
     }
   },
   methods:{
-    showAbout(album){
-      album.showAbout = !album.showAbout;
+    showAbout(album) {
+      // Hide about for all albums
+      this.albums.forEach(element => {
+        if (element !== album) {
+          element.showAbout = false;
+        }
+      });
+      album.showAbout = ! album.showAbout
+      
+    },
+
+    handleClick(){
+      console.log("hi")
     },
 
     getTrackList(album){
@@ -128,7 +133,7 @@ body {
   grid-template-columns: repeat(3, 1fr);
   grid-template-areas: 
   "header header header"
-  "contents contents contents"
+  "contents contents info"
   "footer footer footer";
   width: 100vw;
   height: 100vh;
@@ -223,6 +228,10 @@ body header ul a:hover {
   padding-bottom: 20px;
   
 }
+#cart{
+  width: 25px;
+  align-self: end;
+}
 
 #findStuff ul li a:hover{
   border-bottom: 1px solid rgb(8, 153, 190); ;
@@ -230,6 +239,7 @@ body header ul a:hover {
 
 .contents{
   grid-area: contents;
+ 
 }
 #album-cards{
   grid-area: contents;
@@ -245,10 +255,10 @@ body header ul a:hover {
   grid-template-areas: 
   
   "image image image image "
-  "image image image image "
-  "artist artist price price"
+  "image image image image  "
+  "artist artist price price "
   "title title title title"
-  "title title title title"
+  "title title title title "
   ". . . heart";
   width: 255px;
   height: 340px;
@@ -302,8 +312,69 @@ body header ul a:hover {
   padding-right: 8px;
   
 }
+.info{
+  grid-area: info;
+ 
+  
+  
+}
 
 
+
+.album-about-card {
+  position:fixed;
+  
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: 470px 40px 40px 140px 50px;
+  grid-template-areas: 
+    "image image image image"
+    "name name name price"
+    "title title title title"
+    "button button button button";
+  width: 455px;
+  height: 700px;
+  margin-left: 15px;
+  background-color: rgba(163, 167, 169, 0.408);
+  
+  margin-right: 50px;
+  
+    
+}
+.about-image{
+  grid-area: image;
+  width: 455px;  
+  
+}
+.about-card-add{
+grid-area: button;
+cursor: pointer;
+height: 45px;
+margin-left: 7px;
+margin-right: 7px;
+
+border: 1px solid black;
+align-self: end;
+}
+
+.about-artist-name{
+  grid-area: name;
+  align-self: start;
+  margin-left: 7px;
+  
+  
+}
+.about-title{
+  grid-area: title;
+  margin-left: 7px;
+  
+}
+
+.about-price{
+  grid-area: price;
+  justify-self: end;
+  margin-right: 7px;
+}
 #footer {
   display: grid;
   grid-area: footer;

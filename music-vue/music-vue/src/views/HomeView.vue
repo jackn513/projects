@@ -14,6 +14,7 @@
           <li>
             <router-link v-bind:to="{name: 'albums'}">Albums</router-link>
             <a href="#">Artists</a>
+            <a href="#">cart</a>
           
             
           </li>
@@ -134,7 +135,6 @@ body {
   grid-template-columns: repeat(3, 1fr);
   grid-template-areas: 
   "header header header"
-  
   "body body body"
   "footer footer footer";
   width: 100vw;
