@@ -120,13 +120,12 @@ export default {
 
 <style scoped>
 
-.router-link-exact-active {
+.router-link-home {
   text-decoration: none;
 }
 .router-link-active {
   text-decoration: none;
 }
-
 body {
   font-family: Arial, Helvetica, sans-serif;
   display: grid;
@@ -137,28 +136,24 @@ body {
   "footer footer footer";
   width: 100vw;
   height: 100vh;
-  margin-right: auto;
-  padding-left: 0;
-  
-
-}
-.router-link-home {
-  text-decoration: none;
+  margin: 0px;
+  padding: 0;
 }
 
-
-body header {
+body header{
   grid-area: header;
   align-items: center;
   color: rgb(8, 153, 190);
   display: grid;
   grid-template-columns: 200px 1fr 1fr;
-  grid-template-areas: 
-  "header input signup"
+  grid-template-areas: "header input signup"
   "find find find";
+
+
 }
 
 body header h1 {
+  /* border: 2px solid violet; */
   text-transform: lowercase;
   color: black;
   display: grid;
@@ -167,15 +162,18 @@ body header h1 {
 }
 
 body header input {
+  /* border: 2px solid blue; */
   display: grid;
   grid-area: input;
   height: 30px;
   width: 250px;
   border: 0;
   background-color: rgba(233, 224, 224, 0.728);
+
 }
 
 body header ul {
+  /* border: 2px solid red; */
   margin-right: 10px;
   font-size: medium;
   font-family: Arial, Helvetica, sans-serif;
@@ -186,24 +184,21 @@ body header ul {
   grid-area: signup;
   border-bottom: 3px solid transparent;
 }
-
-body header ul a {
+body header ul a{
   font-family: Arial, Helvetica, sans-serif;
   color: black;
   text-decoration: none;
   text-transform: lowercase;
-  padding-right: 10px;
+  margin-right: 10px;
   font-size: medium;
   text-transform: lowercase;
   padding-bottom: 20px;
 }
-
-body header ul a:hover {
+body header ul a:hover{
   border-bottom: 1px solid BLACK;
 }
-
 #findStuff{
-  padding-left: 10px;
+  margin-left: 10px;
   grid-area: find;
   margin-bottom: 5px;
 }
@@ -228,10 +223,6 @@ body header ul a:hover {
   margin-right: 15px;
   padding-bottom: 20px;
   
-}
-#cart{
-  width: 25px;
-  align-self: end;
 }
 
 #findStuff ul li a:hover{
@@ -315,6 +306,7 @@ body header ul a:hover {
 }
 .info{
   grid-area: info;
+  
 
 }
 

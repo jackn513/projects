@@ -54,14 +54,17 @@ export default {
 body{
   margin: 0;
   padding: 0;
+  
 }
 .album-about {
   display: grid;
   margin-right: 50%;
   /* margin-left: 50%; */
+  /* position: fixed; */
 }
 
 .album-about-card {
+  
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   grid-template-rows: 470px 25px 40px 140px 50px;
