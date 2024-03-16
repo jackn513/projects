@@ -38,7 +38,7 @@
       
       
       <div class="info">
-        <router-view><cart></cart></router-view>
+        <router-view id="card-view"><cart></cart></router-view>
         <card-vue/>
       </div>
       <footer id="footer">
@@ -137,7 +137,8 @@ body {
   "footer footer footer";
   width: 100vw;
   height: 100vh;
-  margin: 0px;
+  margin-right: auto;
+  padding-left: 0;
   
 
 }
@@ -191,7 +192,7 @@ body header ul a {
   color: black;
   text-decoration: none;
   text-transform: lowercase;
-  margin-right: 10px;
+  padding-right: 10px;
   font-size: medium;
   text-transform: lowercase;
   padding-bottom: 20px;
@@ -202,7 +203,7 @@ body header ul a:hover {
 }
 
 #findStuff{
-  margin-left: 10px;
+  padding-left: 10px;
   grid-area: find;
   margin-bottom: 5px;
 }
@@ -314,67 +315,11 @@ body header ul a:hover {
 }
 .info{
   grid-area: info;
- 
-  
-  
+
 }
 
 
 
-.album-about-card {
-  position:fixed;
-  
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  grid-template-rows: 470px 40px 40px 140px 50px;
-  grid-template-areas: 
-    "image image image image"
-    "name name name price"
-    "title title title title"
-    "button button button button";
-  width: 455px;
-  height: 700px;
-  margin-left: 15px;
-  background-color: rgba(163, 167, 169, 0.408);
-  
-  margin-right: 50px;
-  
-    
-}
-.about-image{
-  grid-area: image;
-  width: 455px;  
-  
-}
-.about-card-add{
-grid-area: button;
-cursor: pointer;
-height: 45px;
-margin-left: 7px;
-margin-right: 7px;
-
-border: 1px solid black;
-align-self: end;
-}
-
-.about-artist-name{
-  grid-area: name;
-  align-self: start;
-  margin-left: 7px;
-  
-  
-}
-.about-title{
-  grid-area: title;
-  margin-left: 7px;
-  
-}
-
-.about-price{
-  grid-area: price;
-  justify-self: end;
-  margin-right: 7px;
-}
 #footer {
   display: grid;
   grid-area: footer;
