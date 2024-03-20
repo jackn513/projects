@@ -1,3 +1,5 @@
+// import './assets/'
+
 import { createApp } from 'vue'
 import MyApp from './App.vue'
 import { createRouter } from './router'

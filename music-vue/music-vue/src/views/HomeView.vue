@@ -1,26 +1,6 @@
 <template id="Main">
   <body>
-    <header>
-      <router-link v-bind:to="{name: 'home'}"><h1>digitalNoise</h1></router-link>
-      <input name="search" placeholder=" search products: " />
-      <ul>
-        <li>
-          <a href="#">Sign Up</a>
-          <a href="#">Login</a>
-        </li>
-      </ul>
-      <section id="findStuff">
-        <ul>
-          <li>
-            <router-link v-bind:to="{name: 'albums'}">Albums</router-link>
-            <a href="#">Artists</a>
-            <a href="#">cart</a>
-          
-            
-          </li>
-        </ul>
-      </section>
-    </header>
+    
     <div class='contents'>
       <section id="imageAndAside">
         <!-- <img src="img/band-img.jpg" alt="signer"> -->
@@ -137,19 +117,19 @@ body {
   "header header header"
   "body body body"
   "footer footer footer";
-  width: 100vw;
-  height: 100vh;
+  
   margin: 0px;
   padding: 0;
 }
 
-body header{
+body .header{
   grid-area: header;
   align-items: center;
   color: rgb(8, 153, 190);
   display: grid;
   grid-template-columns: 200px 1fr 1fr;
-  grid-template-areas: "header input signup"
+  grid-template-areas: 
+  "header input signup"
   "find find find";
 
 
@@ -205,6 +185,7 @@ body header ul a:hover{
   margin-left: 10px;
   grid-area: find;
   margin-bottom: 5px;
+  
 }
 
 #findStuff ul {
@@ -222,7 +203,7 @@ body header ul a:hover{
   padding-bottom: 10px;
   text-decoration: none; 
   text-transform: lowercase;
-  color: rgb(8, 153, 190);
+  color: black;
   border-bottom: 1px solid transparent;
   margin-right: 15px;
   padding-bottom: 20px;
@@ -230,7 +211,7 @@ body header ul a:hover{
 }
 
 #findStuff ul li a:hover{
-  border-bottom: 1px solid rgb(8, 153, 190); ;
+  border-bottom: 1px solid black ;
 }
 
 
@@ -269,7 +250,7 @@ grid-area: stuff;
 
 
 .sidequote{
-color: rgb(8, 153, 190);
+color: black;
 text-transform: lowercase;
 align-self: center;
 }
@@ -279,14 +260,14 @@ display: grid;
 grid-area: quote;
 justify-content: center;
 text-transform: lowercase;
-color: rgb(8, 153, 190);
+color: black;
 }
 
 #check-these{
 grid-area: check;
 padding-left: 15px;
 text-transform: lowercase;
-color: rgb(8, 153, 190);
+color: black;
 }
 
 
@@ -420,7 +401,7 @@ align-self: end;
 #footer{
   display: grid;
   grid-area: footer;
-  background-color: rgba(8, 154, 190, 0.408);
+  background-color: black;
   border-top: 2px solid;
   width: 100vw;
 
@@ -441,14 +422,14 @@ align-self: end;
   padding-bottom: 10px;
   text-decoration: none; 
   text-transform: lowercase;
-  color: black;
+  color: white;
   margin-right: 10px;
   border-bottom: 1px solid transparent;
 
 }
 
 #footer ul li a:hover{
-  border-bottom: 1px solid black;
+  border-bottom: 1px solid white;
 }
 
 
