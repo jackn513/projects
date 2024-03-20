@@ -6,10 +6,10 @@
           <!-- // card details //  -->
           <button class="about-card-add" @click="handleClick">add to cart</button>
           <img :src="album.image" class="about-image">
-          <div class="about-title"><a>{{ album.title }}</a></div>
+          <div class="about-title">{{ album.title }}</div>
           <div class="about-artist-name">{{ album.artistName }}</div>
           <div class="about-price">{{ priceFormat(album.price) }}</div>
-          <div class="about-date">Date released: {{ album.releaseDate}} </div>
+          <div class="about-date"> year released: {{ album.releaseDate}} </div>
           <!-- <ul class="tracks-ul">
             <li v-for="(track, index) in album.trackList" :key="index" class="about-tracks">{{ index + 1}}: {{ track }}</li>
           </ul> -->
@@ -70,15 +70,15 @@ body{
   /* position: fixed; */
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  grid-template-rows: 470px 25px 40px 140px 50px;
+  grid-template-rows: 570px 25px 40px 140px 50px;
   grid-template-areas: 
     "image image image image"
     "name name name price"
-    "title title title title"
+    "title title . ."
     "date date . length"
     "button button button button";
-  width: 455px;
-  height: 735px;
+  width: 555px;
+  height: 835px;
   background-color: rgba(163, 167, 169, 0.408);
   /* overflow: auto; */
 
@@ -89,7 +89,6 @@ body{
 .about-image {
   grid-area: image;
   width: 100%;
-
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
 }
@@ -108,13 +107,14 @@ body{
 
 .about-date{
   grid-area: date;
-  padding-left: 7px;
   align-self: end;
+  padding-left: 7px;
 }
 .about-artist-name {
   grid-area: name;
   align-self: start;
   padding-left: 7px;
+  font-weight: bold;
 }
 
 .tracks-ul {
@@ -135,7 +135,7 @@ body{
 .about-title {
   grid-area: title;
   margin-left: 7px;
-  
+  color: black;
 }
 
 .about-price {

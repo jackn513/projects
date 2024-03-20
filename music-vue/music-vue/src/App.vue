@@ -1,27 +1,27 @@
 <template>
   <body>
-      <header>
-        <router-link v-bind:to="{name: 'home'}" class="router-link-home"><h1>digitalNoise</h1></router-link>
-        <input class="search" name="search" placeholder=" search products: " />
+    <header>
+      <router-link v-bind:to="{name: 'home'}" class="router-link-home"><h1>digitalNoise</h1></router-link>
+      <input class="search"  placeholder=" search products: " />
 
+      <ul>
+        <li>
+          <a href="#">Sign Up</a>
+          <a href="#">Login</a>
+          
+        </li>
+      </ul>
+      <section id="findStuff">
         <ul>
           <li>
-            <a href="#">Sign Up</a>
-            <a href="#">Login</a>
-            
+            <router-link v-bind:to="{name: 'albums'}" class="router-link-albums">Albums</router-link>
+            <a href="#">Artists</a>
+            <a href="#">cart</a>
+           
           </li>
         </ul>
-        <section id="findStuff">
-          <ul>
-            <li>
-              <router-link v-bind:to="{name: 'albums'}" class="router-link-albums">Albums</router-link>
-              <a href="#">Artists</a>
-              <a href="#">cart</a>
-             
-            </li>
-          </ul>
-        </section>
-      </header>
+      </section>
+    </header>
   <div>
     <router-view class="view"></router-view>
   </div>
@@ -42,6 +42,34 @@
 </template>
 
 <script>
+
+import albums from "./assets/Albums"
+export default{
+  data() {
+    return {
+      albums: albums.getAlbumData(),
+      search: {
+        title: '',
+        artistName: '',
+        releaseDate: '',
+        price: ''
+      }
+    }
+  },
+  methods:{
+    filteredAlbums(){
+  let arrayAlbums = this.albums;
+
+  if (this.search.title !== ''){
+    arrayAlbums = arrayAlbums.filter(element => {
+      console.log(element.title.toLowerCase().includes(this.search.title.toLowerCase()))
+    })
+  }
+  
+  return arrayAlbums;
+}
+  }
+}
 
 
 </script>
@@ -124,7 +152,7 @@ body header ul a{
   padding-bottom: 20px;
 }
 body header ul a:hover{
-  border-bottom: 1px solid BLACK;
+  border-bottom: 3px solid BLACK;
 }
 #findStuff{
   margin-left: 10px;
@@ -148,14 +176,16 @@ body header ul a:hover{
   text-decoration: none; 
   text-transform: lowercase;
   color: black;
-  border-bottom: 1px solid transparent;
+  border-bottom: 3px solid transparent;
   margin-right: 15px;
   padding-bottom: 20px;
+
+  
   
 }
 
 #findStuff ul li a:hover{
-  border-bottom: 1px solid black;
+  border-bottom: 3px solid black;
 }
 
 .view{

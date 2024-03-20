@@ -46,7 +46,8 @@
     <footer id="footer">
       <ul>
         <li>
-          <a href="example"><h5>about us</h5></a>
+          <!-- <router-link v-bind:to="{name: 'about'}" @click="scrollToTop"><h5>about us</h5></router-link> -->
+          <a href="example"><h5>about</h5></a>
           <a href="example"><h5>contact us</h5></a>
           <a href="example"><h5>privacy</h5></a>
           <a href="example"><h5>accessibility</h5></a>
@@ -78,11 +79,18 @@ export default {
       albums: albums.getAlbumData(),
       articles: articles.getArticleData(),
       albumImage: albumImage,
-      
-      
+      search: {
+        title: '',
+        artistName: '',
+        releaseDate: '',
+        price: ''
+      }
     }
   },
   methods:{
+    scrollToTop() {
+    window.scrollTo(0, 0);
+  },
     changeColor(event) {
       if (event.target.src === this.heart){
           event.target.src = 'red';
@@ -101,6 +109,16 @@ export default {
         style: "currency"
       }).format(albums.price);
     },
+
+    filteredAlbums(){
+      let arrayAlbums = this.albums;
+
+      if (this.title != ''){
+        arrayAlbums = arrayAlbums.filter(element => {
+          return element.title.toLocaleLowerCase().includes(this.search.title.toLocaleLowerCase())
+        })
+      }
+    }
   },
   computed: {
     filteredAlbums() {

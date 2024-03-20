@@ -3,6 +3,7 @@ import { createRouter as _createRouter, createWebHistory } from 'vue-router';
 import HomeView from '../views/HomeView.vue';
 import AlbumView from '../views/AlbumView.vue'
 import AlbumCardView from '../views/AlbumCardView.vue'
+// import AboutView from 
 
 const routes = [
   {
@@ -22,6 +23,7 @@ const routes = [
     }
     ]
   }, 
+
 
  
   
