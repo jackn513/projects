@@ -20,14 +20,14 @@
       <h4 id="check-these">Check out our favorites this month!</h4>
       <section id="albums">
       <div id="album-cards"> 
-        <article v-for="(fave, index) in faves" :key="index"  :fave-id="fave.id" class="album-card">
-          <div class="artist-name">{{ fave.artist }}</div>
-          <div class="title">{{ fave.title }}</div>
-          
-          <div class="price">{{fave.price}}</div>
-          <img :src="albumImage" id="albumImage">
-          <img :src="heart" id="heart">
-        </article>
+        <section v-for="(album, index) in filteredAlbums" :key="index" class="album-card">
+          <article class="album-card" @click="showAbout(album)">
+            
+            <div class="artist-name">{{ album.artistName }}</div>
+            
+            <img :src="album.image" id="albumImage">
+          </article>
+        </section>
       </div> <!-- Move this closing div outside of the album section -->
       <h4 id="month">Articles this month!</h4>
       </section>
@@ -65,6 +65,7 @@ import heartSvg from '@/assets/heart.svg';
 import albumImage from '@/assets/product.jpg';
 import faves from '../assets/Faves.js';
 import articles from '../assets/Articles.js';
+import albums from '../assets/Albums.js'
 
 
 export default {
@@ -74,7 +75,7 @@ export default {
       image: bandImage,
       heart: heartSvg,
       faves: faves.getFaveData(),
-  
+      albums: albums.getAlbumData(),
       articles: articles.getArticleData(),
       albumImage: albumImage,
       
@@ -100,6 +101,11 @@ export default {
         style: "currency"
       }).format(albums.price);
     },
+  },
+  computed: {
+    filteredAlbums() {
+      return this.albums.slice(5, 9); // Limiting to the first 4 albums
+    }
   }
 
 }
@@ -118,8 +124,8 @@ body {
   "body body body"
   "footer footer footer";
   
-  margin: 0px;
-  padding: 0;
+
+  
 }
 
 body .header{
@@ -152,6 +158,7 @@ body header input {
   width: 250px;
   border: 0;
   background-color: rgba(233, 224, 224, 0.728);
+  border-radius: 10px;
 
 }
 
@@ -230,6 +237,7 @@ body header ul a:hover{
   align-items: center;
   padding-bottom: 20px;
   gap: 10px;
+  padding-left: 5px; 
 }
 
 #imageAndAside img{
@@ -274,61 +282,64 @@ color: black;
 #album-cards{
 display: flex;
 flex-wrap: wrap;
-}
-.album-card{
+margin-left: 15px;
 
-display: grid;
-grid-template-columns: 30px 1fr 30px;
-grid-template-areas: 
-". . . "
-"image image image"
-"artist price price "
-"title heart heart";
-
-
-width: 200px;
-height: 200px;
-padding: 7px;
-margin-right: 20px;
-margin-bottom: 20px;
 
 }
-.album-card:hover{
+.album-card {
+  display: grid;
+  grid-template-columns: 30px 1fr 30px;
+  grid-template-areas: 
+  
+  "image image image image "
+  "image image image image  "
+  "artist artist price price "
+  "title title title title"
+  "title title title title "
+  ". . . heart";
+  width: 155px;
+  height: 240px;
+  text-transform: lowercase;
+  
+  
+  margin-right: 50px;
+  margin-bottom: 20px;
 
+  
+
+  border-radius: 10px;
+}
+.router-link-album-cards{
+  text-decoration: none;
+  color: black;
+}
+
+.album-card:hover {
   background-color: rgba(163, 167, 169, 0.408);
 }
 
-#albumImage{
-width: 180px;
-
-grid-area: image;
-justify-self: center;
-}
-.artist-name{
-grid-area: artist;
-font-size: small;
-padding-left: 11px;
-
+#albumImage {
+  width: 155px;
+  height: 155px;
+  grid-area: image;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
 }
 
-.title{
-grid-area:title;
-font-size: small;
-color: rgb(54, 51, 51);
-padding-left: 11px;
-}
-.price{
-grid-area: price;
-justify-self: end;
-padding-right: 8px;
+.artist-name {
+  grid-area: artist;
+  font-size: small;
+  padding-left: 11px;
+  align-self: center;
 }
 
-#heart{
-width: 15px;
-grid-area: heart;
-justify-self: end;
-padding-right: 8px;
-
+.title {
+  grid-area: title;
+  font-size: small;
+  color: black;
+  padding-left: 11px;
+  text-decoration: none;
+  align-self: center;
 }
 #month{
 grid-area: month;
@@ -345,6 +356,7 @@ padding-left: 15px;
 grid-area: articles;
 display: flex;
 flex-wrap: wrap;
+
 
 }
 
@@ -367,7 +379,8 @@ margin-right: 20px;
 
 }
 .article-card:hover{
-background-color: rgba(8, 154, 190, 0.408);
+  background-color: rgba(163, 167, 169, 0.408);
+  border-radius: 10px;
 }
 #article-image{
 grid-area: img;
@@ -404,6 +417,7 @@ align-self: end;
   background-color: black;
   border-top: 2px solid;
   width: 100vw;
+
 
 }
 

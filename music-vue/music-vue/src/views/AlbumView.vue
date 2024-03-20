@@ -174,7 +174,7 @@ body {
 .title {
   grid-area: title;
   font-size: small;
-  color: rgb(54, 51, 51);
+  color: black;
   padding-left: 11px;
   text-decoration: none;
   align-self: center;

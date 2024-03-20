@@ -2,9 +2,8 @@
   <body>
       <header>
         <router-link v-bind:to="{name: 'home'}" class="router-link-home"><h1>digitalNoise</h1></router-link>
-        <input name="search" placeholder=" search products: " />
-        
-  
+        <input class="search" name="search" placeholder=" search products: " />
+
         <ul>
           <li>
             <a href="#">Sign Up</a>
@@ -90,14 +89,15 @@ body header h1 {
   font-family: Arial, Helvetica, sans-serif;
 }
 
-body header input {
+.search {
   /* border: 2px solid blue; */
   display: grid;
   grid-area: input;
   height: 30px;
   width: 250px;
-  border: 0;
+  border: solid transparent;
   background-color: rgba(233, 224, 224, 0.728);
+  border-radius: 10px;
 
 }
 

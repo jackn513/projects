@@ -135,6 +135,7 @@ body{
 .about-title {
   grid-area: title;
   margin-left: 7px;
+  
 }
 
 .about-price {
