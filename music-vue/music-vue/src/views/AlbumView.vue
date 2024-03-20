@@ -258,7 +258,10 @@ body header ul a:hover{
   padding-top:0;
   margin-right: 50px;
   margin-bottom: 20px;
+
   
+
+  border-radius: 10px;
 }
 .router-link-album-cards{
   text-decoration: none;
@@ -273,6 +276,8 @@ body header ul a:hover{
   width: 255px;
   height: 255px;
   grid-area: image;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
 }
 
 .artist-name {

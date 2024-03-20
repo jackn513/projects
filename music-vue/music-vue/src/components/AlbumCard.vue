@@ -64,7 +64,7 @@ body{
 }
 
 .album-about-card {
-  
+  position: fixed;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   grid-template-rows: 470px 25px 40px 140px 50px;
@@ -78,11 +78,16 @@ body{
   height: 735px;
   background-color: rgba(163, 167, 169, 0.408);
   overflow: auto;
+
+  border-radius: 10px;
 }
 
 .about-image {
   grid-area: image;
   width: 100%;
+
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
 }
 
 .about-card-add {
@@ -93,6 +98,7 @@ body{
   margin-right: 7px;
   border: 1px solid black;
   align-self: end;
+  border-radius: 10px;
 }
 
 .about-artist-name {
