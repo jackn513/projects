@@ -24,19 +24,15 @@
       </header> -->
       <div class='contents'>
         
-        <div id="album-cards"> 
-          <section v-for="(album, index) in albums" :key="index" class="router-link-album-cards">
-            <article class="album-card" @click="showAbout(album)">
-              <div class="title"><a>{{ album.title }}</a></div>
-              <div class="artist-name">{{ album.artistName }}</div>
-              <div class="price">{{ priceFormat(album.price) }}</div>
-              <img :src="album.image" id="albumImage">
-            </article>
-          </section>
-        </div> 
+        <album-design :albums="albums">
+          <ul>
+            <!-- Iterate over the albums passed as a prop -->
+            <li v-for="album in albums" :key="album.id">{{album.title}}</li>
+          </ul>
+        </album-design>
       </div>
       <div class="info">
-        <!-- <router-view id="card-view"><cart></cart></router-view> -->
+        <router-view id="card-view"><cart></cart></router-view>
         <card-vue/>
       </div>
       <footer id="footer">
@@ -61,14 +57,17 @@ import bandImage from '@/assets/band.jpg';
 import heartSvg from '@/assets/heart.svg';
 import cartSvg from '@/assets/cart.svg';
 import albumImage from '@/assets/product.jpg';
-import albums from '../assets/Albums.js';
+
 import articles from '../assets/Articles.js';
 import cardVue from '../components/AlbumCard.vue'
+import AlbumDesign from '@/components/AlbumCardDesign.vue';
+import AlbumService from '@/services/AlbumService';
 
 
 export default {
   components: {
-    cardVue
+    cardVue,
+    AlbumDesign
   },
   data() {
     return {
@@ -76,7 +75,7 @@ export default {
       heart: heartSvg,
       cart: cartSvg,
       svgColor: 'red',
-      albums: albums.getAlbumData(),
+      albums: [],
       articles: articles.getArticleData(),
       albumImage: albumImage,
       search: {
@@ -91,49 +90,67 @@ export default {
   methods:{
     scrollToTop() {
     window.scrollTo(0, 0);
-  },
-    showAbout(album) {
-      // Hide about for all albums
-      this.albums.forEach(element => {
-        if (element !== album) {
-          element.showAbout = false;
-        }
-      });
-      album.showAbout = ! album.showAbout
+    },
+    getAlbums(){
+      AlbumService.list().then(response => {
+        this.albums = response.data;
+      }).catch(error => {
+        console.log(error)
+      })
+    },
+//   },
+//     showAbout(album) {
+//       // Hide about for all albums
+//       this.albums.forEach(element => {
+//         if (element !== album) {
+//           element.showAbout = false;
+//         }
+//       });
+//       album.showAbout = ! album.showAbout
       
-    },
+//     },
 
-    handleClick(){
-      console.log("hi")
-    },
+//     handleClick(){
+//       console.log("hi")
+//     },
 
-    getTrackList(album){
+//     getTrackList(album){
 
-      const selectedAlbum = this.albums.find(item => item.id === album.id);
+//       const selectedAlbum = this.albums.find(item => item.id === album.id);
 
-      if (selectedAlbum){
-        return selectedAlbum.trackList;
-      }
-    },
-    filteredAlbums() {
-  if (this.search.title !== '') {
-    // Filter albums based on search title
-    return this.albums.filter(element => {
-      return element.title.toLowerCase().includes(this.search.title.toLowerCase());
-    });
-  } else {
-    // If no search title, return all albums
-    console.log("error")
+//       if (selectedAlbum){
+//         return selectedAlbum.trackList;
+//       }
+//     },
+//     filteredAlbums() {
+//   if (this.search.title !== '') {
+//     // Filter albums based on search title
+//     return this.albums.filter(element => {
+//       return element.title.toLowerCase().includes(this.search.title.toLowerCase());
+//     });
+//   } else {
+//     // If no search title, return all albums
+//     console.log("error")
+//   }
+// },
+
+
+//     priceFormat(price) {
+//   return new Intl.NumberFormat(`en-US`, {
+//     currency: `USD`,
+//     style: "currency"
+//   }).format(price);
+// },
+
+  priceFormat(price){
+    return new Intl.NumberFormat(`en-US`, {
+      currency: `USD`,
+      style: "currency"
+    }).format(price);
   }
-},
-
-
-    priceFormat(price) {
-  return new Intl.NumberFormat(`en-US`, {
-    currency: `USD`,
-    style: "currency"
-  }).format(price);
-},
+  },
+  created(){
+    this.getAlbums();
   }
 }
 </script>

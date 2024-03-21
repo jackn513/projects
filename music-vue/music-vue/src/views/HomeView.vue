@@ -2,11 +2,13 @@
   <body>
     
     <div class='contents'>
+
+      
       <section id="imageAndAside">
         <!-- <img src="img/band-img.jpg" alt="signer"> -->
         <img :src="image" />
         <aside id="aside">
-          <blockquote class ="sidequote">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</blockquote>
+          <blockquote class="sidequote">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</blockquote>
         </aside>
         <blockquote id="textUnder">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Molestie nunc non blandit massa 
@@ -19,16 +21,7 @@
   
       <h4 id="check-these">Check out our favorites this month!</h4>
       <section id="albums">
-      <div id="album-cards"> 
-        <section v-for="(album, index) in filteredAlbums" :key="index" class="album-card">
-          <article class="album-card" @click="showAbout(album)">
-            
-            <div class="artist-name">{{ album.artistName }}</div>
-            
-            <img :src="album.image" id="albumImage">
-          </article>
-        </section>
-      </div> <!-- Move this closing div outside of the album section -->
+       
       <h4 id="month">Articles this month!</h4>
       </section>
       <section id="articles">
@@ -41,8 +34,11 @@
           
         </article>
       </div>
+
       </section>
+      <!-- <album-card v-bind:album="albums"></album-card> -->
     </div>
+
     <footer id="footer">
       <ul>
         <li>
@@ -66,17 +62,21 @@ import heartSvg from '@/assets/heart.svg';
 import albumImage from '@/assets/product.jpg';
 import faves from '../assets/Faves.js';
 import articles from '../assets/Articles.js';
-import albums from '../assets/Albums.js'
+// import albums from '../assets/Albums.js'
+
+import AlbumService from '../services/AlbumService'
+
+import AlbumDesign from '../components/AlbumCardDesign.vue';
 
 
 export default {
-
+ 
   data() {
     return {
       image: bandImage,
       heart: heartSvg,
       faves: faves.getFaveData(),
-      albums: albums.getAlbumData(),
+      
       articles: articles.getArticleData(),
       albumImage: albumImage,
       search: {
@@ -88,6 +88,10 @@ export default {
     }
   },
   methods:{
+
+
+    
+  
     scrollToTop() {
     window.scrollTo(0, 0);
   },
@@ -110,22 +114,14 @@ export default {
       }).format(albums.price);
     },
 
-    filteredAlbums(){
-      let arrayAlbums = this.albums;
-
-      if (this.title != ''){
-        arrayAlbums = arrayAlbums.filter(element => {
-          return element.title.toLocaleLowerCase().includes(this.search.title.toLocaleLowerCase())
-        })
-      }
-    }
+   
   },
   computed: {
     filteredAlbums() {
       return this.albums.slice(5, 9); // Limiting to the first 4 albums
     }
-  }
-
+  },
+  
 }
 </script>
 
