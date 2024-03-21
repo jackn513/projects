@@ -27,12 +27,11 @@
         <album-design :albums="albums">
           <ul>
             <!-- Iterate over the albums passed as a prop -->
-            <li v-for="album in albums" :key="album.id">{{album.title}}</li>
+            <li v-for="album in albums" :key="album.id" @click="showAbout(about)"></li>
           </ul>
         </album-design>
       </div>
       <div class="info">
-        <router-view id="card-view"><cart></cart></router-view>
         <card-vue/>
       </div>
       <footer id="footer">
@@ -99,16 +98,15 @@ export default {
       })
     },
 //   },
-//     showAbout(album) {
-//       // Hide about for all albums
-//       this.albums.forEach(element => {
-//         if (element !== album) {
-//           element.showAbout = false;
-//         }
-//       });
-//       album.showAbout = ! album.showAbout
-      
-//     },
+showAbout(album) {
+      // Hide about for all albums
+      this.albums.forEach(element => {
+        if (element !== album) {
+          element.showAbout = false;
+        }
+      });
+      album.showAbout = !album.showAbout;
+    },
 
 //     handleClick(){
 //       console.log("hi")

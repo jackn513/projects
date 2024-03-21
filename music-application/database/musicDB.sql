@@ -39,6 +39,7 @@ CREATE TABLE album
     date_released date NOT NULL,
     length_in_minutes integer NOT NULL,
     price decimal(10, 2) NOT NULL,
+    album_image VARCHAR (999),
     CONSTRAINT PK_album PRIMARY KEY (album_id),
     CONSTRAINT FK_album_01 FOREIGN KEY (artist_id) REFERENCES artist_info (artist_id),
     CONSTRAINT FK_album_02 FOREIGN KEY (label_id) REFERENCES label (label_id)
@@ -161,45 +162,117 @@ INSERT INTO label (label_name) VALUES
 	('Ridge Valley Digital'),
 	('MSMSMSM INC')
 ;
-INSERT INTO album (album_title, artist_id, label_id, date_released, length_in_minutes, price) VALUES 
-	('Caligula', 1, 1, '2019-07-19', 66, 7.99),
-	('Sinner Get Ready', 1, 2, '2021-08-06', 55, 7.99),
-	('Oil of Every Pearls Un-Insides', 2, 31, '2017-06-14', 40, 10.99),
-	('Fossora', 3, 2, '2022-11-30', 54, 14.99),
-	('Nina Simone: The Montreux Years (Live)', 4, 3, '2021-05-28', 121, 15.99),
-	('The American Project', 5, 4, '2023-03-10', 42, 9.99),
-	('A Symphonic Celebration...', 6, 5, '2023-06-30', 88, 15.99),
-	('Blue', 7, 6, '1971-06-22', 36, 17.99),
-	('Tapestry', 8, 7, '1971-02-10', 45, 15.99),
-	('HOPELESSNESS', 9, 8, '2016-05-06', 42, 10.99),
-	('Crouching Tiger, Hidden Dragon', 10, 9, '2000-11-14', 49, 14.99),
-	('Paris', 11, 4, '2021-03-05', 53, 9.99),
-	('Dance Fever (Complete Edition)', 12, 10, '2023-04-21', 62, 14.99),
-	('Melodrama', 13, 11, '2017-06-16', 41, 7.99),
-	('All My Demons Greeting Me as a Friend', 14, 12, '2016-03-11', 47, 7.99),
-	('Elgar', 15, 13, '2020-01-10', 69, 7.99),
-	('Visions', 16, 14, '2012-02-21', 50, 7.99),
-	('Oral Fixation, Vol.2', 17, 9, '2005-11-28', 50, 10.99),
-	('Pearl', 18, 9, '1971-01-11', 34, 14.99),
-	('EL MAL QUERER', 19, 15, '2018-11-02', 30, 10.99),
-	('Ultraviolence (Deluxe)', 20, 10, '2014-01-01', 69, 15.99),
-	('Un Verano Sin Ti', 21, 16, '2022-05-06', 82, 14.99),
-	('MASSEDUCTION', 23, 18, '2017-10-13', 42, 9.99),
-	('Goodbye Yellow Brick Road (2014 Remaster)', 22, 17, '1973-10-05', 76, 15.99),
-	('Bury Me At Makeout Creek', 24, 19, '2014-11-11', 30, 9.99),
-	('Tár', 25, 20, '2022-10-21', 64, 15.99),
-	('Magdelene', 26, 21, '2019-11-08', 39, 9.99),
-	('Glassworks & Interview with Philip Glass', 27, 9, '2016-12-09', 88, 15.99),
-	('Tonya Harding', 28, 22, '2017-12-08', 9, 5.99),
-	('21', 29, 23, '2011-01-24', 52, 10.99),
-	('"Awaken, My Love!"', 30, 24, '2016-12-02', 49, 9.99),
-	('Punisher', 31, 19, '2020-06-17', 41, 7.99),
-	('The Dune SketchBook', 32, 25, '2021-09-03', 102, 15.99),
-	('Shabrang', 33, 29, '2020-08-28', 62, 9.99),
-	('Græ', 34, 26, '2020-05-15', 66, 7.99),
-	('Again', 35, 30, '2023-09-29', 57, 7.99),
-	('Selected Ambient Works 85-92', 36, 27, '1992-02-12', 75, 9.99),
-	('Surrender', 37, 28, '2022-07-29', 46, 7.99)
+INSERT INTO album (album_title, artist_id, label_id, date_released, length_in_minutes, price, album_image) VALUES
+	('Caligula', 1, 1, '2019-07-19', 66, 7.99,
+	 'https://m.media-amazon.com/images/I/6195neWWzPL._UF1000,1000_QL80_.jpg'),
+
+	('Sinner Get Ready', 1, 2, '2021-08-06', 55, 7.99,
+	 'https://m.media-amazon.com/images/I/91oQ4fEl4BS._UF1000,1000_QL80_.jpg'),
+
+	('Oil of Every Pearls Un-Insides', 2, 31, '2017-06-14', 40, 10.99,
+     'https://media.pitchfork.com/photos/648747aaaed875e699bc73ed/master/pass/Sophie.jpg'),
+
+	('Fossora', 3, 2, '2022-11-30', 54, 14.99,
+	 'https://media.pitchfork.com/photos/630f5a82d81b4a1c03943188/master/pass/Bjork-Fossora.jpg'),
+
+	('Nina Simone: The Montreux Years (Live)', 4, 3, '2021-05-28', 121, 15.99,
+     'https://m.media-amazon.com/images/I/91YL8F+wHRL._UF1000,1000_QL80_.jpg'),
+
+	('The American Project', 5, 4, '2023-03-10', 42, 9.99,
+     'https://m.media-amazon.com/images/I/81elXZwOQbL._UF1000,1000_QL80_.jpg'),
+
+	('A Symphonic Celebration...', 6, 5, '2023-06-30', 88, 15.99,
+     'https://pisces.bbystatic.com/image2/BestBuy_US/images/products/250086c8-d911-4c55-b617-bf2686799d02.jpg'),
+
+	('Blue', 7, 6, '1971-06-22', 36, 17.99,
+     'https://m.media-amazon.com/images/I/81baUpgSr9L._UF1000,1000_QL80_.jpg'),
+
+	('Tapestry', 8, 7, '1971-02-10', 45, 15.99,
+     'https://media.pitchfork.com/photos/5df90fbc1dc57a00089529be/master/pass/caroleking.jpg'),
+
+	('HOPELESSNESS', 9, 8, '2016-05-06', 42, 10.99,
+     'https://m.media-amazon.com/images/I/71UKENg5yeL._UF1000,1000_QL80_.jpg'),
+
+	('Crouching Tiger, Hidden Dragon', 10, 9, '2000-11-14', 49, 14.99,
+     'https://m.media-amazon.com/images/I/81N0mpvB47L._UF1000,1000_QL80_.jpg'),
+
+	('Paris', 11, 4, '2021-03-05', 53, 9.99,
+     'https://images.universal-music.de/img/assets/508/508702/4/2048/hilary-hahn-paris.jpg'),
+
+	('Dance Fever (Complete Edition)', 12, 10, '2023-04-21', 62, 14.99,
+     'https://i.scdn.co/image/ab67616d0000b2733a10ef0d61ed15315d6b0ef3'),
+
+	('Melodrama', 13, 11, '2017-06-16', 41, 7.99,
+     'https://m.media-amazon.com/images/I/71fwgxq0wML._UF1000,1000_QL80_.jpg'),
+
+	('All My Demons Greeting Me as a Friend', 14, 12, '2016-03-11', 47, 7.99,
+     'https://m.media-amazon.com/images/I/51Gog8m1x8L._UF1000,1000_QL80_.jpg'),
+
+	('Elgar', 15, 13, '2020-01-10', 69, 7.99,
+     'https://m.media-amazon.com/images/I/810aOXdvFqL._UF1000,1000_QL80_.jpg'),
+
+	('Visions', 16, 14, '2012-02-21', 50, 7.99,
+     'https://m.media-amazon.com/images/I/71miHIEI9IL._UF1000,1000_QL80_.jpg'),
+
+	('Oral Fixation, Vol.2', 17, 9, '2005-11-28', 50, 10.99,
+     'https://m.media-amazon.com/images/I/81dpo1ksHYL._UF1000,1000_QL80_.jpg'),
+
+	('Pearl', 18, 9, '1971-01-11', 34, 14.99,
+     'https://m.media-amazon.com/images/I/810nwQrRf0L._UF1000,1000_QL80_.jpg'),
+
+	('EL MAL QUERER', 19, 15, '2018-11-02', 30, 10.99,
+     'https://media.pitchfork.com/photos/64b194c24d755736fe4b0d2a/master/pass/Rosalia-El-Mal-Querer.jpg'),
+
+	('Ultraviolence (Deluxe)', 20, 10, '2014-01-01', 69, 15.99,
+     'https://m.media-amazon.com/images/I/81ajxpblWYL._UF1000,1000_QL80_.jpg'),
+
+	('Un Verano Sin Ti', 21, 16, '2022-05-06', 82, 14.99,
+     'https://m.media-amazon.com/images/I/81C6LV7yNTL._UF1000,1000_QL80_.jpg'),
+	('MASSEDUCTION', 23, 18, '2017-10-13', 42, 9.99,
+     'https://m.media-amazon.com/images/I/714oYtrkdNL._UF1000,1000_QL80_.jpg'),
+
+	('Goodbye Yellow Brick Road (2014 Remaster)', 22, 17, '1973-10-05', 76, 15.99,
+     'https://images.fineartamerica.com/images/artworkimages/mediumlarge/3/1973-goddbye-yellow-brick-road-album-cover-david-lee-thompson.jpg'),
+
+	('Bury Me At Makeout Creek', 24, 19, '2014-11-11', 30, 9.99,
+     'https://m.media-amazon.com/images/I/61oLAk3KrcL._UF1000,1000_QL80_.jpg'),
+
+	('Tár', 25, 20, '2022-10-21', 64, 15.99,
+     'https://m.media-amazon.com/images/I/615Ja3MlyKL._UF1000,1000_QL80_.jpg'),
+
+	('Magdelene', 26, 21, '2019-11-08', 39, 9.99,
+     'https://media.pitchfork.com/photos/645e698710ea75c3530616af/master/w_1280%2Cc_limit/FKA-Twigs-Magdalene.jpg'),
+
+	('Glassworks & Interview with Philip Glass', 27, 9, '2016-12-09', 88, 15.99,
+     'https://i.discogs.com/ci2rpiKcN0Ril-WTb91kYICCZ5L3qn74XFNwZiOBihI/rs:fit/g:sm/q:90/h:574/w:600/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTEwNzY3/ODAtMTI3NTYxOTEz/Mi5qcGVn.jpeg'),
+
+	('Tonya Harding', 28, 22, '2017-12-08', 9, 5.99,
+     'https://media.pitchfork.com/photos/5a318075e807ee3420166365/master/pass/tonya%20harding.jpg'),
+
+	('21', 29, 23, '2011-01-24', 52, 10.99,
+     'https://m.media-amazon.com/images/I/61lMwNQGYbL._UF1000,1000_QL80_.jpg'),
+
+	('"Awaken, My Love!"', 30, 24, '2016-12-02', 49, 9.99,
+     'https://media.pitchfork.com/photos/65772273239ec61ed8f07f5c/master/w_1280%2Cc_limit/Childish-Gambino-Awaken-My-Love.jpg'),
+
+	('Punisher', 31, 19, '2020-06-17', 41, 7.99,
+     'https://media.pitchfork.com/photos/5e8f1c49ecfafc0008428b37/master/pass/Phoebe-Bridgers-Punisher.jpg'),
+	('The Dune SketchBook', 32, 25, '2021-09-03', 102, 15.99,
+     'https://m.media-amazon.com/images/I/91B637EHz6L._UF1000,1000_QL80_.jpg'),
+	('Shabrang', 33, 29, '2020-08-28', 62, 9.99,
+     'https://media.pitchfork.com/photos/5f46748da3044e1e655f14a4/master/pass/shabrang_sevdalia.jpg'),
+
+	('Græ', 34, 26, '2020-05-15', 66, 7.99,
+     'https://media.pitchfork.com/photos/5eb98004a994f4606de32768/1:1/w_800,h_800,c_limit/græ%20(Part%20Two-%2013%20Two%20Dogs)_Moses%20Sumney.jpg'),
+
+	('Again', 35, 30, '2023-09-29', 57, 7.99,
+     'https://media.pitchfork.com/photos/64e567827a86d58a09b09f21/master/w_1280%2Cc_limit/oneohtrix-point-never-again.jpg'),
+
+	('Selected Ambient Works 85-92', 36, 27, '1992-02-12', 75, 9.99,
+	 'https://m.media-amazon.com/images/I/51TOvM8vU7L._UF1000,1000_QL80_.jpg'),
+
+	('Surrender', 37, 28, '2022-07-29', 46, 7.99,
+	 'https://media.pitchfork.com/photos/624471872afbc1aa4dab0c4c/master/pass/Maggie-Rogers-Surrender.jpg')
 ;
 
 INSERT INTO customer (customer_name, street_address, phone_number, email, date_of_birth) VALUES

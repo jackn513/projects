@@ -191,6 +191,7 @@ public class JdbcAlbumDao implements AlbumDao {
         album.setDateReleased(rowSet.getDate("date_released").toLocalDate());
         album.setLengthInMin(rowSet.getInt("length_in_minutes"));
         album.setPrice(rowSet.getBigDecimal("price"));
+        album.setImage(rowSet.getString("album_image"));
         return album;
     }
 

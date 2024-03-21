@@ -17,7 +17,7 @@ const routes = [
     component: AlbumView,
     children: [
       {
-      path: 'card',
+      path: 'card/:id',
       name: 'card',
       component: AlbumCardView
     }

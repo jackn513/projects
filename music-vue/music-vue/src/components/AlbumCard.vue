@@ -1,6 +1,6 @@
 <template>
   <div class="info">
-    <section v-for="(album, index) in albums" :key="index" class="album-about">
+    <section v-for="(album, index) in albums" :key="index" class="album-about" v-show="album.showAbout">
       <div v-show="album.showAbout" class="about">
         <article class="album-about-card">
           <!-- // card details //  -->
@@ -45,6 +45,9 @@ export default {
         currency: `USD`,
         style: "currency"
       }).format(price);
+    },
+    handleClick(album) {
+      album.showAbout = !album.showAbout; // Toggle showAbout property
     },
   }
 }

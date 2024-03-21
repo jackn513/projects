@@ -6,7 +6,7 @@
           <div class="artist-name">{{ album['Artist Name'] }}</div>
           <div class="price">{{ album['Price'] }}</div>
           <!-- If you want to format the price, you can use a method or filter -->
-          <img :src="album['Image']" id="albumImage">
+          <img :src="album['Album Image']" id="albumImage">
         </article>
       </section>
     </div> 

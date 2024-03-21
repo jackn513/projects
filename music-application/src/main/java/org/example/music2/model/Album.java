@@ -26,6 +26,9 @@ public class Album {
     @JsonProperty("Price")
     private BigDecimal price;
 
+    @JsonProperty("Album Image")
+    private String image;
+
     public Album(int albumId, String albumTitle, String artistName, String labelName, LocalDate dateReleased,
                  int lengthInMin, BigDecimal price) {
         this.albumId = albumId;
@@ -72,6 +75,10 @@ public class Album {
         return price;
     }
 
+    public String getImage() {
+        return image;
+    }
+
     public void setAlbumId(int albumId) {
         this.albumId = albumId;
     }
@@ -104,5 +111,7 @@ public class Album {
         this.price = price;
     }
 
-
+    public void setImage(String image) {
+        this.image = image;
+    }
 }
