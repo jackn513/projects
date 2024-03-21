@@ -94,7 +94,7 @@ body {
   height: 100vh; */
   margin: 0px;
   padding: 0;
-  background: radial-gradient(circle, #9d0b0b, #941c64, #a00723);
+  
 }
 body header{
   grid-area: header;

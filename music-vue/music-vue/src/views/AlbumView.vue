@@ -1,38 +1,12 @@
 <template id="Main">
     <body>
-      <!-- <header>
-        <router-link v-bind:to="{name: 'home'}" class="router-link-home"><h1>digitalNoise</h1></router-link>
-        <input class="search"  placeholder=" search products: " v-model="filteredAlbums"/>
-
-        <ul>
-          <li>
-            <a href="#">Sign Up</a>
-            <a href="#">Login</a>
-            
-          </li>
-        </ul>
-        <section id="findStuff">
-          <ul>
-            <li>
-              <router-link v-bind:to="{name: 'albums'}" class="router-link-albums">Albums</router-link>
-              <a href="#">Artists</a>
-              <a href="#">cart</a>
-             
-            </li>
-          </ul>
-        </section>
-      </header> -->
       <div class='contents'>
-        
         <album-design :albums="albums">
           <ul>
             <!-- Iterate over the albums passed as a prop -->
-            <li v-for="album in albums" :key="album.id" @click="showAbout(about)"></li>
+            <li v-for="album in albums" :key="album.id" @click="toggleAbout(album)"></li>
           </ul>
         </album-design>
-      </div>
-      <div class="info">
-        <card-vue/>
       </div>
       <footer id="footer">
         <ul>
@@ -82,8 +56,8 @@ export default {
         artistName: '',
         releaseDate: '',
         price: ''
-      }
-      // showAbout: false
+      },
+      cardVue: true 
     }
   },
   methods:{
@@ -97,55 +71,17 @@ export default {
         console.log(error)
       })
     },
-//   },
-showAbout(album) {
-      // Hide about for all albums
-      this.albums.forEach(element => {
-        if (element !== album) {
-          element.showAbout = false;
-        }
-      });
-      album.showAbout = !album.showAbout;
+    priceFormat(price){
+      return new Intl.NumberFormat(`en-US`, {
+        currency: `USD`,
+        style: "currency"
+      }).format(price);
     },
-
-//     handleClick(){
-//       console.log("hi")
-//     },
-
-//     getTrackList(album){
-
-//       const selectedAlbum = this.albums.find(item => item.id === album.id);
-
-//       if (selectedAlbum){
-//         return selectedAlbum.trackList;
-//       }
-//     },
-//     filteredAlbums() {
-//   if (this.search.title !== '') {
-//     // Filter albums based on search title
-//     return this.albums.filter(element => {
-//       return element.title.toLowerCase().includes(this.search.title.toLowerCase());
-//     });
-//   } else {
-//     // If no search title, return all albums
-//     console.log("error")
-//   }
-// },
-
-
-//     priceFormat(price) {
-//   return new Intl.NumberFormat(`en-US`, {
-//     currency: `USD`,
-//     style: "currency"
-//   }).format(price);
-// },
-
-  priceFormat(price){
-    return new Intl.NumberFormat(`en-US`, {
-      currency: `USD`,
-      style: "currency"
-    }).format(price);
-  }
+    toggleAbout(clickedAlbum) {
+            this.albums.forEach(album => {
+                album.showAbout = album === clickedAlbum ? !album.showAbout : false;
+            });
+        }
   },
   created(){
     this.getAlbums();
@@ -163,13 +99,13 @@ body {
   grid-template-areas: 
   "header header header"
   "search search search"
-  "contents contents info"
+  "contents contents contents"
   "footer footer footer";
   /* width: 100vw;
   height: 100vh; */
   margin: 0px;
   padding: 0;
-  background: radial-gradient(circle, #9d0b0b, #941c64, #a00723);
+  /* background: radial-gradient(circle, #9d0b0b, #941c64, #a00723); */
 }
 body header{
   grid-area: header;
@@ -350,7 +286,10 @@ body header ul a:hover{
 
 }
 
-
+.album-about-card{
+  width: 410px; 
+  height: 580px;
+}
 
 #footer {
   display: grid;

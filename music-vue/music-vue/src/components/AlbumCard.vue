@@ -1,18 +1,13 @@
 <template>
   <div class="info">
-    <section v-for="(album, index) in albums" :key="index" class="album-about" v-show="album.showAbout">
+    <section v-for="album in albums" :key="album.id">
       <div v-show="album.showAbout" class="about">
         <article class="album-about-card">
-          <!-- // card details //  -->
-          <button class="about-card-add" @click="handleClick">add to cart</button>
-          <img :src="album.image" class="about-image">
-          <div class="about-title">{{ album.title }}</div>
-          <div class="about-artist-name">{{ album.artistName }}</div>
-          <div class="about-price">{{ priceFormat(album.price) }}</div>
-          <div class="about-date"> year released: {{ album.releaseDate}} </div>
-          <!-- <ul class="tracks-ul">
-            <li v-for="(track, index) in album.trackList" :key="index" class="about-tracks">{{ index + 1}}: {{ track }}</li>
-          </ul> -->
+          <div class="title"><a>{{ album['Album Title'] }}</a></div>
+          <div class="artist-name">{{ album['Artist Name'] }}</div>
+          <div class="price">{{ album['Price'] }}</div>
+          <!-- If you want to format the price, you can use a method or filter -->
+          <img :src="album['Album Image']" id="albumImage">
         </article>
       </div>
     </section>
@@ -27,6 +22,8 @@ import albumImage from '@/assets/product.jpg';
 import albums from '../assets/Albums.js';
 import articles from '../assets/Articles.js';
 
+import AlbumService from '@/services/AlbumService';
+
 export default {
   data() {
     return {
@@ -34,7 +31,7 @@ export default {
       heart: heartSvg,
       cart: cartSvg,
       svgColor: 'red',
-      albums: albums.getAlbumData(),
+      albums: [],
       articles: articles.getArticleData(),
       albumImage: albumImage,
     }
@@ -49,6 +46,16 @@ export default {
     handleClick(album) {
       album.showAbout = !album.showAbout; // Toggle showAbout property
     },
+    getAlbums(){
+      AlbumService.list().then(response => {
+        this.albums = response.data;
+      }).catch(error => {
+        console.log(error)
+      })
+    },
+  },
+  created(){
+    this.getAlbums();
   }
 }
 </script>

@@ -20,10 +20,7 @@
       <!-- stuff for albums  -->
   
       <h4 id="check-these">Check out our favorites this month!</h4>
-      <section id="albums">
-       
-      <h4 id="month">Articles this month!</h4>
-      </section>
+      
       <section id="articles">
       <div id="article-cards">
         <article v-for="(article, index) in articles" :key="index" class="article-card" :article-id="article.id">
@@ -62,11 +59,8 @@ import heartSvg from '@/assets/heart.svg';
 import albumImage from '@/assets/product.jpg';
 import faves from '../assets/Faves.js';
 import articles from '../assets/Articles.js';
-// import albums from '../assets/Albums.js'
+import albums from '../assets/Albums.js'
 
-import AlbumService from '../services/AlbumService'
-
-import AlbumDesign from '../components/AlbumCardDesign.vue';
 
 
 export default {
@@ -76,7 +70,7 @@ export default {
       image: bandImage,
       heart: heartSvg,
       faves: faves.getFaveData(),
-      
+      albums: albums.getAlbumData(),
       articles: articles.getArticleData(),
       albumImage: albumImage,
       search: {
@@ -142,18 +136,7 @@ body {
   
 }
 
-body .header{
-  grid-area: header;
-  align-items: center;
-  color: rgb(8, 153, 190);
-  display: grid;
-  grid-template-columns: 200px 1fr 1fr;
-  grid-template-areas: 
-  "header input signup"
-  "find find find";
 
-
-}
 
 body header h1 {
   /* border: 2px solid violet; */
@@ -293,7 +276,7 @@ color: black;
 }
 
 
-#album-cards{
+.album-cards{
 display: flex;
 flex-wrap: wrap;
 margin-left: 15px;
@@ -304,23 +287,16 @@ margin-left: 15px;
   display: grid;
   grid-template-columns: 30px 1fr 30px;
   grid-template-areas: 
-  
   "image image image image "
   "image image image image  "
-  "artist artist price price "
-  "title title title title"
-  "title title title title "
-  ". . . heart";
+  "artist artist . .  "
+  ". . . ."
+  ". . . .";
   width: 155px;
   height: 240px;
   text-transform: lowercase;
-  
-  
-  margin-right: 50px;
+ padding-left: 15px;;
   margin-bottom: 20px;
-
-  
-
   border-radius: 10px;
 }
 .router-link-album-cards{
@@ -341,10 +317,8 @@ margin-left: 15px;
 }
 
 .artist-name {
-  grid-area: artist;
-  font-size: small;
-  padding-left: 11px;
-  align-self: center;
+ grid-area: artist;
+  
 }
 
 .title {
@@ -373,7 +347,10 @@ flex-wrap: wrap;
 
 
 }
-
+.article-cards{
+  display: flex;
+  flex-wrap: wrap;
+}
 .article-card{
 grid-area: articles;
 display: grid;

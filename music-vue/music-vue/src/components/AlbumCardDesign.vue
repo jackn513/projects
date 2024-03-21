@@ -7,6 +7,7 @@
           <div class="price">{{ album['Price'] }}</div>
           <!-- If you want to format the price, you can use a method or filter -->
           <img :src="album['Album Image']" id="albumImage">
+          <img :src="heartSvg" alt="Heart Icon" id="heart">
         </article>
       </section>
     </div> 
@@ -15,11 +16,17 @@
 <script>
 
 // import albums from '../assets/Albums'
+import heartSvg from '@/assets/heart.svg';
 export default {
   props: {
     albums: {
       type: Array,
       required: true
+    }
+  },
+  data() {
+    return {
+      heartSvg
     }
   }
 }
