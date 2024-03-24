@@ -86,6 +86,11 @@ public class AlbumController {
             return albumsByPrice;
         }
     }
+
+    @RequestMapping(method = RequestMethod.POST)
+    public Album createAlbum(@RequestBody Album album){
+        return null;
+    }
     @ResponseStatus(HttpStatus.NO_CONTENT)
     @RequestMapping(path = "artistId/{id}", method = RequestMethod.DELETE)
     public void deleteAlbum(@PathVariable int id){
