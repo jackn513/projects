@@ -23,6 +23,7 @@ import albums from '../assets/Albums.js';
 import articles from '../assets/Articles.js';
 
 import AlbumService from '@/services/AlbumService';
+import CartService from '@/services/CartService';
 
 export default {
   data() {
@@ -34,6 +35,7 @@ export default {
       albums: [],
       articles: articles.getArticleData(),
       albumImage: albumImage,
+    
     }
   },
   methods: {

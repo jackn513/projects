@@ -7,7 +7,7 @@
       <ul>
         <li>
           <a href="#">Sign Up</a>
-          <a href="#">Login</a>
+          <router-link v-bind:to="{name: 'login'}">Login</router-link>
           
         </li>
       </ul>
@@ -16,7 +16,7 @@
           <li>
             <router-link v-bind:to="{name: 'albums'}" class="router-link-albums">Albums</router-link>
             <a href="#">Artists</a>
-            <a href="#">cart</a>
+            <router-link v-bind:to="{name: 'cart'}" class="router-link-cart">Cart</router-link>
            
           </li>
         </ul>
@@ -53,21 +53,21 @@ export default{
         artistName: '',
         releaseDate: '',
         price: ''
-      }
+      },
+      added: false
     }
   },
   methods:{
     filteredAlbums(){
-  let arrayAlbums = this.albums;
+      let arrayAlbums = this.albums;
 
-  if (this.search.title !== ''){
-    arrayAlbums = arrayAlbums.filter(element => {
-      console.log(element.title.toLowerCase().includes(this.search.title.toLowerCase()))
-    })
-  }
-  
-  return arrayAlbums;
-}
+      if (this.search.title !== ''){
+        arrayAlbums = arrayAlbums.filter(element => {
+          console.log(element.title.toLowerCase().includes(this.search.title.toLowerCase()))
+        })
+      }
+      return arrayAlbums;
+    },
   }
 }
 
@@ -76,6 +76,9 @@ export default{
 
 <style scoped>
 /* Global styles go here */
+
+
+
 .router-link-home {
   text-decoration: none;
 }

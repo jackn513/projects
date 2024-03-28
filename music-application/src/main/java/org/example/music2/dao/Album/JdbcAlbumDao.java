@@ -163,6 +163,11 @@ public class JdbcAlbumDao implements AlbumDao {
         return albums;
     }
 
+    @Override
+    public Album createAlbum(Album newAlbum) {
+        return null;
+    }
+
 
     @Override
     public int deleteAlbumById(int albumId) {

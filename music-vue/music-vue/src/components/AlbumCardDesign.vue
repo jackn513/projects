@@ -17,17 +17,28 @@
 
 // import albums from '../assets/Albums'
 import heartSvg from '@/assets/heart.svg';
+
+import CartService from '@/services/CartService';
 export default {
   props: {
     albums: {
       type: Array,
-      required: true
+      required: true,
+      albumToCart: {
+        productId: null,
+        quantity: 1
+      }, 
     }
   },
   data() {
     return {
       heartSvg
     }
+  },
+
+  methods: {
+
+
   }
 }
 </script>

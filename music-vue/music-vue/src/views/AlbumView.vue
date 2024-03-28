@@ -4,7 +4,7 @@
         <album-design :albums="albums">
           <ul>
             <!-- Iterate over the albums passed as a prop -->
-            <li v-for="album in albums" :key="album.id" @click="toggleAbout(album)"></li>
+            <li v-for="album in albums" :key="album.id" ></li>
           </ul>
         </album-design>
       </div>
@@ -30,7 +30,7 @@ import bandImage from '@/assets/band.jpg';
 import heartSvg from '@/assets/heart.svg';
 import cartSvg from '@/assets/cart.svg';
 import albumImage from '@/assets/product.jpg';
-
+import CartService from '@/services/CartService';
 import articles from '../assets/Articles.js';
 import cardVue from '../components/AlbumCard.vue'
 import AlbumDesign from '@/components/AlbumCardDesign.vue';
@@ -57,7 +57,8 @@ export default {
         releaseDate: '',
         price: ''
       },
-      cardVue: true 
+      cardVue: true ,
+      
     }
   },
   methods:{
@@ -71,20 +72,18 @@ export default {
         console.log(error)
       })
     },
+
+    
     priceFormat(price){
       return new Intl.NumberFormat(`en-US`, {
         currency: `USD`,
         style: "currency"
       }).format(price);
     },
-    toggleAbout(clickedAlbum) {
-            this.albums.forEach(album => {
-                album.showAbout = album === clickedAlbum ? !album.showAbout : false;
-            });
-        }
   },
   created(){
     this.getAlbums();
+    
   }
 }
 </script>
