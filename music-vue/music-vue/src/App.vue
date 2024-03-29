@@ -17,7 +17,7 @@
             <router-link v-bind:to="{name: 'albums'}" class="router-link-albums">Albums</router-link>
             <a href="#">Artists</a>
             <router-link v-bind:to="{name: 'cart'}" class="router-link-cart">Cart</router-link>
-           
+           <h1> helloooooooooooo</h1>
           </li>
         </ul>
       </section>
