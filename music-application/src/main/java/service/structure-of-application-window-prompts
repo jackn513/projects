@@ -1,0 +1,68 @@
+1. Display Album Menu
+        1. Display all Albums
+        2. Search Albums
+                1. Search By Album id
+                2. Search by Title
+                3. Search By Artist id
+                4. Search By Label id
+                5. Search by Date Released
+                6. Search By Price
+                7. Return to Main Menu
+        3. delete Album
+                Enter id: ____
+        4. Return to Main Menu
+
+2. Display Artist Menu
+        1. Display all Artists
+        2. Search Artists
+                1. Search by Artist id
+                2. Search By Artist Name
+                3. Search By Date of Birth (YYYY)
+                4. Search by Date of Death (YYYY)
+        3. Add Artist
+                Enter Name: ____
+                Enter Date of Birth (YYYY-MM-DD): ____
+                Enter Date of Death (YYYY-MM-DD): ____
+        4. Delete Artist
+                Enter id: ____
+
+3. Display Customer Menu
+        1. Display all Customers
+        2. Search Customers
+                1. Search by Customer id
+                2. Search by Customer Name
+        3. Add Customer
+                Enter Name: ____
+                Enter Street Address: _____
+                Enter Phone Number: ____
+                Enter email: ____
+                Enter Date of Birth (YYYY-MM-DD): ____
+        4. Delete Customer
+                Enter id: ____
+
+4. Display Label Menu
+        1. Display All Labels
+        2. Search Labels
+                1. Search By Label id
+                2. Search by Label Name
+                3. Search By Year Established
+        3. Add Label
+                Enter Label Name: ____
+                Enter Date Established (YYYY)
+        4. Delete Label
+                Enter id: ____
+
+5. Display Sales Menu
+        1. Display all Sales
+        2. Search Sales
+                1. Search By Sale Id
+                2. Search By Customer id
+                3. Search by Album id
+                4. Search Unsold Albums
+                5. Search By Sale Date
+        3. Add Sale
+                Enter Customer id: ____
+                Enter Album id: ____
+                Enter Sale Date: ____
+        4. Remove Sale
+            Enter id: ____
