@@ -17,7 +17,7 @@
             <router-link v-bind:to="{name: 'albums'}" class="router-link-albums">Albums</router-link>
             <a href="#">Artists</a>
             <router-link v-bind:to="{name: 'cart'}" class="router-link-cart">Cart</router-link>
-           <h1> helloooooooooooo</h1>
+
           </li>
         </ul>
       </section>
@@ -25,19 +25,7 @@
   <div>
     <router-view class="view"></router-view>
   </div>
-  <!-- <footer id="footer">
-        <ul>
-          <li>
-            <a href="example"><h5>about us</h5></a>
-            <a href="example"><h5>contact us</h5></a>
-            <a href="example"><h5>privacy</h5></a>
-            <a href="example"><h5>accessibility</h5></a>
-            <a href="example"><h5>other products</h5></a>
-            <a href="example"><h5>make yourself useful</h5></a>
-            <a href="example"><h5>newsletter</h5></a>
-          </li>
-        </ul>
-      </footer> -->
+
   </body>
 </template>
 

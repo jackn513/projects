@@ -1,12 +1,18 @@
 <template id="Main">
     <body>
       <div class='contents'>
-        <album-design :albums="albums">
-          <ul>
-            <!-- Iterate over the albums passed as a prop -->
-            <li v-for="album in albums" :key="album.id" ></li>
-          </ul>
-        </album-design>
+        <div id="album-cards">
+          <section v-for="(album, index) in albums" :key="index" class="router-link-album-cards">
+            <article class="album-card">
+              <div class="title"><a>{{ album['Album Title'] }}</a></div>
+              <div class="artist-name">{{ album['Artist Name'] }}</div>
+              <div class="price">{{ priceFormat(album['Price']) }}</div>
+              <!-- If you want to format the price, you can use a method or filter -->
+              <img :src="album['Album Image']" id="albumImage">
+              <img :src="heart" alt="Heart Icon" id="heart" @click="addToCart()">
+            </article>
+          </section>
+        </div>
       </div>
       <footer id="footer">
         <ul>
@@ -32,14 +38,13 @@ import cartSvg from '@/assets/cart.svg';
 import albumImage from '@/assets/product.jpg';
 import CartService from '@/services/CartService';
 import articles from '../assets/Articles.js';
-import cardVue from '../components/AlbumCard.vue'
+
 import AlbumDesign from '@/components/AlbumCardDesign.vue';
 import AlbumService from '@/services/AlbumService';
 
 
 export default {
   components: {
-    cardVue,
     AlbumDesign
   },
   data() {
@@ -73,7 +78,9 @@ export default {
       })
     },
 
-    
+    addToCart(){
+      this.$router.push({name: 'cart'})
+    },
     priceFormat(price){
       return new Intl.NumberFormat(`en-US`, {
         currency: `USD`,
@@ -224,21 +231,19 @@ body header ul a:hover{
   width: 255px;
   height: 340px;
   text-transform: lowercase;
-  
-  
   margin-right: 50px;
   margin-bottom: 20px;
-
-  
-
   border-radius: 10px;
 }
+
+
 .router-link-album-cards{
   text-decoration: none;
   color: black;
 }
 
 .album-card:hover {
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2);
   background-color: rgba(163, 167, 169, 0.408);
 }
 
