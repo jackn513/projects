@@ -158,12 +158,12 @@ body header ul a{
 }
 body header ul a:hover{
   border-bottom: 3px solid BLACK;
+
 }
 #findStuff{
   margin-left: 10px;
   grid-area: find;
-
-
+  margin-bottom: 3px;
 }
 
 #findStuff ul {
@@ -172,7 +172,8 @@ body header ul a:hover{
   justify-items: start;
   align-items: center;
   list-style: none;
-  padding-left: 5px; 
+  padding-left: 5px;
+
  
 }
 
@@ -192,6 +193,7 @@ body header ul a:hover{
 
 #findStuff ul li a:hover{
   border-bottom: 3px solid black;
+
 }
 
 .view{

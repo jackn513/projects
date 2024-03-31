@@ -4,7 +4,7 @@
   <div id="artist-cards">
     <section v-for="(artist, index) in artists" :key="index">
       <article class="artist-card">
-        <img :src="artist['Artist Image']" class="artist-image">
+        <router-link v-bind:to="{name: 'artist', params: { id: artist['Artist Id']}}"><img :src="artist['Artist Image']" class="artist-image"></router-link>
         <p class="artist-name">{{artist['Artist Name']}}</p>
       </article>
     </section>

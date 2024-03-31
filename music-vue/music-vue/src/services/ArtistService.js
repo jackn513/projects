@@ -9,5 +9,9 @@ export default {
 
     artistList(){
         return http.get('/artist_info')
+    },
+
+    singleArtist(id){
+        return http.get(`/artist_info/${id}`)
     }
 }
