@@ -104,14 +104,16 @@ body header{
   align-items: center;
   color: rgb(8, 153, 190);
   display: grid;
-  grid-template-columns: 200px 1fr 1fr;
-  grid-template-areas: "header input signup"
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-areas:
+      "header input signup"
   "find find find";
   background-color: black;
 
 }
 
 .logo{
+  justify-self: center;
   width: 400px;
 }
 

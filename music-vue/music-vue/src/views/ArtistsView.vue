@@ -1,10 +1,11 @@
 <template>
 <body>
 <div class="contents">
+  <input class="search"  placeholder=" search artists: " v-model="searchTerm"/>
   <div id="artist-cards">
-    <section v-for="(artist, index) in artists" :key="index">
+    <section v-for="(artist, index) in filteredArtists" :key="index">
       <article class="artist-card">
-        <router-link v-bind:to="{name: 'artist', params: { id: artist['Artist Id']}}"><img :src="artist['Artist Image']" class="artist-image"></router-link>
+        <router-link v-bind:to="{name: 'artist', params: { id: artist['Artist Id']}}"><img :src="artist['Artist Image']" class="artist-card-image"></router-link>
         <p class="artist-name">{{artist['Artist Name']}}</p>
       </article>
     </section>
@@ -22,7 +23,8 @@ import ArtistService from "@/services/ArtistService.js";
 export default {
   data(){
     return {
-      artists: []
+      artists: [],
+      searchTerm: ''
     }
   },
 
@@ -33,6 +35,23 @@ export default {
       }).catch(error => {
         console.log(error)
       })
+    },
+    search(){
+      this.filteredArtists = this.artists.filter(artist => {
+        artist['Artist Name'].toLowerCase().includes(this.searchTerm.toLowerCase())
+      })
+    }
+  },
+
+  computed: {
+    filteredArtists(){
+      let artists = this.artists;
+      if (this.searchTerm !== ''){
+        artists = this.artists.filter(artist => {
+          return artist['Artist Name'].toLowerCase().includes(this.searchTerm.toLowerCase())
+        })
+      }
+      return artists;
     }
   },
 
@@ -42,7 +61,7 @@ export default {
 }
 
 </script>
-<style scoped>
+<style>
 body{
 
 }
@@ -51,10 +70,25 @@ body{
   width: 100vw;
   margin-top: 20px;
 }
+.search {
+  /* border: 2px solid blue; */
+
+  display: grid;
+  grid-area: input;
+  height: 30px;
+  width: 250px;
+  border: solid transparent;
+  background-color: rgba(233, 224, 224, 0.728);
+  border-radius: 10px;
+  margin-bottom: 15px;
+  margin-left: 15px;
+
+}
 #artist-cards{
   display: flex;
   flex-wrap: wrap;
   padding-left: 15px;
+  justify-content: space-evenly;
 }
 
 .artist-card {
@@ -98,12 +132,14 @@ body{
 .artist-death{
   grid-area: death;
 }
-.artist-image{
-  border-top-left-radius: 10px;
-  border-top-right-radius: 10px;
+.artist-card-image{
+
   grid-area: image;
   width: 255px;
   height: 255px;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+
 
 }
 </style>

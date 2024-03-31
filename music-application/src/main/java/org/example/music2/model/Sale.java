@@ -19,16 +19,20 @@ public class Sale {
     private String albumName;
     @JsonProperty("Sold")
     private Boolean isSold;
+
+    @JsonProperty("Quantity")
+    private int quantity;
     @JsonProperty("Sale Date")
     private LocalDate saleDate;
 
-    public Sale(int saleId, int customerId, String customerName, int albumId, String albumName, Boolean isSold, LocalDate saleDate) {
+    public Sale(int saleId, int customerId, String customerName, int albumId, String albumName, Boolean isSold, int quantity, LocalDate saleDate) {
         this.saleId = saleId;
         this.customerId = customerId;
         this.customerName = customerName;
         this.albumId = albumId;
         this.albumName = albumName;
         this.isSold = isSold;
+        this.quantity = quantity;
         this.saleDate = saleDate;
     }
 
@@ -59,6 +63,10 @@ public class Sale {
         return isSold;
     }
 
+    public int getQuantity() {
+        return quantity;
+    }
+
     public LocalDate getSaleDate() {
         return saleDate;
     }
@@ -85,6 +93,10 @@ public class Sale {
 
     public void setSold(Boolean sold) {
         isSold = sold;
+    }
+
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
     }
 
     public void setSaleDate(LocalDate saleDate) {

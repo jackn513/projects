@@ -2,9 +2,9 @@
     <body>
 
       <div class='contents'>
-        <input class="search"  placeholder=" search products: " />
+        <input class="search"  placeholder=" search albums: " v-model="searchTerm"/>
         <div id="album-cards">
-          <section v-for="(album, index) in albums" :key="index" class="router-link-album-cards">
+          <section v-for="(album, index) in filteredAlbums" :key="index" class="router-link-album-cards">
             <article class="album-card">
               <div class="title"><a>{{ album['Album Title'] }}</a></div>
               <div class="artist-name">{{ album['Artist Name'] }}</div>
@@ -42,12 +42,7 @@ export default {
       albums: [],
       articles: articles.getArticleData(),
       albumImage: albumImage,
-      search: {
-        title: '',
-        artistName: '',
-        releaseDate: '',
-        price: ''
-      },
+      searchTerm: '',
       cardVue: true ,
       
     }
@@ -73,6 +68,22 @@ export default {
         style: "currency"
       }).format(price);
     },
+    search(){
+      this.filteredAlbums = this.albums.filter(album => {
+        album['Album Title'].toLowerCase().includes(this.searchTerm.toLowerCase())
+      })
+    }
+  },
+  computed: {
+    filteredAlbums(){
+      let albums = this.albums;
+      if (this.searchTerm !== ''){
+        albums = albums.filter(album => {
+          return album['Album Title'].toLowerCase().includes(this.searchTerm.toLowerCase())
+        })
+      }
+      return albums;
+    }
   },
   created(){
     this.getAlbums();
@@ -110,6 +121,7 @@ body header h1 {
 
 .search {
   /* border: 2px solid blue; */
+
   display: grid;
   grid-area: input;
   height: 30px;
@@ -165,7 +177,7 @@ body header ul a:hover{
 
 #findStuff ul li a {
   font-size: medium;
-  padding-bottom: 10px;
+
   text-decoration: none; 
   text-transform: lowercase;
   color: black;
@@ -188,6 +200,7 @@ body header ul a:hover{
 #album-cards{
   grid-area: contents;
   display: flex;
+  justify-content: space-evenly;
   flex-wrap: wrap;
  padding-left: 15px;
 }
@@ -195,8 +208,7 @@ body header ul a:hover{
 .album-card {
   display: grid;
   grid-template-columns: 30px 1fr 30px;
-  grid-template-areas: 
-
+  grid-template-areas:
   "image image image image "
   "image image image image  "
   "artist artist price price "
@@ -208,7 +220,6 @@ body header ul a:hover{
   text-transform: lowercase;
   margin-right: 50px;
   margin-bottom: 20px;
-
   border-radius: 10px;
 
 }

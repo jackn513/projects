@@ -12,6 +12,7 @@ DROP TABLE IF EXISTS artist_album CASCADE;
 DROP TABLE IF EXISTS customer CASCADE;
 DROP TABLE IF EXISTS sale CASCADE;
 DROP TABLE IF EXISTS line_item CASCADE;
+DROP TABLE IF EXISTS cart CASCADE;
 
 CREATE TABLE artist_info
 (
@@ -65,6 +66,7 @@ CREATE TABLE sale
     customer_id int NOT NULL,
 	album_id int NOT NULL,
 	is_sold boolean NOT NULL,
+    quantity int NOT NULL DEFAULT(1),
     sale_date date,
     CONSTRAINT PK_sale PRIMARY KEY (sale_id),
     CONSTRAINT FK_sale_01 FOREIGN KEY (customer_id)
@@ -291,19 +293,6 @@ INSERT INTO customer (customer_name, street_address, phone_number, email, date_o
 ;
 
 -- sold albums -- 
-INSERT INTO sale (customer_id, album_id, is_sold, sale_date) VALUES
-	(10, 37, true, '2022-07-21'),
-	(7, 1, true, '2024-01-18'),
-	(1, 16, true, '2020-09-12'),
-	(6, 12, true, '2021-12-31'),
-	(9, 2, true, '2019-11-02'),
-	(8, 6, true, '2022-12-02'),
-	(5, 9, true, '2023-02-19'),
-	(3, 12, true, '2021-11-17'),
-	(2, 30, true,'2022-06-06'),
-	(11, 21, true, '2019-12-03'),
-	(4, 16, true, '2020-08-20')
-;
 
 -- unsold albums -- 
 
