@@ -40,9 +40,9 @@ public class ArtistController {
         return artistDao.createArtist(artist);
     }
 
-    @RequestMapping(path = "/with_albums", method = RequestMethod.GET)
-    public List<Artist> getArtistsWithAlbums() {
-        return artistDao.getArtistsWithAlbums();
+    @RequestMapping(path = "/with_albums/{id}", method = RequestMethod.GET)
+    public List<Artist> getArtistsWithAlbums(@PathVariable int id) {
+        return artistDao.getArtistsWithAlbums(id);
     }
 }
 

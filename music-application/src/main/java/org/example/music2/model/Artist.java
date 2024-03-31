@@ -21,16 +21,16 @@ public class Artist {
     private LocalDate dateOfBirth;
     @JsonProperty("Date of Death")
     private LocalDate dateOfDeath;
-
+    @JsonProperty("Album")
     private Album album;
 
-    public Artist(int artistId, String artistName, String artistImage, LocalDate dateOfBirth, LocalDate dateOfDeath) {
+    public Artist(int artistId, String artistName, String artistImage, LocalDate dateOfBirth, LocalDate dateOfDeath, Album album) {
         this.artistId = artistId;
         this.artistName = artistName;
         this.artistImage = artistImage;
         this.dateOfBirth = dateOfBirth;
         this.dateOfDeath = dateOfDeath;
-
+        this.album = album;
     }
 
     public Artist() {
@@ -84,14 +84,5 @@ public class Artist {
         this.album = album;
     }
 
-    public String toString() {
-        return
-                "Artist id: " + getArtistId() +
-                "\n" + "Artist Name: " + getArtistName() +
-                "\n" + "Date of Birth: " + getDateOfBirth() +
-                "\n" + "Date of Death: " + getDateOfDeath() +
-                "\n" +
-                "-------------------------------------------------------";
-    }
 
 }

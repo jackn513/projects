@@ -59,23 +59,24 @@ public class JdbcArtistDao implements ArtistDao {
     }
 
     @Override
-    public List<Artist> getArtistsWithAlbums() {
+    public List<Artist> getArtistsWithAlbums(int artistId) {
         List<Artist> artists = new ArrayList<>();
-        String sql = "SELECT * FROM artist_info JOIN album ON artist_info.artist_id = album.artist_id";
-
+        String sql = "SELECT * FROM artist_info JOIN album ON artist_info.artist_id = album.artist_id " +
+                "WHERE artist_info.artist_id = ?";
 
         try {
-            SqlRowSet results = jdbcTemplate.queryForRowSet(sql);
-            while(results.next()){
+            SqlRowSet results = jdbcTemplate.queryForRowSet(sql, artistId);
+            while(results.next()) {
                 artists.add(mapRowToArtistWithAlbum(results));
             }
-        }catch (CannotGetJdbcConnectionException e) {
+        } catch (CannotGetJdbcConnectionException e) {
             throw new DaoException("Unable to connect to server or database", e);
         } catch (DataIntegrityViolationException e) {
             throw new DaoException("Data integrity violation", e);
         }
         return artists;
     }
+
 
     @Override
     public List<Artist> getArtists() {

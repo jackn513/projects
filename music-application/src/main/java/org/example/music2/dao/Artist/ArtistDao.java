@@ -9,7 +9,7 @@ public interface ArtistDao {
 
     Artist getArtistById(int artistId);
     List<Artist> getArtistsByDateOfBirth(LocalDate startDate, LocalDate endDate);
-    List<Artist> getArtistsWithAlbums();
+    List<Artist> getArtistsWithAlbums(int artistId);
     List<Artist> getArtists();
     Artist createArtist(Artist newArtist);
     Artist updateArtist(Artist updatedArtist);

@@ -13,7 +13,7 @@ import java.time.LocalDate;
 import java.util.List;
 
 @RestController
-@CrossOrigin
+@CrossOrigin(origins = "http://localhost:5173")
 @RequestMapping("/album")
 public class AlbumController {
 
@@ -48,7 +48,7 @@ public class AlbumController {
         }
     }
 
-    @RequestMapping(path = "/artistId/{artistId}", method = RequestMethod.GET)
+    @RequestMapping(path = "/artist_id/{artistId}", method = RequestMethod.GET)
     public List<Album> getByArtistId(@PathVariable int artistId) {
         List<Album> albumsByArtist = albumDao.getAlbumByArtistId(artistId);
         if (albumsByArtist.isEmpty()) {
