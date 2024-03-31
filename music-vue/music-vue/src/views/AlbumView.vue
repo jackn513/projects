@@ -14,20 +14,7 @@
           </section>
         </div>
       </div>
-      <footer id="footer">
-        <ul>
-          <li>
-            <!-- <router-link v-bind:to="{name: 'about'}" @click="scrollToTop"><h5>about us</h5></router-link> -->
-            <a href="example"><h5>about us</h5></a>
-            <a href="example"><h5>contact us</h5></a>
-            <a href="example"><h5>privacy</h5></a>
-            <a href="example"><h5>accessibility</h5></a>
-            <a href="example"><h5>other products</h5></a>
-            <a href="example"><h5>make yourself useful</h5></a>
-            <a href="example"><h5>newsletter</h5></a>
-          </li>
-        </ul>
-      </footer>
+
     </body>
 </template>
 
@@ -39,14 +26,11 @@ import albumImage from '@/assets/product.jpg';
 import CartService from '@/services/CartService';
 import articles from '../assets/Articles.js';
 
-import AlbumDesign from '@/components/AlbumCardDesign.vue';
 import AlbumService from '@/services/AlbumService';
 
 
 export default {
-  components: {
-    AlbumDesign
-  },
+
   data() {
     return {
       image: bandImage,
@@ -99,19 +83,7 @@ export default {
 
 
 body {
-  font-family: Arial, Helvetica, sans-serif;
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-template-areas: 
-  "header header header"
-  "search search search"
-  "contents contents contents"
-  "footer footer footer";
-  /* width: 100vw;
-  height: 100vh; */
-  margin: 0px;
-  padding: 0;
-  /* background: radial-gradient(circle, #9d0b0b, #941c64, #a00723); */
+  background-color: rgb(32, 2, 220)
 }
 body header{
   grid-area: header;
@@ -203,25 +175,25 @@ body header ul a:hover{
   border-bottom: 1px solid black;
 }
 
-
-
 .contents{
-  grid-area: contents;
- 
+  width: 100vw;
+  margin-top: 20px;
 }
+
+
 #album-cards{
   grid-area: contents;
   display: flex;
+  justify-content: space-evenly;
   flex-wrap: wrap;
  padding-left: 15px;
- 
 }
 
 .album-card {
   display: grid;
   grid-template-columns: 30px 1fr 30px;
   grid-template-areas: 
-  
+
   "image image image image "
   "image image image image  "
   "artist artist price price "
@@ -233,7 +205,7 @@ body header ul a:hover{
   text-transform: lowercase;
   margin-right: 50px;
   margin-bottom: 20px;
-  border-radius: 10px;
+  background-color: rgba(163, 167, 169, 0.408);
 }
 
 
@@ -243,16 +215,15 @@ body header ul a:hover{
 }
 
 .album-card:hover {
-  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2);
-  background-color: rgba(163, 167, 169, 0.408);
+  box-shadow: 15px 15px 1px rgb(220, 3, 3);
+
 }
 
 #albumImage {
   width: 255px;
   height: 255px;
   grid-area: image;
-  border-top-left-radius: 10px;
-  border-top-right-radius: 10px;
+
 }
 
 .artist-name {

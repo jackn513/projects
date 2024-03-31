@@ -8,12 +8,14 @@ import org.springframework.web.server.ResponseStatusException;
 
 ;
 import java.util.List;
-
+@CrossOrigin
 @RestController
 @RequestMapping("artist_info")
+
 public class ArtistController {
 
     private final ArtistDao artistDao;
+
     public ArtistController(ArtistDao artistDao) {
         this.artistDao = artistDao;
     }
@@ -37,4 +39,10 @@ public class ArtistController {
     Artist createArtist(@RequestBody Artist artist){
         return artistDao.createArtist(artist);
     }
+
+    @RequestMapping(path = "/with_albums", method = RequestMethod.GET)
+    public List<Artist> getArtistsWithAlbums() {
+        return artistDao.getArtistsWithAlbums();
+    }
 }
+

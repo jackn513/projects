@@ -15,7 +15,7 @@
         <ul>
           <li>
             <router-link v-bind:to="{name: 'albums'}" class="router-link-albums">Albums</router-link>
-            <a href="#">Artists</a>
+            <router-link v-bind:to="{name: 'artists'}" class="router-link-arists">Artists</router-link>
             <router-link v-bind:to="{name: 'cart'}" class="router-link-cart">Cart</router-link>
 
           </li>
@@ -27,6 +27,20 @@
   </div>
 
   </body>
+  <footer id="footer">
+    <ul>
+      <li>
+        <!-- <router-link v-bind:to="{name: 'about'}" @click="scrollToTop"><h5>about us</h5></router-link> -->
+        <a href="example"><h5>about us</h5></a>
+        <a href="example"><h5>contact us</h5></a>
+        <a href="example"><h5>privacy</h5></a>
+        <a href="example"><h5>accessibility</h5></a>
+        <a href="example"><h5>other products</h5></a>
+        <a href="example"><h5>make yourself useful</h5></a>
+        <a href="example"><h5>newsletter</h5></a>
+      </li>
+    </ul>
+  </footer>
 </template>
 
 <script>
@@ -70,9 +84,7 @@ export default{
 .router-link-home {
   text-decoration: none;
 }
-.router-link-active {
-  text-decoration: none;
-}
+
 body {
   font-family: Arial, Helvetica, sans-serif;
   display: grid;
@@ -98,6 +110,8 @@ body header{
 
 
 }
+
+
 
 body header h1 {
   /* border: 2px solid violet; */
@@ -139,7 +153,7 @@ body header ul a{
   text-transform: lowercase;
   margin-right: 10px;
   font-size: medium;
-  text-transform: lowercase;
+
   padding-bottom: 20px;
 }
 body header ul a:hover{
@@ -148,7 +162,8 @@ body header ul a:hover{
 #findStuff{
   margin-left: 10px;
   grid-area: find;
-  margin-bottom: 5px;
+
+
 }
 
 #findStuff ul {
@@ -163,13 +178,13 @@ body header ul a:hover{
 
 #findStuff ul li a {
   font-size: medium;
-  padding-bottom: 10px;
+  padding-bottom: 20px;
   text-decoration: none; 
   text-transform: lowercase;
   color: black;
   border-bottom: 3px solid transparent;
   margin-right: 15px;
-  padding-bottom: 20px;
+  //padding-bottom: 20px;
 
   
   

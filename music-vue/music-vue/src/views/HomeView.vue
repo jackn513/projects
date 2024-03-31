@@ -2,8 +2,6 @@
   <body>
     
     <div class='contents'>
-
-      
       <section id="imageAndAside">
         <!-- <img src="img/band-img.jpg" alt="signer"> -->
         <img :src="image" />
@@ -131,6 +129,7 @@ body {
   "header header header"
   "body body body"
   "footer footer footer";
+
   
 
   
@@ -275,65 +274,6 @@ text-transform: lowercase;
 color: black;
 }
 
-
-.album-cards{
-display: flex;
-flex-wrap: wrap;
-margin-left: 15px;
-
-
-}
-.album-card {
-  display: grid;
-  grid-template-columns: 30px 1fr 30px;
-  grid-template-areas: 
-  "image image image image "
-  "image image image image  "
-  "artist artist . .  "
-  ". . . ."
-  ". . . .";
-  width: 155px;
-  height: 240px;
-  text-transform: lowercase;
- padding-left: 15px;;
-  margin-bottom: 20px;
-  border-radius: 10px;
-}
-.router-link-album-cards{
-  text-decoration: none;
-  color: black;
-}
-
-.album-card:hover {
-  background-color: rgba(163, 167, 169, 0.408);
-}
-
-#albumImage {
-  width: 155px;
-  height: 155px;
-  grid-area: image;
-  border-top-left-radius: 10px;
-  border-top-right-radius: 10px;
-}
-
-.artist-name {
- grid-area: artist;
-  
-}
-
-.title {
-  grid-area: title;
-  font-size: small;
-  color: black;
-  padding-left: 11px;
-  text-decoration: none;
-  align-self: center;
-}
-#month{
-grid-area: month;
-padding-left: 15px;
-text-transform: lowercase;
-}
 #article-cards{
 display: flex;
 flex-wrap: wrap;
