@@ -1,6 +1,8 @@
 <template id="Main">
     <body>
+
       <div class='contents'>
+        <input class="search"  placeholder=" search products: " />
         <div id="album-cards">
           <section v-for="(album, index) in albums" :key="index" class="router-link-album-cards">
             <article class="album-card">
@@ -83,7 +85,7 @@ export default {
 
 
 body {
-  background-color: rgb(32, 2, 220)
+
 }
 body header{
   grid-area: header;
@@ -115,6 +117,8 @@ body header h1 {
   border: solid transparent;
   background-color: rgba(233, 224, 224, 0.728);
   border-radius: 10px;
+  margin-bottom: 15px;
+  margin-left: 15px;
 
 }
 
@@ -184,7 +188,6 @@ body header ul a:hover{
 #album-cards{
   grid-area: contents;
   display: flex;
-  justify-content: space-evenly;
   flex-wrap: wrap;
  padding-left: 15px;
 }
@@ -205,7 +208,9 @@ body header ul a:hover{
   text-transform: lowercase;
   margin-right: 50px;
   margin-bottom: 20px;
-  background-color: rgba(163, 167, 169, 0.408);
+
+  border-radius: 10px;
+
 }
 
 
@@ -215,7 +220,8 @@ body header ul a:hover{
 }
 
 .album-card:hover {
-  box-shadow: 15px 15px 1px rgb(220, 3, 3);
+  background-color: rgba(163, 167, 169, 0.408);
+  box-shadow: 5px 5px 10px rgb(187, 177, 177);
 
 }
 
@@ -223,7 +229,8 @@ body header ul a:hover{
   width: 255px;
   height: 255px;
   grid-area: image;
-
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
 }
 
 .artist-name {

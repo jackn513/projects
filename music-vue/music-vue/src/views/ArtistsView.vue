@@ -44,7 +44,7 @@ export default {
 </script>
 <style scoped>
 body{
-  background-color: rgb(220, 3, 3);
+
 }
 
 .contents{
@@ -54,9 +54,6 @@ body{
 #artist-cards{
   display: flex;
   flex-wrap: wrap;
-
-  justify-content: space-evenly;
-
   padding-left: 15px;
 }
 
@@ -75,13 +72,15 @@ body{
       "name name name name"
   " birth birth birth birth"
   "death death death death ";
-  background-color: rgba(163, 167, 169, 0.408);
+  border-radius: 10px;
+
 }
 
 
 
 .artist-card:hover{
-  box-shadow: 15px 15px 1px rgb(32, 3, 220);
+  background-color: rgba(163, 167, 169, 0.408);
+  box-shadow: 5px 5px 10px rgb(187, 177, 177);
 
 }
 
@@ -100,6 +99,8 @@ body{
   grid-area: death;
 }
 .artist-image{
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
   grid-area: image;
   width: 255px;
   height: 255px;

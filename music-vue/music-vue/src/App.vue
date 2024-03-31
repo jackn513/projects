@@ -1,14 +1,11 @@
 <template>
   <body>
     <header>
-      <router-link v-bind:to="{name: 'home'}" class="router-link-home"><h1>digitalNoise</h1></router-link>
-      <input class="search"  placeholder=" search products: " />
-
+      <router-link v-bind:to="{name: 'home'}" class="router-link-home"><img :src="logo" class="logo"></router-link>
       <ul>
         <li>
           <a href="#">Sign Up</a>
           <router-link v-bind:to="{name: 'login'}">Login</router-link>
-          
         </li>
       </ul>
       <section id="findStuff">
@@ -17,7 +14,6 @@
             <router-link v-bind:to="{name: 'albums'}" class="router-link-albums">Albums</router-link>
             <router-link v-bind:to="{name: 'artists'}" class="router-link-arists">Artists</router-link>
             <router-link v-bind:to="{name: 'cart'}" class="router-link-cart">Cart</router-link>
-
           </li>
         </ul>
       </section>
@@ -46,6 +42,7 @@
 <script>
 
 import albums from "./assets/Albums"
+import logo from './assets/Screenshot 2024-03-31 at 10.51.37 AM.png'
 export default{
   data() {
     return {
@@ -56,6 +53,7 @@ export default{
         releaseDate: '',
         price: ''
       },
+      logo: logo,
       added: false
     }
   },
@@ -83,6 +81,7 @@ export default{
 
 .router-link-home {
   text-decoration: none;
+
 }
 
 body {
@@ -100,6 +99,7 @@ body {
   
 }
 body header{
+
   grid-area: header;
   align-items: center;
   color: rgb(8, 153, 190);
@@ -107,31 +107,23 @@ body header{
   grid-template-columns: 200px 1fr 1fr;
   grid-template-areas: "header input signup"
   "find find find";
-
+  background-color: black;
 
 }
 
-
+.logo{
+  width: 400px;
+}
 
 body header h1 {
   /* border: 2px solid violet; */
+
   text-transform: lowercase;
-  color: black;
+
   display: grid;
   margin-left: 10px;
   font-family: Arial, Helvetica, sans-serif;
-}
-
-.search {
-  /* border: 2px solid blue; */
-  display: grid;
-  grid-area: input;
-  height: 30px;
-  width: 250px;
-  border: solid transparent;
-  background-color: rgba(233, 224, 224, 0.728);
-  border-radius: 10px;
-
+  color: white;
 }
 
 body header ul {
@@ -145,19 +137,19 @@ body header ul {
   list-style: none;
   grid-area: signup;
   border-bottom: 3px solid transparent;
+
 }
 body header ul a{
   font-family: Arial, Helvetica, sans-serif;
-  color: black;
   text-decoration: none;
   text-transform: lowercase;
   margin-right: 10px;
   font-size: medium;
-
+  color: white;
   padding-bottom: 20px;
 }
 body header ul a:hover{
-  border-bottom: 3px solid BLACK;
+  border-bottom: 3px solid white;
 
 }
 #findStuff{
@@ -179,10 +171,10 @@ body header ul a:hover{
 
 #findStuff ul li a {
   font-size: medium;
+  color: white;
   padding-bottom: 20px;
   text-decoration: none; 
   text-transform: lowercase;
-  color: black;
   border-bottom: 3px solid transparent;
   margin-right: 15px;
   //padding-bottom: 20px;
@@ -191,8 +183,10 @@ body header ul a:hover{
   
 }
 
+
+
 #findStuff ul li a:hover{
-  border-bottom: 3px solid black;
+  border-bottom: 3px solid white
 
 }
 

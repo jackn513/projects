@@ -13,5 +13,7 @@ export default {
 
     singleArtist(id){
         return http.get(`/artist_info/${id}`)
-    }
+    },
+
+
 }
