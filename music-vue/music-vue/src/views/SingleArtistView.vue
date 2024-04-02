@@ -11,7 +11,6 @@
     <div class="albums-list">
       <div v-for="album in albums" :key="album['Album Id']" class="album-single-card">
         <p class="album-title">{{ album['Album Title'] }}</p>
-        <p class="release-date">Released: {{ album['Date Released'] }}</p>
         <p class="price"> ${{ album.Price }}</p>
         <img :src="album['Album Image']" alt="album" class="album-image">
       </div>

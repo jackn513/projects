@@ -5,7 +5,7 @@ import AlbumView from '../views/AlbumView.vue'
 import CartView from '../views/CartView.vue'
 import ArtistsView from '../views/ArtistsView.vue'
 import SingleArtistView from "@/views/SingleArtistView.vue";
-
+import SingleAlbumView from "@/views/SingleAlbumView.vue"
 import LoginView from '../views/LoginView.vue'
 // import AboutView from 
 
@@ -19,6 +19,11 @@ const routes = [
     path: '/albums',
     name: 'albums',
     component: AlbumView,
+  },
+  {
+    path: '/albums/:id',
+    name: 'album',
+    component: SingleAlbumView
   },
   {
     path: '/artists',

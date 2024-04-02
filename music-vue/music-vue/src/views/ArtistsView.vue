@@ -88,14 +88,14 @@ body{
   display: flex;
   flex-wrap: wrap;
   padding-left: 15px;
-  justify-content: space-evenly;
+  justify-content: space-between;
 }
 
 .artist-card {
   width: 255px;
   height: 340px;
   text-transform: lowercase;
-  margin-right: 50px;
+  margin-right: 20px;
   margin-bottom: 20px;
   display: grid;
   grid-template-columns: 30px 1fr 30px;

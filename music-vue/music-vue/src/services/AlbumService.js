@@ -12,7 +12,7 @@ export default{
     },
 
     singleAlbum(id){
-        return http.get(`/album/with_albums/${id}`)
+        return http.get(`/album/${id}`)
     },
 
     albumsByArtistId(id){

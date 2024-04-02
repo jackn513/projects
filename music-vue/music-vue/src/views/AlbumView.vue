@@ -200,7 +200,7 @@ body header ul a:hover{
 #album-cards{
   grid-area: contents;
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-between;
   flex-wrap: wrap;
  padding-left: 15px;
 }
@@ -218,7 +218,7 @@ body header ul a:hover{
   width: 255px;
   height: 340px;
   text-transform: lowercase;
-  margin-right: 50px;
+  margin-right: 20px;
   margin-bottom: 20px;
   border-radius: 10px;
 
@@ -249,7 +249,10 @@ body header ul a:hover{
   font-size: small;
   padding-left: 11px;
   align-self: center;
+  font-weight: bold;
 }
+
+
 
 .title {
   grid-area: title;
