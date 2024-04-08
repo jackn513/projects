@@ -1,19 +1,21 @@
 <template>
   <body>
     <header>
-      <router-link v-bind:to="{name: 'home'}" class="router-link-home"><img :src="logo" class="logo"></router-link>
+      <router-link v-bind:to="{name: 'home'}" class="router-link-home"><h1 class="logo">digitalNoise</h1></router-link>
       <ul>
         <li>
           <router-link v-bind:to="{name: 'signup'}">Sign up</router-link>
-          <router-link v-bind:to="{name: 'login'}">Login</router-link>
-        </li>
+          <router-link v-bind:to="{ name: 'logout' }" v-if="$store.state.token" class="router-link-logout">
+            Logout
+          </router-link> <router-link v-bind:to="{ name: 'login' }" v-else class="router-link-login">Login</router-link></li>
+
       </ul>
       <section id="findStuff">
         <ul>
           <li>
             <router-link v-bind:to="{name: 'albums'}" class="router-link-albums">Albums</router-link>
             <router-link v-bind:to="{name: 'artists'}" class="router-link-arists">Artists</router-link>
-            <router-link v-bind:to="{name: 'cart'}" class="router-link-cart">Cart</router-link>
+            <router-link v-bind:to="{name: 'cart'}" class="router-link-cart" v-if="$store.state.token">Cart</router-link>
           </li>
         </ul>
       </section>
@@ -81,6 +83,8 @@ export default{
 
 .router-link-home {
   text-decoration: none;
+  justify-self: start;
+  align-self: center;
 
 }
 
@@ -108,13 +112,13 @@ body header{
   grid-template-areas:
       "header input signup"
   "find find find";
-  background-color: black;
-
+  background-color: rgb(8, 153, 190);
+  border-bottom: 1.5px solid black;
 }
 
 .logo{
-  justify-self: center;
-  width: 400px;
+
+
 }
 
 body header h1 {
@@ -199,7 +203,7 @@ body header ul a:hover{
 #footer {
   display: grid;
   grid-area: footer;
-  background-color: black;
+  background-color: rgb(8, 153, 190);
   border-top: 2px solid;
   width: 100vw;
 }
@@ -219,6 +223,7 @@ body header ul a:hover{
   padding-bottom: 10px;
   text-decoration: none; 
   text-transform: lowercase;
+
   color: white;
   margin-right: 10px;
   border-bottom: 1px solid transparent;
