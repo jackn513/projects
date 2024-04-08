@@ -1,7 +1,8 @@
 package org.example.music2.model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import jakarta.persistence.Id;
+import org.springframework.data.annotation.Id;
+
 
 import java.time.LocalDate;
 
@@ -9,9 +10,9 @@ public class Sale {
     @Id
     @JsonProperty("Sale Id")
     private int saleId;
-    @JsonProperty("Customer Id")
+    @JsonProperty("User Id")
     private int customerId;
-    @JsonProperty("Customer Name")
+    @JsonProperty("User Name")
     private String customerName;
     @JsonProperty("Album Id")
     private int albumId;

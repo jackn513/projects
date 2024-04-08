@@ -1,10 +1,8 @@
 package org.example.music2.model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jdk.jfr.Name;
-import org.springframework.data.relational.core.mapping.Table;
+import org.springframework.data.annotation.Id;
+
 
 import java.math.BigDecimal;
 import java.time.LocalDate;

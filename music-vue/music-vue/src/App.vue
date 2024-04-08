@@ -4,7 +4,7 @@
       <router-link v-bind:to="{name: 'home'}" class="router-link-home"><img :src="logo" class="logo"></router-link>
       <ul>
         <li>
-          <a href="#">Sign Up</a>
+          <router-link v-bind:to="{name: 'signup'}">Sign up</router-link>
           <router-link v-bind:to="{name: 'login'}">Login</router-link>
         </li>
       </ul>

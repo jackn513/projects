@@ -1,7 +1,8 @@
 package org.example.music2.model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import jakarta.persistence.Id;
+import org.springframework.data.annotation.Id;
+
 
 public class LineItem {
     @Id

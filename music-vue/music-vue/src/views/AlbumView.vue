@@ -70,9 +70,10 @@ export default {
     },
     search(){
       this.filteredAlbums = this.albums.filter(album => {
-        album['Album Title'].toLowerCase().includes(this.searchTerm.toLowerCase())
-      })
+        return album['Album Title'].toLowerCase().includes(this.searchTerm.toLowerCase());
+      });
     }
+
   },
   computed: {
     filteredAlbums(){

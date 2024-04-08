@@ -31,8 +31,8 @@ data within the musicDB database.
 then deletes it from its respective tables (line_item and sale).
 
 #### `JdbcCustomerDao`
-* the `JdbcCustomerDao` method _getCustomers()_ goes directly to the customer table, while using the `Customer` to then
-"print" out a string of the customers info (their id, name, etc.).
+* the `JdbcCustomerDao` method _getCustomers()_ goes directly to the user table, while using the `Customer` to then
+"print" out a string of the users info (their id, name, etc.).
 
 
 ## `Application`

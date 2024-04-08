@@ -3,15 +3,16 @@ package org.example.music2.controller;
 import org.example.music2.dao.Artist.ArtistDao;
 import org.example.music2.model.Artist;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
-;
+
 import java.util.List;
 @CrossOrigin
 @RestController
 @RequestMapping("artist_info")
-
+@PreAuthorize("permitAll")
 public class ArtistController {
 
     private final ArtistDao artistDao;

@@ -1,16 +1,40 @@
 <template>
-    <h1>Hi</h1>
+<div id="login">
+  <form v-on:submit.prevent="login" class="form">
+    <h3 class="please">please Sign in</h3>
+    <div id="fields">
+      <label for="email" class="email">Email</label>
+      <input
+          type="text"
+          id="email"
+          placeholder="email"
+          v-model="user.email"
+          required
+          autofocus
+      />
+      <label for="password" class="password">Password</label>
+      <input
+          type="password"
+          id="password"
+          placeholder="password"
+          v-model="user.password"
+          required
+      />
+      <button type="submit" id="button-to-click">Sign in</button>
+    </div>
+  </form>
+</div>
 </template>
 
 <script>
-import AuthenticationService from "../services/AuthenticationService.js";
+import authService from "@/services/AuthenticationService.js";
 
 export default {
   data() {
     return {
       user: {
-        username: "",
-        password: "",
+        email: "",
+        password: ""
       },
     };
   },

@@ -4,6 +4,7 @@ import org.example.music2.dao.Album.AlbumDao;
 import org.example.music2.model.Album;
 import org.example.music2.model.Artist;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
@@ -13,8 +14,9 @@ import java.time.LocalDate;
 import java.util.List;
 
 @RestController
-@CrossOrigin(origins = "http://localhost:5173")
+@CrossOrigin(origins = "*")
 @RequestMapping("/album")
+@PreAuthorize("permitAll")
 public class AlbumController {
 
     private final AlbumDao albumDao;
@@ -24,6 +26,7 @@ public class AlbumController {
     }
 
     @RequestMapping(method = RequestMethod.GET)
+    @PreAuthorize("hasRole('USER')")
     public List<Album> getAlbums() {
         return albumDao.getAlbums();
     }

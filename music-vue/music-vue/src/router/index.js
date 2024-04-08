@@ -7,6 +7,7 @@ import ArtistsView from '../views/ArtistsView.vue'
 import SingleArtistView from "@/views/SingleArtistView.vue";
 import SingleAlbumView from "@/views/SingleAlbumView.vue"
 import LoginView from '../views/LoginView.vue'
+import SignUpView from "@/views/SignUpView.vue";
 // import AboutView from 
 
 const routes = [
@@ -36,9 +37,17 @@ const routes = [
     component: SingleArtistView
   },
   {
-    path: "/login",
-    name: "login",
+    path: '/login',
+    name: 'login',
     component: LoginView,
+    meta: {
+      requiresAuth: false
+    }
+  },
+  {
+    path: '/register',
+    name: 'signup',
+    component: SignUpView,
     meta: {
       requiresAuth: false
     }
@@ -49,10 +58,6 @@ const routes = [
     name: 'cart',
     component: CartView
   }
-
-
- 
-  
 ];
 
 export function createRouter() {
