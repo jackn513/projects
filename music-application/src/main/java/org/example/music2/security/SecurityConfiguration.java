@@ -26,7 +26,10 @@ public class SecurityConfiguration {
                 .csrf().disable()
                 .authorizeRequests()
                 .antMatchers("/authentication/**").permitAll()
-                .antMatchers("/artist_info", "/album", "/users").permitAll() // Permit access to specific endpoints
+                .antMatchers("/artist_info",
+                        "/artist_info/{id}",
+                        "/album/**",
+                        "/users").permitAll() // Permit access to specific endpoints
                 .anyRequest().authenticated() // Require authentication for any other requests
                 .and()
                 .sessionManagement()

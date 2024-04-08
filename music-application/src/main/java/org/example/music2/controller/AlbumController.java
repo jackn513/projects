@@ -14,9 +14,9 @@ import java.time.LocalDate;
 import java.util.List;
 
 @RestController
-@CrossOrigin(origins = "*")
+@CrossOrigin
 @RequestMapping("/album")
-@PreAuthorize("permitAll")
+
 public class AlbumController {
 
     private final AlbumDao albumDao;
@@ -26,7 +26,6 @@ public class AlbumController {
     }
 
     @RequestMapping(method = RequestMethod.GET)
-    @PreAuthorize("hasRole('USER')")
     public List<Album> getAlbums() {
         return albumDao.getAlbums();
     }
