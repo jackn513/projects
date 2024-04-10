@@ -22,4 +22,6 @@ public interface AlbumDao {
     Album createAlbum(Album newAlbum);
 
     int deleteAlbumById(int AlbumId);
+
+    List<Album> getProductsByUserId(int customerId);
 }

@@ -188,6 +188,24 @@ public class JdbcAlbumDao implements AlbumDao {
         return rowsAffected;
     }
 
+    @Override
+    public List<Album> getProductsByUserId(int customerId) {
+        List<Album> albums = new ArrayList<>();
+        String sql = "SELECT * FROM album WHERE album_id IN (SELECT album_id FROM cart_item WHERE user_id = ?)";
+        try{
+            SqlRowSet results = jdbcTemplate.queryForRowSet(sql, customerId);
+            while (results.next()){
+                Album album = mapRowToAlbumWithUser(results);
+                albums.add(album);
+            }
+
+        } catch (CannotGetJdbcConnectionException e) {
+            throw new DaoException("Unable to connect to server or database", e);
+        } catch (DataIntegrityViolationException e) {
+            throw new DaoException("Data integrity violation", e);
+        }
+        return albums;
+    }
 
 
     private Album mapRowToAlbum(SqlRowSet rowSet){
@@ -200,7 +218,29 @@ public class JdbcAlbumDao implements AlbumDao {
         album.setLengthInMin(rowSet.getInt("length_in_minutes"));
         album.setPrice(rowSet.getBigDecimal("price"));
         album.setImage(rowSet.getString("album_image"));
+
+
         return album;
     }
+
+    private Album mapRowToAlbumWithUser(SqlRowSet rowSet){
+        Album album = new Album();
+        album.setAlbumId(rowSet.getInt("album_id"));
+        album.setAlbumTitle(rowSet.getString("album_title"));
+        album.setArtistName(rowSet.getString("artist_id"));
+        album.setLabelName(rowSet.getString("label_id"));
+        album.setDateReleased(rowSet.getDate("date_released").toLocalDate());
+        album.setLengthInMin(rowSet.getInt("length_in_minutes"));
+        album.setPrice(rowSet.getBigDecimal("price"));
+        album.setImage(rowSet.getString("album_image"));
+
+        album.setPrice(rowSet.getBigDecimal("price"));
+
+
+//        album.setUserId(rowSet.getInt("user_id"));
+//        album.setUserName(rowSet.getString("user_name"));
+        return album;
+    }
+
 
 }

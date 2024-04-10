@@ -1,112 +1,117 @@
 package org.example.music2.dao.Users;
 
-import org.example.music2.exception.DaoException;
-import org.example.music2.model.Album;
-import org.example.music2.model.Role;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Objects;
+
 import org.example.music2.model.User;
+import org.example.music2.exception.DaoException;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.jdbc.CannotGetJdbcConnectionException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
-import org.springframework.stereotype.Service;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.stereotype.Component;
 
-import javax.sql.DataSource;
-import java.util.ArrayList;
-import java.util.List;
-@Service
-public class JdbcUserDao implements UserDao{
-    public JdbcUserDao (DataSource dataSource){
-        this.jdbcTemplate = new JdbcTemplate(dataSource);
-    }
+
+@Component
+public class JdbcUserDao implements UserDao {
 
     private final JdbcTemplate jdbcTemplate;
-    @Override
-    public List<User> getUsers() {
-        List<User> users = new ArrayList<>();
-        String sql = "SELECT * FROM _user";
-        try {
-            SqlRowSet results = jdbcTemplate.queryForRowSet(sql);
-            while (results.next()){
-                users.add(mapRowToUser(results));
-            }
-        } catch (CannotGetJdbcConnectionException e) {
-            throw new DaoException("Unable to connect to server or database", e);
-        } catch (DataIntegrityViolationException e) {
-            throw new DaoException("Data integrity violation", e);
-        }
-        return users;
 
-
+    public JdbcUserDao(JdbcTemplate jdbcTemplate) {
+        this.jdbcTemplate = jdbcTemplate;
     }
 
     @Override
     public User getUserById(int userId) {
         User user = null;
-        String sql = "SELECT * FROM _user WHERE customer_id = ?;";
-        try{
-            SqlRowSet results = jdbcTemplate.queryForRowSet(sql, userId);
-            if (results.next()){
-                user = mapRowToUser(results);
-            }
-        }catch (CannotGetJdbcConnectionException e) {
-            throw new DaoException("Unable to connect to server or database", e);
-        } catch (DataIntegrityViolationException e) {
-            throw new DaoException("Data integrity violation", e);
-        }
-        return user;
-    }
-
-    @Override
-    public User create(User user) {
-        int userId;
-        String sql = "INSERT INTO _user (first_name, last_name, email, password, role) " +
-                "VALUES (?, ?, ?, ?, ?) RETURNING customer_id;";
-       try {
-           Role role = (user.getRole() != null) ? user.getRole() : Role.USER;
-           userId =  jdbcTemplate.queryForObject(sql, int.class,
-                   user.getFirstName(),
-                   user.getLastName(),
-                   user.getEmail(),
-                   user.getPassword(),
-                   role.toString().toUpperCase());
-       } catch (CannotGetJdbcConnectionException e) {
-           throw new DaoException("Unable to connect to server or database", e);
-       } catch (DataIntegrityViolationException e) {
-           throw new DaoException("Data integrity violation", e);
-       }
-       return getUserById(userId);
-    }
-
-    @Override
-    public User getUserByFirstName(String firstName) {
-        User user = null;
-        String sql = "SELECT * FROM _user WHERE first_name = ?;";
+        String sql = "SELECT * FROM users WHERE user_id = ?";
         try {
-            SqlRowSet results = jdbcTemplate.queryForRowSet(sql, firstName);
+            SqlRowSet results = jdbcTemplate.queryForRowSet(sql, userId);
             if (results.next()) {
                 user = mapRowToUser(results);
             }
-        } catch (CannotGetJdbcConnectionException e) {
+        }
+        catch (CannotGetJdbcConnectionException e) {
             throw new DaoException("Unable to connect to server or database", e);
-        } catch (DataIntegrityViolationException e) {
-            throw new DaoException("Data integrity violation", e);
         }
         return user;
     }
 
     @Override
-    public User save(User user) {
-        return null;
+    public List<User> getUsers() {
+        List<User> users = new ArrayList<>();
+        String sql = "SELECT * FROM users ORDER BY username";
+        try {
+            SqlRowSet results = jdbcTemplate.queryForRowSet(sql);
+            while (results.next()) {
+                User user = mapRowToUser(results);
+                users.add(user);
+            }
+        }
+        catch (CannotGetJdbcConnectionException e) {
+            throw new DaoException("Unable to connect to server or database", e);
+        }
+        return users;
     }
 
-    private User mapRowToUser(SqlRowSet rowSet) {
+    @Override
+    public User getUserByUsername(String username) {
+        if (username == null) {
+            username = "";
+        }
+        User user = null;
+        String sql = "SELECT * FROM users WHERE username ILIKE ?";
+        try {
+            SqlRowSet results = jdbcTemplate.queryForRowSet(sql, username);
+            if (results.next()) {
+                user = mapRowToUser(results);
+            }
+        }
+        catch (CannotGetJdbcConnectionException e) {
+            throw new DaoException("Unable to connect to server or database", e);
+        }
+        return user;
+    }
+
+    @Override
+    public User createUser(User newUser) {
+        User user = null;
+        String insertUserSql = "INSERT INTO users (username,password_hash,role,name,address,city,state_code,zip) values (?,?,?,?,?,?,?,?) RETURNING user_id";
+        if (newUser.getPassword() == null) {
+            throw new DaoException("User cannot be created with null password");
+        }
+        try {
+            String password_hash = new BCryptPasswordEncoder().encode(newUser.getPassword());
+
+            int userId = jdbcTemplate.queryForObject(insertUserSql, int.class,
+                    newUser.getUsername(), password_hash, newUser.getAuthoritiesString(), newUser.getName(), newUser.getAddress(),
+                    newUser.getCity(), newUser.getStateCode(), newUser.getZIP());
+            user =  getUserById(userId);
+        }
+        catch (CannotGetJdbcConnectionException e) {
+            throw new DaoException("Unable to connect to server or database", e);
+        }
+        catch (DataIntegrityViolationException e) {
+            throw new DaoException("Data integrity violation", e);
+        }
+        return user;
+    }
+
+    private User mapRowToUser(SqlRowSet rs) {
         User user = new User();
-        user.setCustomerId(rowSet.getInt("customer_id"));
-        user.setFirstName(rowSet.getString("first_name"));
-        user.setLastName(rowSet.getString("last_name"));
-        user.setEmail(rowSet.getString("email"));
-        user.setPassword(rowSet.getString("password"));
-        user.setRole(Role.valueOf(rowSet.getString("role").toUpperCase()));
+        user.setId(rs.getInt("user_id"));
+        user.setUsername(rs.getString("username"));
+        user.setPassword(rs.getString("password_hash"));
+        user.setAuthorities(Objects.requireNonNull(rs.getString("role")));
+        user.setName(rs.getString("name"));
+        user.setAddress(rs.getString("address"));
+        user.setCity(rs.getString("city"));
+        user.setStateCode(rs.getString("state_code"));
+        user.setZIP(rs.getString("zip"));
+        user.setActivated(true);
         return user;
     }
 }
+

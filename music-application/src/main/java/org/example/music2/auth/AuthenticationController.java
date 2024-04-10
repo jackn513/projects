@@ -1,49 +1,83 @@
-package org.example.music2.auth;
+package org.example.music2.auth;//package org.example.music2.auth;
 
-import lombok.RequiredArgsConstructor;
+
+
+import javax.validation.Valid;
+
+
 import org.example.music2.dao.Users.UserDao;
+import org.example.music2.exception.DaoException;
+import org.example.music2.model.LoginDto;
+import org.example.music2.model.LoginResponseDto;
+import org.example.music2.model.RegisterUserDto;
 import org.example.music2.model.User;
+import org.example.music2.security.jwt.TokenProvider;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
-import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 
-import static org.springframework.data.jpa.domain.AbstractPersistable_.id;
+import org.springframework.web.server.ResponseStatusException;
 
+/**
+ * AuthenticationController is a class used for handling requests to authenticate Users.
+ *
+ * It depends on an instance of a UserDao for retrieving and storing user data. This is provided
+ * through dependency injection.
+ */
 @RestController
 @CrossOrigin
-@RequestMapping("/authentication")
-@PreAuthorize("isAuthenticated()")
-@RequiredArgsConstructor
 public class AuthenticationController {
 
+    private final TokenProvider tokenProvider;
     private final AuthenticationManagerBuilder authenticationManagerBuilder;
-    private final AuthenticationService service;
-    private final UserDao userDao; // Inject UserDao
+    private UserDao userDao;
 
-    @PostMapping("/register") // Endpoint for user registration
-    public ResponseEntity<AuthenticationResponse> register(
-            @RequestBody RegisterRequest request
-    ){
-        // You can use userDao to save user data
-        User user = userDao.getUserByFirstName(request.getFirstName());
+    public AuthenticationController(TokenProvider tokenProvider, AuthenticationManagerBuilder authenticationManagerBuilder, UserDao userDao) {
+        this.tokenProvider = tokenProvider;
+        this.authenticationManagerBuilder = authenticationManagerBuilder;
+        this.userDao = userDao;
+    }
 
-        // Check if the user already exists
-        User existingUser = userDao.getUserByFirstName(request.getFirstName());
-        if (existingUser != null) {
-            // User already exists, return an error response
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST)
-                    .body(new AuthenticationResponse("User with this email already exists"));
+    @RequestMapping(path = "/login", method = RequestMethod.POST)
+    public LoginResponseDto login(@Valid @RequestBody LoginDto loginDto) {
+        try {
+            UsernamePasswordAuthenticationToken authenticationToken =
+                    new UsernamePasswordAuthenticationToken(loginDto.getUsername(), loginDto.getPassword());
+
+            Authentication authentication = authenticationManagerBuilder.getObject().authenticate(authenticationToken);
+            SecurityContextHolder.getContext().setAuthentication(authentication);
+            String jwt = tokenProvider.createToken(authentication, false);
+
+            User user = userDao.getUserByUsername(loginDto.getUsername());
+            return new LoginResponseDto(jwt, user);
         }
-        userDao.save(user);
-        return ResponseEntity.ok(service.register(request));
+        catch (DaoException e) {
+            throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, "DAO error - " + e.getMessage());
+        }
     }
 
-    @PostMapping("/authenticate") // Endpoint for user authentication
-    public ResponseEntity<AuthenticationResponse> authenticate(
-            @RequestBody AuthenticationRequest request
-    ){
-        return ResponseEntity.ok(service.authenticate(request));
+    @ResponseStatus(HttpStatus.CREATED)
+    @RequestMapping(path = "/register", method = RequestMethod.POST)
+    public User register(@Valid @RequestBody RegisterUserDto newUser) {
+        try {
+            if (userDao.getUserByUsername(newUser.getUsername()) != null) {
+                throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "User already exists.");
+            } else {
+                User user = userDao.createUser(
+                        new User(newUser.getUsername(),newUser.getPassword(),
+                                newUser.getRole(), newUser.getName(),
+                                newUser.getAddress(), newUser.getCity(),
+                                newUser.getStateCode(), newUser.getZIP())
+                );
+                return user;
+            }
+        }
+        catch (DaoException e) {
+            throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, "User registration failed.");
+        }
     }
+
 }

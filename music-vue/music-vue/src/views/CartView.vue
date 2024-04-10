@@ -1,4 +1,8 @@
 <template>
+
+  <body>
+  <h3>Your cart is sadly empty</h3>
+  </body>
     
 </template>
 
@@ -7,6 +11,9 @@
 </script>
 
 
-<style scoped>
-
+<style >
+body{
+  width: 100vw;
+  height: 100vh;
+}
 </style>

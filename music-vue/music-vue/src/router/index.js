@@ -7,8 +7,8 @@ import ArtistsView from '../views/ArtistsView.vue'
 import SingleArtistView from "@/views/SingleArtistView.vue";
 import SingleAlbumView from "@/views/SingleAlbumView.vue"
 import LoginView from '../views/LoginView.vue'
-import SignUpView from "@/views/SignUpView.vue";
-import LogOutView from "@/views/LogOutView.vue";
+import SignUpView from "@/views/SignupView.vue";
+import LogOutView from "@/views/LogoutView.vue";
 // import AboutView from 
 
 const routes = [
@@ -54,7 +54,7 @@ const routes = [
     }
   },
   {
-    path: '/register',
+    path: '/signup',
     name: 'signup',
     component: SignUpView,
     meta: {

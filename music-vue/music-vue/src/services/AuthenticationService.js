@@ -1,13 +1,13 @@
 import axios from 'axios';
 
 const http = axios.create({
-      baseURL: "http://localhost:3000/authentication"
+      baseURL: "http://localhost:3000"
     })
 
 export default {
 
   login(user) {
-    return http.post('/authenticate', user)
+    return http.post('/login', user)
   },
 
   register(user) {

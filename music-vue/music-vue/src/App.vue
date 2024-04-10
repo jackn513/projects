@@ -5,10 +5,9 @@
       <ul>
         <li>
           <router-link v-bind:to="{name: 'signup'}">Sign up</router-link>
-          <router-link v-bind:to="{ name: 'logout' }" v-if="$store.state.token" class="router-link-logout">
-            Logout
-          </router-link> <router-link v-bind:to="{ name: 'login' }" v-else class="router-link-login">Login</router-link></li>
-
+         <router-link v-bind:to="{ name: 'logout' }" v-if="$store.state.token" class="router-link-logout">
+          Logout
+        </router-link> <router-link v-bind:to="{ name: 'login' }" v-else class="router-link-login">Login</router-link></li>
       </ul>
       <section id="findStuff">
         <ul>
@@ -25,20 +24,6 @@
   </div>
 
   </body>
-  <footer id="footer">
-    <ul>
-      <li>
-        <!-- <router-link v-bind:to="{name: 'about'}" @click="scrollToTop"><h5>about us</h5></router-link> -->
-        <a href="example"><h5>about us</h5></a>
-        <a href="example"><h5>contact us</h5></a>
-        <a href="example"><h5>privacy</h5></a>
-        <a href="example"><h5>accessibility</h5></a>
-        <a href="example"><h5>other products</h5></a>
-        <a href="example"><h5>make yourself useful</h5></a>
-        <a href="example"><h5>newsletter</h5></a>
-      </li>
-    </ul>
-  </footer>
 </template>
 
 <script>
@@ -76,7 +61,7 @@ export default{
 
 </script>
 
-<style scoped>
+<style >
 /* Global styles go here */
 
 
@@ -93,26 +78,22 @@ body {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-template-areas: 
-  "header header header"
-  "contents contents contents"
-  "footer footer footer";
-  /* width: 100vw;
-  height: 100vh; */
-  margin: 0px;
+    "header header header"
+    "contents contents contents"
+    "footer footer footer"; /* Add footer here */
   padding: 0;
-  
 }
 body header{
 
   grid-area: header;
   align-items: center;
-  color: rgb(8, 153, 190);
+  color: white;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   grid-template-areas:
       "header input signup"
   "find find find";
-  background-color: rgb(8, 153, 190);
+  background-color: rgb(2, 0, 0);
   border-bottom: 1.5px solid black;
 }
 
@@ -185,8 +166,6 @@ body header ul a:hover{
   margin-right: 15px;
   //padding-bottom: 20px;
 
-  
-  
 }
 
 
@@ -198,35 +177,39 @@ body header ul a:hover{
 
 .view{
   grid-area: contents;
+
+}
+footer{
+  grid-area: footer;
 }
 
 #footer {
-  display: grid;
-  grid-area: footer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   background-color: rgb(8, 153, 190);
-  border-top: 2px solid;
-  width: 100vw;
+  border-top: 2px solid white;
 }
 
 #footer ul {
-  width: 100%;
   list-style: none;
+  padding: 0;
+  margin: 0;
 }
 
-#footer li {
-  justify-items: start;
+#footer ul li {
+  display: inline-block;
+  margin-right: 20px;
+}
+
+#footer ul li:last-child {
+  margin-right: 0;
 }
 
 #footer ul li a {
-  display: inline-block;
-  font-size: medium;
-  padding-bottom: 10px;
-  text-decoration: none; 
-  text-transform: lowercase;
-
+  text-decoration: none;
   color: white;
-  margin-right: 10px;
-  border-bottom: 1px solid transparent;
+  font-size: 16px;
 }
 
 #footer ul li a:hover {

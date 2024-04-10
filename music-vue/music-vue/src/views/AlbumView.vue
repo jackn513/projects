@@ -16,7 +16,6 @@
           </section>
         </div>
       </div>
-
     </body>
 </template>
 
@@ -172,20 +171,20 @@ body header ul a:hover{
   justify-items: start;
   align-items: center;
   list-style: none;
-  padding-left: 5px; 
- 
+  padding-left: 5px;
+
 }
 
 #findStuff ul li a {
   font-size: medium;
 
-  text-decoration: none; 
+  text-decoration: none;
   text-transform: lowercase;
   color: black;
   border-bottom: 1px solid transparent;
   margin-right: 15px;
   padding-bottom: 20px;
-  
+
 }
 
 #findStuff ul li a:hover{
@@ -275,16 +274,16 @@ body header ul a:hover{
   grid-area: heart;
   justify-self: end;
   padding-right: 8px;
-  
+
 }
 .info{
   grid-area: info;
-  
+
 
 }
 
 .album-about-card{
-  width: 410px; 
+  width: 410px;
   height: 580px;
 }
 
@@ -309,7 +308,7 @@ body header ul a:hover{
   display: inline-block;
   font-size: medium;
   padding-bottom: 10px;
-  text-decoration: none; 
+  text-decoration: none;
   text-transform: lowercase;
   color: white;
   margin-right: 10px;
@@ -319,5 +318,5 @@ body header ul a:hover{
 #footer ul li a:hover {
   border-bottom: 1px solid white;
 }
-</style> 
+</style>
 
