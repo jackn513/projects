@@ -1,5 +1,6 @@
 package org.example.music2.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import org.springframework.data.annotation.Id;
 
@@ -13,10 +14,10 @@ public class Album {
     private int albumId;
     @JsonProperty("Album Title")
     private String albumTitle;
-    @JsonProperty("Artist Name")
-    private String artistName;
-    @JsonProperty("Label Name")
-    private String labelName;
+    @JsonProperty("Artist Id")
+    private int artistId;
+    @JsonProperty("Label id")
+    private int labelId;
     @JsonProperty("Date Released")
     private LocalDate dateReleased;
     @JsonProperty("Length")
@@ -26,16 +27,17 @@ public class Album {
 
     @JsonProperty("Album Image")
     private String image;
-
+    @JsonIgnore
     private int userId;
+    @JsonIgnore
     private String userName;
 
-    public Album(int albumId, String albumTitle, String artistName, String labelName, LocalDate dateReleased,
+    public Album(int albumId, String albumTitle, int artistId, int labelId, LocalDate dateReleased,
                  int lengthInMin, BigDecimal price, int userId, String userName) {
         this.albumId = albumId;
         this.albumTitle = albumTitle;
-        this.artistName = artistName;
-        this.labelName = labelName;
+       this.artistId = artistId;
+       this.labelId = labelId;
         this.dateReleased = dateReleased;
         this.lengthInMin = lengthInMin;
         this.price = price;
@@ -55,15 +57,12 @@ public class Album {
     }
 
 
-
-    public String getArtistName() {
-        return artistName;
+    public int getArtistId() {
+        return artistId;
     }
 
-
-
-    public String getLabelName() {
-        return labelName;
+    public int getLabelId() {
+        return labelId;
     }
 
     public LocalDate getDateReleased() {
@@ -91,15 +90,12 @@ public class Album {
     }
 
 
-
-    public void setArtistName(String artistName) {
-        this.artistName = artistName;
+    public void setArtistId(int artistId) {
+        this.artistId = artistId;
     }
 
-
-
-    public void setLabelName(String labelName) {
-        this.labelName = labelName;
+    public void setLabelId(int labelId) {
+        this.labelId = labelId;
     }
 
     public void setDateReleased(LocalDate dateReleased) {

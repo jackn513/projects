@@ -212,8 +212,8 @@ public class JdbcAlbumDao implements AlbumDao {
         Album album = new Album();
         album.setAlbumId(rowSet.getInt("album_id"));
         album.setAlbumTitle(rowSet.getString("album_title"));
-        album.setArtistName(rowSet.getString("artist_name"));
-        album.setLabelName(rowSet.getString("label_name"));
+        album.setArtistId(rowSet.getInt("artist_id"));
+        album.setLabelId(rowSet.getInt("label_id"));
         album.setDateReleased(rowSet.getDate("date_released").toLocalDate());
         album.setLengthInMin(rowSet.getInt("length_in_minutes"));
         album.setPrice(rowSet.getBigDecimal("price"));
@@ -227,8 +227,8 @@ public class JdbcAlbumDao implements AlbumDao {
         Album album = new Album();
         album.setAlbumId(rowSet.getInt("album_id"));
         album.setAlbumTitle(rowSet.getString("album_title"));
-        album.setArtistName(rowSet.getString("artist_id"));
-        album.setLabelName(rowSet.getString("label_id"));
+        album.setArtistId(rowSet.getInt("artist_id"));
+        album.setLabelId(rowSet.getInt("label_id"));
         album.setDateReleased(rowSet.getDate("date_released").toLocalDate());
         album.setLengthInMin(rowSet.getInt("length_in_minutes"));
         album.setPrice(rowSet.getBigDecimal("price"));
