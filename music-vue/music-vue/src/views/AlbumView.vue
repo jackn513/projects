@@ -1,22 +1,23 @@
 <template id="Main">
-    <body>
+  <body>
 
-      <div class='contents'>
-        <input class="search"  placeholder=" search albums: " v-model="searchTerm"/>
-        <div id="album-cards">
-          <section v-for="(album, index) in filteredAlbums" :key="index" class="router-link-album-cards">
-            <article class="album-card">
-              <div class="title"><a>{{ album['Album Title'] }}</a></div>
-              <div class="artist-name">{{ album['Artist Name'] }}</div>
-              <div class="price">{{ priceFormat(album['Price']) }}</div>
-              <!-- If you want to format the price, you can use a method or filter -->
-              <img :src="album['Album Image']" id="albumImage">
-              <img :src="heart" alt="Heart Icon" id="heart" @click="addToCart()">
-            </article>
-          </section>
-        </div>
-      </div>
-    </body>
+  <div class='contents'>
+    <input class="search"  placeholder=" search albums: " v-model="searchTerm"/>
+    <div id="album-cards">
+      <section v-for="(album, index) in filteredAlbums" :key="index" class="router-link-album-cards">
+        <article class="album-card">
+          <div class="title"><a>{{ album['Album Title'] }}</a></div>
+          <div class="artist-name">{{ album['Artist Name'] }}</div>
+          <div class="price">{{ priceFormat(album['Price']) }}</div>
+          <!-- If you want to format the price, you can use a method or filter -->
+          <img :src="album['Album Image']" id="albumImage">
+          <img :src="heart" alt="Heart Icon" id="heart" @click="addToCart()">
+        </article>
+      </section>
+    </div>
+  </div>
+
+  </body>
 </template>
 
 <script>
@@ -43,12 +44,12 @@ export default {
       albumImage: albumImage,
       searchTerm: '',
       cardVue: true ,
-      
+
     }
   },
   methods:{
     scrollToTop() {
-    window.scrollTo(0, 0);
+      window.scrollTo(0, 0);
     },
     getAlbums(){
       AlbumService.list().then(response => {
@@ -69,10 +70,9 @@ export default {
     },
     search(){
       this.filteredAlbums = this.albums.filter(album => {
-        return album['Album Title'].toLowerCase().includes(this.searchTerm.toLowerCase());
-      });
+        album['Album Title'].toLowerCase().includes(this.searchTerm.toLowerCase())
+      })
     }
-
   },
   computed: {
     filteredAlbums(){
@@ -87,7 +87,7 @@ export default {
   },
   created(){
     this.getAlbums();
-    
+
   }
 }
 </script>
@@ -96,6 +96,13 @@ export default {
 
 
 body {
+  background-image: radial-gradient(
+      circle at center,
+        /* Define the warm colors */
+      #ff8c00, /* Orange */
+      #ff5733, /* Coral */
+      #ff0000  /* Red */
+  );
 
 }
 body header{
@@ -202,7 +209,7 @@ body header ul a:hover{
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
- padding-left: 15px;
+  padding-left: 15px;
 }
 
 .album-card {
@@ -232,7 +239,7 @@ body header ul a:hover{
 
 .album-card:hover {
   background-color: rgba(163, 167, 169, 0.408);
-  box-shadow: 5px 5px 10px rgb(187, 177, 177);
+  //box-shadow: 5px 5px 10px rgb(187, 177, 177);
 
 }
 
@@ -319,4 +326,3 @@ body header ul a:hover{
   border-bottom: 1px solid white;
 }
 </style>
-

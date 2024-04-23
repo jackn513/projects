@@ -161,7 +161,7 @@ INSERT INTO album (album_title, artist_id, label_id, date_released, length_in_mi
                                                                                                                ('Oil of Every Pearls Un-Insides', 2, 31, '2017-06-14', 40, 10.99,
                                                                                                                 'https://media.pitchfork.com/photos/648747aaaed875e699bc73ed/master/pass/Sophie.jpg'),
 
-                                                                                                               ('Fossora', 3, 2, '2022-11-30', 54, 14.99,
+                                                                                                    ('Fossora', 3, 2, '2022-11-30', 54, 14.99,
                                                                                                                 'https://media.pitchfork.com/photos/630f5a82d81b4a1c03943188/master/pass/Bjork-Fossora.jpg'),
 
                                                                                                                ('Nina Simone: The Montreux Years (Live)', 4, 3, '2021-05-28', 121, 15.99,
@@ -274,4 +274,17 @@ COMMIT;
 
 select * from users
 
+INSERT INTO artist_info (artist_name, artist_image, date_of_birth, date_of_death)
+VALUES ('Eartheater (Alexandra Drewchin)',
+        'https://doz6j2b6qf4k9.cloudfront.net/eartheater-www.jpg',
+        '1989-03-16',
+        NULL);
 
+select * from label
+
+select* from album
+
+INSERT INTO album (album_title, artist_id, label_id, date_released, length_in_minutes, price, album_image) VALUES
+    ('Phoenix: Flames Are Dew Upon My Skin', 38, 33,'2020-10-02',47, 7.99,
+    'https://media.pitchfork.com/photos/5f721a37b721798c1a9de152/1:1/w_3000,h_3000,c_limit/Pheonix-%20Flames%20Are%20Dew%20Upon%20My%20Skin_eartheater.jpg')
+;

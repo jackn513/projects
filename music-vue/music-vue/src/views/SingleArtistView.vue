@@ -1,28 +1,28 @@
 <template>
 
-<div class="artist-page">
-  <section class="artist-info">
-    <h1 class="artist-name">{{ artist['Artist Name'] }}</h1>
-    <p>{{ artist['Date of Birth']}}</p>
-    <p>{{ artist['Date of Death'] }}</p>
-    <img :src="artist['Artist Image']" class="artist-image" alt="artist">
-  </section>
-  <div v-if="albums.length > 0" class="albums">
-    <div class="albums-list">
-      <div v-for="album in albums" :key="album['Album Id']" class="album-single-card">
-        <p class="album-title">{{ album['Album Title'] }}</p>
-        <p class="price"> ${{ album.Price }}</p>
-        <img :src="album['Album Image']" alt="album" class="album-image">
+  <div class="artist-page">
+    <section class="artist-info">
+      <h1 class="artist-name">{{ artist['Artist Name'] }}</h1>
+      <p>{{ artist['Date of Birth']}}</p>
+      <p>{{ artist['Date of Death'] }}</p>
+      <img :src="artist['Artist Image']" class="artist-image" alt="artist">
+    </section>
+    <div v-if="albums.length > 0" class="albums">
+      <div class="albums-list">
+        <div v-for="album in albums" :key="album['Album Id']" class="album-single-card">
+          <p class="album-title">{{ album['Album Title'] }}</p>
+          <p class="price"> ${{ album.Price }}</p>
+          <img :src="album['Album Image']" alt="album" class="album-image">
+        </div>
       </div>
     </div>
+    <div v-else>
+      <p>No albums found for this artist.</p>
+    </div>
+    <div v-else>
+      <p>Loading...</p>
+    </div>
   </div>
-  <div v-else>
-    <p>No albums found for this artist.</p>
-  </div>
-  <div v-else>
-    <p>Loading...</p>
-  </div>
-</div>
 
 </template>
 

@@ -1,12 +1,12 @@
 <template>
   <div id="register">
-    <form v-on:submit.prevent="register" class="form">
+    <form v-on:submit.prevent="register" class="form-signup">
       <h1 class="create">Create Account</h1>
       <div id="fields">
         <label for="username" class=label-user>Username</label>
         <input
             type="text"
-            id="username"
+            id="username-signup"
             placeholder="Username"
             v-model="user.username"
             required
@@ -15,7 +15,7 @@
         <label for="name" class="label-name">Name</label>
         <input
             type="text"
-            id="name"
+            id="name-signup"
             placeholder="Name"
             v-model="user.name"
             required
@@ -23,7 +23,7 @@
         <label for="password" class="label-password">Password</label>
         <input
             type="password"
-            id="password"
+            id="password-signup"
             placeholder="Password"
             v-model="user.password"
             required
@@ -31,7 +31,7 @@
         <label for="confirmPassword" class="label-confirm">Confirm</label>
         <input
             type="password"
-            id="confirm"
+            id="confirm-signup"
             placeholder="Confirm Password"
             v-model="user.confirm"
             required
@@ -149,17 +149,25 @@ export default {
 
 <style >
 #register {
-
+  display: flex;
   justify-content: center;
-  align-items: start;
+
+  width: 100vw;
   height: 100vh;
-  width: 100vh;
+  background-image: radial-gradient(
+      circle at center,
+        /* Define the violet and blue colors */
+      #8a2be2, /* Blue Violet */
+      #9370DB, /* Medium Purple */
+      #6A5ACD  /* Slate Blue */
+  );
+  padding-top: 20px;
 }
 
-.form {
+.form-signup{
   width: 450px;
   height: 600px;
-margin: 20px;
+  margin: 20px;
   display: grid;
   grid-template-columns: 30px 1fr 30px;
   grid-template-rows: 40px 300px 160px 40px;
@@ -207,7 +215,7 @@ margin: 20px;
   justify-self: end;
 }
 
-#username {
+#username-signup {
   padding-left: 5px;
   grid-area: user;
 
@@ -225,7 +233,7 @@ margin: 20px;
 
 }
 
-#name {
+#name-signup {
   padding-left: 5px;
   grid-area: name;
   border: 1.5px solid;
@@ -241,7 +249,7 @@ margin: 20px;
   justify-self: end;
 }
 
-#password {
+#password-signup {
   padding-left: 5px;
   grid-area: pass;
   border: 1.5px solid;
@@ -257,7 +265,7 @@ margin: 20px;
   justify-self: end;
 }
 
-#confirm {
+#confirm-signup {
   padding-left: 5px;
   grid-area: conf;
   border: 1.5px solid;

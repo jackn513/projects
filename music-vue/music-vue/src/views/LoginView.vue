@@ -1,21 +1,21 @@
 <template>
   <div id="login">
-    <form v-on:submit.prevent="login" class="form">
+    <form v-on:submit.prevent="login" class="form-login">
       <h1 class="please">Please Sign In</h1>
       <div id="fields">
-        <label for="username" class="labelu">Username</label>
+        <label for="username" class="label-user">Username</label>
         <input
             type="text"
-            id="username"
+            id="username-login"
             placeholder="username"
             v-model="user.username"
             required
             autofocus
         />
-        <label for="password" class="labelp">Password</label>
+        <label for="password" class="label-password">Password</label>
         <input
             type="password"
-            id="password"
+            id="password-login"
             placeholder="Password"
             v-model="user.password"
             required
@@ -67,109 +67,122 @@ export default {
 };
 </script>
 
-<style scoped>
+<style >
 
 #login {
   display: flex;
   justify-content: center;
-  align-items: start;
-  height: 100vh;
 
+  width: 100vw;
+  height: 100vh;
+  padding-top: 20px;
+  background-image: radial-gradient(
+      circle at center,
+        /* Define the cool colors */
+      #00FFFF, /* Cyan */
+      #87CEEB, /* Sky Blue */
+      #4682B4  /* Steel Blue */
+  );
 }
 
-.form {
-  width: 450px;
-  height: 450px;
+.form-login {
+width: 450px;
+height: 450px;
 
-  padding: 20px;
-  display: grid;
-  grid-template-columns: 30 1fr 30px;
-  grid-template-rows: 40px 300px 40px;
-  grid-template-areas:
-  "please please please "
-  "field field field"
-  "need need need";
-
+padding: 20px;
+display: grid;
+grid-template-columns: 30px 1fr 30px;
+grid-template-rows: 40px 300px 40px;
+grid-template-areas:
+"please please please "
+"field field field"
+"need need need";
   border: 1.5px solid;
+
+
 
 }
 .please{
-  grid-area: please;
-  text-align: center;
+grid-area: please;
+text-align: center;
 
 
 }
 
 #fields{
-  grid-area: field;
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
-  grid-template-rows: repeat(3, 1fr);
-  grid-template-areas:
-  "labeluser user user user"
-  "labelpass pass pass pass"
-  ".  button button .";
-  padding-left: 15px;
+grid-area: field;
+display: grid;
+grid-template-columns: 1fr 1fr 1fr 1fr;
+grid-template-rows: repeat(3, 1fr);
+grid-template-areas:
+"labeluser user user user"
+"labelpass pass pass pass"
+".  button button .";
+
+
+
+padding-left: 15px;
 }
-.labelu{
-  grid-area: labeluser;
-  align-self: end;
-  justify-self: end;
-  height: 30px;
-  padding-top: 15px;
-  margin-right: 10px;
-
-
-}
-.labelp{
-  grid-area: labelpass;
-  align-self: center;
-  justify-self: end;
-  height: 30px;
-  margin-right: 10px;
-  padding-top: 15px;
-
-
+.label-user{
+grid-area: labeluser;
+align-self: end;
+justify-self: end;
+height: 30px;
+padding-top: 15px;
+margin-right: 10px;
 
 
 }
-#username{
-  grid-area: user;
-  justify-self: start;
-  align-self: end;
-  height: 30px;
-  width: 200px;
-  border: 1.5px solid;
-  padding-left: 5px;
+.label-password{
+grid-area: labelpass;
+align-self: center;
+justify-self: end;
+height: 30px;
+margin-right: 10px;
+padding-top: 15px;
+
+
+
+
 }
-#password{
-  grid-area: pass;
-  justify-self: start;
-  align-self: center;
-  height: 30px;
-  width: 200px;
+#username-login{
+grid-area: user;
+justify-self: start;
+align-self: end;
+height: 30px;
+width: 200px;
+border: 1.5px solid;
+padding-left: 5px;
+}
 
-  border: 1.5px solid;
+#password-login{
+grid-area: pass;
+justify-self: start;
+align-self: center;
+height: 30px;
+width: 200px;
 
-  padding-left: 5px;
+border: 1.5px solid;
+
+padding-left: 5px;
 
 }
 
 
 
 #button-to-click{
-  grid-area: button;
-  height: 30px;
-  width: 210px;
-  border: transparent;
-  background-color: black;
-  color: white;
+grid-area: button;
+height: 30px;
+width: 210px;
+border: transparent;
+background-color: black;
+color: white;
 
-  border-radius: 10px;
+border-radius: 10px;
 }
 
 .register{
-  justify-self: center;
-  grid-area: need;
+justify-self: center;
+grid-area: need;
 }
 </style>

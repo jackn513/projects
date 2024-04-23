@@ -16,6 +16,8 @@ public class Album {
     private String albumTitle;
     @JsonProperty("Artist Id")
     private int artistId;
+    @JsonProperty("Artist Name")
+    private String artistName;
     @JsonProperty("Label id")
     private int labelId;
     @JsonProperty("Date Released")
@@ -32,11 +34,12 @@ public class Album {
     @JsonIgnore
     private String userName;
 
-    public Album(int albumId, String albumTitle, int artistId, int labelId, LocalDate dateReleased,
+    public Album(int albumId, String albumTitle, int artistId, String artistName, int labelId, LocalDate dateReleased,
                  int lengthInMin, BigDecimal price, int userId, String userName) {
         this.albumId = albumId;
         this.albumTitle = albumTitle;
        this.artistId = artistId;
+       this.artistName = artistName;
        this.labelId = labelId;
         this.dateReleased = dateReleased;
         this.lengthInMin = lengthInMin;
@@ -129,4 +132,13 @@ public class Album {
     public void setUserName(String userName) {
         this.userName = userName;
     }
+
+    public String getArtistName() {
+        return artistName;
+    }
+
+    public void setArtistName(String artistName) {
+        this.artistName = artistName;
+    }
 }
+

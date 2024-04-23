@@ -1,18 +1,18 @@
 <template>
-<body>
-<div class="contents">
-  <input class="search"  placeholder=" search artists: " v-model="searchTerm"/>
-  <div id="artist-cards">
-    <section v-for="(artist, index) in filteredArtists" :key="index">
-      <article class="artist-card">
-        <router-link v-bind:to="{name: 'artist', params: { id: artist['Artist Id']}}"><img :src="artist['Artist Image']" class="artist-card-image"></router-link>
-        <p class="artist-name">{{artist['Artist Name']}}</p>
-      </article>
-    </section>
+  <body>
+  <div class="contents">
+    <input class="search"  placeholder=" search artists: " v-model="searchTerm"/>
+    <div id="artist-cards">
+      <section v-for="(artist, index) in filteredArtists" :key="index">
+        <article class="artist-card">
+          <router-link v-bind:to="{name: 'artist', params: { id: artist['Artist Id']}}"><img :src="artist['Artist Image']" class="artist-card-image"></router-link>
+          <p class="artist-name">{{artist['Artist Name']}}</p>
+        </article>
+      </section>
+    </div>
   </div>
-</div>
 
-</body>
+  </body>
 
 </template>
 
@@ -63,7 +63,13 @@ export default {
 </script>
 <style>
 body{
-
+  background-image: radial-gradient(
+      circle at center,
+        /* Define the yellow colors */
+      #FFD700, /* Gold */
+      #FFEF99, /* Pale Goldenrod */
+      #FFFFE0  /* Light Yellow */
+  );
 }
 
 .contents{
@@ -89,9 +95,11 @@ body{
   flex-wrap: wrap;
   padding-left: 15px;
   justify-content: space-between;
+
 }
 
 .artist-card {
+
   width: 255px;
   height: 340px;
   text-transform: lowercase;
@@ -114,11 +122,12 @@ body{
 
 .artist-card:hover{
   background-color: rgba(163, 167, 169, 0.408);
-  box-shadow: 5px 5px 10px rgb(187, 177, 177);
+  //box-shadow: 5px 5px 10px rgb(187, 177, 177);
 
 }
 
 .artist-name{
+
   grid-area: name;
   font-size: small;
   padding-left: 11px;

@@ -1,24 +1,24 @@
 <template>
   <body>
-    <header>
-      <router-link v-bind:to="{name: 'home'}" class="router-link-home"><h1 class="logo">digitalNoise</h1></router-link>
-      <ul>
-        <li>
-          <router-link v-bind:to="{name: 'signup'}">Sign up</router-link>
-         <router-link v-bind:to="{ name: 'logout' }" v-if="$store.state.token" class="router-link-logout">
+  <header>
+    <router-link v-bind:to="{name: 'home'}" class="router-link-home"><h1 class="logo">digitalNoise</h1></router-link>
+    <ul>
+      <li>
+        <router-link v-bind:to="{name: 'signup'}">Sign up</router-link>
+        <router-link v-bind:to="{ name: 'logout' }" v-if="$store.state.token" class="router-link-logout">
           Logout
         </router-link> <router-link v-bind:to="{ name: 'login' }" v-else class="router-link-login">Login</router-link></li>
+    </ul>
+    <section id="findStuff">
+      <ul>
+        <li>
+          <router-link v-bind:to="{name: 'albums'}" class="router-link-albums">Albums</router-link>
+          <router-link v-bind:to="{name: 'artists'}" class="router-link-arists">Artists</router-link>
+          <router-link v-bind:to="{name: 'cart'}" class="router-link-cart" v-if="$store.state.token">Cart</router-link>
+        </li>
       </ul>
-      <section id="findStuff">
-        <ul>
-          <li>
-            <router-link v-bind:to="{name: 'albums'}" class="router-link-albums">Albums</router-link>
-            <router-link v-bind:to="{name: 'artists'}" class="router-link-arists">Artists</router-link>
-            <router-link v-bind:to="{name: 'cart'}" class="router-link-cart" v-if="$store.state.token">Cart</router-link>
-          </li>
-        </ul>
-      </section>
-    </header>
+    </section>
+  </header>
   <div>
     <router-view class="view"></router-view>
   </div>
@@ -77,7 +77,7 @@ body {
   font-family: Arial, Helvetica, sans-serif;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  grid-template-areas: 
+  grid-template-areas:
     "header header header"
     "contents contents contents"
     "footer footer footer"; /* Add footer here */
@@ -153,14 +153,14 @@ body header ul a:hover{
   list-style: none;
   padding-left: 5px;
 
- 
+
 }
 
 #findStuff ul li a {
   font-size: medium;
   color: white;
   padding-bottom: 20px;
-  text-decoration: none; 
+  text-decoration: none;
   text-transform: lowercase;
   border-bottom: 3px solid transparent;
   margin-right: 15px;
@@ -183,36 +183,5 @@ footer{
   grid-area: footer;
 }
 
-#footer {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: rgb(8, 153, 190);
-  border-top: 2px solid white;
-}
 
-#footer ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-#footer ul li {
-  display: inline-block;
-  margin-right: 20px;
-}
-
-#footer ul li:last-child {
-  margin-right: 0;
-}
-
-#footer ul li a {
-  text-decoration: none;
-  color: white;
-  font-size: 16px;
-}
-
-#footer ul li a:hover {
-  border-bottom: 1px solid white;
-}
 </style>
