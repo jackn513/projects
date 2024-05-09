@@ -76,13 +76,7 @@ export default {
   width: 100vw;
   height: 100vh;
   padding-top: 20px;
-  background-image: radial-gradient(
-      circle at center,
-        /* Define the cool colors */
-      #00FFFF, /* Cyan */
-      #87CEEB, /* Sky Blue */
-      #4682B4  /* Steel Blue */
-  );
+
 }
 
 .form-login {

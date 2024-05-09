@@ -63,13 +63,7 @@ export default {
 </script>
 <style>
 body{
-  background-image: radial-gradient(
-      circle at center,
-        /* Define the yellow colors */
-      #FFD700, /* Gold */
-      #FFEF99, /* Pale Goldenrod */
-      #FFFFE0  /* Light Yellow */
-  );
+
 }
 
 .contents{

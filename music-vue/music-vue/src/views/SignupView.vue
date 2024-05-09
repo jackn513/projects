@@ -154,13 +154,7 @@ export default {
 
   width: 100vw;
   height: 100vh;
-  background-image: radial-gradient(
-      circle at center,
-        /* Define the violet and blue colors */
-      #8a2be2, /* Blue Violet */
-      #9370DB, /* Medium Purple */
-      #6A5ACD  /* Slate Blue */
-  );
+
   padding-top: 20px;
 }
 

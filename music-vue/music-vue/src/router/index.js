@@ -9,6 +9,7 @@ import SingleAlbumView from "@/views/SingleAlbumView.vue"
 import LoginView from '../views/LoginView.vue'
 import SignUpView from "@/views/SignupView.vue";
 import LogOutView from "@/views/LogoutView.vue";
+import GenreVue from "@/components/genrevue.vue";
 // import AboutView from 
 
 const routes = [
@@ -25,7 +26,15 @@ const routes = [
   {
     path: '/albums/:id',
     name: 'album',
-    component: SingleAlbumView
+    component: SingleAlbumView,
+    children: [
+
+    ]
+  },
+  {
+    path: '/genre/:genreId',
+    name: 'genre',
+    component: GenreVue
   },
   {
     path: '/artists',

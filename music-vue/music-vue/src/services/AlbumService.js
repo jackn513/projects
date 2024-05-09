@@ -17,5 +17,9 @@ export default{
 
     albumsByArtistId(id){
         return http.get(`/album/artist_id/${id}`)
+    },
+
+    albumsByGenreId(id){
+        return http.get(`/album/genre/${id}`)
     }
 }

@@ -24,6 +24,20 @@
   </div>
 
   </body>
+  <footer id="footer">
+    <ul>
+      <li>
+        <!-- <router-link v-bind:to="{name: 'about'}" @click="scrollToTop"><h5>about us</h5></router-link> -->
+        <a href="example"><h5>about us</h5></a>
+        <a href="example"><h5>contact us</h5></a>
+        <a href="example"><h5>privacy</h5></a>
+        <a href="example"><h5>accessibility</h5></a>
+        <a href="example"><h5>other products</h5></a>
+        <a href="example"><h5>make yourself useful</h5></a>
+        <a href="example"><h5>newsletter</h5></a>
+      </li>
+    </ul>
+  </footer>
 </template>
 
 <script>
@@ -179,8 +193,36 @@ body header ul a:hover{
   grid-area: contents;
 
 }
-footer{
+#footer {
+  display: grid;
   grid-area: footer;
+  background-color: black;
+  border-top: 2px solid;
+
+}
+
+#footer ul {
+
+  list-style: none;
+}
+
+#footer li {
+  justify-items: start;
+}
+
+#footer ul li a {
+  display: inline-block;
+  font-size: medium;
+  padding-bottom: 10px;
+  text-decoration: none;
+  text-transform: lowercase;
+  color: white;
+  margin-right: 10px;
+  border-bottom: 1px solid transparent;
+}
+
+#footer ul li a:hover {
+  border-bottom: 1px solid white;
 }
 
 

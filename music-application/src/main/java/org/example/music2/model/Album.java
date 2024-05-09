@@ -29,13 +29,18 @@ public class Album {
 
     @JsonProperty("Album Image")
     private String image;
+
+    @JsonProperty("Genre")
+    private String genre;
+    @JsonProperty("Genre ID")
+    private int genreId;
     @JsonIgnore
     private int userId;
     @JsonIgnore
     private String userName;
 
     public Album(int albumId, String albumTitle, int artistId, String artistName, int labelId, LocalDate dateReleased,
-                 int lengthInMin, BigDecimal price, int userId, String userName) {
+                 int lengthInMin, BigDecimal price, int userId, String userName, String genre, int genreId) {
         this.albumId = albumId;
         this.albumTitle = albumTitle;
        this.artistId = artistId;
@@ -46,6 +51,8 @@ public class Album {
         this.price = price;
         this.userId = userId;
         this.userName = userName;
+        this.genre = genre;
+        this.genreId = genreId;
     }
 
     public Album() {
@@ -84,6 +91,14 @@ public class Album {
         return image;
     }
 
+    public String getGenre() {
+        return genre;
+    }
+
+    public int getGenreId() {
+        return genreId;
+    }
+
     public void setAlbumId(int albumId) {
         this.albumId = albumId;
     }
@@ -115,6 +130,14 @@ public class Album {
 
     public void setImage(String image) {
         this.image = image;
+    }
+
+    public void setGenre(String genre) {
+        this.genre = genre;
+    }
+
+    public void setGenreId(int genreId) {
+        this.genreId = genreId;
     }
 
     public int getUserId() {

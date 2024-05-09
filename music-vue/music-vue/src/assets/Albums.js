@@ -722,6 +722,29 @@ const albums = [
     },
     {
         id: 30,
+        title: '21',
+        artistName: 'Adele',
+        label: 'XL Recordings LC',
+        releaseDate: '2011',
+        image: 'https://m.media-amazon.com/images/I/61lMwNQGYbL._UF1000,1000_QL80_.jpg',
+        length:'52',
+        price: 10.99,
+        trackList: [
+            "Rolling in the Deep",
+            "Rumour Has It",
+            "Turning Tables",
+            "Don't You Remember",
+            "Set Fire to the Rain",
+            "He Won't Go",
+            "Take It All",
+            "I'll Be Waiting",
+            "One and Only",
+            "Lovesong",
+            "Someone Like You"
+        ]
+    },
+    {
+        id: 31,
         title: '\"Awaken, My Love!\"',
         artistName: 'Childish Gambino (Donald Glover)',
         label: 'XL Recordings LC',
@@ -744,7 +767,7 @@ const albums = [
         ]
     },
     {
-        id: 31,
+        id: 32,
         title: 'Punisher',
         artistName: 'Phoebe Bridges',
         label: 'Loma Vista Recordings',
@@ -768,7 +791,7 @@ const albums = [
         
     },
     {
-        id: 32,
+        id: 33,
         title: 'The Dune SketchBook',
         artistName: 'Hans Zimmer',
         label: 'McDJ Entertainment',
@@ -793,7 +816,7 @@ const albums = [
         
     },
     {
-        id: 33,
+        id: 34,
         title: 'Shabrang',
         artistName: 'Sevdaliza',
         label: 'Debay Sounds LLC',
@@ -816,7 +839,7 @@ const albums = [
         
     },
     {
-        id: 34,
+        id: 35,
         title: 'Græ',
         artistName: 'Moses Sumney',
         label: 'WaterTower Music',
@@ -847,7 +870,7 @@ const albums = [
         
     },
     {
-        id: 35,
+        id: 36,
         title: 'Again',
         artistName: 'Oneohtrix Point Never (Daniel Lopatin)',
         label: 'Twisted Elegance',
@@ -870,13 +893,91 @@ const albums = [
             "Still Stuff That Doesn't Happen",
             "Last Known Image of a Song (Ryuichi Sakamoto Rework)"
         ]
-        
-        
+    },
+    {
+        id: 37,
+        title: 'Selected Ambient Works 85-92',
+        artistName: 'Aphex Twin',
+        label: 'JagJaguwar',
+        releaseDate: '1971',
+        image: 'https://f4.bcbits.com/img/0032727004_10.jpg',
+        length: '75',
+        price: 9.99,
+        trackList: [
+            "Xtal",
+            "Tha",
+            "Pulsewidth",
+            "Ageispolis",
+            "i",
+            "Green Calx",
+            "Heliosphan",
+            "We Are the Music Makers",
+            "Schottkey 7th Path",
+            "Ptolemy",
+            "Hedphelym",
+            "Delphium",
+            "Actium"
+        ]
+    },
+    {
+        id: 38,
+        title: 'Surrender',
+        artistName: 'Maggie Rogers',
+        label: 'R&S Records',
+        releaseDate: '2022',
+        image: 'https://media.pitchfork.com/photos/624471872afbc1aa4dab0c4c/master/pass/Maggie-Rogers-Surrender.jpg',
+        length: '46',
+        price: '7.99',
+        trackList: [
+            'Overdrive',
+            'Thats where I am',
+            'Want Want',
+            'Anywhere With You',
+            'Horses',
+            'Be Cool',
+            'Shatter',
+            'Begging for Rain',
+            'Ive got a friend',
+            'Honey',
+            'Symphony',
+            'Different Kind of World'
+        ]
+    },
+    {
+        id: 39,
+        title: 'Phoenix: Flames are Dew Upon My Skin',
+        artistName: 'Eartheater',
+        label: 'Debay Sounds LLC',
+        releaseDate: '2020',
+        image: 'https://media.pitchfork.com/photos/5f721a37b721798c1a9de152/1:1/w_3000,h_3000,c_limit/Pheonix-%20Flames%20Are%20Dew%20Upon%20My%20Skin_eartheater.jpg',
+        length: '47',
+        price: '7.99',
+        trackList: [
+            'Airborne Ashes',
+            'Metallic Taste of Patience',
+            'Below the Clavicle',
+            'Burning Feather',
+            'How To Fight',
+            'Kiss of the Phoenix',
+            'Volcano',
+            'Fantasy Collision',
+            'Mercurial Nerve',
+            'Goodbye Diamond',
+            'Bringing Me Back',
+            'Diamond in the Bedrock',
+            'Faith Consuming Hope',
+
+        ]
     }
 ];
 
 export default {
     getAlbumData() {
         return albums;
-    }
+    },
+    getTracks(albumId) {
+        const album = albums.find(album => album.id === albumId);
+        return album ? album.trackList : [];
+    },
+
 };

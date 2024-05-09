@@ -10,7 +10,7 @@
           <div class="artist-name">{{ album['Artist Name'] }}</div>
           <div class="price">{{ priceFormat(album['Price']) }}</div>
           <!-- If you want to format the price, you can use a method or filter -->
-          <img :src="album['Album Image']" id="albumImage">
+          <img :src="album['Album Image']" id="albumImage" @click="goToSingleAlbum(album['Album Id'])">
           <img :src="heart" alt="Heart Icon" id="heart" @click="addToCart()">
         </article>
       </section>
@@ -62,6 +62,10 @@ export default {
     addToCart(){
       this.$router.push({name: 'cart'})
     },
+
+    goToSingleAlbum(id){
+      this.$router.push({name: 'album', params:  {id: id}})
+    },
     priceFormat(price){
       return new Intl.NumberFormat(`en-US`, {
         currency: `USD`,
@@ -96,106 +100,8 @@ export default {
 
 
 body {
-  background-image: radial-gradient(
-      circle at center,
-        /* Define the warm colors */
-      #ff8c00, /* Orange */
-      #ff5733, /* Coral */
-      #ff0000  /* Red */
-  );
-
-}
-body header{
-  grid-area: header;
-  align-items: center;
-  color: rgb(8, 153, 190);
-  display: grid;
-  grid-template-columns: 200px 1fr 1fr;
-  grid-template-areas: "header input signup"
-  "find find find";
 
 
-}
-
-body header h1 {
-  /* border: 2px solid violet; */
-  text-transform: lowercase;
-  color: black;
-  display: grid;
-  margin-left: 10px;
-  font-family: Arial, Helvetica, sans-serif;
-}
-
-.search {
-  /* border: 2px solid blue; */
-
-  display: grid;
-  grid-area: input;
-  height: 30px;
-  width: 250px;
-  border: solid transparent;
-  background-color: rgba(233, 224, 224, 0.728);
-  border-radius: 10px;
-  margin-bottom: 15px;
-  margin-left: 15px;
-
-}
-
-body header ul {
-  /* border: 2px solid red; */
-  margin-right: 10px;
-  font-size: medium;
-  font-family: Arial, Helvetica, sans-serif;
-  justify-items: end;
-  align-items: center;
-  display: grid;
-  list-style: none;
-  grid-area: signup;
-  border-bottom: 3px solid transparent;
-}
-body header ul a{
-  font-family: Arial, Helvetica, sans-serif;
-  color: black;
-  text-decoration: none;
-  text-transform: lowercase;
-  margin-right: 10px;
-  font-size: medium;
-  text-transform: lowercase;
-  padding-bottom: 20px;
-}
-body header ul a:hover{
-  border-bottom: 1px solid BLACK;
-}
-#findStuff{
-  margin-left: 10px;
-  grid-area: find;
-  margin-bottom: 5px;
-}
-
-#findStuff ul {
-  display: grid;
-  font-family: Arial, Helvetica, sans-serif;
-  justify-items: start;
-  align-items: center;
-  list-style: none;
-  padding-left: 5px;
-
-}
-
-#findStuff ul li a {
-  font-size: medium;
-
-  text-decoration: none;
-  text-transform: lowercase;
-  color: black;
-  border-bottom: 1px solid transparent;
-  margin-right: 15px;
-  padding-bottom: 20px;
-
-}
-
-#findStuff ul li a:hover{
-  border-bottom: 1px solid black;
 }
 
 .contents{
@@ -227,7 +133,7 @@ body header ul a:hover{
   text-transform: lowercase;
   margin-right: 20px;
   margin-bottom: 20px;
-  border-radius: 10px;
+  //border-radius: 10px;
 
 }
 
@@ -238,7 +144,7 @@ body header ul a:hover{
 }
 
 .album-card:hover {
-  background-color: rgba(163, 167, 169, 0.408);
+  //background-color: rgba(163, 167, 169, 0.408);
   //box-shadow: 5px 5px 10px rgb(187, 177, 177);
 
 }
@@ -247,8 +153,9 @@ body header ul a:hover{
   width: 255px;
   height: 255px;
   grid-area: image;
-  border-top-left-radius: 10px;
-  border-top-right-radius: 10px;
+  //border-top-left-radius: 10px;
+  //border-top-right-radius: 10px;
+  cursor: pointer;
 }
 
 .artist-name {
@@ -294,35 +201,5 @@ body header ul a:hover{
   height: 580px;
 }
 
-#footer {
-  display: grid;
-  grid-area: footer;
-  background-color: black;
-  border-top: 2px solid;
-  width: 100vw;
-}
 
-#footer ul {
-  width: 100%;
-  list-style: none;
-}
-
-#footer li {
-  justify-items: start;
-}
-
-#footer ul li a {
-  display: inline-block;
-  font-size: medium;
-  padding-bottom: 10px;
-  text-decoration: none;
-  text-transform: lowercase;
-  color: white;
-  margin-right: 10px;
-  border-bottom: 1px solid transparent;
-}
-
-#footer ul li a:hover {
-  border-bottom: 1px solid white;
-}
 </style>

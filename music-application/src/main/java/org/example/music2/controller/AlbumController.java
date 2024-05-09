@@ -54,7 +54,7 @@ public class AlbumController {
     public List<Album> getByArtistId(@PathVariable int artistId) {
         List<Album> albumsByArtist = albumDao.getAlbumByArtistId(artistId);
         if (albumsByArtist.isEmpty()) {
-            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "No Albums Found with the given title");
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "No Albums Found with the given artist id");
         } else {
             return albumsByArtist;
         }
@@ -64,7 +64,7 @@ public class AlbumController {
     public List<Album> getByLabelId(@PathVariable int labelId){
         List<Album> albumsByLabel = albumDao.getAlbumsByLabelId(labelId);
         if (albumsByLabel.isEmpty()) {
-            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "No Albums Found with the given title");
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "No Albums Found with the given label id");
         } else {
             return albumsByLabel;
         }
@@ -74,7 +74,7 @@ public class AlbumController {
     public List<Album> albumsByYear(@PathVariable LocalDate year){
         List<Album> albumsByYear = albumDao.getAlbumsByDateReleased(year);
         if (albumsByYear.isEmpty()) {
-            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "No Albums Found with the given title");
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "No Albums Found with the given year");
         } else {
             return albumsByYear;
         }
@@ -83,9 +83,19 @@ public class AlbumController {
     public List<Album> albumsByPrice(@PathVariable BigDecimal price){
         List<Album> albumsByPrice = albumDao.getAlbumsByPrice(price);
         if (albumsByPrice.isEmpty()){
-            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "No Albums Found with the given title");
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "No Albums Found with the given price");
         } else {
             return albumsByPrice;
+        }
+    }
+
+    @RequestMapping(path = "/genre/{id}", method = RequestMethod.GET)
+    public List<Album> albumsByGenre(@PathVariable int id){
+        List<Album> albumsByGenre = albumDao.getAlbumsByGenre(id);
+        if (albumsByGenre.isEmpty()){
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "No Albums Found with the given genre id");
+        } else {
+            return albumsByGenre;
         }
     }
 

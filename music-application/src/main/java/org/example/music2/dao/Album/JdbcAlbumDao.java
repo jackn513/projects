@@ -28,7 +28,8 @@ public class JdbcAlbumDao implements AlbumDao {
         Album album = null;
         String sql = "SELECT * FROM album " +
                 "JOIN public.artist_info ON album.artist_id = artist_info.artist_id " +
-                "JOIN label ON album.label_id = label.label_id  " +
+                "JOIN label ON album.label_id = label.label_id " +
+                "JOIN genres ON album.genre_id = genres.genre_id " +
                 "WHERE album_id = ?";
         try {
             SqlRowSet results = jdbcTemplate.queryForRowSet(sql, albumId);
@@ -106,12 +107,35 @@ public class JdbcAlbumDao implements AlbumDao {
     }
 
     @Override
+    public List<Album> getAlbumsByGenre(int genreId) {
+        List <Album> albums = new ArrayList<>();
+        String sql = "SELECT * FROM album " +
+                "JOIN public.artist_info ON album.artist_id = artist_info.artist_id " +
+                "JOIN label ON album.label_id = label.label_id  " +
+                "JOIN genres ON genres.genre_id = album.genre_id " +
+                "WHERE album.genre_id = ?";
+        try {
+            SqlRowSet results = jdbcTemplate.queryForRowSet(sql, genreId);
+            while (results.next()) {
+                albums.add(mapRowToAlbum(results));
+            }
+        } catch (CannotGetJdbcConnectionException e) {
+            throw new DaoException("Unable to connect to server or database", e);
+        } catch (DataIntegrityViolationException e) {
+            throw new DaoException("Data integrity violation", e);
+        }
+        return albums;
+    }
+
+    @Override
     public List<Album> getAlbums() {
         List <Album> albums = new ArrayList<>();
         String sql =
                 "SELECT * FROM album " +
                         "JOIN public.artist_info ON album.artist_id = artist_info.artist_id " +
-                        "JOIN label ON album.label_id = label.label_id ;";
+                        "JOIN label ON album.label_id = label.label_id " +
+                        "JOIN genres ON album.genre_id = genres.genre_id " +
+                        "ORDER BY album.album_id";
         try {
             SqlRowSet results = jdbcTemplate.queryForRowSet(sql);
             while (results.next()) {
@@ -219,7 +243,8 @@ public class JdbcAlbumDao implements AlbumDao {
         album.setLengthInMin(rowSet.getInt("length_in_minutes"));
         album.setPrice(rowSet.getBigDecimal("price"));
         album.setImage(rowSet.getString("album_image"));
-
+        album.setGenre(rowSet.getString("genre_name"));
+        album.setGenreId(rowSet.getInt("genre_id"));
 
         return album;
     }
@@ -234,7 +259,7 @@ public class JdbcAlbumDao implements AlbumDao {
         album.setLengthInMin(rowSet.getInt("length_in_minutes"));
         album.setPrice(rowSet.getBigDecimal("price"));
         album.setImage(rowSet.getString("album_image"));
-
+        album.setGenre(rowSet.getString("genre_name"));
         album.setPrice(rowSet.getBigDecimal("price"));
 
 
