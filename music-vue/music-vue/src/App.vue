@@ -43,7 +43,7 @@
 <script>
 
 import albums from "./assets/Albums"
-import logo from './assets/Screenshot 2024-03-31 at 10.51.37 AM.png'
+import logo from './assets/logo.png'
 export default{
   data() {
     return {
