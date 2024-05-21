@@ -7,7 +7,7 @@
       <section v-for="(album, index) in filteredAlbums" :key="index" class="router-link-album-cards">
         <article class="album-card">
           <div class="title"><a>{{ album['Album Title'] }}</a></div>
-          <div class="artist-name">{{ album['Artist Name'] }}</div>
+          <div class="artist-name" @click="goToArtist(album['Artist Id'])">{{ album['Artist Name'] }}</div>
           <div class="price">{{ priceFormat(album['Price']) }}</div>
           <!-- If you want to format the price, you can use a method or filter -->
           <img :src="album['Album Image']" id="albumImage" @click="goToSingleAlbum(album['Album Id'])">
@@ -65,6 +65,9 @@ export default {
 
     goToSingleAlbum(id){
       this.$router.push({name: 'album', params:  {id: id}})
+    },
+    goToArtist(id){
+      this.$router.push({name: 'artist', params: {id: id}})
     },
     priceFormat(price){
       return new Intl.NumberFormat(`en-US`, {
@@ -134,6 +137,7 @@ body {
   margin-right: 20px;
   margin-bottom: 20px;
   //border-radius: 10px;
+  border: 1.5px solid transparent;
 
 }
 
@@ -146,6 +150,7 @@ body {
 .album-card:hover {
   //background-color: rgba(163, 167, 169, 0.408);
   //box-shadow: 5px 5px 10px rgb(187, 177, 177);
+  border: 1.5px solid black;
 
 }
 
@@ -164,6 +169,7 @@ body {
   padding-left: 11px;
   align-self: center;
   font-weight: bold;
+  cursor: pointer;
 }
 
 

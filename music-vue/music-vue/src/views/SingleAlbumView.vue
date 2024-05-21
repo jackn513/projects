@@ -6,7 +6,7 @@
         <article class="single-album-card">
           <div class="album-title"><a>{{ album['Album Title'] }}</a></div>
           <div class="name"><a>{{ album['Artist Name'] }}</a></div>
-          <div class="date-released">released: {{album['Date Released']}}</div>
+<!--          <div class="date-released">released: {{album['Date Released']}}</div>-->
           <div class="tracklist">TrackList</div>
           <!-- <div class="price">{{ priceFormat(currentAlbum['Price']) }}</div> -->
           <!-- If you want to format the price, you can use a method or filter -->
@@ -23,7 +23,7 @@
 
       <h3>You may also like:</h3>
       <!-- Include the genreVue component here -->
-      <div id="album-cards">
+      <div id="album-cards-may">
         <section v-for="(albums, index) in albumsWithGenre" :key="index" class="router-link-album-cards">
           <article class="album-card">
             <div class="title">{{albums['Album Title']}}</div>
@@ -116,27 +116,24 @@ body {
 
 .single-album-card{
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: repeat(2, 50px);
+  grid-template-columns: 300px 500px 400px;
+  grid-template-rows: 50px 50px 50px 100px 200px;
   grid-template-areas:
-      "title title title"
-      "name name name"
-      "img track . "
-      "img list . "
-      "img button ."
-      " release";
+      "title title img"
+      "name name img"
+      "track track . "
+      "list . . "
+      "may may may";
 
 
   gap: 10px;
-  padding: 20px;
+  padding-left: 20px;
 }
 
 .name{
   grid-area: name;
-  align-self: center;
   font-size: 25px;
 
-  padding-top: 90px;
 }
 
 .date-released{
@@ -197,6 +194,9 @@ body {
 
   border: 1.5px solid;
   cursor: pointer;
+}
+#album-cards-may{
+  grid-area: may;
 }
 
 </style>
