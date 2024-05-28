@@ -166,3 +166,7 @@ COMMIT;
 -- SELECT c.customer_name, p.name, journal.entry_text FROM journal
 -- JOIN customer c on c.customer_id = journal.customer_id
 -- JOIN plants p on p.plant_id = journal.plant_id
+
+SELECT * FROM plants
+
+

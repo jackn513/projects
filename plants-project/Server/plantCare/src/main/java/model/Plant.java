@@ -13,6 +13,8 @@ public class Plant {
     private String plantName;
     @JsonProperty("Scientific Name")
     private String scientificName;
+    @JsonProperty("Plant Description")
+    private String plantDescription;
     @JsonProperty("Price")
     private BigDecimal price;
     @JsonProperty("Image")
@@ -30,10 +32,11 @@ public class Plant {
     @JsonProperty("Fun Fact")
     private String funFact;
 
-    public Plant(int plantId, String plantName, String scientificName, BigDecimal price, String image, String water, String light, String humidity, String temp, String toxic, String funFact) {
+    public Plant(int plantId, String plantName, String scientificName, String plantDescription, BigDecimal price, String image, String water, String light, String humidity, String temp, String toxic, String funFact) {
         this.plantId = plantId;
         this.plantName = plantName;
         this.scientificName = scientificName;
+        this.plantDescription = plantDescription;
         this.price = price;
         this.image = image;
         this.water = water;
@@ -57,6 +60,10 @@ public class Plant {
 
     public String getScientificName() {
         return scientificName;
+    }
+
+    public String getPlantDescription() {
+        return plantDescription;
     }
 
     public BigDecimal getPrice() {
@@ -101,6 +108,10 @@ public class Plant {
 
     public void setScientificName(String scientificName) {
         this.scientificName = scientificName;
+    }
+
+    public void setPlantDescription(String plantDescription) {
+        this.plantDescription = plantDescription;
     }
 
     public void setPrice(BigDecimal price) {
