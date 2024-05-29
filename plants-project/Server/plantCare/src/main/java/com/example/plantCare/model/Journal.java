@@ -1,4 +1,4 @@
-package model;
+package com.example.plantCare.model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import org.springframework.data.annotation.Id;

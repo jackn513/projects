@@ -1,18 +1,18 @@
-package dao;
+package com.example.plantCare.dao;
 
-import exception.DaoException;
-import model.Plant;
+import com.example.plantCare.exception.DaoException;
+import com.example.plantCare.model.Plant;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.jdbc.CannotGetJdbcConnectionException;
-import org.springframework.jdbc.core.JdbcOperations;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
+import org.springframework.stereotype.Component;
 
 import javax.sql.DataSource;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
-
+@Component
 public class JdbcPlantDao implements PlantDao{
     private final JdbcTemplate jdbcTemplate;
 
@@ -20,6 +20,23 @@ public class JdbcPlantDao implements PlantDao{
         this.jdbcTemplate = new JdbcTemplate(dataSource);
     }
 
+
+    @Override
+    public List<Plant> getPlants() {
+        List<Plant> plants = new ArrayList<>();
+        String sql = "SELECT * FROM plants";
+        try {
+            SqlRowSet results = jdbcTemplate.queryForRowSet(sql);
+            while (results.next()){
+                plants.add(mapRowToPlant(results));
+            }
+        } catch (CannotGetJdbcConnectionException e) {
+            throw new DaoException("Unable to connect to server or database", e);
+        } catch (DataIntegrityViolationException e) {
+            throw new DaoException("Data integrity violation", e);
+        }
+        return plants;
+    }
     @Override
     public Plant getPlantById(int plantId) {
         Plant plant = null;
@@ -38,12 +55,13 @@ public class JdbcPlantDao implements PlantDao{
     }
 
     @Override
-    public List<Plant> getPlants() {
+    public List<Plant> getPlantByName(String name) {
         List<Plant> plants = new ArrayList<>();
-        String sql = "SELECT * FROM plants";
+        String sql = "SELECT * FROM plants WHERE name ILIKE ?";
+        name = "%" + name + "%";
         try {
-            SqlRowSet results = jdbcTemplate.queryForRowSet(sql);
-            while (results.next()){
+            SqlRowSet results = jdbcTemplate.queryForRowSet(sql, name.toLowerCase());
+            while (results.next()) {
                 plants.add(mapRowToPlant(results));
             }
         } catch (CannotGetJdbcConnectionException e) {

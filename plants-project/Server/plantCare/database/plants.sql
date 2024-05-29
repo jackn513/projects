@@ -169,4 +169,4 @@ COMMIT;
 
 SELECT * FROM plants
 
-
+SELECT * FROM plants WHERE name ILIKE '%mon%'

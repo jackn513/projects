@@ -1,4 +1,4 @@
-package exception;
+package com.example.plantCare.exception;
 
 public class DaoException extends RuntimeException {
 
