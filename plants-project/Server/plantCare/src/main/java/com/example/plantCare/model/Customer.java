@@ -1,9 +1,13 @@
 package com.example.plantCare.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import org.springframework.data.annotation.Id;
 
 import java.time.LocalDate;
+import java.util.HashSet;
+import java.util.Objects;
+import java.util.Set;
 
 public class Customer {
     @Id
@@ -23,8 +27,10 @@ public class Customer {
     private LocalDate created;
     @JsonProperty("Updated")
     private LocalDate updated;
-
-    public Customer(int customerId, String customerName, String profileBio, String profilePic, String email, String password, LocalDate created, LocalDate updated) {
+    @JsonIgnore
+    private boolean activated;
+    private Set<Authority> authorities = new HashSet<>();
+    public Customer(int customerId, String customerName, String profileBio, String profilePic, String email, String password, LocalDate created, LocalDate updated, String authorities) {
         this.customerId = customerId;
         this.customerName = customerName;
         this.profileBio = profileBio;
@@ -33,9 +39,14 @@ public class Customer {
         this.password = password;
         this.created = created;
         this.updated = updated;
+        if(authorities != null) this.setAuthorities(authorities);
+        this.activated = true;
     }
 
     public Customer() {
+    }
+
+    public Customer(String customerName, String profileBio, String email, String password) {
     }
 
     public int getCustomerId() {
@@ -64,6 +75,41 @@ public class Customer {
 
     public LocalDate getCreated() {
         return created;
+    }
+
+    public Set<Authority> getAuthorities() {
+        return authorities;
+    }
+    public boolean isActivated() {
+        return activated;
+    }
+
+    public void setActivated(boolean activated) {
+        this.activated = activated;
+    }
+
+    public String getAuthoritiesString() {
+        String authString = "";
+        for (Authority auth : authorities) {
+            if (authString.length() == 0) {
+                authString += auth.getName();
+            } else {
+                authString += "," + auth.getName();
+            }
+        }
+        return authString;
+    }
+
+    public void setAuthorities(Set<Authority> authorities) {
+        this.authorities = authorities;
+    }
+
+    public void setAuthorities(String authorities) {
+        String[] roles = authorities.split(",");
+        for(String role : roles) {
+            String authority = role.contains("ROLE_") ? role : "ROLE_" + role.toUpperCase();
+            this.authorities.add(new Authority(authority));
+        }
     }
 
     public LocalDate getUpdated() {
@@ -101,4 +147,9 @@ public class Customer {
     public void setUpdated(LocalDate updated) {
         this.updated = updated;
     }
+    @Override
+    public int hashCode() {
+        return Objects.hash(customerId, email, password, activated, authorities);
+    }
+
 }
