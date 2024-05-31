@@ -12,8 +12,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class LoginResponseDto {
 
     private String token;
+   private Customer customer;
 
-    private Customer customer;
     public LoginResponseDto(String token, Customer customer) {
         this.token = token;
         this.customer = customer;
@@ -35,4 +35,5 @@ public class LoginResponseDto {
     public void setCustomer(Customer customer) {
         this.customer = customer;
     }
+
 }

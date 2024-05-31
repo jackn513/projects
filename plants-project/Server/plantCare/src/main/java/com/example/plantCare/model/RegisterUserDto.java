@@ -1,7 +1,6 @@
 package com.example.plantCare.model;
 
 import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.Pattern;
 
 /**
  * RegisterUserDto is a class used to hold the registration information for a new user
@@ -11,27 +10,19 @@ import javax.validation.constraints.Pattern;
  * class is specifically created to transfer data between the client and the server.
  */
 public class RegisterUserDto {
-    //            customer.setCustomerId(rowSet.getInt("customer_id"));
-//            customer.setCustomerName(rowSet.getString("customer_name"));
-//            customer.setProfileBio(rowSet.getString("profile_bio"));
-//            customer.setProfilePic(rowSet.getString("profile_image"));
-//            customer.setEmail(rowSet.getString("email"));
-//            customer.setPassword(rowSet.getString("password"));
-//            if (rowSet.getDate("created_at") != null){
-//                customer.setCreated(rowSet.getDate("created_at").toLocalDate());
-//            }
-//            if (rowSet.getDate("updated_at") != null){
-//                customer.setUpdated(rowSet.getDate("updated_at").toLocalDate());
-//            }
-    @NotEmpty
-    private String customerName;
-    private String profileBio;
-    private String profile_image;
-    @NotEmpty
-    private String email;
-    @NotEmpty
-    private String password;
 
+    @NotEmpty(message = "Customer name must not be empty")
+    private String customerName;
+
+    private String profileBio;
+
+    private String profile_image;
+
+    @NotEmpty(message = "Email must not be empty")
+    private String email;
+
+    @NotEmpty(message = "Password must not be empty")
+    private String password;
 
     public RegisterUserDto(String customerName, String profileBio, String profile_image, String email, String password) {
         this.customerName = customerName;
@@ -39,7 +30,6 @@ public class RegisterUserDto {
         this.profile_image = profile_image;
         this.email = email;
         this.password = password;
-
     }
 
     public RegisterUserDto() {
@@ -85,5 +75,14 @@ public class RegisterUserDto {
         this.password = password;
     }
 
-
+    @Override
+    public String toString() {
+        return "RegisterUserDto{" +
+                "customerName='" + customerName + '\'' +
+                ", profileBio='" + profileBio + '\'' +
+                ", profile_image='" + profile_image + '\'' +
+                ", email='" + email + '\'' +
+                ", password='" + password + '\'' +
+                '}';
+    }
 }

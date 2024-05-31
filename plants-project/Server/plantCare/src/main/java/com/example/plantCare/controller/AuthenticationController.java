@@ -42,13 +42,13 @@ public class AuthenticationController {
     public LoginResponseDto login(@Valid @RequestBody LoginDto loginDto) {
         try {
             UsernamePasswordAuthenticationToken authenticationToken =
-                    new UsernamePasswordAuthenticationToken(loginDto.getUsername(), loginDto.getPassword());
+                    new UsernamePasswordAuthenticationToken(loginDto.getEmail(), loginDto.getPassword());
 
             Authentication authentication = authenticationManagerBuilder.getObject().authenticate(authenticationToken);
             SecurityContextHolder.getContext().setAuthentication(authentication);
             String jwt = tokenProvider.createToken(authentication, false);
 
-            Customer customer = customerDao.getCustomerByEmail(loginDto.getUsername());
+           Customer customer = customerDao.getCustomerByEmail(loginDto.getEmail());
             return new LoginResponseDto(jwt, customer);
         }
         catch (DaoException e) {
@@ -59,16 +59,16 @@ public class AuthenticationController {
     @ResponseStatus(HttpStatus.CREATED)
     @RequestMapping(path = "/register", method = RequestMethod.POST)
     public Customer register(@Valid @RequestBody RegisterUserDto newCustomer) {
+        System.out.println("Received registration request: " + newCustomer);
         try {
-
+            // TODO fix the createCustomer method in JdbcCustomerDao
             Customer customer = customerDao.createCustomer(
                     new Customer(newCustomer.getCustomerName(),
                             newCustomer.getProfileBio(),
                             newCustomer.getEmail(),
                             newCustomer.getPassword()));
             return customer;
-        }
-        catch (DaoException e) {
+        } catch (DaoException e) {
             throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, "DAO error - " + e.getMessage());
         }
     }

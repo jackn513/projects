@@ -167,6 +167,7 @@ COMMIT;
 -- JOIN customer c on c.customer_id = journal.customer_id
 -- JOIN plants p on p.plant_id = journal.plant_id
 
-SELECT * FROM plants
+SELECT * FROM plants;
 
-SELECT * FROM plants WHERE name ILIKE '%mon%'
+SELECT * FROM plants WHERE name ILIKE '%mon%';
+select * from customer

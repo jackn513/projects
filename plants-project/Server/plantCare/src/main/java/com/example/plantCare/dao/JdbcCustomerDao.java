@@ -71,6 +71,7 @@ public class JdbcCustomerDao implements CustomerDao {
 
     @Override
     public Customer createCustomer(Customer newCustomer) {
+        // TODO finish this method
         return null;
     }
 
