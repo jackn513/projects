@@ -38,6 +38,7 @@ CREATE TABLE customer
     password      VARCHAR(256) NOT NULL,
     created_at    TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     updated_at    TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    role varchar(50) NOT NULL,
     CONSTRAINT PK_customer PRIMARY KEY (customer_id)
 );
 
@@ -118,12 +119,12 @@ VALUES ('Monstera Deliciosa', 'Monstera deliciosa', 'A tropical plant with large
         '55-85°F', 'Non-toxic', 'Also known as Mother-in-Law''s Tongue');
 
 -- Inserting into customer table
-INSERT INTO customer (customer_name, profile_bio, email, password, profile_image)
-VALUES ('John Doe', 'Plant enthusiast and gardener.', 'john.doe@example.com', 'password123', 'john_doe.jpg'),
+INSERT INTO customer (customer_name, profile_bio, email, password, profile_image, role)
+VALUES ('John Doe', 'Plant enthusiast and gardener.', 'john.doe@example.com', 'password123', 'john_doe.jpg', 'ROLE_USER'),
        ('Jane Smith', 'Loves indoor gardening and tropical plants.', 'jane.smith@example.com', 'securepassword',
-        'jane_smith.jpg'),
+        'jane_smith.jpg', 'ROLE_USER'),
        ('Emily Johnson', 'Succulent and cactus collector.', 'emily.johnson@example.com', 'mypassword',
-        'emily_johnson.jpg');
+        'emily_johnson.jpg', 'ROLE_USER');
 
 -- Inserting into customer_plants table
 INSERT INTO customer_plants (customer_id, plant_id)

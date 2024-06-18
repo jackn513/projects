@@ -1,12 +1,11 @@
 package com.example.plantCare.controller;
 
-
 import com.example.plantCare.dao.CustomerDao;
-
 import com.example.plantCare.exception.DaoException;
-
-import com.example.plantCare.model.*;
-
+import com.example.plantCare.model.Customer;
+import com.example.plantCare.model.LoginDto;
+import com.example.plantCare.model.LoginResponseDto;
+import com.example.plantCare.model.RegisterUserDto;
 import com.example.plantCare.security.jwt.TokenProvider;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -18,12 +17,6 @@ import org.springframework.web.server.ResponseStatusException;
 
 import javax.validation.Valid;
 
-/**
- * AuthenticationController is a class used for handling requests to authenticate Users.
- *
- * It depends on an instance of a UserDao for retrieving and storing user data. This is provided
- * through dependency injection.
- */
 @RestController
 @CrossOrigin
 public class AuthenticationController {
@@ -38,7 +31,7 @@ public class AuthenticationController {
         this.customerDao = customerDao;
     }
 
-    @RequestMapping(path = "/login", method = RequestMethod.POST)
+    @PostMapping("/login")
     public LoginResponseDto login(@Valid @RequestBody LoginDto loginDto) {
         try {
             UsernamePasswordAuthenticationToken authenticationToken =
@@ -48,29 +41,28 @@ public class AuthenticationController {
             SecurityContextHolder.getContext().setAuthentication(authentication);
             String jwt = tokenProvider.createToken(authentication, false);
 
-           Customer customer = customerDao.getCustomerByEmail(loginDto.getEmail());
+            Customer customer = customerDao.getCustomerByEmail(loginDto.getEmail());
             return new LoginResponseDto(jwt, customer);
-        }
-        catch (DaoException e) {
-            throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, "DAO error - " + e.getMessage());
-        }
-    }
-
-    @ResponseStatus(HttpStatus.CREATED)
-    @RequestMapping(path = "/register", method = RequestMethod.POST)
-    public Customer register(@Valid @RequestBody RegisterUserDto newCustomer) {
-        System.out.println("Received registration request: " + newCustomer);
-        try {
-            // TODO fix the createCustomer method in JdbcCustomerDao
-            Customer customer = customerDao.createCustomer(
-                    new Customer(newCustomer.getCustomerName(),
-                            newCustomer.getProfileBio(),
-                            newCustomer.getEmail(),
-                            newCustomer.getPassword()));
-            return customer;
         } catch (DaoException e) {
             throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, "DAO error - " + e.getMessage());
         }
     }
 
+    @PostMapping("/register")
+    public Customer register(@Valid @RequestBody RegisterUserDto newCustomerDto) {
+        // Validation and error handling omitted for brevity
+        try {
+            Customer newCustomer = new Customer();
+            newCustomer.setCustomerName(newCustomerDto.getCustomerName());
+            newCustomer.setProfileBio(newCustomerDto.getProfileBio());
+            newCustomer.setProfileImage(newCustomerDto.getProfileImage());
+            newCustomer.setEmail(newCustomerDto.getEmail());
+            newCustomer.setPassword(newCustomerDto.getPassword());
+            newCustomer.setRole(newCustomerDto.getRole());
+
+            return customerDao.createCustomer(newCustomer);
+        } catch (DaoException e) {
+            throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, "DAO error - " + e.getMessage());
+        }
+    }
 }

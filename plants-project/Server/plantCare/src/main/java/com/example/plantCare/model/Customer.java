@@ -4,7 +4,8 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import org.springframework.data.annotation.Id;
 
-import java.time.LocalDate;
+import javax.validation.constraints.NotEmpty;
+import java.time.LocalDateTime;
 import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
@@ -13,73 +14,138 @@ public class Customer {
     @Id
     @JsonProperty("Customer Id")
     private int customerId;
+
     @JsonProperty("Customer Name")
     private String customerName;
+
     @JsonProperty("Profile Bio")
     private String profileBio;
-    @JsonProperty("Profile Pic")
-    private String profilePic;
+
+    @JsonProperty("Profile Image")
+    private String profileImage;
+
     @JsonProperty("Email")
     private String email;
+
     @JsonProperty("Password")
     private String password;
-    @JsonProperty("Created")
-    private LocalDate created;
-    @JsonProperty("Updated")
-    private LocalDate updated;
+
+    @JsonProperty("Created At")
+    private LocalDateTime createdAt;
+
+    @JsonProperty("Updated At")
+    private LocalDateTime updatedAt;
+
+    @JsonProperty("Role")
+    private String role;
+
     @JsonIgnore
     private boolean activated;
+
     private Set<Authority> authorities = new HashSet<>();
-    public Customer(int customerId, String customerName, String profileBio, String profilePic, String email, String password, LocalDate created, LocalDate updated, String authorities) {
+
+    public Customer(int customerId, String customerName, String profileBio, String profileImage, String email, String password, LocalDateTime createdAt, LocalDateTime updatedAt, String role) {
         this.customerId = customerId;
         this.customerName = customerName;
         this.profileBio = profileBio;
-        this.profilePic = profilePic;
+        this.profileImage = profileImage;
         this.email = email;
         this.password = password;
-        this.created = created;
-        this.updated = updated;
-        if(authorities != null) this.setAuthorities(authorities);
+        this.createdAt = createdAt;
+        this.updatedAt = updatedAt;
+        this.role = role;
+        this.activated = true;
+    }
+
+    public Customer(String customerName, String email, String password) {
+        this.customerName = customerName;
+        this.email = email;
+        this.password = password;
+        this.createdAt = LocalDateTime.now();
+        this.updatedAt = LocalDateTime.now();
         this.activated = true;
     }
 
     public Customer() {
+
     }
 
-    public Customer(String customerName, String profileBio, String email, String password) {
+    public Customer(String customerName, String profileBio, String profileImage, String email, String password, String role) {
     }
 
+    // Getters and Setters
     public int getCustomerId() {
         return customerId;
+    }
+
+    public void setCustomerId(int customerId) {
+        this.customerId = customerId;
     }
 
     public String getCustomerName() {
         return customerName;
     }
 
+    public void setCustomerName(String customerName) {
+        this.customerName = customerName;
+    }
+
     public String getProfileBio() {
         return profileBio;
     }
 
-    public String getProfilePic() {
-        return profilePic;
+    public void setProfileBio(String profileBio) {
+        this.profileBio = profileBio;
+    }
+
+    public String getProfileImage() {
+        return profileImage;
+    }
+
+    public void setProfileImage(String profileImage) {
+        this.profileImage = profileImage;
     }
 
     public String getEmail() {
         return email;
     }
 
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
     public String getPassword() {
         return password;
     }
 
-    public LocalDate getCreated() {
-        return created;
+    public void setPassword(String password) {
+        this.password = password;
     }
 
-    public Set<Authority> getAuthorities() {
-        return authorities;
+    public LocalDateTime getCreatedAt() {
+        return createdAt;
     }
+
+    public void setCreatedAt(LocalDateTime createdAt) {
+        this.createdAt = createdAt;
+    }
+
+    public LocalDateTime getUpdatedAt() {
+        return updatedAt;
+    }
+
+    public void setUpdatedAt(LocalDateTime updatedAt) {
+        this.updatedAt = updatedAt;
+    }
+
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
+    }
+
     public boolean isActivated() {
         return activated;
     }
@@ -88,16 +154,8 @@ public class Customer {
         this.activated = activated;
     }
 
-    public String getAuthoritiesString() {
-        String authString = "";
-        for (Authority auth : authorities) {
-            if (authString.length() == 0) {
-                authString += auth.getName();
-            } else {
-                authString += "," + auth.getName();
-            }
-        }
-        return authString;
+    public Set<Authority> getAuthorities() {
+        return authorities;
     }
 
     public void setAuthorities(Set<Authority> authorities) {
@@ -106,50 +164,26 @@ public class Customer {
 
     public void setAuthorities(String authorities) {
         String[] roles = authorities.split(",");
-        for(String role : roles) {
+        for (String role : roles) {
             String authority = role.contains("ROLE_") ? role : "ROLE_" + role.toUpperCase();
             this.authorities.add(new Authority(authority));
         }
     }
 
-    public LocalDate getUpdated() {
-        return updated;
+    public String getAuthoritiesString() {
+        StringBuilder authString = new StringBuilder();
+        for (Authority auth : authorities) {
+            if (authString.length() == 0) {
+                authString.append(auth.getName());
+            } else {
+                authString.append(",").append(auth.getName());
+            }
+        }
+        return authString.toString();
     }
 
-    public void setCustomerId(int customerId) {
-        this.customerId = customerId;
-    }
-
-    public void setCustomerName(String customerName) {
-        this.customerName = customerName;
-    }
-
-    public void setProfileBio(String profileBio) {
-        this.profileBio = profileBio;
-    }
-
-    public void setProfilePic(String profilePic) {
-        this.profilePic = profilePic;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public void setCreated(LocalDate created) {
-        this.created = created;
-    }
-
-    public void setUpdated(LocalDate updated) {
-        this.updated = updated;
-    }
     @Override
     public int hashCode() {
         return Objects.hash(customerId, email, password, activated, authorities);
     }
-
 }

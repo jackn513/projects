@@ -1,6 +1,13 @@
 package com.example.plantCare.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import org.springframework.data.annotation.Id;
+
 import javax.validation.constraints.NotEmpty;
+import java.time.LocalDateTime;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * RegisterUserDto is a class used to hold the registration information for a new user
@@ -10,30 +17,26 @@ import javax.validation.constraints.NotEmpty;
  * class is specifically created to transfer data between the client and the server.
  */
 public class RegisterUserDto {
-
-    @NotEmpty(message = "Customer name must not be empty")
+    @JsonProperty("Customer Name")
+    @NotEmpty(message = "Customer Name is required")
     private String customerName;
 
+    @JsonProperty("Profile Bio")
     private String profileBio;
 
-    private String profile_image;
+    @JsonProperty("Profile Image")
+    private String profileImage;
 
-    @NotEmpty(message = "Email must not be empty")
+    @JsonProperty("Email")
+    @NotEmpty(message = "Email is required")
     private String email;
 
-    @NotEmpty(message = "Password must not be empty")
+    @JsonProperty("Password")
+    @NotEmpty(message = "Password is required")
     private String password;
 
-    public RegisterUserDto(String customerName, String profileBio, String profile_image, String email, String password) {
-        this.customerName = customerName;
-        this.profileBio = profileBio;
-        this.profile_image = profile_image;
-        this.email = email;
-        this.password = password;
-    }
-
-    public RegisterUserDto() {
-    }
+    @JsonProperty("Role")
+    private String role;
 
     public String getCustomerName() {
         return customerName;
@@ -51,12 +54,12 @@ public class RegisterUserDto {
         this.profileBio = profileBio;
     }
 
-    public String getProfile_image() {
-        return profile_image;
+    public String getProfileImage() {
+        return profileImage;
     }
 
-    public void setProfile_image(String profile_image) {
-        this.profile_image = profile_image;
+    public void setProfileImage(String profileImage) {
+        this.profileImage = profileImage;
     }
 
     public String getEmail() {
@@ -75,14 +78,11 @@ public class RegisterUserDto {
         this.password = password;
     }
 
-    @Override
-    public String toString() {
-        return "RegisterUserDto{" +
-                "customerName='" + customerName + '\'' +
-                ", profileBio='" + profileBio + '\'' +
-                ", profile_image='" + profile_image + '\'' +
-                ", email='" + email + '\'' +
-                ", password='" + password + '\'' +
-                '}';
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
     }
 }
