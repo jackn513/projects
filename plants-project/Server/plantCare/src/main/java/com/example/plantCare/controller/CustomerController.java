@@ -24,10 +24,11 @@ public class CustomerController {
     }
 
     @RequestMapping(method = RequestMethod.GET)
-    @PreAuthorize("hasRole('ROLE_ADMIN')")
+//    @PreAuthorize("hasRole('ROLE_ADMIN')")
     public List<Customer> getCustomers(){
         return customerDao.getCustomers();
     }
+
     @RequestMapping(path = "/test", method = RequestMethod.GET)
     public String testEndpoint() {
         return "Endpoint is working";

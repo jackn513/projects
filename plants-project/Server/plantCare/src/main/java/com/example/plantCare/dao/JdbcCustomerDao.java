@@ -71,7 +71,7 @@ public class JdbcCustomerDao implements CustomerDao {
 
     @Override
     public Customer createCustomer(Customer newCustomer) {
-        // TODO finish this method
+
         String sql = "INSERT INTO customer (customer_name, email, password, role)" +
                 "VALUES (?, ?, ?, ?) RETURNING customer_id";
 
