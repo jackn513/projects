@@ -57,21 +57,22 @@ public class Customer {
         this.activated = true;
     }
 
-    public Customer(String customerName, String email, String password) {
-        this.customerName = customerName;
-        this.email = email;
-        this.password = password;
-        this.createdAt = LocalDateTime.now();
-        this.updatedAt = LocalDateTime.now();
-        this.activated = true;
-    }
+
+//    public Customer(String customerName, String email, String password) {
+//        this.customerName = customerName;
+//        this.email = email;
+//        this.password = password;
+//        this.createdAt = LocalDateTime.now();
+//        this.updatedAt = LocalDateTime.now();
+//        this.activated = true;
+//    }
 
     public Customer() {
 
     }
 
-    public Customer(String customerName, String profileBio, String profileImage, String email, String password, String role) {
-    }
+//    public Customer(String customerName, String profileBio, String profileImage, String email, String password, String role) {
+//    }
 
     // Getters and Setters
     public int getCustomerId() {

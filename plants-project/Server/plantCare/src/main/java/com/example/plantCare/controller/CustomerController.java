@@ -24,7 +24,7 @@ public class CustomerController {
     }
 
     @RequestMapping(method = RequestMethod.GET)
-//    @PreAuthorize("hasRole('ROLE_ADMIN')")
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     public List<Customer> getCustomers(){
         return customerDao.getCustomers();
     }

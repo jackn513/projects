@@ -1,5 +1,7 @@
 package com.example.plantCare.model;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 /**
  * LoginDto is a class used to hold the user login information that's sent from the
  * client to the server for the login endpoint.
@@ -9,8 +11,13 @@ package com.example.plantCare.model;
  */
 public class LoginDto {
 
+
+   @JsonProperty("Email")
    private String email;
+
+   @JsonProperty("Password")
    private String password;
+
 
    public String getEmail() {
       return email;
@@ -28,11 +35,11 @@ public class LoginDto {
       this.password = password;
    }
 
-   @Override
-   public String toString() {
-      return "LoginDTO{" +
-              "email='" + email + '\'' +
-              ", password='" + password + '\'' +
-              '}';
-   }
+//   @Override
+//   public String toString() {
+//      return "LoginDTO{" +
+//              "email='" + email + '\'' +
+//              ", password='" + password + '\'' +
+//              '}';
+//   }
 }

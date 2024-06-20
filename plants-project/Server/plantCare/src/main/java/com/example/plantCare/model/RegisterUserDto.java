@@ -38,6 +38,7 @@ public class RegisterUserDto {
     @JsonProperty("Role")
     private String role;
 
+
     public String getCustomerName() {
         return customerName;
     }

@@ -51,8 +51,9 @@ public class JdbcCustomerDao implements CustomerDao {
     @Override
     public Customer getCustomerByEmail(String email) {
         if (email == null) {
-            email = "";  // Avoid printing email to the console
+            throw new IllegalArgumentException("Email cannot be null");
         }
+
         Customer customer = null;
         String sql = "SELECT * FROM customer WHERE email ILIKE ?";
 
@@ -66,14 +67,22 @@ public class JdbcCustomerDao implements CustomerDao {
         } catch (DataIntegrityViolationException e) {
             throw new DaoException("Data integrity violation", e);
         }
+
+        // Logging to trace the email and customer retrieval
+        if (customer != null) {
+            System.out.println("Customer found for email: " + email);
+        } else {
+            System.out.println("No customer found for email: " + email);
+        }
+
         return customer;
     }
 
+
     @Override
     public Customer createCustomer(Customer newCustomer) {
-
-        String sql = "INSERT INTO customer (customer_name, email, password, role)" +
-                "VALUES (?, ?, ?, ?) RETURNING customer_id";
+        String sql = "INSERT INTO customer (customer_name, profile_bio, profile_image, email, password, role) " +
+                "VALUES (?, ?, ?, ?, ?, ?) RETURNING customer_id";
 
         // Validate required fields
         if (newCustomer.getCustomerName() == null || newCustomer.getEmail() == null || newCustomer.getRole() == null) {
@@ -90,7 +99,12 @@ public class JdbcCustomerDao implements CustomerDao {
 
             // Perform the insert and retrieve the generated customer_id
             int customerId = jdbcTemplate.queryForObject(sql, int.class,
-                    newCustomer.getCustomerName(), newCustomer.getEmail(), passwordHash, newCustomer.getRole());
+                    newCustomer.getCustomerName(), // customer_name
+                    newCustomer.getProfileBio(),  // profile_bio
+                    newCustomer.getProfileImage(), // profile_image
+                    newCustomer.getEmail(),       // email
+                    passwordHash,                 // password
+                    newCustomer.getRole());       // role
 
             // Retrieve the newly created customer using customer_id
             Customer createdCustomer = getCustomerById(customerId);
@@ -102,6 +116,7 @@ public class JdbcCustomerDao implements CustomerDao {
             throw new DaoException("Data integrity violation: " + e.getMessage(), e);
         }
     }
+
 
     @Override
     public Customer updateCustomer(Customer updatedCustomer) {
