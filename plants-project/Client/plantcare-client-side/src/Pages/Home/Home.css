@@ -1,0 +1,21 @@
+/* Home.css */
+.home-container {
+    max-width: 800px;
+
+    padding: 20px;
+    margin-left: 20px;
+    margin-top: 20px;
+    background-color: rgba(70, 164, 13, 0.32);
+    border-radius: 8px;
+}
+
+.home-title {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.home-content {
+    font-size: 16px;
+    line-height: 1.6;
+    color: #333;
+}

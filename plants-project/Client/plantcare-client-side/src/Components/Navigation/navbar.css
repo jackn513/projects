@@ -1,0 +1,25 @@
+/* Example CSS for NavBar */
+.nav-bar {
+    background-color: #1d571d;
+    height: 60px;
+    display: flex;
+    align-items: center; /* Center items vertically */
+
+}
+
+.links {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.link-home, .link-plants {
+    color: #ffffff;
+    text-decoration: none;
+    padding: 8px 12px;
+}
+
+.link-home:hover, .link-plants:hover {
+    background-color: #3a903a; /* Darker background on hover */
+    border-radius: 4px;
+}
