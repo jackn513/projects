@@ -1,0 +1,59 @@
+/* Plants.css */
+.page-title{
+    font-size: 80px;
+    text-align: center;
+}
+.plants-cards {
+    justify-content: center;
+
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px; /* Adjust the gap between plant cards */
+    padding: 10px; /* Add padding to the container */
+}
+
+.plant-card {
+    display: grid;
+    grid-template-rows: 1fr 1fr 1fr 80px;
+    grid-template-areas:
+            'img img img'
+            'img img img'
+            'img img img'
+            'name name name'
+;
+    border: 1.5px solid black;
+    border-radius: 5px;
+    padding: 10px;
+    width: 350px;
+    height: 500px;/* Set a fixed width for each plant card */
+
+}
+
+.plant-card:hover{
+    /*cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg'  width='100' height='100' viewport='0 0 100 100' style='fill:black;font-size:35px;'><text y='50%'>🪴</text></svg>")*/
+    /*16 0,*/
+    /*auto;*/
+    cursor: pointer;
+    box-shadow: 10px 10px 1px rgba(39, 100, 2, 0.53);
+}
+.plant-image{
+    color: black;
+    grid-area: img;
+    border-bottom: 1.5px solid black;
+}
+
+.plant-image:hover{
+    cursor: pointer;
+}
+.plant-name {
+    color: black;
+
+    justify-self: center;
+    grid-area: name;
+    font-weight: bold;
+    font-size: 35px;
+}
+.plant-name:hover{
+    cursor: pointer;
+}
+/* Add more styles as needed */
