@@ -1,4 +1,7 @@
 /* Plants.css */
+.plants-page{
+    background-color: #f3eded;
+}
 .page-title{
     font-size: 80px;
     text-align: center;
@@ -13,6 +16,7 @@
 }
 
 .plant-card {
+    background-color: white;
     display: grid;
     grid-template-rows: 1fr 1fr 1fr 80px;
     grid-template-areas:

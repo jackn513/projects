@@ -7,9 +7,19 @@ DROP TABLE IF EXISTS customer_plants CASCADE;
 DROP TABLE IF EXISTS journal CASCADE;
 DROP TABLE IF EXISTS wishlist CASCADE;
 DROP TABLE IF EXISTS customer CASCADE;
+DROP TABLE IF EXISTS soils CASCADE;
 DROP TABLE IF EXISTS plants CASCADE;
 
 -- plant table information --
+CREATE TABLE soils
+(
+    soil_id     SERIAL,
+    type        VARCHAR(100)   NOT NULL,
+    pH_level    DECIMAL(3, 1)  NOT NULL,
+    nutrients   VARCHAR(500),
+    description VARCHAR(500),
+    CONSTRAINT PK_soils PRIMARY KEY (soil_id)
+);
 CREATE TABLE plants
 (
     plant_id          SERIAL,
@@ -24,8 +34,12 @@ CREATE TABLE plants
     temp              VARCHAR(999)   NOT NULL,
     toxic             VARCHAR(999)   NOT NULL,
     fun_fact          VARCHAR(999)   NOT NULL,
-    CONSTRAINT PK_plants PRIMARY KEY (plant_id)
+    soil_id INT,
+    CONSTRAINT PK_plants PRIMARY KEY (plant_id),
+    CONSTRAINT FK_plant FOREIGN KEY (soil_id)
+        REFERENCES soils (soil_id)
 );
+
 
 -- customer table --
 CREATE TABLE customer
@@ -224,6 +238,6 @@ COMMIT;
 -- JOIN plants p on p.plant_id = journal.plant_id
 
 
-select * from customer
+select * from plants
 
-delete from customer where customer_name like '%Jess%'
+

@@ -22,7 +22,7 @@ export const Plants = () => {
     }, []);
 
     return (
-        <div>
+        <div className={'plants-page'}>
             <h2 className='page-title'>Let there be plants!</h2>
             <div className='plants-cards'>
                 {data.map(plant => (

@@ -5,6 +5,8 @@ import {NavBar} from './Components/Navigation/navbar.jsx'
 import { Home } from "./Pages/Home/Home.jsx";
 import {Plants } from './Pages/Plants/Plants.jsx'
 import {SinglePlant} from "./Pages/Single Plant/SinglePlant.jsx";
+import { Footer } from './Components/Footer/Footer.jsx'
+import { Soils } from "./Pages/Soils/Soils.jsx";
 
 function App() {
     return (
@@ -15,9 +17,10 @@ function App() {
                     <Route path="/" element={<Home />} />
                     <Route path="/plants" element={<Plants />} />
                     <Route path="/plant/:id" element={<SinglePlant/>} />
+                    <Route path={'/soils'} element={<Soils/>}/>
                 </Routes>
             </Router>
-            <footer>This is the footer</footer>
+            <Footer/>
         </div>
     );
 }
