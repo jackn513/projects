@@ -25,7 +25,7 @@ CREATE TABLE plants
     plant_id          SERIAL,
     name              VARCHAR(100)   NOT NULL,
     scientific_name   VARCHAR(200)   NOT NULL,
-    plant_description VARCHAR(500),
+    plant_description VARCHAR(500)   NOT NULL,
     price             DECIMAL(10, 2) NOT NULL,
     image_name        VARCHAR(256),
     water             VARCHAR(500)   NOT NULL,
@@ -119,71 +119,78 @@ CREATE TABLE sale_items
     PRIMARY KEY (sale_id, plant_id)
 );
 
+INSERT INTO soils (type, pH_level, nutrients, description)
+VALUES
+    ('Aroid Mix', 6.0, 'Rich in organic matter', 'Suitable for most indoor plants'),
+    ('Cactus/succulent soil', 5.5, 'Gritty mix, low organic matter', 'Ideal for succulents and cacti'),
+    ('Fern soil', 5.5, 'High in organic matter, retains moisture', 'Specifically formulated for ferns');
+
+
 -- Inserting into plants table
-INSERT INTO plants (name, scientific_name, plant_description, price, image_name, water, light, humidity, temp, toxic, fun_fact)
+INSERT INTO plants (name, scientific_name, plant_description, price, image_name, water, light, humidity, temp, toxic, fun_fact, soil_id)
 VALUES
     ('Monstera Deliciosa', 'Monstera deliciosa', 'A tropical plant with large, split leaves.', 29.99, NULL,
-     'Water every 1-2 weeks', 'Bright, indirect light', 'High humidity', '65-85°F', 'Non-toxic', 'Also known as the Swiss Cheese Plant'),
+     'Water every 1-2 weeks', 'Bright, indirect light', 'High humidity', '65-85°F', 'Non-toxic', 'Also known as the Swiss Cheese Plant', 1),
 
     ('Fiddle Leaf Fig', 'Ficus lyrata', 'A popular houseplant with large, glossy leaves.', 49.99, NULL,
-     'Water weekly', 'Bright, indirect light', 'Moderate humidity', '60-75°F', 'Toxic to pets', 'Can grow up to 10 feet tall indoors'),
+     'Water weekly', 'Bright, indirect light', 'Moderate humidity', '60-75°F', 'Toxic to pets', 'Can grow up to 10 feet tall indoors', 1),
 
     ('Snake Plant', 'Sansevieria trifasciata', 'A hardy plant with upright, sword-like leaves.', 19.99, NULL,
-     'Water every 2-3 weeks', 'Low to bright indirect light', 'Low to moderate humidity', '55-85°F', 'Non-toxic', 'Also known as Mother-in-Law''s Tongue'),
+     'Water every 2-3 weeks', 'Low to bright indirect light', 'Low to moderate humidity', '55-85°F', 'Non-toxic', 'Also known as Mother-in-Law''s Tongue', 2),
 
     ('Pothos', 'Epipremnum aureum', 'An easy-to-care-for vining plant with heart-shaped leaves.', 12.99, NULL,
-     'Water weekly', 'Low to bright indirect light', 'Moderate humidity', '60-80°F', 'Toxic to pets', 'One of the most popular indoor plants worldwide'),
+     'Water weekly', 'Low to bright indirect light', 'Moderate humidity', '60-80°F', 'Toxic to pets', 'One of the most popular indoor plants worldwide', 1),
 
     ('Peace Lily', 'Spathiphyllum spp.', 'A flowering plant known for its elegant white blooms and dark green leaves.', 24.99, NULL,
-     'Keep soil moist, water weekly', 'Low to moderate indirect light', 'High humidity', '65-80°F', 'Toxic to pets', 'Effective at removing air pollutants'),
+     'Keep soil moist, water weekly', 'Low to moderate indirect light', 'High humidity', '65-80°F', 'Toxic to pets', 'Effective at removing air pollutants', 1),
 
     ('ZZ Plant', 'Zamioculcas zamiifolia', 'A low-maintenance plant with shiny, dark green leaves that are thick and waxy.', 24.99, NULL,
-     'Water every 2-3 weeks', 'Low to bright indirect light', 'Low humidity', '60-75°F', 'Toxic to pets', 'Can survive in low light conditions'),
+     'Water every 2-3 weeks', 'Low to bright indirect light', 'Low humidity', '60-75°F', 'Toxic to pets', 'Can survive in low light conditions', 1),
 
     ('Spider Plant', 'Chlorophytum comosum', 'A resilient plant with arching leaves, often producing offshoots or "spiderettes".', 14.99, NULL,
-     'Keep soil evenly moist, water weekly', 'Moderate to bright indirect light', 'Average to high humidity', '55-80°F', 'Non-toxic', 'Purifies the air by absorbing toxins'),
+     'Keep soil evenly moist, water weekly', 'Moderate to bright indirect light', 'Average to high humidity', '55-80°F', 'Non-toxic', 'Purifies the air by absorbing toxins', 1),
 
     ('Aloe Vera', 'Aloe vera', 'A succulent plant known for its medicinal properties and fleshy, toothed leaves.', 9.99, NULL,
-     'Water every 3 weeks', 'Bright, indirect light', 'Low humidity', '60-75°F', 'Toxic to pets', 'Used in skincare for its soothing gel'),
+     'Water every 3 weeks', 'Bright, indirect light', 'Low humidity', '60-75°F', 'Toxic to pets', 'Used in skincare for its soothing gel', 2),
 
     ('Chinese Money Plant', 'Pilea peperomioides', 'A plant with round, pancake-shaped leaves on long stems, often called the "friendship plant".', 19.99, NULL,
-     'Water every 1-2 weeks', 'Moderate to bright indirect light', 'Moderate humidity', '60-75°F', 'Non-toxic', 'Produces small offshoots or "pups"'),
+     'Water every 1-2 weeks', 'Moderate to bright indirect light', 'Moderate humidity', '60-75°F', 'Non-toxic', 'Produces small offshoots or "pups"', 1),
 
     ('Boston Fern', 'Nephrolepis exaltata', 'A lush fern with arching fronds that give a feathery appearance.', 16.99, NULL,
-     'Keep soil consistently moist, water frequently', 'Moderate to bright indirect light', 'High humidity', '60-75°F', 'Non-toxic', 'One of the best air-purifying plants'),
+     'Keep soil consistently moist, water frequently', 'Moderate to bright indirect light', 'High humidity', '60-75°F', 'Non-toxic', 'One of the best air-purifying plants', 3),
 
     ('Rubber Plant', 'Ficus elastica', 'A bold plant with glossy leaves that can be green, burgundy, or variegated.', 29.99, NULL,
-     'Water weekly', 'Moderate to bright indirect light', 'Moderate humidity', '60-80°F', 'Toxic to pets', 'Originates from Southeast Asia'),
+     'Water weekly', 'Moderate to bright indirect light', 'Moderate humidity', '60-80°F', 'Toxic to pets', 'Originates from Southeast Asia', 1),
 
     ('Calathea', 'Calathea spp.', 'A plant known for its decorative foliage with intricate patterns and colors.', 24.99, NULL,
-     'Keep soil consistently moist, water regularly', 'Low to moderate indirect light', 'High humidity', '65-75°F', 'Non-toxic', 'Folds its leaves at night'),
+     'Keep soil consistently moist, water regularly', 'Low to moderate indirect light', 'High humidity', '65-75°F', 'Non-toxic', 'Folds its leaves at night', 3),
 
     ('Philodendron', 'Philodendron spp.', 'A versatile plant with various leaf shapes and textures, ideal for indoor settings.', 17.99, NULL,
-     'Water weekly', 'Low to moderate indirect light', 'Moderate humidity', '65-75°F', 'Toxic to pets', 'Grows well in hanging baskets'),
+     'Water weekly', 'Low to moderate indirect light', 'Moderate humidity', '65-75°F', 'Toxic to pets', 'Grows well in hanging baskets', 1),
 
     ('Schefflera', 'Schefflera spp.', 'A tall plant with compound leaves that can add a tropical touch to any room.', 39.99, NULL,
-     'Water weekly', 'Moderate to bright indirect light', 'Moderate to high humidity', '60-75°F', 'Toxic to pets', 'Also known as Umbrella Tree'),
+     'Water weekly', 'Moderate to bright indirect light', 'Moderate to high humidity', '60-75°F', 'Toxic to pets', 'Also known as Umbrella Tree', 1),
 
     ('Jade Plant', 'Crassula ovata', 'A succulent with fleshy, oval-shaped leaves that symbolizes good luck and prosperity.', 14.99, NULL,
-     'Water every 2-3 weeks', 'Bright light, direct sun if possible', 'Low humidity', '65-75°F', 'Toxic to pets', 'Can live for decades'),
+     'Water every 2-3 weeks', 'Bright light, direct sun if possible', 'Low humidity', '65-75°F', 'Toxic to pets', 'Can live for decades', 2),
 
     ('Monstera Adansonii', 'Monstera adansonii', 'A smaller cousin of Monstera deliciosa with fenestrated leaves and trailing vines.', 34.99, NULL,
-     'Water every 1-2 weeks', 'Moderate to bright indirect light', 'High humidity', '65-80°F', 'Non-toxic', 'Known as Swiss Cheese Vine'),
+     'Water every 1-2 weeks', 'Moderate to bright indirect light', 'High humidity', '65-80°F', 'Non-toxic', 'Known as Swiss Cheese Vine', 1),
 
     ('Lucky Bamboo', 'Dracaena sanderiana', 'A plant often grown in water, featuring slender stalks and symbolic significance in Feng Shui.', 12.99, NULL,
-     'Keep roots submerged in water, change water every 2 weeks', 'Moderate indirect light', 'Moderate humidity', '65-80°F', 'Non-toxic', 'Not actually bamboo'),
+     'Keep roots submerged in water, change water every 2 weeks', 'Moderate indirect light', 'Moderate humidity', '65-80°F', 'Non-toxic', 'Not actually bamboo', 1),
 
     ('String of Pearls', 'Senecio rowleyanus', 'A unique succulent with trailing stems adorned with spherical, bead-like leaves.', 19.99, NULL,
-     'Water every 2-3 weeks', 'Bright light, some direct sun', 'Low humidity', '70-85°F', 'Toxic to pets', 'Resembles a string of peas'),
+     'Water every 2-3 weeks', 'Bright light, some direct sun', 'Low humidity', '70-85°F', 'Toxic to pets', 'Resembles a string of peas', 2),
 
     ('Parlor Palm', 'Chamaedorea elegans', 'A compact palm known for its feathery, arching fronds that thrive in low-light conditions.', 18.99, NULL,
-     'Keep soil consistently moist, water regularly', 'Low to moderate indirect light', 'High humidity', '65-75°F', 'Non-toxic', 'Great for beginners'),
+     'Keep soil consistently moist, water regularly', 'Low to moderate indirect light', 'High humidity', '65-75°F', 'Non-toxic', 'Great for beginners', 3),
 
     ('Oxalis', 'Oxalis spp.', 'A plant with triangular leaflets that fold up at night, known for its shamrock-shaped leaves.', 16.99, NULL,
-     'Keep soil slightly moist, water when top inch feels dry', 'Bright indirect light', 'Average to high humidity', '65-75°F', 'Toxic to pets', 'Also known as Shamrock Plant'),
+     'Keep soil slightly moist, water when top inch feels dry', 'Bright indirect light', 'Average to high humidity', '65-75°F', 'Toxic to pets', 'Also known as Shamrock Plant', 1),
 
     ('Thai Constellation Monstera', 'Monstera deliciosa var. Thai Constellation', 'A variegated cultivar of Monstera with striking creamy-white patterns on its leaves.', 99.99, 'thai_constellation_monstera.jpg',
-     'Water every 1-2 weeks', 'Bright, indirect light', 'High humidity', '65-85°F', 'Non-toxic', 'Highly sought after for its unique variegation');
+     'Water every 1-2 weeks', 'Bright, indirect light', 'High humidity', '65-85°F', 'Non-toxic', 'Highly sought after for its unique variegation', 1);
 
 
 
@@ -239,5 +246,6 @@ COMMIT;
 
 
 select * from plants
-
+join soils s on plants.soil_id = s.soil_id
+order by plant_id
 

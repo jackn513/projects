@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useParams } from "react-router-dom";
-
+import './SinglePlant.css'
 export const SinglePlant = () => {
     const api = axios.create({
         baseURL: "http://localhost:3000"
@@ -33,11 +33,12 @@ export const SinglePlant = () => {
                     alt={`image of ${plant['Plant Name']}`}
                     className='single-plant-image'
                 />
-                <p className='single-plant-name'>{plant['Plant Name']}</p>
-                <p>{plant['Scientific Name']}</p>
-                <blockquote className={'single-plant-description'}>{plant['Plant Description']}</blockquote>
+                <h1 className='single-plant-name'>{plant['Plant Name']}</h1>
+                <h2 className={'single-plant-sname'}>{plant['Scientific Name']}</h2>
                 {/* Add other details if needed */}
             </div>
+            <blockquote className={'single-plant-desc'}>{plant['Plant Description']}</blockquote>
+            <blockquote className={'single-plant-soil'}>{plant['Soil Type']}</blockquote>
         </div>
     );
 };

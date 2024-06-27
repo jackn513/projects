@@ -13,6 +13,6 @@ public interface PlantDao {
     Plant createPlant(Plant newPlant);
     Plant updatePlant(Plant updatedPlant);
 
-    Plant deletePlant(int plantId);
+    int deletePlant(int plantId);
 
 }

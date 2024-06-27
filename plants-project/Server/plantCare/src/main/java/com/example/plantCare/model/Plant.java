@@ -31,8 +31,11 @@ public class Plant {
     private String toxic;
     @JsonProperty("Fun Fact")
     private String funFact;
-
-    public Plant(int plantId, String plantName, String scientificName, String plantDescription, BigDecimal price, String image, String water, String light, String humidity, String temp, String toxic, String funFact) {
+    @JsonProperty("Soil Id")
+    private int soilId;
+    @JsonProperty("Soil Type")
+    private String soilType;
+    public Plant(int plantId, String plantName, String scientificName, String plantDescription, BigDecimal price, String image, String water, String light, String humidity, String temp, String toxic, String funFact, int soilId, String soilType) {
         this.plantId = plantId;
         this.plantName = plantName;
         this.scientificName = scientificName;
@@ -45,6 +48,8 @@ public class Plant {
         this.temp = temp;
         this.toxic = toxic;
         this.funFact = funFact;
+        this.soilId = soilId;
+        this.soilType = soilType;
     }
 
     public Plant() {
@@ -98,6 +103,14 @@ public class Plant {
         return funFact;
     }
 
+    public int getSoilId() {
+        return soilId;
+    }
+
+    public String getSoilType() {
+        return soilType;
+    }
+
     public void setPlantId(int plantId) {
         this.plantId = plantId;
     }
@@ -144,5 +157,13 @@ public class Plant {
 
     public void setFunFact(String funFact) {
         this.funFact = funFact;
+    }
+
+    public void setSoilId(int soilId) {
+        this.soilId = soilId;
+    }
+
+    public void setSoilType(String soilType) {
+        this.soilType = soilType;
     }
 }

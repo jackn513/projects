@@ -1,0 +1,59 @@
+.plant-details {
+    height: 2000px; /* Adjust height as needed */
+    background-color: #f3eded; /* Light gray background */
+    padding: 20px; /* Add padding for spacing */
+}
+
+.single-plant-card {
+    display: grid;
+    grid-template-columns: 350px 1fr 1fr;
+    grid-template-rows: 80px 80px;/* Adjusted rows for content */
+    gap: 15px; /* Adjust the gap between grid items */
+    padding: 10px;
+    margin: 10px;
+    grid-template-areas:
+        'img name name'
+        'img sname sname'
+        'img . . '
+        ; /* Grid areas mapping */
+}
+
+.single-plant-image {
+    grid-area: img;
+    width: 350px; /* Fixed width for image */
+    height: 500px; /* Fixed height for image */
+    border: 1.5px solid black; /* Black border around image */
+    border-radius: 5px; /* Rounded corners */
+    background-color: white; /* White background for image */
+    box-shadow: 10px 10px 1px rgba(39, 100, 2, 0.53); /* Box shadow effect */
+}
+
+.single-plant-name {
+    grid-area: name;
+    font-size: 100px; /* Larger font size for name */
+    font-weight: bold; /* Bold font weight */
+    align-self: center;
+    justify-self: center;
+}
+
+.single-plant-sname {
+    grid-area: sname;
+    font-size: 80px; /* Smaller font size for scientific name */
+    font-style: italic; /* Italicize scientific name */
+    align-self: center;
+    justify-self: center;/* Center align vertically */
+}
+
+.single-plant-desc {
+    grid-area: desc;
+    font-size: 40px;
+    align-self: start; /* Align description to the top */
+    /* Additional styling for description if needed */
+}
+
+.single-plant-soil {
+    grid-area: soil;
+    font-size: 40px;
+    align-self: start; /* Align soil information to the top */
+    /* Additional styling for soil information if needed */
+}

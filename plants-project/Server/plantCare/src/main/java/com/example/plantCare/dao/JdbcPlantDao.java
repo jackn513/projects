@@ -12,6 +12,8 @@ import javax.sql.DataSource;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.ToDoubleBiFunction;
+
 @Component
 public class JdbcPlantDao implements PlantDao{
     private final JdbcTemplate jdbcTemplate;
@@ -24,7 +26,9 @@ public class JdbcPlantDao implements PlantDao{
     @Override
     public List<Plant> getPlants() {
         List<Plant> plants = new ArrayList<>();
-        String sql = "SELECT * FROM plants";
+        String sql = "SELECT * FROM plants " +
+                "JOIN soils s ON plants.soil_id = s.soil_id " +
+                "ORDER BY plant_id";
         try {
             SqlRowSet results = jdbcTemplate.queryForRowSet(sql);
             while (results.next()){
@@ -40,7 +44,10 @@ public class JdbcPlantDao implements PlantDao{
     @Override
     public Plant getPlantById(int plantId) {
         Plant plant = null;
-        String sql = "SELECT * FROM plants WHERE plant_id = ?";
+        String sql = "SELECT * FROM plants " +
+                "JOIN soils s ON plants.soil_id = s.soil_id " +
+                "WHERE plant_id = ? " +
+                "ORDER BY plant_id";
         try{
             SqlRowSet results = jdbcTemplate.queryForRowSet(sql, plantId);
             if (results.next()) {
@@ -111,12 +118,59 @@ public class JdbcPlantDao implements PlantDao{
 
     @Override
     public Plant updatePlant(Plant updatedPlant) {
-        return null;
+        Plant plantToUpdate;
+        String sql = "UPDATE plants " +
+                "SET name = ?, " +
+                "scientific_name = ?, " +
+                "plant_description = ?," +
+                "price = ?, " +
+                "image_name = ?, " +
+                "water = ?, " +
+                "light = ?, " +
+                "humidity = ?, " +
+                "temp = ?, " +
+                "toxic = ?, " +
+                "fun_fact = ?, " +
+                "soil_id = ?";
+        try {
+            jdbcTemplate.update(sql,
+                    updatedPlant.getPlantName(),
+                    updatedPlant.getScientificName(),
+                    updatedPlant.getPlantDescription(),
+                    updatedPlant.getPrice(),
+                    updatedPlant.getImage(),
+                    updatedPlant.getWater(),
+                    updatedPlant.getLight(),
+                    updatedPlant.getHumidity(),
+                    updatedPlant.getTemp(),
+                    updatedPlant.getToxic(),
+                    updatedPlant.getFunFact(),
+                    updatedPlant.getSoilId());
+            plantToUpdate = getPlantById(updatedPlant.getPlantId());
+        } catch (CannotGetJdbcConnectionException e) {
+            throw new DaoException("Unable to connect to server or database", e);
+        } catch (DataIntegrityViolationException e) {
+            throw new DaoException("Data integrity violation", e);
+        }
+        return plantToUpdate;
     }
 
     @Override
-    public Plant deletePlant(int plantId) {
-        return null;
+    public int deletePlant(int plantId) {
+        //TODO finish the second sql statement where plant_id shows in foreign table (i.e journal)
+        int rowsAffected;
+        String plantSql = "DELETE FROM plants WHERE plant_id = ?";
+        try {
+            jdbcTemplate.update(plantSql, plantId);
+            rowsAffected = jdbcTemplate.update(plantSql, plantId);
+        } catch (CannotGetJdbcConnectionException e) {
+            throw new DaoException("Unable to connect to server or database", e);
+        } catch (DataIntegrityViolationException e) {
+            throw new DaoException("Data integrity violation", e);
+        } catch (Exception e) {
+            throw new DaoException("Error deleting soil with ID: " + plantId, e);
+        }
+        return rowsAffected;
     }
 
     public Plant mapRowToPlant(SqlRowSet rowSet){
@@ -133,6 +187,8 @@ public class JdbcPlantDao implements PlantDao{
         plant.setTemp(rowSet.getString("temp"));
         plant.setToxic(rowSet.getString("toxic"));
         plant.setFunFact(rowSet.getString("fun_fact"));
+        plant.setSoilId(rowSet.getInt("soil_id"));
+        plant.setSoilType(rowSet.getString("type"));
         return plant;
     }
 }

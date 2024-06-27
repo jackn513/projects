@@ -21,7 +21,6 @@ public class PlantController {
         this.plantDao = plantDao;
     }
     @RequestMapping( method = RequestMethod.GET)
-
     public List<Plant> getPlants(){
         return plantDao.getPlants();
     }
