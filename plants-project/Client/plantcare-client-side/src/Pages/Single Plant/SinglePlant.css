@@ -30,7 +30,7 @@
 
 .single-plant-name {
     grid-area: name;
-    font-size: 100px; /* Larger font size for name */
+    font-size: 80px; /* Larger font size for name */
     font-weight: bold; /* Bold font weight */
     align-self: center;
     justify-self: center;
@@ -38,7 +38,7 @@
 
 .single-plant-sname {
     grid-area: sname;
-    font-size: 80px; /* Smaller font size for scientific name */
+    font-size: 60px; /* Smaller font size for scientific name */
     font-style: italic; /* Italicize scientific name */
     align-self: center;
     justify-self: center;/* Center align vertically */
