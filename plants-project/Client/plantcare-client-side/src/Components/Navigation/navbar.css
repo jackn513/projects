@@ -7,6 +7,10 @@
     border-bottom: 1.5px solid;
 }
 
+.nav-bar .links li {
+    display: inline-block;
+    margin-right: 10px;
+}
 .links {
     list-style-type: none;
     margin: 0;
