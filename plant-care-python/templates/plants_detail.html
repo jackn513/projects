@@ -1,0 +1,16 @@
+<!-- plants/templates/plant_detail.html -->
+
+{% extends 'base.html' %}  <!-- Extend your base template -->
+
+{% block title %}{{ plant.name }} Details{% endblock %}  <!-- Set the page title -->
+
+{% block content %}  <!-- Define the content block -->
+
+<div class="plant-detail">
+    <h2>{{ plant.name }}</h2>
+    <p>Origin: {{ plant.origin }}</p>
+    <p>Care Instructions: {{ plant.care_instructions }}</p>
+    <!-- Add more details as needed -->
+</div>
+
+{% endblock %}  <!-- End of content block -->

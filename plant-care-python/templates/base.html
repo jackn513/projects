@@ -1,0 +1,45 @@
+<!-- templates/base.html -->
+{% load static %}
+
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Your Website Title{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'base_styles.css' %}">
+    {% block extra_css %}
+    <!-- Placeholder for additional CSS files -->
+    {% endblock %}
+</head>
+<body>
+
+<header>
+    <nav class="nav-bar">
+        <ul class="links">
+            <li><a href="{% url 'home' %}" class="link-home-nav">Home</a></li>
+            <li><a href="{% url 'plants' %}" class="link-plants-nav">Plants</a></li>
+
+            <!-- Add more navigation links here as needed -->
+        </ul>
+    </nav>
+</header>
+
+<main>
+    {% block content %}
+    <!-- Content block to be overridden in child templates -->
+    {% endblock %}
+</main>
+
+<footer>
+    <p>&copy; {% now "Y" %} Your Website. All rights reserved.</p>
+</footer>
+
+<!-- Optional JavaScript -->
+<script src="{% static 'js/base_scripts.js' %}"></script>
+{% block extra_js %}
+<!-- Placeholder for additional JavaScript files -->
+{% endblock %}
+
+</body>
+</html>
