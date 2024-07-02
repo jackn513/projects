@@ -23,8 +23,7 @@
             'img img img'
             'img img img'
             'img img img'
-            'name name name'
-;
+            'name name name';
     border: 1.5px solid black;
     border-radius: 5px;
     padding: 10px;
@@ -51,11 +50,11 @@
 }
 .plant-name {
     color: black;
-    align-self: center;
-    justify-self: center;
-    grid-area: name;
+    justify-self: center; /* Horizontal centering */
+    align-self: center; /* Vertical centering */
+    grid-area: name; /* Ensure it matches the grid template area */
     font-weight: bold;
-    font-size: 35px;
+    font-size: 35px; /* Adjust font size as needed */
 }
 .plant-name:hover{
     cursor: pointer;

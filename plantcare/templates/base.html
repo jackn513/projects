@@ -1,0 +1,37 @@
+{% load static %}
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}My Plant Care{% endblock %}</title>
+    <!-- Add your CSS and other meta tags here -->
+    <link rel="stylesheet" href="{% static 'index.css' %}">
+</head>
+<body>
+
+<header>
+    <nav class="nav-bar">
+        <ul class="links">
+            <li class="links-home-nav">
+                <a href="{% url 'home' %}">Home</a>
+            </li>
+            <li class="link-plants-nav">
+                <a href="{% url 'plants' %}">Plants</a>
+            </li>
+            <!-- Add more navigation items as needed -->
+        </ul>
+    </nav>
+</header>
+
+<div class="content">
+    {% block content %}
+    {% endblock %}
+</div>
+
+<footer>
+    <!-- Add footer content here -->
+    <p>&copy; 2024 My Plant Care. All rights reserved.</p>
+</footer>
+
+</body>
+</html>
