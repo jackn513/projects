@@ -1,0 +1,26 @@
+<!--{% extends "base.html" %}-->
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>List of Plants</title>
+    <link rel="stylesheet" href="{% static 'plants_styles.css' %}">
+</head>
+<body class="plants-page">
+
+{% block content %}
+<h1 class="page-title">Plants</h1>
+<div class="plants-cards">
+    {% for plant in plants %}
+    <div class="plant-card">
+        <img src="{{ plant.image_name }}"
+             class="plant-image"
+             alt="{{ plant.name }}">
+        <p class="plant-name">{{ plant.name }}</p>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}
+
+</body>
+</html>
