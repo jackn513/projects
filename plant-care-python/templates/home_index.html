@@ -1,39 +1,37 @@
 {% extends "base.html" %}
 {% load static %}
 
-{% block title %}List of Plants{% endblock %}
+{% block title %}{{ plant.name }} Plantcare {% endblock %}
 
 {% block extra_css %}
 <link rel="stylesheet" href="{% static 'home_styles.css' %}">
 {% endblock %}
+
 {% block content %}
 <section class='home'>
     <section class="home-container">
         <h1 class="home-title">Welcome to Plant Care!</h1>
         <section class='home-content'>
             <p class="home-about">
-                Welcome to Plant care! Here is a site in which you can browse our digital collection of plants!
-                Read all about their origins, their care, and benefits! Add them to your collection and even
-                journal
-                about them and take note of their growth, issues, and ways in which you helped that plant turn
-                into
-                its most beautiful self!
+                Welcome to Plant Care! Here, you can browse our
+                digital collection of plants and learn all about their origins,<br>
+                care, and benefits. Add them to your collection and journal about
+                their growth and any issues. Take note of how <br>
+                you helped each plant thrive.
+                Enjoy transforming your plants into their most beautiful selves!
             </p>
 
             <section class='links'>
                 <section class='plant-card-link'>
-                    <img src="{{ plant.image_name }}"
-                         class="card-plant-image"
-                         alt="{{ plant.name }}">
+                    <img src="{{ plant.image_name }}" class="card-plant-image" alt="{{ plant.name }}">
                     <a href="{% url 'plants' %}" class='link-plant-card' style="text-decoration: none">
-
                         <p class='plant-card-name'>Plants</p>
                     </a>
                 </section>
                 <div class='soils-card-link'>
-                    <a to='/soils' class='link-soils-card' style="text-decoration: none">
-
-                        <p class='soil-card-name'>Soils</p>
+                    <img src="{{ plant.image_name }}" class="card-soil-image" alt="{{ plant.name }}">
+                    <a href="{% url 'soils' %}" class='link-soils-card' style="text-decoration: none">
+                        <p class='soils-card-name'>Soils</p>
                     </a>
                 </div>
             </section>

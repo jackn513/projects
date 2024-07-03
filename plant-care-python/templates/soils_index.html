@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>{% block title %} Soils {% endblock %}</title>
+        <link rel="stylesheet" href="{% static 'soils_styles.css' %}">
+    </head>
+    <body class="soils-page">
+        <h1 class="page-title">Soils</h1>
+        <section class="soil-cards">
+            {% for soil in soils %}
+            <section class="soil-card">
+                <p class="soil-type">{{soil.type}}</p>
+            </section>
+            {% endfor %}
+        </section>
+    </body>
+</html>
+{% endblock %}

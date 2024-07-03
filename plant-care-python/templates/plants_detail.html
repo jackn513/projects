@@ -5,18 +5,20 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-        <title>{% block title %}{{ plant.name }} Details{% endblock %}</title>
+    <title>{% block title %}{{ plant.name }} Details{% endblock %}</title>
     <link rel="stylesheet" href="{% static 'single_plant.css' %}">
 </head>
- <!-- Define the content block -->
+<!-- Define the content block -->
 <body class="single-plant-page">
 <div class="single-plant-card">
     <img src="{{ plant.image_name }}"
-                 class="single-plant-image"
-                 alt="{{ plant.name }}">
+         class="single-plant-image"
+         alt="">
     <h2 class="single-plant-name">{{ plant.name }}</h2>
-
+    <p class="plant-card-desc">{{ plant.plant_description }}</p>
+    <p class="plant-card-fact">{{plant.fun_fact}}</p>
 </div>
+
 </body>
 </html>
 {% endblock %}  <!-- End of content block -->

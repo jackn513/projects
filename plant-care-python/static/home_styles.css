@@ -1,4 +1,3 @@
-/* Home.css */
 .home {
     background-color: #f3eded;
 }
@@ -10,37 +9,37 @@
 .home-title {
     text-align: center; /* Center align the text */
     font-size: 60px;
-
 }
 
 .home-about {
+
+
     background-color: white;
     padding: 10px;
     border: 1.5px solid;
     border-radius: 8px;
 }
 
-/*.home-content {*/
-/*    background-color: white;*/
+.home-content {
 
-/*    padding: 20px;*/
-/*    margin: 20px;*/
-
-/*    font-size: 16px;*/
-/*    line-height: 1.6;*/
-/*    color: #333;*/
-/*}*/
+    padding: 20px;
+    margin: 20px;
+    font-size: 16px;
+    line-height: 1.6;
+    color: #333;
+}
 
 .links {
+    /*justify-content: center;*/
     display: flex;
     flex-wrap: wrap;
 }
 
 .plant-card-link, .soils-card-link {
+    margin: 10px;
     background-color: white;
-    justify-self: end;
     display: grid;
-    grid-template-rows: repeat(3, 1fr);
+    grid-template-rows: 1fr 1fr 1fr 80px;
     grid-template-areas:
             'img img img'
             'img img img'
@@ -48,15 +47,13 @@
             '. link . ';
     border: 1.5px solid black;
     border-radius: 5px;
-    margin: 20px;
-    padding: 10px;
     width: 350px;
-    height: 500px; /* Set a fixed width for each plant card */
-
+    height: 500px;
 }
-.plant-card-link:hover{
+
+.plant-card-link:hover, .soils-card-link:hover {
     cursor: pointer;
-    box-shadow: 10px 10px 1px rgba(39, 100, 2, 0.53);
+    box-shadow: 10px 10px 1px black;
 }
 
 .link-plant-card, .link-soils-card {
@@ -68,15 +65,12 @@
     grid-area: link;
 }
 
-
-
-.plant-card-nane, .soils-card-name {
+.plant-card-name, .soils-card-name {
     justify-self: center;
-    background-color: rgba(39, 100, 2, 0.53);
-
+    /*background-color: rgba(39, 100, 2, 0.53);*/
 }
 
-.card-plant-image{
+.card-plant-image, .card-soil-image {
     color: black;
     grid-area: img;
     border-bottom: 1.5px solid black;

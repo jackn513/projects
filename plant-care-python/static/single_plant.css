@@ -11,16 +11,17 @@
     display: grid;
     grid-template-rows: 1fr 1fr 1fr 80px;
     grid-template-areas:
-            'img img img'
-            'img img img'
-            'img img img'
-            'name name name';
+            'img img img desc'
+            'img img img fact'
+            'img img img .'
+            'name name . .';
     border: 1.5px solid black;
     border-radius: 5px;
     /*padding: 10px;*/
-    width: 350px;
+    width: 850px;
     height: 500px;
     /*padding: 10px;*/
+
 
 
 }
@@ -33,19 +34,34 @@
 }
 
 .single-plant-image{
+    width: 340px;
+    height: 410px;
     color: black;
     grid-area: img;
+    border-right: 1.5px solid black;
     border-bottom: 1.5px solid black;
-    border-top-left-radius: 5px;
-    border-top-right-radius: 5px;
     background-color: rgba(39, 100, 2, 0.53);
 }
 
 .single-plant-name{
     color: black;
+    padding: 10px;
+    text-align: center;
     justify-self: center; /* Horizontal centering */
     align-self: center; /* Vertical centering */
     grid-area: name; /* Ensure it matches the grid template area */
     font-weight: bold;
     font-size: 35px;
+}
+
+.plant-card-desc{
+    padding-top: 10px;
+   text-align: center;
+    grid-area: desc;
+}
+
+.plant-card-fact{
+    grid-area: fact;
+
+   text-align: center;
 }

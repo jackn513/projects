@@ -1,4 +1,4 @@
-# plants/urls.py
+# plants/urls.py.py
 
 from django.urls import path
 from . import views

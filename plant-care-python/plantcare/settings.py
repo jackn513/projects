@@ -34,6 +34,7 @@ INSTALLED_APPS = [
     "plants",
     "home",
     "singleplant",
+    "soils",
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
@@ -52,7 +53,8 @@ MIDDLEWARE = [
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
 ]
 
-ROOT_URLCONF = "plantcare.urls"
+ROOT_URLCONF = 'plantcare.urls'
+
 
 TEMPLATES = [
     {
@@ -125,10 +127,14 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-# Example STATICFILES_DIRS configuration
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'static'),
+    BASE_DIR / "static",
+    BASE_DIR / "my_app/static",  # Adjust according to your app structure
 ]
+
+# Ensure this is set for production
+# STATIC_ROOT = BASE_DIR / "staticfiles"
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field

@@ -1,17 +1,8 @@
-/* Example CSS for NavBar */
-/* base_styles.css */
-
 /* Reset margin and padding for the entire page */
 * {
     margin: 0;
     padding: 0;
-}
-
-/* Optional: Set box-sizing to border-box for all elements */
-*,
-*::before,
-*::after {
-    box-sizing: border-box;
+    box-sizing: border-box; /* Ensures all elements use border-box sizing */
 }
 
 /* Example of setting specific margins on elements */
@@ -23,6 +14,7 @@ body {
 /* Additional styles as per your design needs */
 
 .nav-bar {
+    padding-left: 10px;
     background-color: #f3eded;
     height: 60px;
     display: flex;
@@ -30,29 +22,59 @@ body {
     border-bottom: 1.5px solid;
 }
 
-.nav-bar .links li {
-    display: inline-block;
-    margin-right: 10px;
-}
-
-.links {
+.nav-bar .links {
     list-style-type: none;
     margin: 0;
     padding: 0;
 }
 
-.link-home-nav, .link-plants-nav {
-    /*cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg'  width='100' height='100' viewport='0 0 100 100' style='fill:black;font-size:35px;'><text y='50%'>🪴</text></svg>")*/
-    /*16 0,*/
-    /*auto;*/
-    margin-left: 20px;
+.nav-bar .links li {
+    display: inline-block;
+    margin-right: 10px;
+}
+
+.link-home-nav, .link-plants-nav, .link-soils-nav {
     color: black;
     font-family: "Arial", serif;
     text-decoration: none;
     padding: 8px 12px;
 }
 
-.link-home-nav:hover, .link-plants-nav:hover {
-    background-color: rgba(39, 100, 2, 0.53);; /* Darker background on hover */
+.link-home-nav:hover, .link-plants-nav:hover, .link-soils-nav:hover {
+    background-color: rgba(39, 100, 2, 0.53); /* Darker background on hover */
     border-radius: 4px;
+}
+
+.footer {
+    border-top: 1.5px solid black;
+    background-color: #f3eded;
+    padding: 20px;
+    text-align: center;
+}
+
+.footer p {
+    margin-bottom: 10px;
+}
+
+.footer-links {
+    list-style-type: none;
+    padding: 0;
+    /*text-align: center;*/
+}
+
+.footer-links li {
+    display: inline-block;
+    margin-right: 10px;
+}
+
+.footer-links li a {
+    color: black;
+    text-decoration: none;
+    padding: 5px 10px;
+}
+
+.footer-links li a:hover {
+    /*background-color: rgba(39, 100, 2, 0.53); !* Darker background on hover *!*/
+
+    border-bottom: 1.5px solid;
 }
