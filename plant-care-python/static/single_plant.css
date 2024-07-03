@@ -1,22 +1,12 @@
-/* Plants.css */
-.plants-page{
+.single-plant-page{
     background-color: #f3eded;
-    /*background-color: black;*/
-}
-.page-title{
-    font-size: 60px;
-    text-align: center;
-}
-.plants-cards {
-    justify-content: center;
 
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px; /* Adjust the gap between plant cards */
-    padding: 10px; /* Add padding to the container */
+
 }
 
-.plant-card {
+.single-plant-card{
+
+    margin: 10px;
     background-color: white;
     display: grid;
     grid-template-rows: 1fr 1fr 1fr 80px;
@@ -29,19 +19,20 @@
     border-radius: 5px;
     /*padding: 10px;*/
     width: 350px;
-    height: 500px;/* Set a fixed width for each plant card */
+    height: 500px;
+    /*padding: 10px;*/
+
 
 }
 
-.plant-card:hover{
-    /*cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg'  width='100' height='100' viewport='0 0 100 100' style='fill:black;font-size:35px;'><text y='50%'>🪴</text></svg>")*/
-    /*16 0,*/
-    /*auto;*/
+.single-plant-card:hover{
     cursor: pointer;
+
     /*box-shadow: 10px 10px 1px rgba(39, 100, 2, 0.53);*/
     box-shadow: 10px 10px 1px black;
 }
-.plant-image{
+
+.single-plant-image{
     color: black;
     grid-area: img;
     border-bottom: 1.5px solid black;
@@ -50,18 +41,11 @@
     background-color: rgba(39, 100, 2, 0.53);
 }
 
-.plant-image:hover{
-    cursor: pointer;
-}
-.plant-name {
+.single-plant-name{
     color: black;
     justify-self: center; /* Horizontal centering */
     align-self: center; /* Vertical centering */
     grid-area: name; /* Ensure it matches the grid template area */
     font-weight: bold;
-    font-size: 35px; /* Adjust font size as needed */
+    font-size: 35px;
 }
-.plant-name:hover{
-    cursor: pointer;
-}
-/* Add more styles as needed */

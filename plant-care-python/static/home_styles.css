@@ -72,5 +72,15 @@
 
 .plant-card-nane, .soils-card-name {
     justify-self: center;
+    background-color: rgba(39, 100, 2, 0.53);
 
+}
+
+.card-plant-image{
+    color: black;
+    grid-area: img;
+    border-bottom: 1.5px solid black;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    background-color: rgba(39, 100, 2, 0.53);
 }

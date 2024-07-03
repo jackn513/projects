@@ -6,7 +6,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>List of Plants</title>
+    <title>{% block title %} Plants {% endblock %}</title>
     <link rel="stylesheet" href="{% static 'plants_styles.css' %}">
 </head>
 <body class="plants-page">
@@ -14,6 +14,7 @@
     <div class="plants-cards">
         {% for plant in plants %}
         <div class="plant-card">
+
             <img src="{{ plant.image_name }}"
                  class="plant-image"
                  alt="{{ plant.name }}">

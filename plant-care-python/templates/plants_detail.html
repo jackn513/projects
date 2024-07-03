@@ -1,16 +1,22 @@
-<!-- plants/templates/plant_detail.html -->
-
 {% extends 'base.html' %}  <!-- Extend your base template -->
+{% load static %}  <!-- Load the static template tag library -->
 
-{% block title %}{{ plant.name }} Details{% endblock %}  <!-- Set the page title -->
+{% block content %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+        <title>{% block title %}{{ plant.name }} Details{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'single_plant.css' %}">
+</head>
+ <!-- Define the content block -->
+<body class="single-plant-page">
+<div class="single-plant-card">
+    <img src="{{ plant.image_name }}"
+                 class="single-plant-image"
+                 alt="{{ plant.name }}">
+    <h2 class="single-plant-name">{{ plant.name }}</h2>
 
-{% block content %}  <!-- Define the content block -->
-
-<div class="plant-detail">
-    <h2>{{ plant.name }}</h2>
-    <p>Origin: {{ plant.origin }}</p>
-    <p>Care Instructions: {{ plant.care_instructions }}</p>
-    <!-- Add more details as needed -->
 </div>
-
+</body>
+</html>
 {% endblock %}  <!-- End of content block -->
