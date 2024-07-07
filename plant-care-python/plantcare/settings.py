@@ -35,6 +35,7 @@ INSTALLED_APPS = [
     "home",
     "singleplant",
     "soils",
+    "customers",
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
@@ -129,7 +130,7 @@ STATIC_URL = '/static/'
 
 STATICFILES_DIRS = [
     BASE_DIR / "static",
-    BASE_DIR / "my_app/static",  # Adjust according to your app structure
+    BASE_DIR / "static",  # Adjust according to your app structure
 ]
 
 # Ensure this is set for production

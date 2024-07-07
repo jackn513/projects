@@ -2,6 +2,7 @@
 .plants-page{
     background-color: #f3eded;
     /*background-color: black;*/
+    padding-bottom: 20px;
 
 }
 .page-title{
@@ -14,7 +15,7 @@
 
     display: flex;
     flex-wrap: wrap;
-    gap: 20px; /* Adjust the gap between plant cards */
+    gap: 50px; /* Adjust the gap between plant cards */
     padding: 10px; /* Add padding to the container */
 }
 
@@ -41,6 +42,7 @@
     /*auto;*/
     cursor: pointer;
     /*box-shadow: 10px 10px 1px rgba(39, 100, 2, 0.53);*/
+    /*box-shadow: 10px 10px 1px black;*/
     box-shadow: 10px 10px 1px black;
 }
 .plant-image{
@@ -66,5 +68,6 @@
 }
 .plant-name:hover{
     cursor: pointer;
+
 }
 /* Add more styles as needed */

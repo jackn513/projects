@@ -3,7 +3,7 @@ from .models import Plant  # Make sure to import your model
 
 
 def plants_index(request):
-    plants = Plant.objects.all()
+    plants = Plant.objects.all().order_by('name')
     return render(request, 'plants_index.html', {'plants': plants})
 
 

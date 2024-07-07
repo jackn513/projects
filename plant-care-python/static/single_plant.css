@@ -2,101 +2,64 @@
     background-color: #f3eded;
 }
 
-
-/*}*/
-
-/*.single-plant-card{*/
-/*   background-color: white;*/
-/*    display: grid;*/
-/*    grid-template-rows: 1fr 1fr 1fr 80px 50px 10px 25px 25px;*/
-/*    grid-template-areas:*/
-/*            'img img img'*/
-/*            'img img img'*/
-/*            'img img img'*/
-/*            'name name name'*/
-/*            'desc desc desc'*/
-/*            'fact fact fact'*/
-/*            '. . .'*/
-/*            'butn butn butn';*/
-/*    border: 1.5px solid black;*/
-/*    border-radius: 5px;*/
-/*    margin: 20px;*/
-/*    width: 350px;*/
-/*    height: 520px;*/
-
-
-
-/*}*/
-
-/*.single-plant-card:hover{*/
-/*    cursor: pointer;*/
-
-/*    !*box-shadow: 10px 10px 1px rgba(39, 100, 2, 0.53);*!*/
-/*    box-shadow: 10px 10px 1px black;*/
-/*}*/
-
-/*.single-plant-image{*/
-/*    color: black;*/
-/*    grid-area: img;*/
-/*    border-bottom: 1.5px solid black;*/
-/*    border-top-left-radius: 5px;*/
-/*    border-top-right-radius: 5px;*/
-/*    background-color: rgba(39, 100, 2, 0.53);*/
-/*}*/
-
-.single-plant-name{
-   color: black;
-    padding-left: 10px;
+.single-plant-name {
+    text-align: center;
+    color: black;
     font-weight: bold;
     font-size: 35px;
+    margin: 5px;
+
 }
 
-.single-plant-science{
+.single-plant-science {
+    text-align: center;
     color: black;
-    padding-left: 15px;
     font-weight: normal;
     font-style: italic;
-
+    margin: 5px;
 }
-/*.plant-card-text {*/
 
+.single-plant-image {
+    width: 600px;
+    height: 800px;
+    border: 1.5px solid black;
+    border-radius: 8px;
+    margin: 10px;
+    background-color: rgba(39, 100, 2, 0.53);
+}
 
+.single-plant-desc {
+    padding-left: 10px;
+    margin: 5px;
+}
 
-/*    padding: 10px;*/
-/*}*/
+.single-plant-fact {
+    padding-left: 10px;
+    margin: 5px;
+}
 
-/*.plant-card-desc {*/
-/*    grid-area: desc;*/
-/*    text-align: center;*/
-/*}*/
-/*.plant-card-fact{*/
-/*    grid-area: fact;*/
-/*    text-align: center;*/
+.single-plant-button {
+    display: flex;
+    justify-content: center; /* Centers horizontally */
+    align-items: center; /* Centers vertically */
+    margin: 15px auto; /* Auto margins for centering */
+    width: 190px;
+    height: 40px;
+    background-color: transparent;
+    border: 1.5px solid black;
+    border-radius: 8px;
+}
 
-/*}*/
+.single-plant-button button {
+    color: black; /* Adjust text color */
+    font-size: 16px;
+    border: none; /* Remove button border */
+    background-color: transparent; /* Transparent background */
+    cursor: pointer;
+    transition: background-color 0.3s ease; /* Smooth transition */
+}
 
-/*.plant-card-button {*/
-/*    grid-area: butn;*/
-/*    display: flex;*/
-/*    justify-content: center; !* Centers horizontally *!*/
-/*    align-items: center; !* Centers vertically *!*/
-/*    background-color: transparent; !* Green background *!*/
-/*}*/
-
-/*.plant-card-button button {*/
-
-/*    color: white;*/
-/*    border-top: 5px solid;*/
-/*    padding: 10px 20px;*/
-/*    text-align: center;*/
-/*    text-decoration: none;*/
-/*    display: inline-block;*/
-/*    font-size: 16px;*/
-/*    border-radius: 5px;*/
-/*    cursor: pointer;*/
-/*    transition: background-color 0.3s ease; !* Smooth transition *!*/
-/*}*/
-
-/*.plant-card-button button:hover {*/
-/*    background-color: #45a049; !* Darker green on hover *!*/
-/*}*/
+.single-plant-button button:hover {
+    background-color: black; /* Darker background on hover */
+    color: white; /* White text on hover */
+}

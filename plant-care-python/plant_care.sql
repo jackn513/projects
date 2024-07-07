@@ -14,12 +14,12 @@ DROP TABLE IF EXISTS plants CASCADE;
 -- plant table information --
 CREATE TABLE soils
 (
-    soil_id     SERIAL,
+    id     SERIAL,
     type        VARCHAR(100)   NOT NULL,
     pH_level    DECIMAL(3, 1)  NOT NULL,
     nutrients   VARCHAR(500),
     description VARCHAR(500),
-    CONSTRAINT PK_soils PRIMARY KEY (soil_id)
+    CONSTRAINT PK_soils PRIMARY KEY (id)
 );
 CREATE TABLE plants
 (
@@ -38,14 +38,14 @@ CREATE TABLE plants
     soil_id INT,
     CONSTRAINT PK_plants PRIMARY KEY (id),
     CONSTRAINT FK_plant FOREIGN KEY (soil_id)
-        REFERENCES soils (soil_id)
+        REFERENCES soils (id)
 );
 
 
 -- customer table --
 CREATE TABLE customer
 (
-    customer_id   SERIAL,
+    id   SERIAL,
     customer_name VARCHAR(128) NOT NULL,
     profile_bio   VARCHAR(500),
     profile_image VARCHAR(256),
@@ -54,7 +54,7 @@ CREATE TABLE customer
     created_at    TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     updated_at    TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     role varchar(50) NOT NULL,
-    CONSTRAINT PK_customer PRIMARY KEY (customer_id)
+    CONSTRAINT PK_customer PRIMARY KEY (id)
 );
 
 -- the plants a customer has added to their collection --
@@ -63,7 +63,7 @@ CREATE TABLE customer_plants
     customer_id INT,
     plant_id    INT,
     CONSTRAINT FK_customer_plant_01 FOREIGN KEY (customer_id)
-        REFERENCES customer (customer_id),
+        REFERENCES customer (id),
     CONSTRAINT FK_customer_plant_02 FOREIGN KEY (plant_id)
         REFERENCES plants (id),
     PRIMARY KEY (customer_id, plant_id)
@@ -78,7 +78,7 @@ CREATE TABLE wishlist
     added_on    TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     CONSTRAINT PK_wishlist_01 PRIMARY KEY (wishlist_id),
     CONSTRAINT FK_wishlist_01 FOREIGN KEY (customer_id)
-        REFERENCES customer (customer_id),
+        REFERENCES customer (id),
     CONSTRAINT FK_wishlist_02 FOREIGN KEY (plant_id) REFERENCES plants (id)
 );
 
@@ -91,7 +91,7 @@ CREATE TABLE journal
     entry_date  TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     entry_text  TEXT,
     CONSTRAINT PK_journal_01 PRIMARY KEY (journal_id),
-    CONSTRAINT FK_journal_01 FOREIGN KEY (customer_id) REFERENCES customer (customer_id),
+    CONSTRAINT FK_journal_01 FOREIGN KEY (customer_id) REFERENCES customer (id),
     CONSTRAINT FK_journal_02 FOREIGN KEY (plant_id) REFERENCES plants (id)
 );
 
@@ -104,7 +104,7 @@ CREATE TABLE sale
     ship_date   DATE,
     CONSTRAINT PK_sale PRIMARY KEY (sale_id),
     CONSTRAINT FK_sale_customer FOREIGN KEY (customer_id)
-        REFERENCES customer (customer_id)
+        REFERENCES customer (id)
 );
 
 -- link sales to plants --
@@ -191,7 +191,20 @@ VALUES
      'Keep soil slightly moist, water when top inch feels dry', 'Bright indirect light', 'Average to high humidity', '65-75°F', 'Toxic to pets', 'Also known as Shamrock Plant', 1),
 
     ('Thai Constellation Monstera', 'Monstera deliciosa var. Thai Constellation', 'A variegated cultivar of Monstera with striking creamy-white patterns on its leaves.', 99.99, 'thai_constellation_monstera.jpg',
-     'Water every 1-2 weeks', 'Bright, indirect light', 'High humidity', '65-85°F', 'Non-toxic', 'Highly sought after for its unique variegation', 1);
+     'Water every 1-2 weeks', 'Bright, indirect light', 'High humidity', '65-85°F', 'Non-toxic', 'Highly sought after for its unique variegation', 1),
+
+    ('String of Hearts', 'Ceropegia woodii', 'A trailing succulent with heart-shaped leaves that cascade down like strings of beads.', 15.99, NULL,
+     'Water every 2-3 weeks', 'Bright, indirect light', 'Low to moderate humidity', '65-75°F', 'Non-toxic', 'Also known as Rosary Vine', 2),
+
+    ('Bird of Paradise', 'Strelitzia reginae', 'A tropical plant with large, banana-like leaves and striking orange and blue flowers resembling a bird in flight.', 39.99, NULL,
+     'Water weekly', 'Bright, indirect light', 'High humidity', '65-80°F', 'Toxic to pets', 'Native to South Africa', 1),
+
+    ('String of Bananas', 'Senecio radicans', 'A succulent with trailing stems adorned with banana-shaped leaves, perfect for hanging baskets.', 17.99, NULL,
+     'Water every 2-3 weeks', 'Bright light, some direct sun', 'Low humidity', '70-85°F', 'Toxic to pets', 'Resembles a string of bananas', 2),
+
+    ('Birds Nest Fern', 'Asplenium nidus', 'A lush fern with long, arching fronds that unfurl from a central rosette, resembling a bird’s nest.', 29.99, NULL,
+     'Keep soil consistently moist, water frequently', 'Moderate to bright indirect light', 'High humidity', '65-75°F', 'Non-toxic', 'Native to tropical Southeast Asia and Australia', 3);
+    ;
 
 
 
@@ -247,5 +260,6 @@ COMMIT;
 
 
 select * from plants
-join soils s on plants.soil_id = s.soil_id
+join soils s on plants.soil_id = s.id
 order by plants.id
+

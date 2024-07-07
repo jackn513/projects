@@ -1,0 +1,73 @@
+/* Styling for the entire registration section */
+.register {
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+    height: 100vh; /* Adjust as needed */
+    background-color: #f3eded; /* Light gray background */
+}
+
+.register-content {
+    border: 1.5px solid black; /* Dark green border */
+    width: 500px;
+    height: 300px;
+    border-radius: 12px;
+    background-color: rgba(39, 100, 2, 0.53); /* Semi-transparent green background */
+    padding: 20px; /* Add padding for inner content */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Light shadow for depth */
+}
+
+.register-form {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-areas:
+        ". create ."
+        "name name name"
+        "email email email"
+        "password password password"
+        ". submit .";
+    gap: 10px;
+}
+
+.create, .name, .email, .password, .submit {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center; /* Center text */
+}
+
+.create {
+    grid-area: create;
+}
+
+.name {
+    grid-area: name;
+}
+
+.email {
+    grid-area: email;
+}
+
+.password {
+    grid-area: password;
+}
+
+.submit {
+    grid-area: submit;
+    width: 100%; /* Full width button */
+    max-width: 300px; /* Limit maximum width */
+    height: 50px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+
+    background-color: black;
+    color: white;
+
+}
+
+.submit:hover {
+    background-color: black;
+    color: white;
+}

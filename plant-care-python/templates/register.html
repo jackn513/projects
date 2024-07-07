@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Create Account{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'register_styles.css' %}">
+{% endblock %}
+
+{% block content %}
+    
+    <section class="register">
+        <section class="register-content">
+            <form method="post" enctype="multipart/form-data" class="register-form">
+                {% csrf_token %}
+                <h1 class="create">Create Account</h1>
+                <section class="name">
+                    {{ form.customer_name.label_tag }}
+                    {{ form.customer_name }}
+                </section>
+                <section class="email">
+                    {{ form.email.label_tag }}
+                    {{ form.email }}
+                </section>
+                <section class="password">
+                    {{ form.password.label_tag }}
+                    {{ form.password }}
+                </section>
+                <section class="fields">
+                    {{ form.profile_bio.label_tag }}
+                    {{ form.profile_bio }}
+                </section>
+                
+                <section class="fields">
+                    {{ form.role.label_tag }}
+                    {{ form.role }}
+                </section>
+                <button type="submit" class="submit">Register</button>
+            </form>
+        </section>
+    </section>
+
+{% endblock %}

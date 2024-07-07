@@ -14,10 +14,11 @@
         <section class="plants-cards">
             {% for plant in plants %}
             <section class="plant-card">
-
-                <img src="{{ plant.image_name }}"
-                     class="plant-image"
+                <a href="{% url 'plant_detail' id=plant.id %}" class="plant-image" style="text-decoration: none">
+                    <img src="{{ plant.image_name }}"
+                     class="plant-image-image"
                      alt="">
+                </a>
                  <a href="{% url 'plant_detail' id=plant.id %}" class="plant-name" style="text-decoration: none">
                      <p class="plant-name">{{ plant.name }}</p>
                  </a>

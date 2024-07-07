@@ -33,17 +33,25 @@ body {
     margin-right: 10px;
 }
 
-.link-home-nav, .link-plants-nav, .link-soils-nav, .link-cart-nav {
+.link-home-nav, .link-plants-nav, .link-soils-nav, .link-cart-nav, .link-login-nav {
     color: black;
     font-family: "Arial", serif;
     text-decoration: none;
     padding: 8px 12px;
 }
 
-.link-home-nav:hover, .link-plants-nav:hover, .link-soils-nav:hover, .link-cart-nav:hover {
+.link-login-nav{
+    float: right;
+
+}
+
+
+.link-home-nav:hover, .link-plants-nav:hover, .link-soils-nav:hover, .link-cart-nav:hover, .link-login-nav:hover {
     background-color: rgba(39, 100, 2, 0.53); /* Darker background on hover */
     border-radius: 4px;
 }
+
+
 
 .footer {
     border-top: 1.5px solid black;
