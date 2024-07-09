@@ -5,30 +5,40 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="15170c1d-c7db-4488-be0b-2a5365ec7d03" name="Changes" comment="updates for many things">
-      <change afterPath="$PROJECT_DIR$/customers/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/customers/admin.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/customers/apps.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/customers/forms.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/customers/migrations/0001_initial.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/customers/migrations/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/customers/models.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/customers/tests.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/customers/urls.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/customers/utils.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/customers/views.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/register_styles.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/register.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/home/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/home/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/plant_care.sql" beforeDir="false" afterPath="$PROJECT_DIR$/plant_care.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/customers/migrations/0002_alter_customer_table.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/singlesoil/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/singlesoil/admin.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/singlesoil/apps.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/singlesoil/migrations/0001_initial.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/singlesoil/migrations/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/singlesoil/models.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/singlesoil/tests.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/singlesoil/urls.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/singlesoil/views.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/soil_detail.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/ba3cb51a-12b3-4316-bea3-16f434e6f8f3.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/ba3cb51a-12b3-4316-bea3-16f434e6f8f3.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/ba3cb51a-12b3-4316-bea3-16f434e6f8f3/storage_v2/_src_/database/plant_care.ZSSbTw/schema/information_schema.FNRwLQ.meta" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/ba3cb51a-12b3-4316-bea3-16f434e6f8f3/storage_v2/_src_/database/plant_care.ZSSbTw/schema/information_schema.FNRwLQ.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/ba3cb51a-12b3-4316-bea3-16f434e6f8f3/storage_v2/_src_/database/plant_care.ZSSbTw/schema/information_schema.FNRwLQ.zip" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/ba3cb51a-12b3-4316-bea3-16f434e6f8f3/storage_v2/_src_/database/plant_care.ZSSbTw/schema/information_schema.FNRwLQ.zip" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/ba3cb51a-12b3-4316-bea3-16f434e6f8f3/storage_v2/_src_/database/plant_care.ZSSbTw/schema/pg_catalog.0S1ZNQ.meta" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/ba3cb51a-12b3-4316-bea3-16f434e6f8f3/storage_v2/_src_/database/plant_care.ZSSbTw/schema/pg_catalog.0S1ZNQ.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/ba3cb51a-12b3-4316-bea3-16f434e6f8f3/storage_v2/_src_/database/plant_care.ZSSbTw/schema/pg_catalog.0S1ZNQ.zip" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/ba3cb51a-12b3-4316-bea3-16f434e6f8f3/storage_v2/_src_/database/plant_care.ZSSbTw/schema/pg_catalog.0S1ZNQ.zip" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/ba3cb51a-12b3-4316-bea3-16f434e6f8f3/storage_v2/_src_/database/plant_care.ZSSbTw/schema/public.abK9xQ.meta" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/ba3cb51a-12b3-4316-bea3-16f434e6f8f3/storage_v2/_src_/database/plant_care.ZSSbTw/schema/public.abK9xQ.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/ba3cb51a-12b3-4316-bea3-16f434e6f8f3/storage_v2/_src_/database/postgres.edMnLQ.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/ba3cb51a-12b3-4316-bea3-16f434e6f8f3/storage_v2/_src_/database/postgres.edMnLQ/schema/public.abK9xQ.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/plantcare/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/plantcare/settings.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/plantcare/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/plantcare/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/plants/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/plants/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/soils/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/soils/admin.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/soils/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/soils/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/soils/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/soils/views.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/static/base_styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/base_styles.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/plants_styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/plants_styles.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/static/single_plant.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/single_plant.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/soils_styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/soils_styles.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/plants_detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/plants_detail.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/plants_index.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/plants_index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/soils_index.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/soils_index.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -41,8 +51,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="HTML File" />
         <option value="Python Script" />
+        <option value="HTML File" />
       </list>
     </option>
   </component>
@@ -66,12 +76,12 @@
     &quot;assignee&quot;: &quot;jackn513&quot;
   }
 }</component>
-  <component name="GithubPullRequestsUISettings">{
-  &quot;selectedUrlAndAccountId&quot;: {
-    &quot;url&quot;: &quot;https://github.com/jackn513/projects.git&quot;,
-    &quot;accountId&quot;: &quot;c7ba2fc4-2a18-422c-9ca7-729c92de1937&quot;
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/jackn513/projects.git",
+    "accountId": "b9752a68-0483-4c8a-a2b5-62aa3f1cfc06"
   }
-}</component>
+}]]></component>
   <component name="ProjectColorInfo">{
   &quot;customColor&quot;: &quot;&quot;,
   &quot;associatedIndex&quot;: 0
@@ -84,32 +94,33 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
-    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
-    &quot;Python.manage.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.OpenDjangoStructureViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.pycharm.django.structure.promotion.once.per.project&quot;: &quot;true&quot;,
-    &quot;django.template.preview.state&quot;: &quot;SHOW_EDITOR&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/Users/jacknichols/projects/plant-care-python&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;com.intellij.pycharm.community.ide.impl.configuration.PythonContentEntriesConfigurable&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "DefaultHtmlFileTemplate": "HTML File",
+    "Python.manage.executor": "Run",
+    "RunOnceActivity.OpenDjangoStructureViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.pycharm.django.structure.promotion.once.per.project": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "django.template.preview.state": "SHOW_EDITOR",
+    "git-widget-placeholder": "main",
+    "last_opened_file_path": "/Users/jacknichols/projects/plant-care-python",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "com.intellij.pycharm.community.ide.impl.configuration.PythonContentEntriesConfigurable",
+    "vue.rearranger.settings.migration": "true"
   },
-  &quot;keyToStringList&quot;: {
-    &quot;DatabaseDriversLRU&quot;: [
-      &quot;postgresql&quot;
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "postgresql"
     ]
   }
-}</component>
-  <component name="RunManager" selected="Python.manage">
+}]]></component>
+  <component name="RunManager" selected="Django Server.plant-care-python">
     <configuration name="manage" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="plant-care-python" />
       <option name="ENV_FILES" value="" />
@@ -192,6 +203,7 @@
       <workItem from="1720126671408" duration="5215000" />
       <workItem from="1720132832529" duration="2834000" />
       <workItem from="1720284845677" duration="2508000" />
+      <workItem from="1720555505267" duration="4575000" />
     </task>
     <task id="LOCAL-00001" summary="updates for many things">
       <option name="closed" value="true" />

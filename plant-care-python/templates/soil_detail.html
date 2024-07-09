@@ -1,0 +1,19 @@
+{% extends 'base.html' %}  <!-- Extend your base template -->
+{% load static %}  <!-- Load the static template tag library -->
+
+{% block content %}
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>{% block title %}{{ soil.type }} Details{% endblock %}</title>
+        {#        <link rel="stylesheet" href="{% static 'single_plant.css' %}">#}
+    </head>
+    <body class="single-soil-page">
+        <section class="single-soil card">
+            <p class="single-soil-type">{{ soil.type }}</p>
+            <p class="single-soil-ph">{{ soil.ph_level }}</p>
+            <p class="single-soil-nut">{{ soil.nutrients }}</p>
+            <p class="single-soil-desc">{{ soil.description }}</p>
+        </section>
+    </body>
+{% endblock %}

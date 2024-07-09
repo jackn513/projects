@@ -1,5 +1,7 @@
 from django.contrib import admin
 from .models import Soils
+
+
 # Register your models here.
 
 

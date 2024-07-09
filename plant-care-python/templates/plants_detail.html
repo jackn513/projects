@@ -11,14 +11,27 @@
     <!-- Define the content block -->
     <body class="single-plant-page">
 
-    <p class="single-plant-name">{{ plant.name }}</p>
-    <p class="single-plant-science">{{ plant.scientific_name }}</p>
-    <button class="single-plant-button">Add to Collection</button>
-    <img src="" alt="" class="single-plant-image">
-    <p class="single-plant-desc">{{ plant.plant_description }}</p>
-    <p class="single-plant-fact">{{ plant.fun_fact }}</p>
-    
-    
+    <section class="single-plant-card">
+        <p class="single-plant-name">{{ plant.name }}</p>
+        <p class="single-plant-science">{{ plant.scientific_name }}</p>
+        <p class="single-plant-soil">
+            <a href="{% url 'soil_detail' id=plant.soil_id %}" class="plant-name" style="text-decoration: none">
+                     <p class="plant-name">{{ plant.soil_id }}</p>
+                 </a>
+        </p>
+        <button class="single-plant-button">Add to Collection</button>
+        <img src="" alt="" class="single-plant-image">
+        <p class="single-plant-desc">{{ plant.plant_description }}</p>
+        <p class="single-plant-fact">{{ plant.fun_fact }}</p>
+        <p class="single-plant-toxic">{{ plant.toxic}}</p>
+        <p class="single-plant-humidity">{{ plant.humidity }}</p>
+        <p class="single-plant-water">{{ plant.water }}</p>
+        <p class="single-plant-light">{{ plant.light }}</p>
+        <p class="single-plant-temp">{{ plant.temp }}</p>
+        
+        
+    </section>
+
 
     </body>
     </html>

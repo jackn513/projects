@@ -3,9 +3,11 @@ from django.urls import path, include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('plants/', include('plants.urls')),  # Include app-specific URLs for plants
-    path('plant/<int:id>/', include('singleplant.urls')),  # Example for single plant view
-    path('', include('home.urls')),  # URL for the homepage
-    path('soils/', include('soils.urls')),  # Include app-specific URLs for soils
+    path('plants/', include('plants.urls')),
+    path('plant/<int:id>/', include('singleplant.urls')),
+    path('', include('home.urls')),
+    path('soils/', include('soils.urls')),
+    path('soils/<int:id>', include('singlesoil.urls'), name='soil_detail'),
     path('register/', include('customers.urls')),
+
 ]

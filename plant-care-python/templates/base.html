@@ -19,10 +19,10 @@
             <li><a href="{% url 'home' %}" class="link-home-nav">Home</a></li>
             <li><a href="{% url 'plants' %}" class="link-plants-nav">Plants</a></li>
             <li><a href="{% url 'soils' %}" class="link-soils-nav">Soils</a></li>
-            
+
             <!-- Add more navigation links here as needed -->
         </ul>
-        <a href="{% url 'register' %}" class="link-login-nav">Create Account</a>
+        <a href="{% url 'register' %}" class="link-reg-nav">Create Account</a>
     </nav>
 </header>
 
@@ -39,6 +39,7 @@
         <li><a href="#">Contact</a></li>
         <li><a href="#">Terms of Service</a></li>
         <li><a href="#">Privacy Policy</a></li>
+        <li><a href="{% url 'register' %}" class="link-reg-nav-footer">Create Account</a></li>
     </ul>
 </footer>
 

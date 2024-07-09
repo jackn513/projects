@@ -2,6 +2,12 @@
     background-color: #f3eded;
 }
 
+.single-plant-card{
+
+    margin: 10px;
+
+}
+
 .single-plant-name {
     text-align: center;
     color: black;
@@ -10,6 +16,7 @@
     margin: 5px;
 
 }
+
 
 .single-plant-science {
     text-align: center;
@@ -20,8 +27,8 @@
 }
 
 .single-plant-image {
-    width: 600px;
-    height: 800px;
+    width: 350px;
+    height: 500px;;
     border: 1.5px solid black;
     border-radius: 8px;
     margin: 10px;
@@ -31,6 +38,7 @@
 .single-plant-desc {
     padding-left: 10px;
     margin: 5px;
+
 }
 
 .single-plant-fact {
@@ -39,6 +47,7 @@
 }
 
 .single-plant-button {
+    cursor: pointer;
     display: flex;
     justify-content: center; /* Centers horizontally */
     align-items: center; /* Centers vertically */

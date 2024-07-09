@@ -1,5 +1,6 @@
 .soils-page {
     background-color: #f3eded;
+
 }
 
 
@@ -9,6 +10,7 @@
 }
 
 .soil-cards {
+    margin: 10px;
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
@@ -20,17 +22,17 @@
 .soil-card{
     background-color: white;
     display: grid;
-    grid-template-rows: 1fr 1fr 1fr 80px;
+    grid-template-rows: repeat(3, 1fr) 80px; /* Changed to repeat for clarity */
     grid-template-areas:
-            'img img img'
-            'img img img'
-            'img img img'
-            'name name name';
+        'img'
+        'img'
+        'img'
+        'name'; /* Ensure it matches the grid template area */
     border: 1.5px solid black;
     border-radius: 5px;
-    /*padding: 10px;*/
     width: 350px;
     height: 500px;
+    text-align: center;
 }
 
 .soil-card:hover{

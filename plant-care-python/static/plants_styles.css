@@ -16,10 +16,11 @@
     display: flex;
     flex-wrap: wrap;
     gap: 50px; /* Adjust the gap between plant cards */
-    padding: 10px; /* Add padding to the container */
+
 }
 
 .plant-card {
+     margin: 10px;
     background-color: white;
     display: grid;
     grid-template-rows: 1fr 1fr 1fr 80px;

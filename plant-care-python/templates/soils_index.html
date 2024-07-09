@@ -17,7 +17,10 @@
             <img src=""
                      class="soil-image"
                      alt="">
-                <p class="soil-type">{{soil.type}}</p>
+                <a href="{% url 'soil_detail' soil.id %}" class="soil-link" style="text-decoration: none" >
+                    <p class="soil-type">{{soil.type}}</p>
+                </a>
+            
             </section>
             {% endfor %}
         </section>

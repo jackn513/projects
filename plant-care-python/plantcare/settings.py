@@ -35,6 +35,7 @@ INSTALLED_APPS = [
     "home",
     "singleplant",
     "soils",
+    "singlesoil",
     "customers",
     "django.contrib.admin",
     "django.contrib.auth",
