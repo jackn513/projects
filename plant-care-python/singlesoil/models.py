@@ -1,16 +1,20 @@
 from django.db import models
 
 
-# Create your models here.
-
 class SingleSoil(models.Model):
     type = models.CharField(max_length=100)
     ph_level = models.FloatField()
-    nutrients = models.CharField(max_length=500)
-    description = models.CharField(max_length=500)
+    nutrients = models.TextField()
+    description = models.TextField()
+
+    def __str__(self):
+        return self.type
+
+
+class Plant(models.Model):
+    name = models.CharField(max_length=100)
+    soil = models.ForeignKey(SingleSoil, on_delete=models.CASCADE,
+                             related_name='plants')  # Make sure the related_name is 'plants'
 
     def __str__(self):
         return self.name
-
-    class Meta:
-        db_table = 'soils_single_soil'  # Specify the database table name

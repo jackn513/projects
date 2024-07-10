@@ -5,23 +5,28 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="15170c1d-c7db-4488-be0b-2a5365ec7d03" name="Changes" comment="updates for many things">
+      <change afterPath="$PROJECT_DIR$/singlesoil/migrations/0002_alter_singlesoil_description_and_more.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/single_soils.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/dataSources/ba3cb51a-12b3-4316-bea3-16f434e6f8f3.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/ba3cb51a-12b3-4316-bea3-16f434e6f8f3.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/dataSources/ba3cb51a-12b3-4316-bea3-16f434e6f8f3/storage_v2/_src_/database/plant_care.ZSSbTw/schema/information_schema.FNRwLQ.meta" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/ba3cb51a-12b3-4316-bea3-16f434e6f8f3/storage_v2/_src_/database/plant_care.ZSSbTw/schema/information_schema.FNRwLQ.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/dataSources/ba3cb51a-12b3-4316-bea3-16f434e6f8f3/storage_v2/_src_/database/plant_care.ZSSbTw/schema/information_schema.FNRwLQ.zip" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/ba3cb51a-12b3-4316-bea3-16f434e6f8f3/storage_v2/_src_/database/plant_care.ZSSbTw/schema/information_schema.FNRwLQ.zip" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/dataSources/ba3cb51a-12b3-4316-bea3-16f434e6f8f3/storage_v2/_src_/database/plant_care.ZSSbTw/schema/pg_catalog.0S1ZNQ.meta" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/ba3cb51a-12b3-4316-bea3-16f434e6f8f3/storage_v2/_src_/database/plant_care.ZSSbTw/schema/pg_catalog.0S1ZNQ.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/dataSources/ba3cb51a-12b3-4316-bea3-16f434e6f8f3/storage_v2/_src_/database/plant_care.ZSSbTw/schema/pg_catalog.0S1ZNQ.zip" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/ba3cb51a-12b3-4316-bea3-16f434e6f8f3/storage_v2/_src_/database/plant_care.ZSSbTw/schema/pg_catalog.0S1ZNQ.zip" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/dataSources/ba3cb51a-12b3-4316-bea3-16f434e6f8f3/storage_v2/_src_/database/plant_care.ZSSbTw/schema/public.abK9xQ.meta" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/ba3cb51a-12b3-4316-bea3-16f434e6f8f3/storage_v2/_src_/database/plant_care.ZSSbTw/schema/public.abK9xQ.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/ba3cb51a-12b3-4316-bea3-16f434e6f8f3/storage_v2/_src_/database/postgres.edMnLQ/schema/public.abK9xQ.meta" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/ba3cb51a-12b3-4316-bea3-16f434e6f8f3/storage_v2/_src_/database/postgres.edMnLQ/schema/public.abK9xQ.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/plant_care.sql" beforeDir="false" afterPath="$PROJECT_DIR$/plant_care.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/plants/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/plants/views.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/singlesoil/migrations/0001_initial.py" beforeDir="false" afterPath="$PROJECT_DIR$/singlesoil/migrations/0001_initial.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/base_styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/base_styles.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/home_styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/home_styles.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/singlesoil/migrations/0002_alter_singlesoil_table.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/singlesoil/migrations/0003_alter_singlesoil_table.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/singlesoil/migrations/0004_alter_singlesoil_table.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/singlesoil/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/singlesoil/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/singlesoil/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/singlesoil/views.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/static/plants_styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/plants_styles.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/register_styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/register_styles.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/single_plant.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/single_plant.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/static/soils_styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/soils_styles.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/soil_detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/soil_detail.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -36,6 +41,7 @@
       <list>
         <option value="Python Script" />
         <option value="HTML File" />
+        <option value="CSS File" />
       </list>
     </option>
   </component>
@@ -59,12 +65,12 @@
     &quot;assignee&quot;: &quot;jackn513&quot;
   }
 }</component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/jackn513/projects.git",
-    "accountId": "c7ba2fc4-2a18-422c-9ca7-729c92de1937"
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/jackn513/projects.git&quot;,
+    &quot;accountId&quot;: &quot;c7ba2fc4-2a18-422c-9ca7-729c92de1937&quot;
   }
-}]]></component>
+}</component>
   <component name="ProjectColorInfo">{
   &quot;customColor&quot;: &quot;&quot;,
   &quot;associatedIndex&quot;: 0
@@ -89,6 +95,7 @@
     &quot;django.template.preview.state&quot;: &quot;SHOW_EDITOR&quot;,
     &quot;git-widget-placeholder&quot;: &quot;main&quot;,
     &quot;last_opened_file_path&quot;: &quot;/Users/jacknichols/projects/plant-care-python&quot;,
+    &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -188,6 +195,8 @@
       <workItem from="1720284845677" duration="2508000" />
       <workItem from="1720555505267" duration="4892000" />
       <workItem from="1720572855891" duration="1696000" />
+      <workItem from="1720624538459" duration="1947000" />
+      <workItem from="1720633878756" duration="300000" />
     </task>
     <task id="LOCAL-00001" summary="updates for many things">
       <option name="closed" value="true" />

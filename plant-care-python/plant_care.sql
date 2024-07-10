@@ -263,3 +263,5 @@ select * from plants
 join soils s on plants.soil_id = s.id
 order by plants.name
 
+select * from soils
+right join plants on plants.soil_id = soils.id

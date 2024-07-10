@@ -1,19 +1,32 @@
-{% extends 'base.html' %}  <!-- Extend your base template -->
-{% load static %}  <!-- Load the static template tag library -->
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}{{ soil.type }} Details{% endblock %}
 
 {% block content %}
     <html lang="en">
     <head>
         <meta charset="UTF-8">
-        <title>{% block title %}{{ soil.type }} Details{% endblock %}</title>
-        {#        <link rel="stylesheet" href="{% static 'single_plant.css' %}">#}
+        <title>{{ soil.type }} Details</title>
+        <!-- Uncomment and adjust the link to the stylesheet if needed -->
+        <!-- <link rel="stylesheet" href="{% static 'single_soil.css' %}"> -->
     </head>
     <body class="single-soil-page">
         <section class="single-soil card">
-            <p class="single-soil-type">{{ soil.type }}</p>
-            <p class="single-soil-ph">{{ soil.ph_level }}</p>
-            <p class="single-soil-nut">{{ soil.nutrients }}</p>
-            <p class="single-soil-desc">{{ soil.description }}</p>
+            <h1>Soil Details</h1>
+            <p class="single-soil-type"><strong>Type:</strong> {{ soil.type }}</p>
+            <p class="single-soil-ph"><strong>pH Level:</strong> {{ soil.ph_level }}</p>
+            <p class="single-soil-nut"><strong>Nutrients:</strong> {{ soil.nutrients }}</p>
+            <p class="single-soil-desc"><strong>Description:</strong> {{ soil.description }}</p>
         </section>
+        <h2>Plants that use this soil</h2>
+        <ul>
+            {% for plant in plants %}
+                <li>{{ plant.name }}</li>
+            {% empty %}
+                <li>No plants found for this soil.</li>
+            {% endfor %}
+        </ul>
     </body>
+    </html>
 {% endblock %}
