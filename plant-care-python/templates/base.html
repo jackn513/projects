@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="{% static 'base_styles.css' %}">
     <link rel="icon" href="{% static 'images/flower.png' %}" type="image/png">
     {% block extra_css %}
-    <!-- Placeholder for additional CSS files -->
+    
     {% endblock %}
 </head>
 <body>
@@ -19,16 +19,18 @@
             <li><a href="{% url 'home' %}" class="link-home-nav">Home</a></li>
             <li><a href="{% url 'plants' %}" class="link-plants-nav">Plants</a></li>
             <li><a href="{% url 'soils' %}" class="link-soils-nav">Soils</a></li>
-
-            <!-- Add more navigation links here as needed -->
+            
         </ul>
-        <a href="{% url 'register' %}" class="link-reg-nav">Create Account</a>
+        <ul class="login-reg-links">
+            <li><a href="{% url 'register' %}" class="link-reg-nav">Create Account</a></li>
+            <li><a href="" class="link-login-nav">Login</a></li>
+        </ul>
     </nav>
 </header>
 
 <main>
     {% block content %}
-    <!-- Content block to be overridden in child templates -->
+    
     {% endblock %}
 </main>
 
@@ -40,6 +42,7 @@
         <li><a href="#">Terms of Service</a></li>
         <li><a href="#">Privacy Policy</a></li>
         <li><a href="{% url 'register' %}" class="link-reg-nav-footer">Create Account</a></li>
+        <li><a href="" class="link-login-nav-footer">Login</a></li>
     </ul>
 </footer>
 

@@ -49,9 +49,9 @@
 .single-plant-button {
     cursor: pointer;
     display: flex;
-    justify-content: center; /* Centers horizontally */
-    align-items: center; /* Centers vertically */
-    margin: 15px auto; /* Auto margins for centering */
+    justify-content: center;
+    align-items: center;
+    margin: 15px auto;
     width: 190px;
     height: 40px;
     background-color: transparent;
@@ -60,15 +60,15 @@
 }
 
 .single-plant-button button {
-    color: black; /* Adjust text color */
+    color: black;
     font-size: 16px;
-    border: none; /* Remove button border */
-    background-color: transparent; /* Transparent background */
+    border: none;
+    background-color: transparent;
     cursor: pointer;
-    transition: background-color 0.3s ease; /* Smooth transition */
+    transition: background-color 0.3s ease;
 }
 
 .single-plant-button button:hover {
-    background-color: black; /* Darker background on hover */
-    color: white; /* White text on hover */
+    background-color: black;
+    color: white;
 }

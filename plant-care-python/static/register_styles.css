@@ -1,20 +1,20 @@
-/* Styling for the entire registration section */
+
 .register {
     display: flex;
     justify-content: center;
     padding: 10px;
-    height: 100vh; /* Adjust as needed */
-    background-color: #f3eded; /* Light gray background */
+    height: 100vh;
+    background-color: #f3eded;
 }
 
 .register-content {
-    border: 1.5px solid black; /* Dark green border */
+    border: 1.5px solid black;
     width: 500px;
     height: 300px;
     border-radius: 12px;
-    background-color: rgba(39, 100, 2, 0.53); /* Semi-transparent green background */
-    padding: 20px; /* Add padding for inner content */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Light shadow for depth */
+    background-color: rgba(39, 100, 2, 0.53);
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .register-form {
@@ -33,7 +33,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    text-align: center; /* Center text */
+    text-align: center;
 }
 
 .create {
@@ -54,8 +54,8 @@
 
 .submit {
     grid-area: submit;
-    width: 100%; /* Full width button */
-    max-width: 300px; /* Limit maximum width */
+    width: 100%;
+    max-width: 300px;
     height: 50px;
     border: none;
     border-radius: 8px;

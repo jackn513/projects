@@ -1,10 +1,8 @@
 .soils-page {
     background-color: #f3eded;
-
 }
 
-
-.page-title{
+.page-title {
     font-size: 60px;
     text-align: center;
 }
@@ -14,56 +12,52 @@
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
-    gap: 20px; /* Adjust the gap between plant cards */
-    padding: 10px; /* Add padding to the container */
+    gap: 20px;
+    padding: 10px;
 }
 
-
-.soil-card{
+.soil-card {
+     margin: 10px;
     background-color: white;
     display: grid;
-    grid-template-rows: repeat(3, 1fr) 80px; /* Changed to repeat for clarity */
+    grid-template-rows: 1fr 1fr 1fr 80px;
     grid-template-areas:
-        'img'
-        'img'
-        'img'
-        'name'; /* Ensure it matches the grid template area */
+            'img'
+            'img'
+            'img'
+            'name';
     border: 1.5px solid black;
     border-radius: 5px;
+    /*padding: 10px;*/
     width: 350px;
     height: 500px;
-    text-align: center;
 }
 
-.soil-card:hover{
-    /*cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg'  width='100' height='100' viewport='0 0 100 100' style='fill:black;font-size:35px;'><text y='50%'>🪴</text></svg>")*/
-    /*16 0,*/
-    /*auto;*/
+.soil-card:hover {
     cursor: pointer;
-    /*box-shadow: 10px 10px 1px rgba(39, 100, 2, 0.53);*/
     box-shadow: 10px 10px 1px black;
 }
 
-.soil-type{
+.soil-type {
     color: black;
     text-align: center;
-    justify-self: center; /* Horizontal centering */
-    align-self: center; /* Vertical centering */
-    grid-area: name; /* Ensure it matches the grid template area */
+    justify-self: center;
+    align-self: center;
+    grid-area: name;
     font-weight: bold;
     font-size: 35px;
+
+
 }
-.soil-image{
-    color: black;
+
+.soil-image {
     grid-area: img;
     border-bottom: 1.5px solid black;
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
     background-color: rgba(73, 24, 7, 0.8);
-
-
 }
 
-.soil-image:hover{
+.soil-image:hover {
     cursor: pointer;
 }
