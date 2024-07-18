@@ -1,4 +1,6 @@
 from django.contrib import admin
+
+from plants.models import Plant
 from .models import Soils
 
 
@@ -10,3 +12,5 @@ class SoilAdmin(admin.ModelAdmin):
 
 
 admin.site.register(Soils, SoilAdmin)
+
+

@@ -1,0 +1,45 @@
+.nav-bar {
+    border-bottom: 1.5px solid black;
+    padding: 10px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    background-color: black;
+
+}
+.links-nav{
+    list-style-type: none;
+    padding: 0;
+    margin-left: 10px;
+
+}
+ .links-profile {
+     list-style-type: none;
+     padding: 0;
+     margin-right: 10px;
+}
+
+.links-nav li, .links-profile li {
+    display: inline-block;
+    margin-right: 15px;
+    padding-bottom: 10px;
+    border-bottom: 1.5px solid transparent;
+}
+
+.links-nav li:first-child, .links-profile li:first-child {
+    margin-left: 10px;
+}
+
+.links-nav li a, .links-profile li a {
+    text-decoration: none;
+    color: white;
+}
+
+.links-nav li:hover, .links-profile li:hover {
+    border-bottom: 1.5px solid white;
+}
+
+.links-profile {
+    float: right; /* Float the profile links to the right */
+}

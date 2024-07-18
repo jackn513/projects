@@ -1,18 +1,24 @@
 from django.shortcuts import render, get_object_or_404
-from .models import SingleSoil, Plant
+from .models import SingleSoil
+import logging
+
+# Set up the logger
+logger = logging.getLogger(__name__)
 
 
-# View for displaying the details of a single soil along with associated plants
 def single_soil(request, id):
-    # Fetch the soil instance for the given id
+    # Fetch the SingleSoil instance for the given id
     soil = get_object_or_404(SingleSoil, pk=id)
 
-    # Fetch all plants associated with the soil
-    plants = soil.plants.all()  # Using the related_name 'plants' to get all associated plants
+    # Fetch all plants associated with the SingleSoil instance
+    plants = soil.plants.all()
 
-    context = {
-        'soil': soil,
-        'plants': plants
-    }
+    # Log the plants QuerySet
+    logger.info('Plants QuerySet: %s', plants)
 
-    return render(request, 'soil_detail.html', context)
+    # For more detailed logging of each plant's name
+    for plant in plants:
+        logger.info('Plant Name: %s', plant.name)
+
+    # Pass both the soil instance and the list of plants to the template
+    return render(request, 'soil_detail.html', {'soil': soil, 'plants': plants})

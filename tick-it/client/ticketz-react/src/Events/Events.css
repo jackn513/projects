@@ -1,0 +1,149 @@
+.events-page {
+    margin: 0;
+    background-color: #f8f5f5;
+    height: 100vh;
+
+}
+
+.events-title{
+    margin: 0;
+    text-align: start;
+    /*font-size: 60px;*/
+    padding-left: 20px;
+    /*color: #333333;*/
+}
+.search-container {
+
+    display: flex;
+    justify-content: end;
+    margin-right: 20px;
+    margin-bottom: 20px;
+}
+
+.search {
+    width: 100%;
+    max-width: 400px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 1em;
+
+    outline: none;
+}
+
+.search:focus {
+    border: 1.5px solid #4fb466;
+}
+
+.events-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    justify-content: center;
+}
+
+.event-item {
+    display: grid;
+    grid-template-rows: 200px 65px 30px 30px 30px 30px 30px 70px 55px;
+    grid-template-areas:
+        "img img "
+        "title title"
+        "org org"
+        "date date "
+        "time ."
+        "location location"
+        "status price"
+        "desc desc"
+        "btn btn";
+
+    height: 540px;
+    width: 400px;
+    background-color: #f1f1f1;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 10px;
+    /*background-color: #fff;*/
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+.event-image{
+    border: 1.5px transparent;
+
+    grid-area: img;
+    height: 200px;
+    width: 400px;
+
+}
+
+.event-name {
+    grid-area: title;
+    font-size: 1.6rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: #333;
+    align-self: center;
+}
+
+.organizer-name{
+    grid-area: org;
+    align-self: center;
+}
+
+.event-status {
+    grid-area: status;
+    font-size: 1rem;
+    font-weight: 500;
+    color: #4fb466;
+    margin-bottom: 10px;
+    align-self: center;
+}
+
+.event-price{
+    grid-area: price;
+    align-self: center;
+    justify-self: end;
+    padding-right: 20px;
+}
+.event-date {
+    grid-area: date;
+    font-size: 1rem;
+    color: #555;
+    margin-bottom: 10px;
+    align-self: center;
+}
+.event-time{
+    grid-area: time;
+    align-self: center;
+}
+.event-location {
+    grid-area: location;
+    font-size: 1rem;
+    color: #666;
+    margin-bottom: 10px;
+    align-self: center;
+}
+
+.event-description {
+    grid-area: desc;
+    font-size: 0.9rem;
+    color: #444;
+    line-height: 1.4;
+    align-self: center;
+}
+.add{
+    cursor: pointer;
+    grid-area: btn;
+    border-radius: 5px;
+    border: none;
+}
+
+.add:hover{
+    background-color: #4fb466;
+
+}
+.event-item:hover {
+    background-color: #f1f1f1;
+    border-color: #ccc;
+    /*transform: translateY(-10px);*/
+}

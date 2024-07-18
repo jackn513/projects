@@ -14,7 +14,6 @@ def register_customer(request):
             raw_password = 'generate_password_or_get_from_form'  # Example: Generate or get password
             password = make_password(raw_password)  # Hash password
 
-
             customer = create_customer(
                 email=email,
                 password=password,
