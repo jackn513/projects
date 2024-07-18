@@ -4,6 +4,10 @@
 ## My Diverse Project Portfolio
 Welcome to my project showcase! I'm a passionate individual with a keen interest in a wide spectrum of fields, ranging from art and music to the intricate design and functionality of diverse programs. Here's a glimpse into some of the projects that reflect my multifaceted interests:
 
+
+### Ticketz
+Description: (on-going) An event-ticket Event Management and Ticketing System. More description coming soon :)
+
 ### Plant Care 
 Description: (On-going) While still in its preliminary stages, [Plant care](https://github.com/jackn513/projects/tree/main/plants-project) is a fun, horticultural web application that utilized both backend and frontend technologies. Users can create an account, add plants to their collection and, journal about their care, and browse a database that holds the essentials of every plant-lovers dreams. More description coming soon. 
 
