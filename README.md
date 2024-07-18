@@ -8,7 +8,7 @@ Welcome to my project showcase! I'm a passionate individual with a keen interest
 ### Ticketz
 Description: (on-going) An event-ticket Event Management and Ticketing System. More description coming soon :) [Ticketz](https://github.com/jackn513/projects/tree/main/tick-it)
 
-### Plant Care 
+### plant_care
 Description: (On-going) While still in its preliminary stages, [Plant care](https://github.com/jackn513/projects/tree/main/plants-project) is a fun, horticultural web application that utilized both backend and frontend technologies. Users can create an account, add plants to their collection and, journal about their care, and browse a database that holds the essentials of every plant-lovers dreams. More description coming soon. 
 
 ### digitalNoise
