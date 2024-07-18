@@ -8,6 +8,7 @@ import Create from "./Create/Create.tsx";
 import Login from "./Login/Login.tsx";
 import Home from "./Home/Home.tsx";
 import Organizers from "./Organizers/Organizers.tsx";
+import OrganizerDetail from "./Organizers/OrganizerDetail.tsx";
 
 function App() {
 
@@ -21,6 +22,7 @@ function App() {
                         <Route path="/" element={<Home />} />
                         <Route path="/events" element={<Events />} />
                         <Route path="/organizers" element={<Organizers/>}/>
+                        <Route path="/organizers/:id" element={<OrganizerDetail />} />
                         <Route path="/profile" element={<Profile />} />
                         <Route path="/create" element={<Create />} />
                         <Route path="/login" element={<Login />} />

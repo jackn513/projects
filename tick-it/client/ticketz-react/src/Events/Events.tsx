@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import './Events.css';
 import eventpng from '../../../react-ticketz/src/assets/event.png';
+import {NavLink} from "react-router-dom";
 
 function Events() {
 
@@ -59,7 +60,9 @@ function Events() {
                         <div key={event['Event Id']} className="event-item">
                             <img alt="" src="" className="event-image"/>
                             <h2 className="event-name">{event['Event Name']}</h2>
-                            <h3 className="organizer-name">{event['Organizer']['Organizer Name']}</h3>
+                            <NavLink to="/organizers" key={event['Organizer Id']}>
+                                <h3 className="organizer-name">{event['Organizer']['Organizer Name']}</h3>
+                            </NavLink>
                             <p className="event-description">{event['Event Description']}</p>
                             <p className="event-date">{event['Date']}</p>
                             <p className="event-time">{event['Time of Event']}</p>

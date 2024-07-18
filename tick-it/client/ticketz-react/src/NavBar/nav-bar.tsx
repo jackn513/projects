@@ -25,6 +25,9 @@ function NavBar() {
                         Find Events
                     </NavLink>
                 </li>
+                <li>
+                    <NavLink to="/organizers">Organizers</NavLink>
+                </li>
             </ul>
             <ul className="links-profile">
                 <li>
