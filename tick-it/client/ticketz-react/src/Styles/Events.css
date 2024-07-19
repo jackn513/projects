@@ -76,6 +76,13 @@
 
 }
 
+.organizer-link{
+    text-decoration: none;
+}
+.organizer-link:hover{
+    text-decoration: underline #4fb466;
+}
+
 .event-name {
     grid-area: title;
     font-size: 1.6rem;

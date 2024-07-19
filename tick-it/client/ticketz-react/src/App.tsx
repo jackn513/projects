@@ -1,14 +1,14 @@
 import React from "react";
 import './App.css'
-import NavBar from "./NavBar/nav-bar.tsx";
+import NavBar from "./Components/nav-bar.tsx";
 import {BrowserRouter as Router, Route, Routes} from 'react-router-dom';
-import Events from "./Events/Events.tsx";
-import Profile from "./Profile/Profile.tsx";
-import Create from "./Create/Create.tsx";
-import Login from "./Login/Login.tsx";
-import Home from "./Home/Home.tsx";
-import Organizers from "./Organizers/Organizers.tsx";
-import OrganizerDetail from "./Organizers/OrganizerDetail.tsx";
+import Events from "./Pages/Events.tsx";
+import Profile from "./Pages/Profile.tsx";
+import Create from "./Pages/Create.tsx";
+import Login from "./Pages/Login.tsx";
+import Home from "./Pages/Home.tsx";
+import Organizers from "./Pages/Organizers.tsx";
+import OrganizerDetail from "./Pages/OrganizerDetail.tsx";
 
 function App() {
 

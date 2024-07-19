@@ -13,6 +13,7 @@ function OrganizerDetail() {
             try {
                 const response = await axios.get(`http://localhost:3000/organizers/${id}`);
                 setOrganizer(response.data);
+                console.log(response.data)
             } catch (error) {
                 console.error("Error fetching the organizer: " + organizer['Id'], error);
             }
@@ -25,6 +26,7 @@ function OrganizerDetail() {
         <>
             <section className="organizer-pahe">
                 <h1 className="organizer-title">Organizer</h1>
+                <p>{organizer['Organizer Name']}</p>
             </section>
         </>
     )

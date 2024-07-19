@@ -5,16 +5,13 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
 import org.example.ticketzserver.Organizers.Organizers;
 
-import java.sql.Time;
 import java.time.LocalDate;
 import java.time.LocalTime;
-import java.time.format.DateTimeFormatter;
 
 @Entity(name = "events")
 public class Events {
 
     @Id
-    @JsonProperty("Event Id")
     @SequenceGenerator(
             name = "events_sequence",
             sequenceName = "events_sequence",
@@ -25,8 +22,8 @@ public class Events {
     private int eventId;
 
     @ManyToOne
-    @JsonProperty("Organizer")
     @JoinColumn(name = "organizer_id", referencedColumnName = "organizer_id", nullable = false)
+    @JsonProperty("Organizers")
     private Organizers organizers;
 
     @Column(name = "event_name", nullable = false)
@@ -44,8 +41,9 @@ public class Events {
 
     @Column(name = "time", nullable = false)
     @JsonProperty("Time of Event")
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "hh:mm a") // 12-hour format with AM/PM
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "hh:mm a")
     private LocalTime time;
+
     @Column(name = "location", nullable = false)
     @JsonProperty("Location")
     private String location;
@@ -58,7 +56,8 @@ public class Events {
     public Events() {
     }
 
-    public Events(Organizers organizers, String eventName, String description, LocalDate date, LocalTime time, String location, String status) {
+    public Events(int eventId, Organizers organizers, String eventName, String description, LocalDate date, LocalTime time, String location, String status) {
+        this.eventId = eventId;
         this.organizers = organizers;
         this.eventName = eventName;
         this.description = description;
@@ -106,10 +105,10 @@ public class Events {
         return date;
     }
 
-
     public void setDate(LocalDate date) {
         this.date = date;
     }
+
     public LocalTime getTime() {
         return time;
     }
@@ -133,10 +132,4 @@ public class Events {
     public void setStatus(String status) {
         this.status = status;
     }
-
-    public String dateToString() {
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd"); // Adjust pattern as needed
-        return date.format(formatter);
-    }
 }
-

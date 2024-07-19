@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import './Home.css';
+import '../Styles/Home.css';
 import axios from "axios";
 import eventpng from '../../../react-ticketz/src/assets/event.png'
 function Home() {
@@ -39,7 +39,7 @@ function Home() {
                             <div key={events['Event Id']} className="event-item">
                                 <img alt="" src=""  className="event-image" />
                                 <h2 className="event-name">{events['Event Name']}</h2>
-                                <h3 className="organizer-name">{events['Organizer']['Organizer Name']}</h3>
+                                <h3 className="organizer-name">{events['Organizers']['Organizer Name']}</h3>
                                 <p className="event-description">{events['Event Description']}</p>
                                 <p className="event-date">{events['Date']}</p>
                                 <p className="event-time">{events['Time of Event']}</p>
