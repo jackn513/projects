@@ -66,43 +66,54 @@ public class UserController {
         return "home";
     }
 
+    @PostMapping("/register")
+    public ResponseEntity<?> register(@RequestBody UserDto userDto) {
+        try {
+            User newUser = userService.registerUser(userDto.getUsername(), userDto.getEmail(), userDto.getPassword());
+            return ResponseEntity.ok(newUser);
+        } catch (IllegalArgumentException e) {
+            return ResponseEntity.badRequest().body("Unable to register user: " + e.getMessage());
+        }
+
+    }
+
     @PostMapping("/login")
     public ResponseEntity<String> login(@RequestBody UserLoginDto loginDto) {
-        // Find user by username
+
         User user = userService.findByUsername(loginDto.getUsername());
         if (user == null) {
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("User not found.");
         }
 
-        // Validate password
+
         boolean isPasswordValid = userService.testPassword(loginDto.getPassword(), user.getPassword());
         if (!isPasswordValid) {
             System.out.println("Invalid password for user: " + loginDto.getUsername());
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Login failed: Invalid password.");
         }
 
-        // Create JWT token for the user
+
         String token = jwtTokenProvider.createToken(loginDto.getUsername());
 
-        // Return successful response with the token
+
         return ResponseEntity.ok("Login successful. Token: " + token);
     }
 
     @PostMapping("/logout")
     public ResponseEntity<String> logout(HttpServletRequest request) {
-        // Extract the token from the Authorization header
+
         String token = tokenService.extractTokenFromRequest(request);
-        // Validate the token
+
         if (token == null || !jwtTokenProvider.validateToken(token)) {
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Invalid token.");
         }
 
-        // Blacklist the token
+
         tokenBlacklistService.addToBlacklist(token);
 
-        // Clear the authentication context
+
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-        String username = null; // Initialize username variable
+        String username = null;
 
         if (auth != null) {
             username = auth.getName();
@@ -112,16 +123,6 @@ public class UserController {
         return ResponseEntity.ok("Logout successful for user: " + username);
     }
 
-
-    @PostMapping("/register")
-    public ResponseEntity<String> register(@RequestBody UserDto userDto) {
-        try {
-            User newUser = userService.registerUser(userDto.getUsername(), userDto.getEmail(), userDto.getPassword());
-            return ResponseEntity.ok("{\"message\": \"Registration successful for user: \"" + userDto.getUsername());
-        } catch (IllegalArgumentException e) {
-            return ResponseEntity.badRequest().body("{\"message\": \"" + e.getMessage() + "\"}");
-        }
-    }
 
     // todo change credentials for only admin can do this //
     @PreAuthorize("hasRole('USER')")
@@ -139,7 +140,6 @@ public class UserController {
     }
 
 
-//    @PreAuthorize("hasRole('USER')")
     @GetMapping
     @PreAuthorize("hasAnyRole()")
     public ResponseEntity<?> getUsers() {
@@ -158,7 +158,7 @@ public class UserController {
         }
 
         try {
-            // Call the service method to update the user
+
             User updatedUser = userService.updateUser(user, id);
             return ResponseEntity.ok(updatedUser);
         } catch (IllegalArgumentException e) {

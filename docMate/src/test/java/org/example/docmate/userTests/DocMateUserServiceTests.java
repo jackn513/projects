@@ -1,4 +1,4 @@
-package org.example.docmate.UserTests;
+package org.example.docmate.userTests;
 
 import jakarta.transaction.Transactional;
 import org.example.docmate.users.model.User;

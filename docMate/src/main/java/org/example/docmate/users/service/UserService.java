@@ -1,9 +1,13 @@
 package org.example.docmate.users.service;
 
+import jakarta.servlet.http.HttpServletRequest;
 import jakarta.transaction.Transactional;
+import org.example.docmate.users.JWT.JWTTokenProvider;
+import org.example.docmate.users.JWT.TokenService;
 import org.example.docmate.users.model.User;
 import org.example.docmate.users.UserRepository;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.example.docmate.exceptions.UnauthorizedException; // Adjust the package name as needed
+
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -15,15 +19,15 @@ import java.util.List;
 public class UserService {
 
     private final UserRepository userRepository;
-
-//    private final CustomUserDetails customUserDetails;
     private final PasswordEncoder passwordEncoder;
+    private final TokenService tokenService;
+    private final JWTTokenProvider jwtTokenProvider;
 
-
-    public UserService(UserRepository userRepository, PasswordEncoder passwordEncoder) {
+    public UserService(UserRepository userRepository, PasswordEncoder passwordEncoder, TokenService tokenService, JWTTokenProvider jwtTokenProvider) {
         this.userRepository = userRepository;
-
         this.passwordEncoder = passwordEncoder;
+        this.tokenService = tokenService;
+        this.jwtTokenProvider = jwtTokenProvider;
     }
 
 
@@ -121,14 +125,4 @@ public class UserService {
     }
 
 
-    public User loadUserByUsername(String username)
-            throws UsernameNotFoundException {
-        User user = userRepository.findByUsername(username);
-
-        if (user == null) {
-            throw new UsernameNotFoundException("Could not find user");
-        }
-
-        return user;
-    }
 }

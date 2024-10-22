@@ -1,4 +1,4 @@
-package org.example.docmate.UserTests;
+package org.example.docmate.userTests;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import jakarta.servlet.http.HttpServletRequest;

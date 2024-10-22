@@ -1,4 +1,4 @@
-package org.example.docmate;
+package org.example.docmate.documents.model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
@@ -7,7 +7,7 @@ import org.example.docmate.users.model.User;
 import java.sql.Timestamp;
 
 @Entity(name = "documents")
-public class Documents {
+public class Document {
 
     @Id
     @SequenceGenerator(
@@ -39,12 +39,13 @@ public class Documents {
 
     @ManyToOne(optional = false) // Ensures the user is required (not nullable)
     @JoinColumn(name = "user_id", foreignKey = @ForeignKey(name = "fk_documents_user_id"), updatable = false)
+    @JsonProperty("User")
     private User user;
 
-    public Documents() {
+    public Document() {
     }
 
-    public Documents(int documentId, String title, String content, Timestamp createdAt, Timestamp updatedAt, User user) {
+    public Document(int documentId, String title, String content, Timestamp createdAt, Timestamp updatedAt, User user) {
         this.documentId = documentId;
         this.title = title;
         this.content = content;
@@ -100,4 +101,6 @@ public class Documents {
     public void setUser(User user) {
         this.user = user;
     }
+
+
 }
