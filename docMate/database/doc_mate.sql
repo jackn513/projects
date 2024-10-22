@@ -21,7 +21,8 @@ CREATE TABLE _users
     password   VARCHAR(255) NOT NULL,
     role VARCHAR(4),
     created_at TIMESTAMP,
-    updated_at TIMESTAMP
+    updated_at TIMESTAMP,
+    constraint pk_users_user_id PRIMARY KEY (user_id)
 );
 
 
@@ -32,7 +33,9 @@ create table documents
     content     text         not null,
     created_at  timestamp,
     updated_at  timestamp,
-    user_id     int references _users (user_id) on delete cascade
+    user_id     int,
+    constraint pk_documents_document_id PRIMARY KEY (document_id),
+    constraint fk_documents_user_id FOREIGN KEY (user_id) references _users on delete cascade
 );
 
 create table collaborators
