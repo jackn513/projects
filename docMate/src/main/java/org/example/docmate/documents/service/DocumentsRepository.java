@@ -21,4 +21,7 @@ public interface DocumentsRepository extends JpaRepository<Document, Integer> {
 
     @Query("SELECT d FROM documents d ORDER BY d.documentId ASC")
     List<Document> findAll();
+
+    @Query("SELECT d FROM documents d WHERE d.user.userId = :userId")
+    List<Document> findByUserId(@Param("userId") int userId);
 }

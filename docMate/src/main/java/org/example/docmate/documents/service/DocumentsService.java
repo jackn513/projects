@@ -66,6 +66,12 @@ public class DocumentsService {
         return documentsRepository.findById(id).orElse(null);
     }
 
+
+    public List<Document> findByUserId(int userId) {
+
+        return documentsRepository.findByUserId(userId);
+    }
+
     public Document update(Document document, int id) {
         Document theDocument = documentsRepository.findById(id).orElse(null);
 
@@ -97,7 +103,5 @@ public class DocumentsService {
         }
         return 0;
     }
-
-
 
 }

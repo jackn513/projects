@@ -3,6 +3,7 @@ package org.example.docmate.documents.controller;
 import jakarta.servlet.http.HttpServletRequest;
 import org.example.docmate.documents.model.Document;
 import org.example.docmate.documents.service.DocumentsService;
+import org.example.docmate.exceptions.UnauthorizedException;
 import org.example.docmate.users.JWT.JWTTokenProvider;
 import org.example.docmate.users.JWT.TokenService;
 import org.example.docmate.users.model.User;
@@ -40,18 +41,28 @@ public class DocumentController {
         this.userService = userService;
     }
 
+    private User extractUserFromRequest(HttpServletRequest request) {
+        String token = tokenService.extractTokenFromRequest(request);
+
+        if (token == null || !jwtTokenProvider.validateToken(token)) {
+            throw new UnauthorizedException("Invalid token.");
+        }
+
+        String username = jwtTokenProvider.getUsername(token);
+        return userService.findByUsername(username);
+    }
+
+
     @PreAuthorize("hasRole('USER')")
     @PostMapping("/create")
     public ResponseEntity<String> createDocument(@RequestBody Document document, HttpServletRequest request) {
         try {
-            String token = tokenService.extractTokenFromRequest(request);
-
-            if (token == null || !jwtTokenProvider.validateToken(token)) {
-                return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Invalid token.");
+            User user;
+            try {
+                user = extractUserFromRequest(request);
+            } catch (UnauthorizedException e) {
+                return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(e.getMessage());
             }
-
-            String username = jwtTokenProvider.getUsername(token);
-            User user = userService.findByUsername(username);
             document.setUser(user);
             Timestamp now = Timestamp.from(Instant.now());
             document.setCreatedAt(now);
@@ -73,17 +84,38 @@ public class DocumentController {
         return ResponseEntity.ok(documentsService.findAll());
     }
 
+    @GetMapping("/{id}")
+    public ResponseEntity<?> getDocumentById(@PathVariable("id") int id, HttpServletRequest request) {
+        Document document = documentsService.findById(id);
+        if (document == null) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Document not found.");
+        }
+        return ResponseEntity.ok(document);
+    }
+
+    @PreAuthorize("hasRole('USER')")
+    @GetMapping("/my-documents")
+    public ResponseEntity<?> getMyDocuments(HttpServletRequest request) {
+        User user = extractUserFromRequest(request);
+        List<Document> userDocuments = documentsService.findByUserId(user.getUserId());
+
+        if (userDocuments.isEmpty()) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("No documents found.");
+        }
+        return ResponseEntity.ok(userDocuments);
+    }
+
+
+
     @PreAuthorize("hasRole('USER')")
     @PutMapping("/update/{id}")
     public ResponseEntity<?> updateDocument(@PathVariable("id") int id, @RequestBody Document document, HttpServletRequest request) {
-        String token = tokenService.extractTokenFromRequest(request);
-
-        if (token == null || !jwtTokenProvider.validateToken(token)) {
-            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Invalid token.");
+        User user;
+        try {
+            user = extractUserFromRequest(request);
+        } catch (UnauthorizedException e) {
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(e.getMessage());
         }
-
-        String username = jwtTokenProvider.getUsername(token);
-        User user = userService.findByUsername(username);
 
         Document existingDocument = documentsService.findById(id);
         if (existingDocument == null) {
@@ -102,4 +134,33 @@ public class DocumentController {
         }
 
     }
+
+    @PreAuthorize("hasRole('USER')")
+    @DeleteMapping("/id/{id}")
+    public ResponseEntity<?> deleteDocument(@PathVariable("id") int id, HttpServletRequest request) {
+        User user;
+        try {
+            user = extractUserFromRequest(request);
+        } catch (UnauthorizedException e) {
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(e.getMessage());
+        }
+
+        Document document = documentsService.findById(id);
+        if (document == null) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Document not found.");
+        }
+
+        if (!Objects.equals(document.getUser().getUserId(), user.getUserId())) {
+            return ResponseEntity.status(HttpStatus.FORBIDDEN).body("You are not authorized to delete this document.");
+        }
+
+        try {
+            documentsService.deleteById(id);
+            return ResponseEntity.ok("Document deleted successfully.");
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("An error occurred while deleting the document.");
+        }
+    }
+
+
 }
