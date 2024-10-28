@@ -1,6 +1,6 @@
 # DocMate
 
-DocMate is a collaborative document editing application that allows users to create, edit, and share documents with specified roles (such as VIEWER or EDITOR). This project utilizes Java, Spring Boot, and PostgreSQL, enabling users to manage their documents effectively while collaborating with others.
+DocMate is a collaborative document editing application that allows users to create, edit, and share documents with specified roles (such as VIEWER, OWNER, COMMENTER, and EDITOR). This project utilizes Java, Spring Boot, and PostgreSQL, enabling users to manage their documents effectively while collaborating with others.
 
 ## Table of Contents
 
