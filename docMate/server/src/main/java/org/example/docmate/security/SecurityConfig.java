@@ -50,7 +50,7 @@ public class SecurityConfig {
                                 "/css/**",
                                 "/js/**",
                                 "collaborations/**",
-                                "collaborations/collaborators",
+                                "collaborations/create",
                                 "/images/**").permitAll() // Removed unnecessary "/documents/**" and "/collaborations/create" from this line
                                 .requestMatchers("/collaborations/collaborators").hasAnyRole("VIEWER", "OWNER", "COMMENTER", "EDITOR")
 

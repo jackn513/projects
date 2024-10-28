@@ -19,24 +19,25 @@ public class Collaborators {
     )
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "collaborators_sequence")
     @Column(name = "collaborator_id", updatable = false, nullable = false)
-    @JsonProperty("collaboratorId")
+    @JsonProperty("Collaborator Id")
     private Integer collaboratorId;
 
     @ManyToOne(optional = false)
     @JoinColumn(name = "document_id", foreignKey = @ForeignKey(name = "fk_collaborators_document_id"), updatable = false)
-    @JsonProperty("document")
+    @JsonProperty("Document")
     private Document document;
 
     @ManyToOne(optional = false)
     @JoinColumn(name = "user_id", foreignKey = @ForeignKey(name = "fk_collaborators_user_id"), updatable = false)
-    @JsonProperty("user")
+    @JsonProperty("User")
     private User user;
 
     @Enumerated(EnumType.STRING)
-    @JsonProperty("role")
+    @JsonProperty("Role")
     private Role role;
 
     @Column(name = "created_at")
+    @JsonProperty("Created At")
     private Timestamp createdAt;
 
     // Default constructor
@@ -91,4 +92,6 @@ public class Collaborators {
     public void setCreatedAt(Timestamp createdAt) {
         this.createdAt = createdAt;
     }
+
+
 }

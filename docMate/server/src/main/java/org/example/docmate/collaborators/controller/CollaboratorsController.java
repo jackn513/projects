@@ -17,7 +17,12 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.yaml.snakeyaml.comments.CommentLine;
 
+import java.sql.Timestamp;
+import java.time.Instant;
+import java.util.Arrays;
+import java.util.EnumSet;
 import java.util.List;
 import java.util.Optional;
 
@@ -53,18 +58,25 @@ public class CollaboratorsController {
         String username = jwtTokenProvider.getUsername(token);
         return userService.findByUsername(username);
     }
+    private boolean hasPermissionToAddCollaborators(User currentUser, Document document) {
+        // Check if the current user is the owner of the document
+        return document.getUser().getUserId() == currentUser.getUserId();
+    }
 
-    @PostMapping("/collaborators")
+    @PostMapping("/create")
     public ResponseEntity<?> createCollaborator(@RequestBody Collaborators collaborators, HttpServletRequest request) {
-
         logger.info("Received Collaborators: {}", collaborators);
-        // Ensure that collaborators object is not null
+
+        // Validate input
         if (collaborators == null || collaborators.getUser() == null || collaborators.getDocument() == null) {
             return ResponseEntity.badRequest().body("Collaborator, user, and document must not be null.");
         }
 
-        // Fetch the user and document from the database
-        User user = userService.findById(collaborators.getUser().getUserId());
+        // Fetch user and document from the database
+
+        String username = extractUserFromRequest(request).getUsername();
+        String email = extractUserFromRequest(request).getEmail();
+        User user = collaboratorsService.findByUsernameOrEmail(username, email);
         if (user == null) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("User not found.");
         }
@@ -74,30 +86,33 @@ public class CollaboratorsController {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Document not found.");
         }
 
-        // Check if the current user has permission to add the collaborator
-        User currentUser = extractUserFromRequest(request);
-        if (!hasPermissionToAddCollaborators(currentUser, document)) {
-            return ResponseEntity.status(HttpStatus.FORBIDDEN).body("You do not have permission to add collaborators to this document.");
+        // Check if the collaborator already exists
+        if (collaboratorsRepository.existsByUserAndDocument(user, document)) {
+            return ResponseEntity.status(HttpStatus.CONFLICT).body("Collaborator already exists for this document.");
         }
 
-        // Set the user and document in the collaborators entity
+        // Check if the current user has permission to add the collaborator
+
+
+        // Validate the role
+
+        // Set user and document in the collaborators entity
         collaborators.setUser(user);
         collaborators.setDocument(document);
-
-        // Log the information for debugging
-        logger.info("Current User ID: {}", currentUser.getUserId());
-        logger.info("Requested User ID: {}", collaborators.getUser().getUserId());
-        logger.info("Requested Document ID: {}", collaborators.getDocument().getDocumentId());
+        collaborators.setCreatedAt(Timestamp.from(Instant.now()));
 
         // Save the collaborator
-        collaboratorsRepository.save(collaborators);
-        return ResponseEntity.ok(collaborators);
+        Collaborators savedCollaborator = collaboratorsRepository.save(collaborators);
+        logger.info("Collaborator created: {}", savedCollaborator);
+        return ResponseEntity.ok(savedCollaborator);
     }
 
-    private boolean hasPermissionToAddCollaborators(User currentUser, Document document) {
-        // Check if the current user is the owner of the document
-        return document.getUser().getUserId() == currentUser.getUserId();
-    }
+//    private boolean isValidRole(Role role) {
+//        return role != null && EnumSet.allOf(Role.class).contains(role);
+//    }
+
+
+
 
     @GetMapping
     public ResponseEntity<List<Collaborators>> getCollaborators() {

@@ -19,13 +19,11 @@ import java.util.Optional;
 public class CollaboratorsService {
 
     private final CollaboratorsRepository collaboratorsRepository;
-
     private final UserService userService;
     private final DocumentsService documentsService;
 
     public CollaboratorsService(CollaboratorsRepository collaboratorsRepository, UserService userService, DocumentsService documentsService) {
         this.collaboratorsRepository = collaboratorsRepository;
-
         this.userService = userService;
         this.documentsService = documentsService;
     }
@@ -37,22 +35,23 @@ public class CollaboratorsService {
             throw new IllegalArgumentException("Document not found.");
         }
 
+        // Fetch the user from the database
+        User user = userService.findByUserId(userId);
+        if (user == null) {
+            throw new IllegalArgumentException("User not found.");
+        }
+
         // Check if the collaborator already exists
-        Optional<Collaborators> existingCollaboration = collaboratorsRepository.findByUserIdAndDocumentId(userId, documentId);
-        if (existingCollaboration.isPresent()) {
+        if (collaboratorsRepository.existsByUserAndDocument(user, document)) {
             throw new IllegalArgumentException("This collaborator already exists for this document.");
         }
 
-
+        // Validate the role
 
 
         // Create the collaborator
         Collaborators collaborator = new Collaborators();
         collaborator.setDocument(document);
-
-
-
-        User user = userService.findByUserId(userId);
         collaborator.setUser(user);
         collaborator.setRole(Role.valueOf(role));
         collaborator.setCreatedAt(Timestamp.from(Instant.now()));
@@ -60,11 +59,6 @@ public class CollaboratorsService {
         return collaboratorsRepository.save(collaborator);
     }
 
-
-    // Example validation method
-    private boolean isValidRole(String role) {
-        return List.of("Viewer", "Commenter", "Editor", "Owner").contains(role);
-    }
 
 
     public List<Collaborators> findAll() {
@@ -79,35 +73,37 @@ public class CollaboratorsService {
         return collaboratorsRepository.findByUserIdAndDocumentId(userId, documentId);
     }
 
+    public User findByUsernameOrEmail(String username, String email) {
+        return collaboratorsRepository.findByUsernameOrEmail(username, email);
+    }
+
     public List<Collaborators> findByRole(String role) {
         return collaboratorsRepository.findByRole(role);
     }
 
+
     public Collaborators update(Collaborators collaborators, int documentId, int userId) {
-
         Optional<Collaborators> existingCollaboration = collaboratorsRepository.findByUserIdAndDocumentId(userId, documentId);
-
         if (existingCollaboration.isEmpty()) {
             throw new IllegalArgumentException("No existing collaboration found for this user and document.");
         }
 
-        Collaborators collaboratorToUpdate = existingCollaboration.get();
 
+
+        Collaborators collaboratorToUpdate = existingCollaboration.get();
         if (collaborators.getRole() != null) {
             collaboratorToUpdate.setRole(collaborators.getRole());
         }
 
         collaboratorToUpdate.setCreatedAt(collaborators.getCreatedAt());
-
         return collaboratorsRepository.save(collaboratorToUpdate);
     }
 
     public int delete(int documentId, int userId) {
         if (collaboratorsRepository.existsById(userId)) {
             collaboratorsRepository.deleteById(documentId);
+            return 1; // Success
         }
-        return 1;
+        return 0; // No such collaborator found
     }
-
-
 }
