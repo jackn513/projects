@@ -5,7 +5,7 @@
 Welcome to my project showcase! I'm a passionate individual with a keen interest in a wide spectrum of fields, ranging from art and music to the intricate design and functionality of diverse programs. Here's a glimpse into some of the projects that reflect my multifaceted interests:
 
 ### DocMate
-Description: (on-going) 
+Description: (on-going) A collaborative document editing application that allows users to create, edit, and share documents with specified roles (such as VIEWER, OWNER, COMMENTER, and EDITOR). This project utilizes Java, Spring Boot, and PostgreSQL, enabling users to manage their documents effectively while collaborating with others.
 ### Ticketz
 Description: (on-going) An event-ticket Event Management and Ticketing System. More description coming soon :) [Ticketz](https://github.com/jackn513/projects/tree/main/tick-it)
 
