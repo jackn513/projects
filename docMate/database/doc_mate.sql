@@ -20,6 +20,11 @@ CREATE SEQUENCE documents_sequence
     START WITH 1
     INCREMENT BY 1;
 
+-- Collaborators sequence for the collaborators table
+CREATE SEQUENCE collaborators_sequence
+    START WITH 1
+    INCREMENT BY 1;
+
 -- User table
 CREATE TABLE _users
 (
@@ -48,17 +53,21 @@ CREATE TABLE documents
 SELECT setval('documents_document_id_seq', 1, false);
 
 
+
 -- Collaborator table
 CREATE TABLE collaborators
 (
-    collaborator_id serial PRIMARY KEY,
+    collaborator_id INT PRIMARY KEY DEFAULT nextval('collaborators_sequence'),
     document_id     INT,
     user_id         INT,
     role            VARCHAR(50),
+--     Viewer, Commenter, Editor, Owner
     created_at      TIMESTAMP,
     CONSTRAINT fk_collaborators_document_id FOREIGN KEY (document_id) REFERENCES documents ON DELETE CASCADE,
     CONSTRAINT fk_collaborators_user_id FOREIGN KEY (user_id) REFERENCES _users ON DELETE CASCADE
 );
+
+SELECT setval('collaborators_sequence', 1, false);
 
 -- Document version table
 CREATE TABLE docu_version
@@ -107,4 +116,8 @@ CREATE TABLE notifications
 
 COMMIT;
 
-select * from documents
+select * from documents;
+
+SELECT * FROM _users WHERE user_id = 3;
+
+SELECT * FROM documents WHERE document_id = 3;

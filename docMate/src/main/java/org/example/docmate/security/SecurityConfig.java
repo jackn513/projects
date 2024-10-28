@@ -42,15 +42,19 @@ public class SecurityConfig {
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http
                 .authorizeHttpRequests(authorizeRequests -> authorizeRequests
-                        .requestMatchers("users/login",
-                                "/login",
-                                "/register",
+                        .requestMatchers("/users/**","/users/login",
+                                "users/login",
+                                "users/register",
+                                "documents/**",
+                                "documents/create",
                                 "/css/**",
                                 "/js/**",
-                                "/images/**",
-                                "/users/**",
-                                "/documents/**").permitAll()
+                                "collaborations/**",
+                                "collaborations/collaborators",
+                                "/images/**").permitAll() // Removed unnecessary "/documents/**" and "/collaborations/create" from this line
+                                .requestMatchers("/collaborations/collaborators").hasAnyRole("VIEWER", "OWNER", "COMMENTER", "EDITOR")
 
+// Use hasAnyRole for clarity
                         .anyRequest().authenticated()
                 )
                 .csrf(AbstractHttpConfigurer::disable);
@@ -61,9 +65,9 @@ public class SecurityConfig {
     public AuthenticationManager authManager(UserDetailsService userDetailsService) throws UsernameNotFoundException {
         DaoAuthenticationProvider daoAuthenticationProvider = new DaoAuthenticationProvider();
         daoAuthenticationProvider.setUserDetailsService(userDetailsService);
+        daoAuthenticationProvider.setPasswordEncoder(passwordEncoder()); // Set password encoder here
         return new ProviderManager(daoAuthenticationProvider);
     }
-
 
     @Autowired
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
@@ -74,12 +78,11 @@ public class SecurityConfig {
     CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration configuration = new CorsConfiguration();
         configuration.setAllowedOrigins(List.of("http://localhost:3000", "http://localhost:8005"));
-        configuration.setAllowedMethods(List.of("GET","POST"));
-        configuration.setAllowedHeaders(List.of("Authorization","Content-Type"));
+        configuration.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE"));
+        configuration.setAllowedHeaders(List.of("Authorization", "Content-Type"));
         configuration.setAllowCredentials(true); // Allow credentials
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
         source.registerCorsConfiguration("/**", configuration);
         return source;
     }
-
 }

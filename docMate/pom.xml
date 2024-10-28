@@ -42,8 +42,8 @@
         <dependency>
             <groupId>org.postgresql</groupId>
             <artifactId>postgresql</artifactId>
-            <scope>runtime</scope>
         </dependency>
+
 
         <!-- JJWT for JWT creation and validation -->
         <dependency>

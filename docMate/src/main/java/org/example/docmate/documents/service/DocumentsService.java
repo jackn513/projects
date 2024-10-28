@@ -40,7 +40,7 @@ public class DocumentsService {
             throw new IllegalArgumentException("Document with the same title already exists for this user.");
         }
 
-        // Create and set up the new Document object
+
         Document document = new Document();
         document.setTitle(title);
         document.setContent(content);
@@ -49,7 +49,7 @@ public class DocumentsService {
         document.setCreatedAt(now);
         document.setUpdatedAt(now);
 
-        // Save the document to the repository
+
         return documentsRepository.save(document);
     }
 

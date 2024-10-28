@@ -63,6 +63,9 @@ public class User {
 
     }
 
+    public User(int userId) {
+        this.userId = userId;
+    }
 
     public int getUserId() {
         return userId;

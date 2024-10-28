@@ -59,6 +59,10 @@ public class Document {
         this.user = user;
     }
 
+    public Document(int documentId) {
+        this.documentId = documentId;
+    }
+
     public int getDocumentId() {
         return documentId;
     }

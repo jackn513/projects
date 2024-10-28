@@ -18,8 +18,7 @@ import java.time.Instant;
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
 @Transactional
@@ -187,5 +186,30 @@ public class DocMateDocumentsServiceTests {
 
 
     }
+
+    @Test
+    void testUnauthorizedUserAccess() {
+
+        Document foundDocument = documentsService.findById(testDocument.getDocumentId());
+
+        assertNotNull(foundDocument);
+        assertNotEquals(testUser2.getUserId(), foundDocument.getUser().getUserId());
+    }
+
+
+//    @Test
+//    void testCreateDuplicateTitleDifferentUsers() {
+//
+//        Document docForUser2 = documentsService.save(testDocument.getTitle(), "Different content", testUser2);
+//
+//        assertNotNull(docForUser2);
+//        assertEquals(testDocument.getTitle(), docForUser2.getTitle());
+//        assertEquals(testUser2.getUserId(), docForUser2.getUser().getUserId());
+//
+//
+//        List<Document> foundDocs = documentsRepository.findByTitle(testDocument.getTitle());
+//        assertEquals(2, foundDocs.size());
+//    }
+
 
 }
