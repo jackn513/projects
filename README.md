@@ -4,7 +4,8 @@
 ## My Diverse Project Portfolio
 Welcome to my project showcase! I'm a passionate individual with a keen interest in a wide spectrum of fields, ranging from art and music to the intricate design and functionality of diverse programs. Here's a glimpse into some of the projects that reflect my multifaceted interests:
 
-
+### DocMate
+Description: (on-going) 
 ### Ticketz
 Description: (on-going) An event-ticket Event Management and Ticketing System. More description coming soon :) [Ticketz](https://github.com/jackn513/projects/tree/main/tick-it)
 
