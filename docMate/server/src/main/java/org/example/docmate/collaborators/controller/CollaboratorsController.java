@@ -73,9 +73,8 @@ public class CollaboratorsController {
         }
 
         // Fetch user and document from the database
-
-        String username = extractUserFromRequest(request).getUsername();
-        String email = extractUserFromRequest(request).getEmail();
+        String username = collaborators.getUser().getUsername();
+        String email = collaborators.getUser().getEmail();
         User user = collaboratorsService.findByUsernameOrEmail(username, email);
         if (user == null) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("User not found.");
@@ -92,9 +91,16 @@ public class CollaboratorsController {
         }
 
         // Check if the current user has permission to add the collaborator
-
+        User currentUser = extractUserFromRequest(request); // Assuming this method is correctly implemented
+        if (!hasPermission(currentUser, document)) {
+            return ResponseEntity.status(HttpStatus.FORBIDDEN).body("You do not have permission to add collaborators to this document.");
+        }
 
         // Validate the role
+        Role role = collaborators.getRole();
+        if (!isValidRole(role)) {
+            return ResponseEntity.badRequest().body("Invalid role specified.");
+        }
 
         // Set user and document in the collaborators entity
         collaborators.setUser(user);
@@ -106,6 +112,24 @@ public class CollaboratorsController {
         logger.info("Collaborator created: {}", savedCollaborator);
         return ResponseEntity.ok(savedCollaborator);
     }
+
+    // Utility method to validate roles
+    private boolean isValidRole(Role role) {
+        // Check for null to prevent NullPointerException
+        if (role == null) {
+            return false;
+        }
+        return EnumSet.allOf(Role.class).contains(role);
+    }
+
+
+
+    // Utility method to check if the current user has permission
+    private boolean hasPermission(User currentUser, Document document) {
+        // Implement your logic here based on the user's role and the document's owner
+        return true; // Placeholder; replace with actual permission checking logic
+    }
+
 
 //    private boolean isValidRole(Role role) {
 //        return role != null && EnumSet.allOf(Role.class).contains(role);

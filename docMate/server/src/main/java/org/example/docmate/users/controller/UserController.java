@@ -2,6 +2,7 @@ package org.example.docmate.users.controller;
 
 import jakarta.servlet.http.HttpServletRequest;
 import org.example.docmate.users.LoginResponseDto;
+import org.example.docmate.users.RegisterUserDto;
 import org.example.docmate.users.model.User;
 import org.example.docmate.users.JWT.JWTTokenProvider;
 import org.example.docmate.users.JWT.TokenService;
@@ -73,9 +74,9 @@ public class UserController {
     }
 
     @PostMapping("/register")
-    public ResponseEntity<?> register(@RequestBody UserDto userDto) {
+    public ResponseEntity<?> register(@RequestBody RegisterUserDto registerUserDto) {
         try {
-            User newUser = userService.registerUser(userDto.getUsername(), userDto.getEmail(), userDto.getPassword());
+            User newUser = userService.registerUser(registerUserDto.getUsername(), registerUserDto.getEmail(), registerUserDto.getPassword());
             return ResponseEntity.ok(newUser);
         } catch (IllegalArgumentException e) {
             return ResponseEntity.badRequest().body("Unable to register user: " + e.getMessage());

@@ -55,7 +55,7 @@ public class DocumentController {
 
     @PreAuthorize("hasRole('USER')")
     @PostMapping("/create")
-    public ResponseEntity<String> createDocument(@RequestBody Document document, HttpServletRequest request) {
+    public ResponseEntity<?> createDocument(@RequestBody Document document, HttpServletRequest request) {
         try {
             User user;
             try {
@@ -68,7 +68,7 @@ public class DocumentController {
             document.setCreatedAt(now);
             document.setUpdatedAt(now);
             Document newDocument = documentsService.save(document.getTitle(), document.getContent(), document.getUser());
-            return ResponseEntity.ok("Document created successfully with ID: " + newDocument.getDocumentId());
+            return ResponseEntity.ok(newDocument);
         } catch (IllegalArgumentException e) {
             logger.warn("Document creation failed: {}", e.getMessage());
             return ResponseEntity.status(HttpStatus.CONFLICT).body("Document already exists.");

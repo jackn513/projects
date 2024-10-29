@@ -44,6 +44,10 @@ public class DocumentsService {
         Document document = new Document();
         document.setTitle(title);
         document.setContent(content);
+
+        if (content.length() > 255) {
+
+        }
         document.setUser(user); // Set the user here
         Timestamp now = Timestamp.from(Instant.now());
         document.setCreatedAt(now);
