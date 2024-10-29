@@ -14,6 +14,7 @@ import org.example.docmate.users.model.User;
 import org.example.docmate.users.service.UserService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -64,8 +65,15 @@ public class CollaboratorsController {
     }
 
     @PostMapping("/create")
+    @PreAuthorize("hasRole('USER')")
     public ResponseEntity<?> createCollaborator(@RequestBody Collaborators collaborators, HttpServletRequest request) {
-        logger.info("Received Collaborators: {}", collaborators);
+        // Extract user from the token
+        User hasToken = extractUserFromRequest(request);
+
+        // Check if the user is authenticated by verifying the extracted token
+        if (hasToken == null) {
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Invalid or missing authentication token.");
+        }
 
         // Validate input
         if (collaborators == null || collaborators.getUser() == null || collaborators.getDocument() == null) {
@@ -91,8 +99,7 @@ public class CollaboratorsController {
         }
 
         // Check if the current user has permission to add the collaborator
-        User currentUser = extractUserFromRequest(request); // Assuming this method is correctly implemented
-        if (!hasPermission(currentUser, document)) {
+        if (!hasPermission(hasToken, document)) {
             return ResponseEntity.status(HttpStatus.FORBIDDEN).body("You do not have permission to add collaborators to this document.");
         }
 
@@ -112,6 +119,7 @@ public class CollaboratorsController {
         logger.info("Collaborator created: {}", savedCollaborator);
         return ResponseEntity.ok(savedCollaborator);
     }
+
 
     // Utility method to validate roles
     private boolean isValidRole(Role role) {
@@ -139,6 +147,7 @@ public class CollaboratorsController {
 
 
     @GetMapping
+    @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<List<Collaborators>> getCollaborators() {
         List<Collaborators> collaborators = collaboratorsService.findAll();
         return ResponseEntity.ok(collaborators);

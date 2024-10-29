@@ -88,8 +88,6 @@ public class CollaboratorsService {
             throw new IllegalArgumentException("No existing collaboration found for this user and document.");
         }
 
-
-
         Collaborators collaboratorToUpdate = existingCollaboration.get();
         if (collaborators.getRole() != null) {
             collaboratorToUpdate.setRole(collaborators.getRole());
