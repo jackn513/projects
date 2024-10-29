@@ -3,7 +3,9 @@ package org.example.docmate.users;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class UserLoginDto {
+    @JsonProperty("Username")
     private String username;
+    @JsonProperty("Password")
     private String password;
 
     public UserLoginDto() {}

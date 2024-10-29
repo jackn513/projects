@@ -1,10 +1,9 @@
 package org.example.docmate;
 
-
-
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-public class UserDTO {
+public class UserDTOForCollaboration {
+
     @JsonProperty("User Id")
     private Integer userId;
 
@@ -23,10 +22,10 @@ public class UserDTO {
     @JsonProperty("Updated At")
     private String updatedAt;
 
-    public UserDTO() {
+    public UserDTOForCollaboration() {
     }
 
-    public UserDTO(Integer userId, String username, String email, String role, String createdAt, String updatedAt) {
+    public UserDTOForCollaboration(Integer userId, String username, String email, String role, String createdAt, String updatedAt) {
         this.userId = userId;
         this.username = username;
         this.email = email;
@@ -86,4 +85,3 @@ public class UserDTO {
     // Getters and setters
     // You can add constructors or use Lombok to reduce boilerplate
 }
-

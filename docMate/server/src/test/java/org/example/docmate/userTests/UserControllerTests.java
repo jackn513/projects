@@ -67,7 +67,7 @@ public class UserControllerTests {
     public void setup() {
         // Initialize all required services for the UserController
         mockMvc = MockMvcBuilders.standaloneSetup(
-                new UserController(customUserDetailsService, tokenService, tokenBlacklistService, userService, jwtTokenProvider)
+                new UserController(customUserDetailsService, tokenService, tokenBlacklistService, userService, jwtTokenProvider, passwordEncoder)
         ).build();
     }
 

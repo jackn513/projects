@@ -1,6 +1,7 @@
 package org.example.docmate.users.controller;
 
 import jakarta.servlet.http.HttpServletRequest;
+import org.example.docmate.users.LoginResponseDto;
 import org.example.docmate.users.model.User;
 import org.example.docmate.users.JWT.JWTTokenProvider;
 import org.example.docmate.users.JWT.TokenService;
@@ -16,6 +17,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
@@ -44,17 +46,21 @@ public class UserController {
     private final JWTTokenProvider jwtTokenProvider;
 
     @Autowired
+    private final PasswordEncoder passwordEncoder;
+
+    @Autowired
     public UserController(
             UserDetailsService userDetailsService,
             TokenService tokenService,
             TokenBlacklistService tokenBlacklistService,
             UserService userService,
-            JWTTokenProvider jwtTokenProvider) {
+            JWTTokenProvider jwtTokenProvider, PasswordEncoder passwordEncoder) {
         this.userDetailsService = userDetailsService;
         this.tokenService = tokenService;
         this.tokenBlacklistService = tokenBlacklistService;
         this.userService = userService;
         this.jwtTokenProvider = jwtTokenProvider;
+        this.passwordEncoder = passwordEncoder;
     }
 
 
@@ -78,26 +84,24 @@ public class UserController {
     }
 
     @PostMapping("/login")
-    public ResponseEntity<String> login(@RequestBody UserLoginDto loginDto) {
+    public ResponseEntity<LoginResponseDto> login(@RequestBody UserLoginDto loginDto) {
 
         User user = userService.findByUsername(loginDto.getUsername());
         if (user == null) {
-            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("User not found.");
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(null);
         }
-
 
         boolean isPasswordValid = userService.testPassword(loginDto.getPassword(), user.getPassword());
         if (!isPasswordValid) {
             System.out.println("Invalid password for user: " + loginDto.getUsername());
-            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Login failed: Invalid password.");
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(null);
         }
 
-
         String token = jwtTokenProvider.createToken(loginDto.getUsername());
-
-
-        return ResponseEntity.ok("Login successful. Token: " + token);
+        LoginResponseDto response = new LoginResponseDto(user.getUsername(), user.getEmail(),  passwordEncoder.encode(user.getPassword()), token);
+        return ResponseEntity.ok(response);
     }
+
 
     @PostMapping("/logout")
     public ResponseEntity<String> logout(HttpServletRequest request) {
