@@ -9,6 +9,7 @@ import org.example.docmate.users.service.UserService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import java.util.EnumSet; // Add this line
 
 import java.sql.Timestamp;
 import java.time.Instant;
@@ -28,28 +29,22 @@ public class CollaboratorsService {
         this.documentsService = documentsService;
     }
 
-    public Collaborators create(int documentId, int userId, String role) {
-        // Check if the document exists
-        Document document = documentsService.findById(documentId);
+    public Collaborators create(String title, int userId, String role) {
+
+        Document document = documentsService.findByTitle(title);
         if (document == null) {
             throw new IllegalArgumentException("Document not found.");
         }
 
-        // Fetch the user from the database
         User user = userService.findByUserId(userId);
         if (user == null) {
             throw new IllegalArgumentException("User not found.");
         }
 
-        // Check if the collaborator already exists
         if (collaboratorsRepository.existsByUserAndDocument(user, document)) {
             throw new IllegalArgumentException("This collaborator already exists for this document.");
         }
 
-        // Validate the role
-
-
-        // Create the collaborator
         Collaborators collaborator = new Collaborators();
         collaborator.setDocument(document);
         collaborator.setUser(user);
@@ -77,25 +72,42 @@ public class CollaboratorsService {
         return collaboratorsRepository.findByUsernameOrEmail(username, email);
     }
 
+    public Document findByTitle(String title) {
+        return collaboratorsRepository.findByTitle(title);
+    }
     public List<Collaborators> findByRole(String role) {
         return collaboratorsRepository.findByRole(role);
     }
 
 
-    public Collaborators update(Collaborators collaborators, int documentId, int userId) {
-        Optional<Collaborators> existingCollaboration = collaboratorsRepository.findByUserIdAndDocumentId(userId, documentId);
-        if (existingCollaboration.isEmpty()) {
-            throw new IllegalArgumentException("No existing collaboration found for this user and document.");
+    public Collaborators update(int collaboratorId, int userId, String newRole) {
+        Optional<Collaborators> optionalCollaborator = collaboratorsRepository.findById(collaboratorId);
+
+        if (optionalCollaborator.isEmpty()) {
+            throw new IllegalArgumentException("Collaborator not found.");
         }
 
-        Collaborators collaboratorToUpdate = existingCollaboration.get();
-        if (collaborators.getRole() != null) {
-            collaboratorToUpdate.setRole(collaborators.getRole());
+        Collaborators collaborator = optionalCollaborator.get();
+
+        // Check if the user is the owner
+        if (collaborator.getUser().getUserId() != userId) {
+            throw new SecurityException("User is not authorized to update this collaborator.");
         }
 
-        collaboratorToUpdate.setCreatedAt(collaborators.getCreatedAt());
-        return collaboratorsRepository.save(collaboratorToUpdate);
+        // Update the role if it is valid
+        if (isValidRole(Role.valueOf(newRole))) {
+            collaborator.setRole(Role.valueOf(newRole));
+        } else {
+            throw new IllegalArgumentException("Invalid role specified.");
+        }
+
+        return collaboratorsRepository.save(collaborator);
     }
+
+    private boolean isValidRole(Role role) {
+        return role != null && EnumSet.allOf(Role.class).contains(role);
+    }
+
 
     public int delete(int documentId, int userId) {
         if (collaboratorsRepository.existsById(userId)) {

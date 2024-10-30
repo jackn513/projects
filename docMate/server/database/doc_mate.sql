@@ -54,18 +54,17 @@ SELECT setval('documents_document_id_seq', 1, false);
 
 
 
--- Collaborator table
 CREATE TABLE collaborators
 (
     collaborator_id INT PRIMARY KEY DEFAULT nextval('collaborators_sequence'),
     document_id     INT,
     user_id         INT,
-    role            VARCHAR(50),
---     Viewer, Commenter, Editor, Owner
-    created_at      TIMESTAMP,
+    role            VARCHAR(50) DEFAULT 'VIEWER', -- Default role can be set as VIEWER
+    created_at      TIMESTAMP DEFAULT NOW(), -- Automatically set the creation timestamp
     CONSTRAINT fk_collaborators_document_id FOREIGN KEY (document_id) REFERENCES documents ON DELETE CASCADE,
     CONSTRAINT fk_collaborators_user_id FOREIGN KEY (user_id) REFERENCES _users ON DELETE CASCADE
 );
+
 
 SELECT setval('collaborators_sequence', 1, false);
 
@@ -121,3 +120,15 @@ select * from documents;
 SELECT * FROM _users WHERE user_id = 3;
 
 SELECT * FROM documents WHERE document_id = 3;
+
+
+ALTER TABLE documents
+    ADD COLUMN role VARCHAR(50) DEFAULT 'OWNER';
+
+
+INSERT INTO _users (username, email, password, role, created_at, updated_at) VALUES
+                                                                                 ('alice', 'alice@example.com', '$2a$10$hashedpassword1', 'USER', NOW(), NOW()),
+                                                                                 ('bob', 'bob@example.com', '$2a$10$hashedpassword2', 'USER', NOW(), NOW()),
+                                                                                 ('charlie', 'charlie@example.com', '$2a$10$hashedpassword3', 'USER', NOW(), NOW());
+
+

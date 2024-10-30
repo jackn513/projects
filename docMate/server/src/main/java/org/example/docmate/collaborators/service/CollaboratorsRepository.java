@@ -24,4 +24,7 @@ public interface CollaboratorsRepository extends JpaRepository<Collaborators, In
     @Query("SELECT u FROM _users u WHERE u.username ILIKE %:username% OR u.email = :email")
     User findByUsernameOrEmail(@Param("username") String username, @Param("email") String email);
 
+    @Query("SELECT d FROM documents d WHERE d.title ILIKE %:title%")
+    Document findByTitle(@Param("title") String title);
+
 }

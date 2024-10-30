@@ -14,7 +14,7 @@ import java.util.Optional;
 public interface DocumentsRepository extends JpaRepository<Document, Integer> {
 
     @Query("SELECT d from documents d where d.title ilike %:title%")
-    List<Document> findByTitle(@Param("title") String title);
+    Document findByTitle(@Param("title") String title);
 
     @Query("SELECT d from documents d where d.title ilike %:title% and d.user = :user")
     Optional<Document> findByTitleAndUser(String title, User user);
@@ -24,4 +24,6 @@ public interface DocumentsRepository extends JpaRepository<Document, Integer> {
 
     @Query("SELECT d FROM documents d WHERE d.user.userId = :userId")
     List<Document> findByUserId(@Param("userId") int userId);
+
+
 }

@@ -2,6 +2,7 @@ package org.example.docmate.documents.model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
+import org.example.docmate.collaborators.model.Role;
 import org.example.docmate.users.model.User;
 
 import java.sql.Timestamp;
@@ -35,6 +36,10 @@ public class Document {
     @JsonProperty("Content")
     private String content;
 
+    @Column(name = "role", nullable = false)
+    @JsonProperty("Role")
+    private Role role;
+
     @Column(name = "created_at")
     @JsonProperty("Created At")
     private Timestamp createdAt;
@@ -50,10 +55,11 @@ public class Document {
     public Document() {
     }
 
-    public Document(int documentId, String title, String content, Timestamp createdAt, Timestamp updatedAt, User user) {
+    public Document(int documentId, String title, String content, Role role, Timestamp createdAt, Timestamp updatedAt, User user) {
         this.documentId = documentId;
         this.title = title;
         this.content = content;
+        this.role = role;
         this.createdAt = createdAt;
         this.updatedAt = updatedAt;
         this.user = user;
@@ -85,6 +91,14 @@ public class Document {
 
     public void setContent(String content) {
         this.content = content;
+    }
+
+    public Role getRole() {
+        return role;
+    }
+
+    public void setRole(Role role) {
+        this.role = role;
     }
 
     public Timestamp getCreatedAt() {

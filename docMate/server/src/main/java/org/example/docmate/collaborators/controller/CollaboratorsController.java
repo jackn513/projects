@@ -18,14 +18,12 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
 import org.yaml.snakeyaml.comments.CommentLine;
 
 import java.sql.Timestamp;
 import java.time.Instant;
-import java.util.Arrays;
-import java.util.EnumSet;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 
 @CrossOrigin
 @RestController
@@ -59,91 +57,60 @@ public class CollaboratorsController {
         String username = jwtTokenProvider.getUsername(token);
         return userService.findByUsername(username);
     }
-    private boolean hasPermissionToAddCollaborators(User currentUser, Document document) {
-        // Check if the current user is the owner of the document
-        return document.getUser().getUserId() == currentUser.getUserId();
-    }
+
+
 
     @PostMapping("/create")
     @PreAuthorize("hasRole('USER')")
     public ResponseEntity<?> createCollaborator(@RequestBody Collaborators collaborators, HttpServletRequest request) {
-        // Extract user from the token
+
         User hasToken = extractUserFromRequest(request);
 
-        // Check if the user is authenticated by verifying the extracted token
         if (hasToken == null) {
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Invalid or missing authentication token.");
         }
 
-        // Validate input
         if (collaborators == null || collaborators.getUser() == null || collaborators.getDocument() == null) {
             return ResponseEntity.badRequest().body("Collaborator, user, and document must not be null.");
         }
 
-        // Fetch user and document from the database
         String username = collaborators.getUser().getUsername();
         String email = collaborators.getUser().getEmail();
         User user = collaboratorsService.findByUsernameOrEmail(username, email);
         if (user == null) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("User not found.");
         }
-
-        Document document = documentsService.findById(collaborators.getDocument().getDocumentId());
+        Document document = documentsService.findByTitle(collaborators.getDocument().getTitle());
         if (document == null) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Document not found.");
         }
 
-        // Check if the collaborator already exists
         if (collaboratorsRepository.existsByUserAndDocument(user, document)) {
             return ResponseEntity.status(HttpStatus.CONFLICT).body("Collaborator already exists for this document.");
         }
 
-        // Check if the current user has permission to add the collaborator
-        if (!hasPermission(hasToken, document)) {
-            return ResponseEntity.status(HttpStatus.FORBIDDEN).body("You do not have permission to add collaborators to this document.");
-        }
-
-        // Validate the role
         Role role = collaborators.getRole();
         if (!isValidRole(role)) {
             return ResponseEntity.badRequest().body("Invalid role specified.");
         }
 
-        // Set user and document in the collaborators entity
         collaborators.setUser(user);
         collaborators.setDocument(document);
         collaborators.setCreatedAt(Timestamp.from(Instant.now()));
 
-        // Save the collaborator
         Collaborators savedCollaborator = collaboratorsRepository.save(collaborators);
         logger.info("Collaborator created: {}", savedCollaborator);
         return ResponseEntity.ok(savedCollaborator);
     }
 
 
-    // Utility method to validate roles
+
     private boolean isValidRole(Role role) {
-        // Check for null to prevent NullPointerException
         if (role == null) {
             return false;
         }
         return EnumSet.allOf(Role.class).contains(role);
     }
-
-
-
-    // Utility method to check if the current user has permission
-    private boolean hasPermission(User currentUser, Document document) {
-        // Implement your logic here based on the user's role and the document's owner
-        return true; // Placeholder; replace with actual permission checking logic
-    }
-
-
-//    private boolean isValidRole(Role role) {
-//        return role != null && EnumSet.allOf(Role.class).contains(role);
-//    }
-
-
 
 
     @GetMapping
@@ -169,6 +136,7 @@ public class CollaboratorsController {
                 .orElseGet(() -> ResponseEntity.status(HttpStatus.NOT_FOUND).body(null));
     }
 
+
     @GetMapping("/role/{role}")
     public ResponseEntity<List<Collaborators>> findByRole(@PathVariable String role) {
         List<Collaborators> collaboratorsByRole = collaboratorsService.findByRole(role);
@@ -176,4 +144,27 @@ public class CollaboratorsController {
                 ? ResponseEntity.status(HttpStatus.NOT_FOUND).body(null)
                 : ResponseEntity.ok(collaboratorsByRole);
     }
+
+    @PutMapping("/update/{id}")
+    @PreAuthorize("hasRole('USER')")
+    public ResponseEntity<?> updateCollaborator(
+            @PathVariable int id,
+            @RequestParam String newRole,
+            HttpServletRequest request) {
+
+        User hasToken = extractUserFromRequest(request);
+        if (hasToken == null) {
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Invalid or missing authentication token.");
+        }
+
+        try {
+            Collaborators updatedCollaborator = collaboratorsService.update(id, hasToken.getUserId(), newRole);
+            logger.info("Collaborator updated: {}", updatedCollaborator);
+            return ResponseEntity.ok(updatedCollaborator);
+        } catch (IllegalArgumentException | SecurityException e) {
+            return ResponseEntity.badRequest().body(e.getMessage());
+        }
+    }
+
+
 }

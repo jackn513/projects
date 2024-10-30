@@ -46,15 +46,13 @@ public class SecurityConfig {
                                 "users/login",
                                 "users/register",
                                 "documents/**",
-                                "documents/create",
                                 "/css/**",
                                 "/js/**",
                                 "collaborations/**",
-                                "collaborations/create",
-                                "/images/**").permitAll() // Removed unnecessary "/documents/**" and "/collaborations/create" from this line
+                                "/images/**").permitAll()
+                        .requestMatchers("documents/create").hasAnyRole("USER", "ADMIN", "OWNER")
                                 .requestMatchers("/collaborations/collaborators").hasAnyRole("VIEWER", "OWNER", "COMMENTER", "EDITOR")
-
-// Use hasAnyRole for clarity
+                        .requestMatchers("collaborations/update/**").hasAnyRole("USER", "ADMIN")
                         .anyRequest().authenticated()
                 )
                 .csrf(AbstractHttpConfigurer::disable);

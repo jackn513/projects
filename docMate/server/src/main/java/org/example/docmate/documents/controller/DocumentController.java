@@ -67,7 +67,7 @@ public class DocumentController {
             Timestamp now = Timestamp.from(Instant.now());
             document.setCreatedAt(now);
             document.setUpdatedAt(now);
-            Document newDocument = documentsService.save(document.getTitle(), document.getContent(), document.getUser());
+            Document newDocument = documentsService.save(document.getTitle(), document.getContent(), document.getRole(), document.getUser());
             return ResponseEntity.ok(newDocument);
         } catch (IllegalArgumentException e) {
             logger.warn("Document creation failed: {}", e.getMessage());

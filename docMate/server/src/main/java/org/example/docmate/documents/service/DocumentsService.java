@@ -1,6 +1,7 @@
 package org.example.docmate.documents.service;
 
 import jakarta.servlet.http.HttpServletRequest;
+import org.example.docmate.collaborators.model.Role;
 import org.example.docmate.users.JWT.JWTTokenProvider;
 import org.example.docmate.users.JWT.TokenService;
 import org.example.docmate.users.model.User;
@@ -32,7 +33,7 @@ public class DocumentsService {
     }
 
 
-    public Document save(String title, String content, User user) {
+    public Document save(String title, String content, Role role, User user) {
         // Check if the document with the same title exists for the same user
         Optional<Document> existingDocument = documentsRepository.findByTitleAndUser(title, user);
 
@@ -44,10 +45,9 @@ public class DocumentsService {
         Document document = new Document();
         document.setTitle(title);
         document.setContent(content);
+        role = Role.valueOf("OWNER");
+        document.setRole(role);
 
-        if (content.length() > 255) {
-
-        }
         document.setUser(user); // Set the user here
         Timestamp now = Timestamp.from(Instant.now());
         document.setCreatedAt(now);
@@ -62,7 +62,7 @@ public class DocumentsService {
         return documentsRepository.findAll();
     }
 
-    public List<Document> findByTitle(String title) {
+    public Document findByTitle(String title) {
         return documentsRepository.findByTitle(title);
     }
 
