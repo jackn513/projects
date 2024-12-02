@@ -1,6 +1,7 @@
 package org.example.docmate.collaborators.service;
 
 import org.example.docmate.collaborators.model.Collaborators;
+import org.example.docmate.collaborators.model.CondensedDTO;
 import org.example.docmate.collaborators.model.Role;
 import org.example.docmate.documents.model.Document;
 import org.example.docmate.documents.service.DocumentsService;
@@ -115,6 +116,11 @@ public class CollaboratorsService {
             return 1; // Success
         }
         return 0; // No such collaborator found
+    }
+
+
+    public List<CondensedDTO> findCondensedCollaborators() {
+        return collaboratorsRepository.findCollaboratorsCondensed();
     }
 
 

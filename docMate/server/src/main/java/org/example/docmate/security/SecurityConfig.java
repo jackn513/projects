@@ -49,6 +49,7 @@ public class SecurityConfig {
                                 "/css/**",
                                 "/js/**",
                                 "collaborations/**",
+                                "collaborations/condensed",
                                 "/images/**").permitAll()
                         .requestMatchers("documents/create").hasAnyRole("USER", "ADMIN", "OWNER")
                                 .requestMatchers("/collaborations/collaborators").hasAnyRole("VIEWER", "OWNER", "COMMENTER", "EDITOR")

@@ -1,6 +1,7 @@
 package org.example.docmate.collaborators.service;
 
 import org.example.docmate.collaborators.model.Collaborators;
+import org.example.docmate.collaborators.model.CondensedDTO;
 import org.example.docmate.documents.model.Document;
 import org.example.docmate.users.model.User;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -26,5 +27,13 @@ public interface CollaboratorsRepository extends JpaRepository<Collaborators, In
 
     @Query("SELECT d FROM documents d WHERE d.title ILIKE %:title%")
     Document findByTitle(@Param("title") String title);
+
+    @Query("SELECT c.user.userId, u.username, d.title, c.role " +
+            "FROM Collaborators c " +
+            "JOIN c.user u " +
+            "JOIN c.document d")
+    List<CondensedDTO> findCollaboratorsCondensed();
+
+
 
 }

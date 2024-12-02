@@ -2,6 +2,7 @@ package org.example.docmate.collaborators.controller;
 
 import jakarta.servlet.http.HttpServletRequest;
 import org.example.docmate.collaborators.model.Collaborators;
+import org.example.docmate.collaborators.model.CondensedDTO;
 import org.example.docmate.collaborators.model.Role;
 import org.example.docmate.collaborators.service.CollaboratorsRepository;
 import org.example.docmate.collaborators.service.CollaboratorsService;
@@ -144,6 +145,14 @@ public class CollaboratorsController {
                 ? ResponseEntity.status(HttpStatus.NOT_FOUND).body(null)
                 : ResponseEntity.ok(collaboratorsByRole);
     }
+
+    @GetMapping("/condensed")
+    @PreAuthorize("hasAnyRole()")
+    public ResponseEntity<List<CondensedDTO>> findCondensedCollaborators() {
+        List<CondensedDTO> collaborators = collaboratorsService.findCondensedCollaborators();
+        return ResponseEntity.ok(collaborators);
+    }
+
 
     @PutMapping("/update/{id}")
     @PreAuthorize("hasRole('USER')")
