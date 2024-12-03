@@ -1,0 +1,111 @@
+/* Login.css */
+
+/* General Styling */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f9f9f9;
+    margin: 0;
+    padding: 0;
+}
+
+/* Login Section */
+.login {
+    max-width: 400px;
+    margin: 50px auto;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    text-align: center;
+}
+
+.docMate-title{
+    font-size:200px;
+    text-align: center;
+    margin: 0 !important;
+}
+
+.please {
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+/* Form Fields */
+.login-form .fields {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.username-label-login,
+.password-label-login {
+    font-size: 14px;
+    color: #555;
+    text-align: left;
+}
+
+.username-input,
+.password-input {
+    width: 100%;
+    padding: 10px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.username-input:focus,
+.password-input:focus {
+    outline: none;
+    border-color: #007BFF;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+/* Submit Button */
+.submit-button {
+    background-color: #027dff;
+    color: white;
+    border: none;
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.submit-button:hover {
+    background-color: #0056b3;
+}
+
+/* No Account Section */
+.no-account {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.dont {
+    font-size: 14px;
+    color: #555;
+}
+
+.nav-link {
+    color: #007BFF;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.nav-link:hover {
+    text-decoration: underline;
+}
+
+/* Responsive Design */
+@media (max-width: 480px) {
+    .login {
+        width: 90%;
+    }
+
+    .submit-button {
+        font-size: 14px;
+    }
+}

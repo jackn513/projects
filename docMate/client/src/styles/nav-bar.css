@@ -1,0 +1,44 @@
+.links-nav {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+    padding: 0;
+    margin: 10px;
+}
+
+.links-nav li {
+    margin: 0;
+}
+
+.links-nav a {
+    text-decoration: none; /* Removes underline */
+    color: black; /* Sets link color */
+    font-size: 16px;
+    transition: color 0.3s; /* Smooth transition for hover effects */
+
+    padding-bottom: 10px;
+}
+
+.links-nav a {
+    transition: transform 0.3s ease, color 0.3s ease, border-bottom 0.3s ease; /* Smooth transition */
+}
+
+.links-nav a:hover {
+    color: gray; /* Optional: Change color on hover */
+    border-bottom: 1.5px solid;
+
+    transform: scale(1.05); /* Slightly increase the size of the link on hover */
+}
+
+
+.links-nav a.active {
+    border-bottom: 1.5px solid;
+    color: #027dff;
+}
+
+.links-nav a.active:hover {
+    border-bottom: 1.5px solid;
+
+
+    color: #0056b3;
+}

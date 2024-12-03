@@ -38,6 +38,7 @@ public class SecurityConfig {
         return new BCryptPasswordEncoder();
     }
 
+
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http
@@ -52,7 +53,7 @@ public class SecurityConfig {
                                 "collaborations/condensed",
                                 "/images/**").permitAll()
                         .requestMatchers("documents/create").hasAnyRole("USER", "ADMIN", "OWNER")
-                                .requestMatchers("/collaborations/collaborators").hasAnyRole("VIEWER", "OWNER", "COMMENTER", "EDITOR")
+                        .requestMatchers("/collaborations/collaborators").hasAnyRole("VIEWER", "OWNER", "COMMENTER", "EDITOR")
                         .requestMatchers("collaborations/update/**").hasAnyRole("USER", "ADMIN")
                         .anyRequest().authenticated()
                 )

@@ -10,10 +10,6 @@ import java.sql.Timestamp;
 @Entity(name = "documents")
 public class Document {
 
-    @ManyToOne(optional = false) // Ensures the user is required (not nullable)
-    @JoinColumn(name = "user_id", foreignKey = @ForeignKey(name = "fk_documents_user_id"), updatable = false)
-    @JsonProperty("User")
-    private User user;
 
     @Id
     @SequenceGenerator(
@@ -25,6 +21,7 @@ public class Document {
     @Column(name = "document_id", updatable = false, nullable = false)
     @JsonProperty("Document Id")
     private int documentId;
+
 
 
     @Column(name = "title", nullable = false)
@@ -48,6 +45,10 @@ public class Document {
     @JsonProperty("Updated At")
     private Timestamp updatedAt;
 
+    @ManyToOne(optional = false) // Ensures the user is required (not nullable)
+    @JoinColumn(name = "user_id", foreignKey = @ForeignKey(name = "fk_documents_user_id"), updatable = false)
+    @JsonProperty("User")
+    private User user;
 
 
 

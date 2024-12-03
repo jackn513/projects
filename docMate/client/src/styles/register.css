@@ -1,0 +1,97 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f9f9f9;
+    margin: 0;
+    padding: 0;
+}
+.docMate-title-register{
+    font-size:200px;
+    text-align: center;
+    margin: 0 !important;
+}
+.required-asterisk{
+    color: red;
+}
+
+.register{
+    max-width: 400px;
+    margin: 50px auto;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    text-align: center;
+}
+
+.please{
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.register-form .fields{
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.username-label-register,
+.email-label-register,
+.password-label-register{
+    font-size: 14px;
+    color: #555;
+    text-align: left;
+}
+
+.username-input-register,
+.email-input-register,
+.password-input-register{
+    width: 100%;
+    padding: 10px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.username-input-register:focus,
+.email-input-register:focus,
+.password-input-register:focus{
+    outline: none;
+    border-color: #007BFF;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+.submit-button:hover {
+    background-color: #0056b3;
+}
+
+
+.have-account{
+    margin-top: 20px;
+    text-align: center;
+}
+.have{
+    font-size: 14px;
+    color: #555;
+}
+.nav-link {
+    color: #007BFF;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.nav-link:hover {
+    text-decoration: underline;
+}
+
+/* Responsive Design */
+@media (max-width: 480px) {
+    .login {
+        width: 90%;
+    }
+
+    .submit-button {
+        font-size: 14px;
+    }
+}
