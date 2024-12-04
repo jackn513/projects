@@ -86,22 +86,24 @@ public class UserController {
 
     @PostMapping("/login")
     public ResponseEntity<LoginResponseDto> login(@RequestBody UserLoginDto loginDto) {
-
         User user = userService.findByUsername(loginDto.getUsername());
         if (user == null) {
-            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(null);
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED)
+                    .body(null);
         }
 
         boolean isPasswordValid = userService.testPassword(loginDto.getPassword(), user.getPassword());
         if (!isPasswordValid) {
-            System.out.println("Invalid password for user: " + loginDto.getUsername());
-            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(null);
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED)
+                    .body(null);
         }
 
         String token = jwtTokenProvider.createToken(loginDto.getUsername());
-        LoginResponseDto response = new LoginResponseDto(user.getUsername(), user.getEmail(),  passwordEncoder.encode(user.getPassword()), token);
+        LoginResponseDto response = new LoginResponseDto(user.getUsername(), user.getEmail(), token);
         return ResponseEntity.ok(response);
     }
+
+
 
 
     @PostMapping("/logout")
@@ -143,6 +145,38 @@ public class UserController {
         }
         return ResponseEntity.ok(user);
     }
+
+
+    @GetMapping("/my-details")
+    public ResponseEntity<?> getUserDetails(HttpServletRequest request) {
+        // Extract token from the Authorization header
+        String token = tokenService.extractTokenFromRequest(request);
+
+        // Validate the token
+        if (token == null || !jwtTokenProvider.validateToken(token)) {
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Invalid token.");
+        }
+
+        try {
+            // Extract user ID (or username) from the token
+            String username = jwtTokenProvider.getUsername(token);
+
+            // Retrieve the user details using the extracted username
+            User user = userService.findByUsername(username);
+
+            // If the user doesn't exist, return a NOT_FOUND response
+            if (user == null) {
+                return ResponseEntity.status(HttpStatus.NOT_FOUND).body("User not found.");
+            }
+
+            // Return the user details in the response body
+            return ResponseEntity.ok().body(user);
+        } catch (Exception e) {
+            // Handle any errors during the process
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("An error occurred while retrieving user details.");
+        }
+    }
+
 
 
     @GetMapping

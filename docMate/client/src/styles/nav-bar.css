@@ -1,9 +1,17 @@
+.nav-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #f8f9fa;
+}
+
 .links-nav {
     list-style: none;
     display: flex;
     gap: 20px;
     padding: 0;
-    margin: 10px;
+    margin: 0;
 }
 
 .links-nav li {
@@ -11,34 +19,75 @@
 }
 
 .links-nav a {
-    text-decoration: none; /* Removes underline */
-    color: black; /* Sets link color */
+    text-decoration: none;
+    color: black;
     font-size: 16px;
-    transition: color 0.3s; /* Smooth transition for hover effects */
-
-    padding-bottom: 10px;
-}
-
-.links-nav a {
-    transition: transform 0.3s ease, color 0.3s ease, border-bottom 0.3s ease; /* Smooth transition */
+    transition: transform 0.3s ease, color 0.3s ease, border-bottom 0.3s ease;
+    padding-bottom: 5px;
 }
 
 .links-nav a:hover {
-    color: gray; /* Optional: Change color on hover */
+    color: #007BFF;
     border-bottom: 1.5px solid;
-
-    transform: scale(1.05); /* Slightly increase the size of the link on hover */
+    transform: scale(1.05);
 }
-
 
 .links-nav a.active {
     border-bottom: 1.5px solid;
-    color: #027dff;
+    color: #0056b3;
 }
 
-.links-nav a.active:hover {
-    border-bottom: 1.5px solid;
+.dropbtn {
+    background-color: #007BFF;
+    color: white;
+    font-size: 16px;
+    border: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%; /* Ensures the button is circular */
+    display: flex;
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+}
 
+.name {
+    justify-self: center;
+    color: white;
+}
 
-    color: #0056b3;
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f1f1f1;
+    min-width: 160px;
+    border-radius: 5px;
+    right: 0;
+    left: auto;
+    border: 1px transparent;
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    border-bottom: 1px transparent;
+    border-radius: 5px;
+}
+
+.dropdown-content a:hover {
+    border: 1px solid #007BFF;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.dropdown:hover .dropbtn {
+    background-color: #007BFF;
 }

@@ -1,12 +1,14 @@
 import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
-import { useState } from 'react';
+
 import Register from './views/register.tsx'; // Ensure this path and file are correct
 import NavBar from './components/nav-bar.tsx';
 import Login from './views/login.tsx';
+import Home from "./views/home.tsx";
+import Logout from "./components/logout.tsx";
+
 
 function App() {
     // Simulated authentication state
-    const [isLoggedIn, setIsLoggedIn] = useState(false); // Replace with actual authentication logic
 
     return (
         <>
@@ -16,10 +18,12 @@ function App() {
                     <Routes>
                         <Route
                             path="/"
-                            element={isLoggedIn ? <Home /> : <Navigate to="/login" />}
+                            element={<Home/>}
                         />
                         <Route path="/register" element={<Register />} />
-                        <Route path="/login" element={<Login setIsLoggedIn={setIsLoggedIn} />} />
+                        <Route path="/login" element={<Login  />} />
+                        <Route path="/logout" element={<Logout />}/>
+
                     </Routes>
                 </Router>
             </section>
@@ -27,13 +31,6 @@ function App() {
     );
 }
 
-function Home() {
-    return (
-        <section className="home">
-            <h2>Home Page</h2>
-            <p>Welcome to the DocMate home page!</p>
-        </section>
-    );
-}
+
 
 export default App;

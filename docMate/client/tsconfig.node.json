@@ -20,5 +20,8 @@
     "noFallthroughCasesInSwitch": true,
     "noUncheckedSideEffectImports": true
   },
-  "include": ["vite.config.ts"]
+  "include": [
+    "vite.config.ts",        // Keep the vite config file
+    "src/**/*"               // Include all files in the src folder (if your files are in this folder)
+  ]
 }

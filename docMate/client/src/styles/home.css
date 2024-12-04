@@ -1,0 +1,114 @@
+/* General Styling */
+
+
+/* Title Styling */
+.my-docmate-title {
+    font-size: 200px;
+    text-align: center;
+    margin: 0 !important;
+
+    padding-bottom: 10px;
+
+}
+
+
+/* Documents List */
+.docs-list {
+    margin: 30px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: start;
+    gap: 20px;
+
+}
+
+/* Individual Document Item */
+.doc-item {
+
+    border-radius: 5px;
+    border: 1px solid #cbc9c9;
+    width: 230px;
+    height: 380px;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 275px 1fr;
+    grid-template-areas:
+        "img"
+        "title";
+}
+
+
+.doc-item:hover{
+    border: 1px solid #007BFF ;
+}
+
+/* Document Preview */
+.doc-preview {
+    grid-area: img;
+    width: 100%;
+    height: 100%;
+    background-color: #007BFF;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    overflow: hidden;
+}
+
+.doc-preview img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Document Title */
+.doc-title {
+    grid-area: title;
+    font-size: 25px;
+    color: #333;
+    margin: 10px;
+    font-weight: bold;
+    text-align: start;
+}
+
+
+/* Document Content (Placeholder) */
+p {
+    font-size: 16px;
+    color: #555;
+}
+
+/* Empty State */
+.docs-list p {
+    font-size: 18px;
+    color: #777;
+    text-align: center;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .home {
+        width: 90%;
+    }
+
+    .my-docmate-title {
+        font-size: 150px;
+    }
+
+    .doc-title {
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 480px) {
+    .home {
+        width: 95%;
+        padding: 15px;
+    }
+
+    .my-docmate-title {
+        font-size: 120px;
+    }
+
+    .doc-title {
+        font-size: 14px;
+    }
+}

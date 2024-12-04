@@ -8,6 +8,14 @@ body {
     padding: 0;
 }
 
+.not-logged-in-message{
+    color: red;
+}
+
+.logged-in-message{
+
+}
+
 /* Login Section */
 .login {
     max-width: 400px;
