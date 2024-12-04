@@ -9,20 +9,17 @@ function Home() {
 
     useEffect(() => {
         const fetchDocs = async () => {
+            const token = localStorage.getItem("token");
+
+            // If there's no token, redirect to login
+            if (!token) {
+                navigate("/login");
+                return;
+            }
+
             try {
-                // Retrieve token from localStorage
-                const token = localStorage.getItem("token");
-
-                // If no token, redirect to login
-                if (!token) {
-                    navigate("/login");
-                    return;
-                }
-
                 const response = await axios.get("http://localhost:3000/documents/my-documents", {
-                    headers: {
-                        Authorization: `Bearer ${token}`,
-                    },
+                    headers: { Authorization: `Bearer ${token}` },
                 });
 
                 setDocs(response.data);
@@ -32,14 +29,12 @@ function Home() {
             }
         };
 
-        fetchDocs().then();
+        fetchDocs();
     }, [navigate]); // Include navigate in the dependency array
 
     return (
         <section className="home">
-
             <h1 className="my-docmate-title">My docMate</h1>
-
             <section className="docs-list">
                 {docs.length === 0 ? (
                     <p>No documents available.</p>
@@ -47,7 +42,7 @@ function Home() {
                     docs.map((doc) => (
                         <div className="doc-item" key={doc['Document Id']}>
                             <img alt={"IMAGE"} className="doc-preview"></img>
-                            <h2 className="doc-title">{doc['Title']}</h2>
+                            <h2 className="doc-title">{doc['Title'].split(" ")[0]}...</h2>
                         </div>
                     ))
                 )}
